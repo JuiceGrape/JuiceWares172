@@ -17,7 +17,13 @@ public class TileEntityOverEnchanter extends TileEntity {
 	@Override
 	public void readFromNBT(NBTTagCompound nbt) {
 		super.readFromNBT(nbt);
-		
+		tool = ItemStack.loadItemStackFromNBT(nbt);
+	}
+	
+	@Override
+	public void writeToNBT(NBTTagCompound nbt) {
+		super.writeToNBT(nbt);
+		tool.writeToNBT(nbt);
 	}
 	
 	

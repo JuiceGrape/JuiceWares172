@@ -14,8 +14,6 @@ import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 
 import com.juicegrape.juicewares.juicewares;
-import com.juicegrape.juicewares.items.ItemLens;
-import com.juicegrape.juicewares.items.ModItems;
 import com.juicegrape.juicewares.tileentities.TileEntityAltar;
 
 import cpw.mods.fml.relauncher.Side;
@@ -59,32 +57,12 @@ public class BlockAltar extends BlockContainer {
     {
         return false;
     }
-    
-    @Override
-    public void randomDisplayTick(World world, int x, int y, int z, Random random) {
-    	TileEntity te = world.getTileEntity(x, y, z);
-		if (te instanceof TileEntityAltar) {
-			TileEntityAltar altar = (TileEntityAltar)te;
-			if (altar.shouldSpawnParticles()) {
-				spawnParticles("portal", world, x, y, z, random);
-			}
-		}
-    }
+  
     
     
     
     @Override
     public void breakBlock(World world, int x, int y, int z, Block b, int i2) {
-    	TileEntity te = world.getTileEntity(x, y, z);
-    	if (te instanceof TileEntityAltar) {
-    		TileEntityAltar altar = (TileEntityAltar)te;
-    		if (altar.hasLens) {
-    			altar.clearLens();
-    		}
-    		if (altar.hasStone) {
-    			altar.clearStone();
-    		}
-    	}
     	super.breakBlock(world, x, y, z, b, i2);
     }
     
@@ -107,27 +85,21 @@ public class BlockAltar extends BlockContainer {
     	if (!world.isRemote) {
     		TileEntity te = world.getTileEntity(x, y, z);
     		if (te instanceof TileEntityAltar) {
-    			TileEntityAltar altar = (TileEntityAltar)te;
-    			if (player.getCurrentEquippedItem() != null) {
-	    			if (player.getCurrentEquippedItem().getItem() instanceof ItemLens && !altar.hasLens) {
-	    				altar.setLens(player.getCurrentEquippedItem());
-	    				ItemStack lens = new ItemStack(player.getCurrentEquippedItem().getItem(), player.getCurrentEquippedItem().stackSize - 1, player.getCurrentEquippedItem().getItemDamage());
-	    				player.setCurrentItemOrArmor(0, lens);
-	    			} else if (player.getCurrentEquippedItem().isItemEqual(new ItemStack(ModItems.enchantmentItem, 1, 1)) && !altar.hasStone) {
-	    				altar.setStone();
-	    				ItemStack stone = new ItemStack(player.getCurrentEquippedItem().getItem(), player.getCurrentEquippedItem().stackSize - 1, player.getCurrentEquippedItem().getItemDamage());
-	    				player.setCurrentItemOrArmor(0, stone);
-	    			}
-    			} else {
-    				if (player.isSneaking()) {
-	    				if (altar.hasLens) {
-	    					altar.clearLens();
-	    				}
-    				} else {
-    					if (altar.hasStone) {
-    						altar.clearStone();
+    			if (((TileEntityAltar) te).book == null) {
+    				if (player.getCurrentEquippedItem() != null) {
+    					ItemStack tool = player.getCurrentEquippedItem();
+    					ItemStack tool1 = tool.copy();
+    					tool1.stackSize = 1;
+    					((TileEntityAltar) te).setBook(tool1);
+    					tool.stackSize--;
+    					if (tool.stackSize >= 0) {
+    						player.setCurrentItemOrArmor(0, null);
+    					} else {
+        					player.setCurrentItemOrArmor(0, tool);
     					}
     				}
+    			} else {
+    				((TileEntityAltar) te).clearItem();
     			}
     		} 
 

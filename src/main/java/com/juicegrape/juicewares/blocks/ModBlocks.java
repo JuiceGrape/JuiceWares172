@@ -11,6 +11,7 @@ public class ModBlocks {
 	public static Block meatyore;
 	public static Block altar;
 	public static Block blazeflower;
+	public static Block overenchanter;
 	
 	public static void init() {
 		
@@ -28,6 +29,9 @@ public class ModBlocks {
 		
 		blazeflower = new BlockBlazeFlower();
 		GameRegistry.registerBlock(blazeflower, BlockInfo.BLAZEFLOWER_KEY);
+		
+		overenchanter = new BlockOverEnchanter();
+		GameRegistry.registerBlock(overenchanter, BlockInfo.OVERENCHANTER_KEY);
 		
 		
 

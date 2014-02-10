@@ -37,10 +37,7 @@ public class BlockMeatyOre extends Block {
 			int z, int metadata, int fortune) {
 		ArrayList<ItemStack> ret = new ArrayList<ItemStack>();
 		int amount = 1 + random.nextInt(fortune + 1);
-		System.out.println("fortune:" + fortune);
-		System.out.println("amount of loops:" + amount);
 		for (int i = 0; i < amount; i++) {
-			System.out.println("on loop:" + i);
 			ret.add(BlockInfo.MEATYORE_DROP[random.nextInt(BlockInfo.MEATYORE_DROP.length)].copy());
 		}
 		Iterator<ItemStack> itr = ret.iterator();

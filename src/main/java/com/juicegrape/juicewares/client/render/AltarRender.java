@@ -15,7 +15,6 @@ import net.minecraft.world.World;
 import org.lwjgl.opengl.GL11;
 
 import com.juicegrape.juicewares.client.models.ModelAltar;
-import com.juicegrape.juicewares.items.ModItems;
 import com.juicegrape.juicewares.tileentities.TileEntityAltar;
 
 public class AltarRender extends TileEntitySpecialRenderer{
@@ -32,7 +31,7 @@ public class AltarRender extends TileEntitySpecialRenderer{
 		customRenderItem = new RenderItem() {
         	@Override
         	public boolean shouldBob() {
-        		return false;
+        		return true;
         	}
         	
         	@Override
@@ -119,28 +118,9 @@ public class AltarRender extends TileEntitySpecialRenderer{
     			) {
     		return;
     	}
-    	if (altar.hasStone) {
-	    	GL11.glPushMatrix();
-	        GL11.glDisable(2896);
-	        
-	        GL11.glTranslatef((float) x, (float) y, (float) z);
-	    	
-	    	EntityItem ghostEntityItem = new EntityItem(altar.getWorldObj());
-			ghostEntityItem.hoverStart = 0f;
-			ItemStack customCopy = new ItemStack(ModItems.enchantmentItem, 1, 1);
-			customCopy.stackSize = 1;
-			ghostEntityItem.setEntityItemStack(customCopy);
-			
-			GL11.glTranslatef(0.5F, 0.125F , 0.5F);
-			
-			GL11.glColor3f(1F, 1F, 1F);
-			customRenderItem.doRender(ghostEntityItem, 0, 0, 0, 0, 0);
-			
-	        GL11.glEnable(2896);
-	        GL11.glPopMatrix();
-    	}
     	
-    	if (altar.hasLens) {
+    	
+    	if (altar.book != null) {
     	    GL11.glPushMatrix();
     	    GL11.glDisable(2896);
     	       
@@ -149,15 +129,11 @@ public class AltarRender extends TileEntitySpecialRenderer{
     	    EntityItem ghostEntityItem = new EntityItem(altar.getWorldObj());
     		ghostEntityItem.hoverStart = 0f;
     		ItemStack customCopy;
-    		if (altar.isNormalLens) {
-    			customCopy = new ItemStack(ModItems.lens, 1, 0);
-    		} else {
-    			customCopy = new ItemStack(ModItems.lens, 1, 1);
-    		}
+    		customCopy = altar.book.copy();
     		customCopy.stackSize = 1;
     		ghostEntityItem.setEntityItemStack(customCopy);
     		
-    		GL11.glTranslatef(0.5F, 0.75F , 0.5F);
+    		GL11.glTranslatef(0.5F, 0.5F , 0.5F);
     		
     		GL11.glColor3f(1F, 1F, 1F);
     		customRenderItem.doRender(ghostEntityItem, 0, 0, 0, 0, 0);

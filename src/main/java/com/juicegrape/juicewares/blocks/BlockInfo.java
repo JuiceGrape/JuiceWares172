@@ -54,6 +54,15 @@ public class BlockInfo {
 	
 	public static final String BLAZEFLOWER = "blazeflower_block";
 	
+	//Over Enchanter
+	public static final String OVERENCHANTER_KEY = "overenchanter_block";
+	
+	public static final String OVERENCHANTER_UNLOCALIZED_NAME = "blockoverenchanter";
+	
+	public static final String OVERENCHANTER = "overenchanter_block";
+	
+	
+	
 	
 	
 }

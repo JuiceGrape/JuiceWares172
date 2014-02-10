@@ -32,10 +32,8 @@ public class PrimalEnchanting {
 				
 				addRecipe(tool, new ItemStack(ModItems.enchantmentItem, 1, 0), Enchantment.sharpness, 1);
 				
-				addRecipe(tool, new ItemStack(ModItems.enchantmentItem, 1, 2), Enchantment.fortune, 1);
-				addRecipe(tool, new ItemStack(ModItems.enchantmentItem, 1, 3), Enchantment.fortune, 2);
-				addRecipe(tool, new ItemStack(ModItems.enchantmentItem, 1, 2), Enchantment.looting, 1);
-				addRecipe(tool, new ItemStack(ModItems.enchantmentItem, 1, 3), Enchantment.looting, 2);
+				addRecipe(tool, new ItemStack(ModItems.enchantmentItem, 1, 1), Enchantment.fortune, 1);
+				addRecipe(tool, new ItemStack(ModItems.enchantmentItem, 1, 1), Enchantment.looting, 1);
 				
 				addRecipe(tool, new ItemStack(Blocks.piston), Enchantment.knockback, 1);
 				
