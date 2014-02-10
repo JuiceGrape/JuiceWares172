@@ -61,6 +61,12 @@ public class BlockInfo {
 	
 	public static final String OVERENCHANTER = "overenchanter_block";
 	
+	public static final String OVERENCHANTER_FRONT = "overenchanter_block_front";
+	public static final String OVERENCHANTER_SIDE = "overenchanter_block_side";
+	public static final String OVERENCHANTER_REST = "overenchanter_block_rest";
+	
+	public static final String[] OVERENCHANTER_ARRAY = { OVERENCHANTER_FRONT, OVERENCHANTER_SIDE, OVERENCHANTER_REST };
+	
 	
 	
 	

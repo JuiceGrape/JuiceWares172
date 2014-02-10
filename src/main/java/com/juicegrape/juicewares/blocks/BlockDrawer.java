@@ -117,10 +117,7 @@ public class BlockDrawer extends BlockContainer {
 		TileEntityDrawer tileentitydrawer = new TileEntityDrawer();
 		return tileentitydrawer;
 	}
-
-	/**
-	 * Called when the block is placed in the world.
-	 */
+	
 	  @Override
 	    public void onBlockPlacedBy(World world, int x, int y, int z, EntityLivingBase entityliving, ItemStack itemStack)
 	    {
