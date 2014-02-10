@@ -1,0 +1,28 @@
+Blocks:
+tile.blockdrawer.name=Cabinet
+tile.blockmeatyore.name=Meatyore
+tile.blockjuicealtar.name=Altar
+tile.blockstringreed.name=Hemp
+tile.blockblazeflower.name=Blazeflower
+
+Items:
+item.stringreeditem.name=Hemp
+item.divinghelmethat.name=Diving Helmet
+item.nightvisionhat.name=Night Vision Goggles
+item.debugitem.name=Debug Item
+lensitem0.name=Lens
+lensitem1.name=Night Vision Lens
+enchantmentitem0.name=Whetstone
+enchantmentitem1.name=Fortunate Stone
+enchantmentitem2.name=Blessed Fortunate Stone
+enchantmentitem3.name=Super Blessed Fortunate Stone
+item.itemtimespring.name=Timewound Clock
+item.blazeflowerseeds.name=Smoldering Seeds
+
+Entity:
+entity.juicewares.eyeball.name=Eyeball
+
+
+Misc:
+container.drawer.name=Cabinet
+itemGroup.juicewares_juicetab=JuiceWares

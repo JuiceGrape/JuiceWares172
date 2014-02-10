@@ -1,0 +1,16 @@
+{
+  "mob.eyeball.hit": {
+    "category": "hostile",
+    "sounds": [
+		"mobs/eyeballhit",
+		"mobs/eyeballhit1"
+    ]
+  },
+  
+  "ambient.clock.clunk": {
+  	"category": "ambient",
+  	"sounds": [
+  		"ambient/timeclock"
+  	]
+  }
+}
