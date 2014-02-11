@@ -2,9 +2,13 @@ package com.juicegrape.juicewares.tileentities;
 
 import java.util.Random;
 
+import net.minecraft.enchantment.Enchantment;
 import net.minecraft.entity.item.EntityItem;
+import net.minecraft.init.Items;
+import net.minecraft.item.ItemEnchantedBook;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.nbt.NBTTagList;
 import net.minecraft.network.NetworkManager;
 import net.minecraft.network.Packet;
 import net.minecraft.network.play.server.S35PacketUpdateTileEntity;
@@ -79,6 +83,62 @@ public class TileEntityAltar extends TileEntity {
     
     public void setBook(ItemStack stack) {
     	book = stack;
+    	update();
+    }
+    
+    public boolean isBookEnchanted() {
+    	return book != null && book.getItem() == Items.enchanted_book;
+    }
+    
+    public Enchantment getEnchant() {
+    	if (isBookEnchanted()) {
+    		ItemEnchantedBook bookItem = (ItemEnchantedBook)book.getItem();
+    		NBTTagList nbtlist = bookItem.func_92110_g(book);
+    		
+    		if (nbtlist.tagCount() != 1) {
+    			System.out.println("More than 1 enchant on the book");
+    			return null;
+    		}
+    		
+    		if (nbtlist != null) {
+    			for (int i = 0; i < nbtlist.tagCount(); i++) {
+    				short id = nbtlist.getCompoundTagAt(i).getShort("id");
+    				
+    				if (Enchantment.enchantmentsList[id] != null) {
+    					return Enchantment.enchantmentsList[id];
+    				}
+    			}
+    		}
+    	}
+    	return null;
+    }
+    
+    public short getEnchantLvl() {
+    	if (isBookEnchanted()) {
+    		ItemEnchantedBook bookItem = (ItemEnchantedBook)book.getItem();
+    		NBTTagList nbtlist = bookItem.func_92110_g(book);
+    		
+    		if (nbtlist.tagCount() != 1) {
+    			System.out.println("More than 1 enchant on the book");
+    			return 0;
+    		}
+    		
+    		if (nbtlist != null) {
+    			for (int i = 0; i < nbtlist.tagCount(); i++) {
+    				short id = nbtlist.getCompoundTagAt(i).getShort("id");
+    				short lvl = nbtlist.getCompoundTagAt(i).getShort("lvl");
+    				
+    				if (Enchantment.enchantmentsList[id] != null) {
+    					return lvl;
+    				}
+    			}
+    		}
+    	}
+    	return 0;
+    }
+    
+    public void deleteBook() {
+    	book = null;
     	update();
     }
 	

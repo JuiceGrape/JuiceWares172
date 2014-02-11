@@ -1,14 +1,18 @@
 package com.juicegrape.juicewares.client.render;
 
 import net.minecraft.block.Block;
+import net.minecraft.client.Minecraft;
+import net.minecraft.client.renderer.RenderBlocks;
 import net.minecraft.client.renderer.entity.RenderItem;
 import net.minecraft.client.renderer.entity.RenderManager;
 import net.minecraft.client.renderer.tileentity.TileEntityRendererDispatcher;
 import net.minecraft.client.renderer.tileentity.TileEntitySpecialRenderer;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.item.EntityItem;
+import net.minecraft.item.ItemBlock;
 import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
+import net.minecraft.util.MathHelper;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.world.World;
 
@@ -29,10 +33,6 @@ public class AltarRender extends TileEntitySpecialRenderer{
 		this.model = new ModelAltar();
 		
 		customRenderItem = new RenderItem() {
-        	@Override
-        	public boolean shouldBob() {
-        		return true;
-        	}
         	
         	@Override
         	public boolean shouldSpreadItems() {
@@ -119,6 +119,9 @@ public class AltarRender extends TileEntitySpecialRenderer{
     		return;
     	}
     	
+    	float rotationAngle = (float) (720.0 * (System.currentTimeMillis() & 0x3FFFL) / 0x3FFFL);
+    	float bob = MathHelper.sin(45.0F * (System.currentTimeMillis() & 0x3FFFL) / 0x3FFFL) / 10;
+    	
     	
     	if (altar.book != null) {
     	    GL11.glPushMatrix();
@@ -127,15 +130,27 @@ public class AltarRender extends TileEntitySpecialRenderer{
     	    GL11.glTranslatef((float) x, (float) y, (float) z);
     	    	
     	    EntityItem ghostEntityItem = new EntityItem(altar.getWorldObj());
-    		ghostEntityItem.hoverStart = 0f;
+    	    ghostEntityItem.hoverStart = 0.0F;
     		ItemStack customCopy;
     		customCopy = altar.book.copy();
     		customCopy.stackSize = 1;
     		ghostEntityItem.setEntityItemStack(customCopy);
     		
-    		GL11.glTranslatef(0.5F, 0.5F , 0.5F);
+    		GL11.glTranslatef(0.5F, 0.5F + bob , 0.5F);
     		
     		GL11.glColor3f(1F, 1F, 1F);
+    		if (Minecraft.isFancyGraphicsEnabled()) {
+    			GL11.glRotatef(rotationAngle, 0.0F, 1.0F, 0.0F);
+    		}
+    		
+    		if (customCopy.getItem() instanceof ItemBlock) {
+				ItemBlock testItem = (ItemBlock)customCopy.getItem();
+				Block testBlock = testItem.field_150939_a;
+				if (RenderBlocks.renderItemIn3d(testBlock.getRenderType())) {
+					GL11.glScalef(1.2F, 1.2F, 1.2F);
+				}
+    		}
+    		
     		customRenderItem.doRender(ghostEntityItem, 0, 0, 0, 0, 0);
     			
     	    GL11.glEnable(2896);

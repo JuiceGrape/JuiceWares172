@@ -63,6 +63,10 @@ public class BlockAltar extends BlockContainer {
     
     @Override
     public void breakBlock(World world, int x, int y, int z, Block b, int i2) {
+    	TileEntity te = world.getTileEntity(x, y, z);
+		if (te instanceof TileEntityAltar) {
+			((TileEntityAltar) te).clearItem();
+		}
     	super.breakBlock(world, x, y, z, b, i2);
     }
     
@@ -92,7 +96,7 @@ public class BlockAltar extends BlockContainer {
     					tool1.stackSize = 1;
     					((TileEntityAltar) te).setBook(tool1);
     					tool.stackSize--;
-    					if (tool.stackSize >= 0) {
+    					if (tool.stackSize <= 0) {
     						player.setCurrentItemOrArmor(0, null);
     					} else {
         					player.setCurrentItemOrArmor(0, tool);
