@@ -12,6 +12,7 @@ public class ModBlocks {
 	public static Block altar;
 	public static Block blazeflower;
 	public static Block overenchanter;
+	public static Block vaporizer;
 	
 	public static void init() {
 		

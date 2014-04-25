@@ -6,6 +6,7 @@ import net.minecraftforge.common.config.Configuration;
 
 import com.juicegrape.juicewares.blocks.BlockInfo;
 import com.juicegrape.juicewares.entities.EntityInfo;
+import com.juicegrape.juicewares.potionEffects.Potions;
 import com.juicegrape.juicewares.recipes.RecipeInfo;
 
 public class ConfigHandler {
@@ -35,6 +36,8 @@ public class ConfigHandler {
 		//misc
 		BlockInfo.STRINGREED_GROWTH = config.get("Misc", BlockInfo.STRINGREED_GROWTH_KEY, BlockInfo.STRINGREED_GROWTH_DEF).getInt();
 		Enabling.enableTimeSpring = config.get("Misc", "Enable Timewound Clock", true).getBoolean(false);
+		Enabling.enablePrimalEnchanting = config.get("Misc", "Enable primal enchanting", true).getBoolean(false);
+		Potions.cWaterBreathingId = config.get("Misc", "Custom water breathing potion effect ID", 32).getInt(32);
 		
 		//Spawns
 		EntityInfo.EYEBALL_SPAWN = config.get("Spawns", EntityInfo.EYEBALL_SPAWN_CONF, EntityInfo.EYEBALL_SPAWN_DEF).getBoolean(EntityInfo.EYEBALL_SPAWN_DEF);

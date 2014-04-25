@@ -13,7 +13,8 @@ public class Enabling {
 	enableModerateNightVisionLensRecipe,
 	enableHardNightVisionLensRecipe,
 	enableSuperHardNightVisionLensRecipe,
-	enableTimeSpring;
+	enableTimeSpring,
+	enablePrimalEnchanting;
 	
 	
 

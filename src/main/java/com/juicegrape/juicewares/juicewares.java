@@ -6,6 +6,7 @@ import net.minecraftforge.common.MinecraftForge;
 
 import com.juicegrape.juicewares.blocks.ModBlocks;
 import com.juicegrape.juicewares.config.ConfigHandler;
+import com.juicegrape.juicewares.config.Enabling;
 import com.juicegrape.juicewares.entities.Entity;
 import com.juicegrape.juicewares.generation.GenerationHandler;
 import com.juicegrape.juicewares.items.ModItems;
@@ -80,7 +81,8 @@ public class juicewares {
 
 	@EventHandler
 	public void postInit(FMLPostInitializationEvent event) {
-		PrimalEnchanting.init();
+		if(Enabling.enablePrimalEnchanting)
+			PrimalEnchanting.init();
 
 		System.out.println("JuiceWares succesfully post initialized (probably)");
 

@@ -18,7 +18,7 @@ import cpw.mods.fml.relauncher.SideOnly;
 public class TileEntityDrawer extends TileEntity implements IInventory
 {
     private ItemStack[] drawerContents;
-    private int invSize = 18;
+    public int invSize = 18;
     public static final int showSlot = 0;
     public static final int showSlot2 = 9;
 
