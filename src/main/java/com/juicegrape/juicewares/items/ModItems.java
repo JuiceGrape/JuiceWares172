@@ -25,6 +25,7 @@ public class ModItems {
 	public static Item enchantmentItem;
 	public static Item itemTimeSpring;
 	public static Item blazeflowerseeds;
+	public static Item match;
 	
 	public static void init() {
 		stringreed = new ItemHemp();
@@ -50,6 +51,9 @@ public class ModItems {
 		
 		blazeflowerseeds = new ItemBlazeFlowerSeeds();
 		GameRegistry.registerItem(blazeflowerseeds, ItemInfo.BLAZEFLOWERSEEDS_KEY);
+		
+		match = new ItemMatch();
+		GameRegistry.registerItem(match, ItemInfo.MATCH_KEY);
 
 	}
 	
@@ -58,6 +62,7 @@ public class ModItems {
 		OreDictionary.registerOre("gemEmerald", new ItemStack(Items.emerald));
 		
 		OreDictionary.registerOre("itemLens", lens);
+		OreDictionary.registerOre("itemNightVisionLens", new ItemStack(lens, 1, 1));
 		OreDictionary.registerOre("itemHemp", stringreed);
 	}
 	

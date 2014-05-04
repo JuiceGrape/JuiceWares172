@@ -70,12 +70,19 @@ public class ItemInfo {
 	
 	public static final String TIMESPRING_ICON = "timespring_item";
 	
-	//Timewound Clock
+	//Blazeflowerseeds
 	public static final String BLAZEFLOWERSEEDS_KEY = "blazeflower_seeds_item";
 	
 	public static final String BLAZEFLOWERSEEDS_UNLOCALIZED_NAME = "blazeflowerseeds";
 	
 	public static final String BLAZEFLOWERSEEDS_ICON = "blazeflowerseeds_item";
+	
+	//Match
+	public static final String MATCH_KEY = "match_item";
+	
+	public static final String MATCH_UNLOCALIZED_NAME = "itemmatch";
+	
+	public static final String MATCH_ICON = "match_item";
 	
 	
 	

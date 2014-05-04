@@ -7,6 +7,8 @@ import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import net.minecraftforge.oredict.RecipeSorter;
+import net.minecraftforge.oredict.RecipeSorter.Category;
 
 import com.juicegrape.juicewares.items.ModItems;
 
@@ -23,6 +25,10 @@ public class PrimalEnchanting {
 	}
 	
 	public static void init() {
+		
+		RecipeSorter.register("Primal Enchanting", PrimalEnchantRecipe.class, Category.SHAPELESS, "");
+		
+		
 		@SuppressWarnings("rawtypes")
 		Iterator itr = Item.itemRegistry.iterator();
 		while (itr.hasNext()) {
