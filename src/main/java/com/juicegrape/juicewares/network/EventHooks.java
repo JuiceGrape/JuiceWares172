@@ -7,14 +7,18 @@ import net.minecraft.entity.item.EntityItem;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
+import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.potion.Potion;
 import net.minecraft.potion.PotionEffect;
 import net.minecraft.tileentity.TileEntityMobSpawner;
 import net.minecraft.world.World;
+import net.minecraftforge.event.entity.EntityJoinWorldEvent;
 import net.minecraftforge.event.entity.living.LivingEvent.LivingUpdateEvent;
 import net.minecraftforge.event.world.BlockEvent.BreakEvent;
 
+import com.juicegrape.juicewares.config.Enabling;
 import com.juicegrape.juicewares.items.ModItems;
+import com.juicegrape.juicewares.misc.CustomEntityItem;
 import com.juicegrape.juicewares.potionEffects.Potions;
 
 import cpw.mods.fml.common.eventhandler.SubscribeEvent;
@@ -29,11 +33,6 @@ public class EventHooks {
 		nightVisionGogglesHandler(event.entityLiving);
 		
 		customPotionEffectHandler(event.entityLiving);
-		
-		if (event.entity instanceof EntityItem) {
-			System.out.println("ITEM");
-			explodeGunpowder((EntityItem)event.entity);
-		}
 		
 	}
 	
@@ -51,21 +50,40 @@ public class EventHooks {
 		}
 	}
 	
-	public void explodeGunpowder(EntityItem item) {
-		if (item.worldObj != null) {
-			System.out.println("world obj is not null");
-			System.out.println(item.getEntityId());
-			if(item.getEntityItem().getItem().equals(Items.gunpowder)) {
-				System.out.println("It's gunpowder");
-				if(item.isBurning()) {
-					item.worldObj.createExplosion(item, item.posX, item.posY, item.posZ, 3, true);
+	@SubscribeEvent
+	public void onEntityCreation(EntityJoinWorldEvent event) {
+		if (event.entity.worldObj == null || event.entity.worldObj.isRemote) {
+			return;
+		}
+		if (event.entity instanceof EntityItem) {
+			if (event.entity instanceof CustomEntityItem) {
+				return;
+			} else {
+				onItemCreation((EntityItem)event.entity);
+			}
+		}
+	}
+	
+	
+	
+	public void onItemCreation(EntityItem item) {
+		if (Enabling.enableExplodingGunpowder){
+			if (item.worldObj != null) {
+				if (item.getEntityItem().getItem().equals(Items.gunpowder)) {
+					NBTTagCompound old = item.getEntityData();
+					item.writeToNBT(old);
+					CustomEntityItem boon = new CustomEntityItem(item.worldObj);
+					boon.readFromNBT(old);
+					boon.delayBeforeCanPickup = item.delayBeforeCanPickup;
+					boon.worldObj.spawnEntityInWorld(boon);
+					item.setInvisible(true);
 					item.setDead();
 				}
 			}
-		} else {
-			System.out.println("World obj is null");
 		}
 	}
+	
+	
 	
 	public void divingHelmetHandler(EntityLivingBase entityLivingBase) {
 		ItemStack helmet = entityLivingBase.getEquipmentInSlot(4);

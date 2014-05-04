@@ -2,7 +2,6 @@ package com.juicegrape.juicewares.items;
 
 import java.util.Random;
 
-import net.minecraft.block.Block;
 import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLiving;
