@@ -27,6 +27,7 @@ public class ConfigHandler {
 		Enabling.enableNameTagRecipe = config.get("Recipes", "Name tag recipe", true).getBoolean(true);
 		Enabling.enableSaddleRecipe = config.get("Recipes", "Saddle recipe", true).getBoolean(true);
 		Enabling.enableWoolToString = config.get("Recipes", "Wool to string recipes", true).getBoolean(true);
+		Enabling.enableMatchRecipe = config.get("Recipes", "Match recipe", true).getBoolean(true);
 		
 		//worldgen
 		BlockInfo.STRINGREED_SPAWN = config.get("Worldgen", BlockInfo.STRINGREED_SPAWN_KEY, BlockInfo.STRINGREED_SPAWN_DEF).getInt();
@@ -38,6 +39,9 @@ public class ConfigHandler {
 		Enabling.enableTimeSpring = config.get("Misc", "Enable Timewound Clock", true).getBoolean(false);
 		Enabling.enablePrimalEnchanting = config.get("Misc", "Enable primal enchanting", true).getBoolean(false);
 		Potions.cWaterBreathingId = config.get("Misc", "Custom water breathing potion effect ID", 32).getInt(32);
+		Enabling.enableExplodingGunpowder = config.get("Misc", "Enable gunpowder exploding when on fire", true).getBoolean(true);
+		Enabling.enableDungeonLoot = config.get("Misc", "Enable dungeon loot", true).getBoolean(true);
+		
 		
 		//Spawns
 		EntityInfo.EYEBALL_SPAWN = config.get("Spawns", EntityInfo.EYEBALL_SPAWN_CONF, EntityInfo.EYEBALL_SPAWN_DEF).getBoolean(EntityInfo.EYEBALL_SPAWN_DEF);

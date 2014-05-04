@@ -14,7 +14,10 @@ public class Enabling {
 	enableHardNightVisionLensRecipe,
 	enableSuperHardNightVisionLensRecipe,
 	enableTimeSpring,
-	enablePrimalEnchanting;
+	enablePrimalEnchanting,
+	enableDungeonLoot,
+	enableExplodingGunpowder,
+	enableMatchRecipe;
 	
 	
 

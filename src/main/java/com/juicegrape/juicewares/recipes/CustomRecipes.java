@@ -143,20 +143,22 @@ public class CustomRecipes {
 				}));
 			}
 		}
-		
-		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.match), new Object[] {
-			" R",
-			"/ ",
-			Character.valueOf('R'), "dyeRed",
-			Character.valueOf('/'), "stickWood"
-		}));
-		
-		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.match, 4), new Object[] {
-			" S",
-			"/ ",
-			Character.valueOf('S'), Items.gunpowder,
-			Character.valueOf('/'), "stickWood"
-		}));
+
+		if (Enabling.enableMatchRecipe) {
+			GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.match), new Object[] {
+				" R",
+				"/ ",
+				Character.valueOf('R'), "dyeRed",
+				Character.valueOf('/'), "stickWood"
+			}));
+			
+			GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.match, 4), new Object[] {
+				" S",
+				"/ ",
+				Character.valueOf('S'), Items.gunpowder,
+				Character.valueOf('/'), "stickWood"
+			}));
+		}
 		
 		
 		

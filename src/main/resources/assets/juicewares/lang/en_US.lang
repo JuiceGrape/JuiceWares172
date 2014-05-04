@@ -4,6 +4,7 @@ tile.blockmeatyore.name=Meatyore
 tile.blockjuicealtar.name=Altar
 tile.blockstringreed.name=Hemp
 tile.blockblazeflower.name=Blazeflower
+tile.blockoverenchanter.name=Overenchanter(WIP)
 
 Items:
 item.stringreeditem.name=Hemp
@@ -16,6 +17,7 @@ enchantmentitem0.name=Whetstone
 enchantmentitem1.name=Fortunate Stone
 item.itemtimespring.name=Timewound Clock
 item.blazeflowerseeds.name=Smoldering Seeds
+item.itemmatch.name=Match
 
 Entity:
 entity.juicewares.eyeball.name=Eyeball
@@ -24,3 +26,4 @@ entity.juicewares.eyeball.name=Eyeball
 Misc:
 container.drawer.name=Cabinet
 itemGroup.juicewares_juicetab=JuiceWares
+potion.cWaterBreathing=Oxygen Left

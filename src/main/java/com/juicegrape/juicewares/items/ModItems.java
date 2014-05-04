@@ -12,6 +12,7 @@ import net.minecraftforge.common.ChestGenHooks;
 import net.minecraftforge.oredict.OreDictionary;
 
 import com.juicegrape.juicewares.juicewares;
+import com.juicegrape.juicewares.config.Enabling;
 
 import cpw.mods.fml.common.registry.GameRegistry;
 
@@ -71,15 +72,18 @@ public class ModItems {
 	}
 	
 	public static void dungeonLoot() {
-		ItemStack divingChest = new ItemStack(ModItems.divinghelmet);
-		divingChest.addEnchantment(Enchantment.aquaAffinity, 1);
-		
-		ChestGenHooks.addItem(ChestGenHooks.BONUS_CHEST, new WeightedRandomChestContent(new ItemStack(ModItems.nightvisiongoggles), 1, 1, 5));
-		ChestGenHooks.addItem(ChestGenHooks.VILLAGE_BLACKSMITH, new WeightedRandomChestContent(new ItemStack(ModItems.nightvisiongoggles), 1, 1, 3));
-		ChestGenHooks.addItem(ChestGenHooks.DUNGEON_CHEST, new WeightedRandomChestContent(divingChest, 1, 1, 2));
-		ChestGenHooks.addItem(ChestGenHooks.DUNGEON_CHEST, new WeightedRandomChestContent(new ItemStack(ModItems.lens, 1, 1),1, 5, 8));
-		ChestGenHooks.addItem(ChestGenHooks.DUNGEON_CHEST, new WeightedRandomChestContent(new ItemStack(ModItems.lens, 1, 0),1, 5, 8));
+		if (Enabling.enableDungeonLoot){
+			ItemStack divingChest = new ItemStack(ModItems.divinghelmet);
+			divingChest.addEnchantment(Enchantment.aquaAffinity, 1);
+			
+			ChestGenHooks.addItem(ChestGenHooks.BONUS_CHEST, new WeightedRandomChestContent(new ItemStack(ModItems.nightvisiongoggles), 1, 1, 5));
+			ChestGenHooks.addItem(ChestGenHooks.VILLAGE_BLACKSMITH, new WeightedRandomChestContent(new ItemStack(ModItems.nightvisiongoggles), 1, 1, 3));
+			ChestGenHooks.addItem(ChestGenHooks.DUNGEON_CHEST, new WeightedRandomChestContent(divingChest, 1, 1, 2));
+			ChestGenHooks.addItem(ChestGenHooks.DUNGEON_CHEST, new WeightedRandomChestContent(new ItemStack(ModItems.lens, 1, 1),1, 5, 8));
+			ChestGenHooks.addItem(ChestGenHooks.DUNGEON_CHEST, new WeightedRandomChestContent(new ItemStack(ModItems.lens, 1, 0),1, 5, 8));
+		}
 	}
+		
 
 	
 
