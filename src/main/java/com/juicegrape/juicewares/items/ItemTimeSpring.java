@@ -81,14 +81,15 @@ public class ItemTimeSpring extends Item {
 				if (usage > 100)
 					usage = 100;
 				world.setWorldTime(world.getWorldTime() + 125 * usage);
-				itemStack.setItemDamage(itemStack.getItemDamage() + 1);;
-				if (itemStack.getItemDamage() >= 16) {
-					player.setCurrentItemOrArmor(0, null);
-				} else {
-					player.setCurrentItemOrArmor(0, itemStack);
+				if (!player.capabilities.disableDamage) {
+					itemStack.setItemDamage(itemStack.getItemDamage() + 1);;
+					if (itemStack.getItemDamage() >= 16) {
+						itemStack = null;
+					}
+					player.attackEntityFrom(CustomDamageSource.timeWound, usage / 5);
 				}
 				world.playSoundAtEntity(player, "juicewares:ambient.clock.clunk", 1.0F, random.nextFloat());	
-				player.attackEntityFrom(CustomDamageSource.timeWound, usage / 5);
+
 			} 
 		}
 

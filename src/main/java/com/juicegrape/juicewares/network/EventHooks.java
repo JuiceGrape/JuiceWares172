@@ -5,6 +5,7 @@ import java.util.Random;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.init.Blocks;
+import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 import net.minecraft.potion.Potion;
 import net.minecraft.potion.PotionEffect;
@@ -29,6 +30,11 @@ public class EventHooks {
 		
 		customPotionEffectHandler(event.entityLiving);
 		
+		if (event.entity instanceof EntityItem) {
+			System.out.println("ITEM");
+			explodeGunpowder((EntityItem)event.entity);
+		}
+		
 	}
 	
 	@SubscribeEvent
@@ -42,6 +48,22 @@ public class EventHooks {
 				 }
 			}
 
+		}
+	}
+	
+	public void explodeGunpowder(EntityItem item) {
+		if (item.worldObj != null) {
+			System.out.println("world obj is not null");
+			System.out.println(item.getEntityId());
+			if(item.getEntityItem().getItem().equals(Items.gunpowder)) {
+				System.out.println("It's gunpowder");
+				if(item.isBurning()) {
+					item.worldObj.createExplosion(item, item.posX, item.posY, item.posZ, 3, true);
+					item.setDead();
+				}
+			}
+		} else {
+			System.out.println("World obj is null");
 		}
 	}
 	

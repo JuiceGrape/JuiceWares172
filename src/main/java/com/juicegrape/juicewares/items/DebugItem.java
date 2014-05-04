@@ -12,6 +12,7 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.MathHelper;
 import net.minecraft.world.World;
+import net.minecraftforge.common.util.ForgeDirection;
 
 import com.juicegrape.juicewares.juicewares;
 import com.juicegrape.juicewares.entities.EntityEyeball;
@@ -47,13 +48,7 @@ public class DebugItem extends Item {
 	@Override
 	public boolean onItemUse(ItemStack stack, EntityPlayer player, World world, int x, int y, int z, int side, float hitX, float hitY, float hitZ) {
 		if (!world.isRemote) {
-			if (player.isSneaking()) {
-				Block block = world.getBlock(x, y, z);
-				block.updateTick(world, x, y, z, random);
-				System.out.println(world.getBlockMetadata(x, y, z));
-			} else {
-				System.out.println(world.getBlockMetadata(x, y, z));
-			}
+			System.out.println(ForgeDirection.getOrientation(side).toString());
 		}
 
 		return true;
