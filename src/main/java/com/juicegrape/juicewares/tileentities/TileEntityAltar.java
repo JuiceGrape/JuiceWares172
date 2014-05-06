@@ -4,7 +4,9 @@ import java.util.Random;
 
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.entity.item.EntityItem;
+import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Items;
+import net.minecraft.inventory.IInventory;
 import net.minecraft.item.ItemEnchantedBook;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
@@ -14,7 +16,7 @@ import net.minecraft.network.Packet;
 import net.minecraft.network.play.server.S35PacketUpdateTileEntity;
 import net.minecraft.tileentity.TileEntity;
 
-public class TileEntityAltar extends TileEntity {
+public class TileEntityAltar extends TileEntity implements IInventory {
 
 	private final Random random = new Random();
 	
@@ -43,21 +45,12 @@ public class TileEntityAltar extends TileEntity {
 		}
 	}
 	
-	public void clearItem() {
-		if (book != null) {
-			EntityItem bookEnt = createItem(book);
-			worldObj.spawnEntityInWorld(bookEnt);
-			update();
-			book = null;
-		}
-	}
-	
 	public void update() {
 		worldObj.markBlockForUpdate(xCoord, yCoord, zCoord);
 	}
 
 	
-	private EntityItem createItem(ItemStack itemStack) {
+/*	private EntityItem createItem(ItemStack itemStack) {
 		float xThang = random.nextFloat() * 0.8F + 0.1F;
 		float yThang = random.nextFloat() * 0.8F + 0.1F;
 		float zThang = random.nextFloat() * 0.8F + 0.1F;
@@ -66,7 +59,7 @@ public class TileEntityAltar extends TileEntity {
         entityItem.motionY = (float) random.nextGaussian() * 0.05F + 0.2F;
         entityItem.motionZ = (float) random.nextGaussian() * 0.05F;
         return entityItem;
-	}
+	} */
 	
     @Override
     public Packet getDescriptionPacket() {
@@ -79,11 +72,6 @@ public class TileEntityAltar extends TileEntity {
     @Override
     public void onDataPacket(NetworkManager net, S35PacketUpdateTileEntity pkt) {
     	readFromNBT(pkt.func_148857_g());
-    }
-    
-    public void setBook(ItemStack stack) {
-    	book = stack;
-    	update();
     }
     
     public boolean isBookEnchanted() {
@@ -141,5 +129,74 @@ public class TileEntityAltar extends TileEntity {
     	book = null;
     	update();
     }
+
+	@Override
+	public int getSizeInventory() {
+		return 1;
+	}
+
+	@Override
+	public ItemStack getStackInSlot(int slot) {
+		return book;
+	}
+
+	@Override
+	public ItemStack decrStackSize(int slot, int amount) {
+		if (book != null) {
+			ItemStack itemStack = book;
+			book = null;
+			update();
+			return itemStack;
+		} else {
+			return null;
+		}
+	}
+
+	@Override
+	public ItemStack getStackInSlotOnClosing(int var1) {
+		return null;
+	}
+
+	@Override
+	public void setInventorySlotContents(int slot, ItemStack stack) {
+		book = stack;
+		if (stack != null && stack.stackSize > this.getInventoryStackLimit()) {
+			stack.stackSize = this.getInventoryStackLimit();
+		}
+		update();
+	}
+
+	@Override
+	public String getInventoryName() {
+		return null;
+	}
+
+	@Override
+	public boolean hasCustomInventoryName() {
+		return false;
+	}
+
+	@Override
+	public int getInventoryStackLimit() {
+		return 1;
+	}
+
+	@Override
+	public boolean isUseableByPlayer(EntityPlayer var1) {
+		return true;
+	}
+
+	@Override
+	public void openInventory() {
+	}
+
+	@Override
+	public void closeInventory() {
+	}
+
+	@Override
+	public boolean isItemValidForSlot(int slot, ItemStack stack) {
+		return book == null;
+	}
 	
 }

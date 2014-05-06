@@ -5,6 +5,7 @@ import net.minecraft.item.Item;
 import net.minecraftforge.common.MinecraftForge;
 
 import com.juicegrape.juicewares.blocks.ModBlocks;
+import com.juicegrape.juicewares.compat.ThaumcraftHandler;
 import com.juicegrape.juicewares.config.ConfigHandler;
 import com.juicegrape.juicewares.config.Enabling;
 import com.juicegrape.juicewares.entities.Entity;
@@ -20,6 +21,7 @@ import com.juicegrape.juicewares.recipes.FuelHandler;
 import com.juicegrape.juicewares.recipes.PrimalEnchanting;
 import com.juicegrape.juicewares.recipes.VanillaItemRecipes;
 
+import cpw.mods.fml.common.Loader;
 import cpw.mods.fml.common.Mod;
 import cpw.mods.fml.common.Mod.EventHandler;
 import cpw.mods.fml.common.Mod.Instance;
@@ -64,6 +66,10 @@ public class juicewares {
 
 	@EventHandler
 	public void init(FMLInitializationEvent event) {
+		
+		if (Loader.isModLoaded("Thaumcraft")) {
+			ThaumcraftHandler.init();
+		}
 
 		Potions.init();
 		ModItems.miscInit();
@@ -81,6 +87,12 @@ public class juicewares {
 
 	@EventHandler
 	public void postInit(FMLPostInitializationEvent event) {
+		
+		if (Loader.isModLoaded("Thaumcraft")) {
+			ThaumcraftHandler.Postinit();
+		}
+		
+		
 		if(Enabling.enablePrimalEnchanting)
 			PrimalEnchanting.init();
 

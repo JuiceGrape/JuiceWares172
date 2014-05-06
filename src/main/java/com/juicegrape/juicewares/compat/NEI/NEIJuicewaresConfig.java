@@ -1,9 +1,10 @@
 package com.juicegrape.juicewares.compat.NEI;
 
-import com.juicegrape.juicewares.blocks.Blocks;
-
+import net.minecraft.item.ItemStack;
 import codechicken.nei.api.API;
 import codechicken.nei.api.IConfigureNEI;
+
+import com.juicegrape.juicewares.blocks.ModBlocks;
 
 public class NEIJuicewaresConfig implements IConfigureNEI {
 
@@ -11,8 +12,8 @@ public class NEIJuicewaresConfig implements IConfigureNEI {
 	public void loadConfig() {
 		API.registerRecipeHandler(new PrimalEnchantingNEI());
 		API.registerUsageHandler(new PrimalEnchantingNEI());
-		API.hideItem(Blocks.blazeflower.blockID);
-		API.hideItem(Blocks.stringreed.blockID);
+		API.hideItem(new ItemStack(ModBlocks.blazeflower));
+		API.hideItem(new ItemStack(ModBlocks.stringreed));
 	}
 
 	@Override

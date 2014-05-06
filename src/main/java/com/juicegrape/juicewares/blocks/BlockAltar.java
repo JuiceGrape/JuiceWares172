@@ -6,6 +6,7 @@ import net.minecraft.block.Block;
 import net.minecraft.block.BlockContainer;
 import net.minecraft.block.material.Material;
 import net.minecraft.client.renderer.texture.IIconRegister;
+import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
 import net.minecraft.item.ItemStack;
@@ -20,6 +21,8 @@ import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
 public class BlockAltar extends BlockContainer {
+	
+	Random random;
 
 	protected BlockAltar() {
 		super(Material.iron);
@@ -27,6 +30,7 @@ public class BlockAltar extends BlockContainer {
 		setCreativeTab(juicewares.juiceTab);
 		this.setBlockBounds(0.0625F, 0.0F, 0.0625F, 0.9375F, 0.6875F, 0.9375F);
 		this.setBlockName(BlockInfo.ALTAR_UNLOCALIZED_NAME);
+		random = new Random();
 	}
 	
 	@Override
@@ -64,8 +68,8 @@ public class BlockAltar extends BlockContainer {
     @Override
     public void breakBlock(World world, int x, int y, int z, Block b, int i2) {
     	TileEntity te = world.getTileEntity(x, y, z);
-		if (te instanceof TileEntityAltar) {
-			((TileEntityAltar) te).clearItem();
+		if (te instanceof TileEntityAltar && ((TileEntityAltar) te).getStackInSlot(1) != null) {
+			world.spawnEntityInWorld((createItem(((TileEntityAltar) te).decrStackSize(1, 1), world, x ,y ,z)));
 		}
     	super.breakBlock(world, x, y, z, b, i2);
     }
@@ -94,7 +98,7 @@ public class BlockAltar extends BlockContainer {
     					ItemStack tool = player.getCurrentEquippedItem();
     					ItemStack tool1 = tool.copy();
     					tool1.stackSize = 1;
-    					((TileEntityAltar) te).setBook(tool1);
+    					((TileEntityAltar) te).setInventorySlotContents(0, tool1);
     					tool.stackSize--;
     					if (tool.stackSize <= 0) {
     						player.setCurrentItemOrArmor(0, null);
@@ -103,13 +107,47 @@ public class BlockAltar extends BlockContainer {
     					}
     				}
     			} else {
-    				((TileEntityAltar) te).clearItem();
+    				world.spawnEntityInWorld((createItemTowardsPlayer(((TileEntityAltar) te).decrStackSize(1, 1), world, x ,y ,z, player)));
     			}
     		} 
 
     	}
     	
     	return true;
+    }
+    
+    private EntityItem createItem(ItemStack itemStack, World world, int x, int y, int z) {
+		float xThang = random.nextFloat() * 0.8F + 0.1F;
+		float yThang = random.nextFloat() * 0.8F + 0.1F;
+		float zThang = random.nextFloat() * 0.8F + 0.1F;
+		EntityItem entityItem = new EntityItem(world, x + xThang, y + yThang, z + zThang, itemStack);
+        entityItem.motionX = (float) random.nextGaussian() * 0.05F;
+        entityItem.motionY = (float) random.nextGaussian() * 0.05F + 0.2F;
+        entityItem.motionZ = (float) random.nextGaussian() * 0.05F;
+        return entityItem;
+	} 
+    
+    private EntityItem createItemTowardsPlayer(ItemStack itemStack, World world, int x, int y, int z, EntityPlayer player) {
+		float yThang = 1.0F;
+		float fixer = 0.5F;
+		EntityItem entityItem = new EntityItem(world, x + fixer, y + yThang, z + fixer, itemStack);
+		float xMov = (float)(player.posX - x);
+		float zMov = (float)(player.posZ - z);
+		float limit = 5F;
+		if (xMov < -limit) {
+			xMov = -limit;
+		} else if (xMov > limit) {
+			xMov = limit;
+		}
+		if (zMov < -limit) {
+			zMov = -limit;
+		} else if (zMov > limit) {
+			zMov = limit;
+		} 
+        entityItem.motionX = xMov * 0.05F;
+        entityItem.motionY = (float) random.nextGaussian() * 0.05F + 0.2F;
+        entityItem.motionZ = zMov * 0.05F;
+		return entityItem;
     }
 
 
