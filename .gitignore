@@ -16,6 +16,7 @@ logs/
 output-client.log
 output-server.log
 gradlew
+asm/
 
 build.gradle
 
