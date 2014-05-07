@@ -14,12 +14,12 @@ import com.juicegrape.juicewares.juicewares;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
-public class EnchantmentItem extends Item {
+public class ItemEnchantmentItem extends Item {
 
 	@SideOnly(Side.CLIENT)
 	private IIcon[] icons;
 	
-	public EnchantmentItem() {
+	public ItemEnchantmentItem() {
 		super();
 		setCreativeTab(juicewares.juiceTab);
 		setHasSubtypes(true);

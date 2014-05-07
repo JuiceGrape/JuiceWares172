@@ -1,9 +1,6 @@
 package com.juicegrape.juicewares.tileentities;
 
-import java.util.Random;
-
 import net.minecraft.enchantment.Enchantment;
-import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Items;
 import net.minecraft.inventory.IInventory;
@@ -17,8 +14,6 @@ import net.minecraft.network.play.server.S35PacketUpdateTileEntity;
 import net.minecraft.tileentity.TileEntity;
 
 public class TileEntityAltar extends TileEntity implements IInventory {
-
-	private final Random random = new Random();
 	
 	public ItemStack book;
 	
@@ -48,18 +43,6 @@ public class TileEntityAltar extends TileEntity implements IInventory {
 	public void update() {
 		worldObj.markBlockForUpdate(xCoord, yCoord, zCoord);
 	}
-
-	
-/*	private EntityItem createItem(ItemStack itemStack) {
-		float xThang = random.nextFloat() * 0.8F + 0.1F;
-		float yThang = random.nextFloat() * 0.8F + 0.1F;
-		float zThang = random.nextFloat() * 0.8F + 0.1F;
-		EntityItem entityItem = new EntityItem(worldObj, xCoord + xThang, yCoord + yThang, zCoord + zThang, itemStack);
-        entityItem.motionX = (float) random.nextGaussian() * 0.05F;
-        entityItem.motionY = (float) random.nextGaussian() * 0.05F + 0.2F;
-        entityItem.motionZ = (float) random.nextGaussian() * 0.05F;
-        return entityItem;
-	} */
 	
     @Override
     public Packet getDescriptionPacket() {

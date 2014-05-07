@@ -19,6 +19,10 @@ public class CommonProxy {
 		
 	}
 	
+	public void initKeyBind() {
+		
+	}
+	
 	public void registerTileEntities() {
 		GameRegistry.registerTileEntity(TileEntityDrawer.class, BlockInfo.DRAWER_KEY);
 		GameRegistry.registerTileEntity(TileEntityAltar.class, BlockInfo.ALTAR_KEY);

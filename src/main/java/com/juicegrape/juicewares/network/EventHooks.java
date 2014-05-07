@@ -2,8 +2,11 @@ package com.juicegrape.juicewares.network;
 
 import java.util.Random;
 
+import net.minecraft.client.Minecraft;
+import net.minecraft.client.entity.EntityClientPlayerMP;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.item.EntityItem;
+import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
@@ -14,6 +17,7 @@ import net.minecraft.tileentity.TileEntityMobSpawner;
 import net.minecraft.world.World;
 import net.minecraftforge.event.entity.EntityJoinWorldEvent;
 import net.minecraftforge.event.entity.living.LivingEvent.LivingUpdateEvent;
+import net.minecraftforge.event.entity.living.LivingFallEvent;
 import net.minecraftforge.event.world.BlockEvent.BreakEvent;
 
 import com.juicegrape.juicewares.config.Enabling;
@@ -24,7 +28,8 @@ import com.juicegrape.juicewares.potionEffects.Potions;
 import cpw.mods.fml.common.eventhandler.SubscribeEvent;
 
 public class EventHooks {
-
+	
+	public static final double DEFAULT_GRAVITY = -0.07;
 	@SubscribeEvent
 	public void onEntityUpdate(LivingUpdateEvent event) {
 		
@@ -34,7 +39,18 @@ public class EventHooks {
 		
 		customPotionEffectHandler(event.entityLiving);
 		
+		rocketPowerHandler(event.entityLiving);
+		
+		if (event.entityLiving instanceof EntityPlayer) {
+			ItemStack boots = event.entityLiving.getEquipmentInSlot(1);
+			if (boots != null && boots.getItem().equals(ModItems.rocketBoots)) {
+				event.entityLiving.fallDistance = (float) calculateFallFromVelocity(event.entityLiving.motionY);
+			}
+		}
+		
 	}
+	
+	
 	
 	@SubscribeEvent
 	public void onBlockBreak(BreakEvent event) {
@@ -149,6 +165,38 @@ public class EventHooks {
         entityItem.motionY = (float) random.nextGaussian() * 0.05F + 0.2F;
         entityItem.motionZ = (float) random.nextGaussian() * 0.05F;
         return entityItem;
+	}
+	
+	public void rocketPowerHandler(EntityLivingBase entityLivingBase) {
+		EntityClientPlayerMP player = Minecraft.getMinecraft().thePlayer;
+		EntityPlayer player2 = null;
+		if (entityLivingBase instanceof EntityPlayer) {
+			player2 = (EntityPlayer)entityLivingBase;
+		}
+		if (player != null && player2 != null) {
+			if (player.getDisplayName().equals(player2.getDisplayName())) {
+				ItemStack boots = player.getEquipmentInSlot(1);
+				if (boots != null) {
+					if (boots.getItem().equals(ModItems.rocketBoots)) {
+						if (boots.getItemDamage() > 0 && player.onGround) {
+							boots.setItemDamage(boots.getItemDamage() - 1);
+						}
+						if (boots.getItemDamage() < boots.getMaxDamage()) {
+							if (player.movementInput.jump) {
+								player.addVelocity(0, 0.05, 0);
+								boots.setItemDamage(boots.getItemDamage() + 1);
+							} 
+						}
+					}
+				}
+			}
+		}
+	}
+	
+	public double calculateFallFromVelocity(double velocity) {
+		double time = velocity / DEFAULT_GRAVITY;
+		double distance = -0.5 * DEFAULT_GRAVITY * time * time;
+		return distance;
 	}
 	
 	

@@ -22,6 +22,7 @@ public class ClientProxy extends CommonProxy {
 	public void initSounds() {
 	}
 
+	@Override
 	public void initRenderers() {
 		//init the rendering stuff
 		RenderingRegistry.registerEntityRenderingHandler(EntityEyeball.class, new RenderEyeball(new ModelEyeball(), 0.5F));
@@ -29,6 +30,11 @@ public class ClientProxy extends CommonProxy {
 		ClientRegistry.bindTileEntitySpecialRenderer(TileEntityAltar.class, new AltarRender());
 		MinecraftForgeClient.registerItemRenderer(Item.getItemFromBlock(ModBlocks.drawer), new ItemTileEntityRenderer(new TileEntityDrawer()));
 		MinecraftForgeClient.registerItemRenderer(Item.getItemFromBlock(ModBlocks.altar), new ItemTileEntityRenderer(new TileEntityAltar()));
+	}
+	
+	@Override
+	public void initKeyBind() {
+		
 	}
 	
 	@Override

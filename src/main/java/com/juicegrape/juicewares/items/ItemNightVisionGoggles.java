@@ -10,24 +10,25 @@ import com.juicegrape.juicewares.juicewares;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
-public class DivingHelmet extends ItemArmor {
-	
+public class ItemNightVisionGoggles extends ItemArmor{
 
-	public DivingHelmet(ArmorMaterial material, int renderIndex, int slotType) {
-		super(material, renderIndex, slotType);
-		setUnlocalizedName(ItemInfo.DIVINGHELMET_UNLOCALIZED_NAME);
+	public ItemNightVisionGoggles(ArmorMaterial material, int renderIndex) {
+		super(material, renderIndex, 0);
+		setUnlocalizedName(ItemInfo.GOGGLES_UNLOCALIZED_NAME);
         this.setCreativeTab(juicewares.juiceTab);
 	}
 	
 	@Override
 	@SideOnly(Side.CLIENT)
 	public void registerIcons(IIconRegister register) {
-		itemIcon = register.registerIcon(ItemInfo.TEXTURE_LOCATION + ":" + ItemInfo.DIVINGHELMET_ICON);
+		itemIcon = register.registerIcon(ItemInfo.TEXTURE_LOCATION + ":" + ItemInfo.GOGGLES_ICON);
 	}
 	
 	@Override
 	public String getArmorTexture(ItemStack stack, Entity entity, int slot, String type) {
-		return ItemInfo.TEXTURE_LOCATION + ":textures/models/armour/" + ItemInfo.DIVINGHELMET_TEXTURE;
+		return ItemInfo.TEXTURE_LOCATION + ":textures/models/armour/" + ItemInfo.GOGGLES_TEXTURE;
 	}
 	
+	
+
 }

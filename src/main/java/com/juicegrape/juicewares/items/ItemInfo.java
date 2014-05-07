@@ -84,6 +84,14 @@ public class ItemInfo {
 	
 	public static final String MATCH_ICON = "match_item";
 	
+	//Night vision goggles
+	public static final String ROCKETBOOTS_KEY = "rocketboots_item";
+		
+	public static final String ROCKETBOOTS_UNLOCALIZED_NAME = "itemrocketboots";
+	
+	public static final String ROCKETBOOTS_ICON = "rocketboots_item";
+	public static final String ROCKETBOOTS_TEXTURE = "rocketboots_texture.png";
+	
 	
 	
 	

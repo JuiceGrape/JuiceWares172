@@ -27,24 +27,28 @@ public class ModItems {
 	public static Item itemTimeSpring;
 	public static Item blazeflowerseeds;
 	public static Item match;
+	public static Item rocketBoots;
 	
 	public static void init() {
 		stringreed = new ItemHemp();
 		GameRegistry.registerItem(stringreed, ItemInfo.STRINGREED_KEY);
 		
-		divinghelmet = new DivingHelmet(ItemArmor.ArmorMaterial.GOLD, juicewares.proxy.addArmor("Diving"), 0);
+		divinghelmet = new ItemDivingHelmet(ItemArmor.ArmorMaterial.GOLD, juicewares.proxy.addArmor("Diving"));
 		GameRegistry.registerItem(divinghelmet, ItemInfo.DIVINGHELMET_KEY);
 		
-		nightvisiongoggles = new NightVisionGoggles(ItemArmor.ArmorMaterial.IRON, juicewares.proxy.addArmor("Goggles"), 0);
+		nightvisiongoggles = new ItemNightVisionGoggles(ItemArmor.ArmorMaterial.IRON, juicewares.proxy.addArmor("Goggles"));
 		GameRegistry.registerItem(nightvisiongoggles, ItemInfo.GOGGLES_KEY);
 		
-		debugitem = new DebugItem();
+		rocketBoots = new ItemRocketBoots(juicewares.proxy.addArmor("RocketBoots"));
+		GameRegistry.registerItem(rocketBoots, ItemInfo.ROCKETBOOTS_KEY);
+		
+		debugitem = new ItemDebugItem();
 		GameRegistry.registerItem(debugitem, ItemInfo.DEBUG_KEY);
 		
 		lens = new ItemLens();
 		GameRegistry.registerItem(lens, ItemInfo.LENS_KEY);
 		
-		enchantmentItem = new EnchantmentItem();
+		enchantmentItem = new ItemEnchantmentItem();
 		GameRegistry.registerItem(enchantmentItem, ItemInfo.ENCHANTMENT_KEY);
 		
 		itemTimeSpring = new ItemTimeSpring();

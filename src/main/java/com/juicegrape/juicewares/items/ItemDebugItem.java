@@ -18,11 +18,11 @@ import com.juicegrape.juicewares.entities.EntityEyeball;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
-public class DebugItem extends Item {
+public class ItemDebugItem extends Item {
 	
 	Random random;
 
-	public DebugItem() {
+	public ItemDebugItem() {
 		super();
 		setUnlocalizedName(ItemInfo.DEBUG_UNLOCALIZED_NAME);
 		setCreativeTab(juicewares.juiceTab);
