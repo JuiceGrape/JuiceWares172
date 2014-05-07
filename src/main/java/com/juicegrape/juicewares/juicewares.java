@@ -20,6 +20,7 @@ import com.juicegrape.juicewares.recipes.CustomRecipes;
 import com.juicegrape.juicewares.recipes.FuelHandler;
 import com.juicegrape.juicewares.recipes.PrimalEnchanting;
 import com.juicegrape.juicewares.recipes.VanillaItemRecipes;
+import com.juicegrape.juicewares.recipes.primalEnchanting.TestPrimalEnchant;
 
 import cpw.mods.fml.common.Loader;
 import cpw.mods.fml.common.Mod;
@@ -94,7 +95,9 @@ public class juicewares {
 		
 		
 		if(Enabling.enablePrimalEnchanting)
-			PrimalEnchanting.init();
+			TestPrimalEnchant.init();
+			
+//			PrimalEnchanting.init();
 
 		System.out.println("JuiceWares succesfully post initialized (probably)");
 
