@@ -50,6 +50,14 @@ public class PrimalEnchantMaterial {
 		return tempString;
 	}
 	
+	public ItemStack getItemStack() {
+		return item;
+	}
+	
+	public ItemStack getItemStackCopy() {
+		return item.copy();
+	}
+	
 	
 	
 	
