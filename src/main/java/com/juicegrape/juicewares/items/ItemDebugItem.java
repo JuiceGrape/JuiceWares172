@@ -2,13 +2,16 @@ package com.juicegrape.juicewares.items;
 
 import java.util.Random;
 
+import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.texture.IIconRegister;
+import net.minecraft.enchantment.Enchantment;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.IEntityLivingData;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import net.minecraft.util.ChatComponentText;
 import net.minecraft.util.MathHelper;
 import net.minecraft.world.World;
 
@@ -45,10 +48,6 @@ public class ItemDebugItem extends Item {
 	
 	@Override
 	public boolean onItemUse(ItemStack stack, EntityPlayer player, World world, int x, int y, int z, int side, float hitX, float hitY, float hitZ) {
-		if (!world.isRemote) {
-			world.getBlock(x, y, z).updateTick(world, x, y, z, world.rand);
-			System.out.println(world.getBlockMetadata(x, y, z));
-		}
 
 		return true;
 

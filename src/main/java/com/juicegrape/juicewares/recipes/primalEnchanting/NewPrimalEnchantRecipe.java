@@ -76,7 +76,9 @@ public class NewPrimalEnchantRecipe implements IRecipe {
 	
 	private void setOutput(Enchantment enchant, int enchantLvl) {
 		int damage = outPut.getItemDamage() + ((outPut.getMaxDamage() - outPut.getItemDamage()) / 10);
-		outPut.setItemDamage(damage);
+		if (outPut.getItem().isDamageable()) {
+			outPut.setItemDamage(damage);
+		}
 		outPut.addEnchantment(enchant, enchantLvl);
 	}
 
