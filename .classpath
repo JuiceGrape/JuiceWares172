@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <classpath>
-	<classpathentry excluding="com/juicegrape/juicewares/compat/mfr/" kind="src" path="src/main/java"/>
+	<classpathentry excluding="com/juicegrape/juicewares/compat/mfr/|com/juicegrape/juicewares/recipes/PrimalEnchanting.java|com/juicegrape/juicewares/recipes/PrimalEnchantRecipe.java|com/juicegrape/juicewares/compat/NEI/PrimalEnchantingNEI.java" kind="src" path="src/main/java"/>
 	<classpathentry kind="src" path="src/api/java"/>
 	<classpathentry kind="src" path="src/main/resources"/>
 	<classpathentry exported="true" kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
@@ -137,6 +137,6 @@
 			<attribute name="javadoc_location" value="jar:file:/C:/Users/Bas/.gradle/caches/modules-2/files-2.1/org.scala-lang/scala-reflect/2.10.2/6bcae4ac7f8f165926785b5faf957f69405b73ed/scala-reflect-2.10.2-javadoc.jar!/"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="lib" path="libs/NotEnoughItems-1.7.2-1.0.1-universal.jar"/>
+	<classpathentry kind="lib" path="libs/NotEnoughItems-1.7.2-1.0.1-universal.jar" sourcepath="libs/src/NotEnoughItems-1.7.2-1.0.1-src.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

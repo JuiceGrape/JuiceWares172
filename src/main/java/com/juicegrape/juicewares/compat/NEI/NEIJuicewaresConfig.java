@@ -10,8 +10,6 @@ public class NEIJuicewaresConfig implements IConfigureNEI {
 
 	@Override
 	public void loadConfig() {
-		API.registerRecipeHandler(new PrimalEnchantingNEI());
-		API.registerUsageHandler(new PrimalEnchantingNEI());
 		API.hideItem(new ItemStack(ModBlocks.blazeflower));
 		API.hideItem(new ItemStack(ModBlocks.stringreed));
 	}
