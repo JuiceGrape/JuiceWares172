@@ -18,6 +18,12 @@ public class PrimalEnchantMaterial {
 		mult = hasMultiple;
 	}
 	
+	
+	public PrimalEnchantMaterial(ItemStack enchanter, Enchantment enchant) {
+		this(enchanter, enchant, 1, false);
+	}
+
+	
 	public Enchantment getEnchant() {
 		return enchant;
 	}
