@@ -12,11 +12,13 @@ public class NEIJuicewaresConfig implements IConfigureNEI {
 	public void loadConfig() {
 		API.hideItem(new ItemStack(ModBlocks.blazeflower));
 		API.hideItem(new ItemStack(ModBlocks.stringreed));
+		API.registerRecipeHandler(new PrimalEnchantingHandler());
+		API.registerUsageHandler(new PrimalEnchantingHandler());
 	}
 
 	@Override
 	public String getName() {
-		return "Primal Enchanting Config";
+		return "JuiceWares nei integration";
 	}
 
 	@Override

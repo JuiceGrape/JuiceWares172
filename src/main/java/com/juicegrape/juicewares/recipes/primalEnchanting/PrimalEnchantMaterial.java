@@ -58,6 +58,10 @@ public class PrimalEnchantMaterial {
 		return item.copy();
 	}
 	
+	public String getPrintString() {
+		return enchant.getTranslatedName(enchantlvl);
+	}
+	
 	
 	
 	
