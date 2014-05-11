@@ -44,6 +44,11 @@ public class ClientProxy extends CommonProxy {
 	}
 	
 	@Override
+	public boolean isClient() {
+		return true;
+	}
+	
+	@Override
 	public int addArmor(String armor) {
 		return RenderingRegistry.addNewArmourRendererPrefix(armor);
 	}

@@ -43,6 +43,7 @@ public class ItemEnchantmentItem extends Item {
 		for (int i = 0; i < ItemInfo.ENCHANTMENT_ICONS.length; i++) {
 			switch(i) {
 			case 1:
+			case 2:
 				icons [i] = register.registerIcon(ItemInfo.ENCHANTMENT_ICONS[i]);
 				break;
 			default:
@@ -62,6 +63,8 @@ public class ItemEnchantmentItem extends Item {
 		switch(itemStack.getItemDamage()) {
 		case 1:
 			return (55 << 16) | (82 << 8) | 204;
+		case 2:
+			return 0xB39800;
 		default:
 			return super.getColorFromItemStack(itemStack, par2);
 		}

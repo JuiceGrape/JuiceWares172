@@ -33,10 +33,14 @@ public class PrimalEnchantingMain {
 		tempMats.add(new PrimalEnchantMaterial(new ItemStack(ModItems.enchantmentItem, 1, 1), Enchantment.looting, 1, true));
 		tempMats.add(new PrimalEnchantMaterial(new ItemStack(Blocks.piston), Enchantment.knockback));
 		tempMats.add(new PrimalEnchantMaterial(new ItemStack(Items.blaze_rod), Enchantment.fireAspect));
-		tempMats.add(new PrimalEnchantMaterial(new ItemStack(Items.blaze_powder), Enchantment.fireProtection));
 		tempMats.add(new PrimalEnchantMaterial(new ItemStack(Items.magma_cream), Enchantment.baneOfArthropods));
-		tempMats.add(new PrimalEnchantMaterial(new ItemStack(Items.golden_carrot), Enchantment.smite));
+		tempMats.add(new PrimalEnchantMaterial(new ItemStack(ModItems.enchantmentItem, 1, 2), Enchantment.smite));
+		
+		
+		
+		tempMats.add(new PrimalEnchantMaterial(new ItemStack(Items.blaze_powder), Enchantment.fireProtection));
 		tempMats.add(new PrimalEnchantMaterial(new ItemStack(Blocks.cactus), Enchantment.thorns));
+		
 		
 		mats = new PrimalEnchantMaterial[tempMats.size()];
 		

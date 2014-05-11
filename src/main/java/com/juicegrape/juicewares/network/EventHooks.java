@@ -184,7 +184,8 @@ public class EventHooks {
 							if (player.movementInput.jump) {
 								player.addVelocity(0, 0.05, 0);
 								boots.setItemDamage(boots.getItemDamage() + 1);
-							} 
+								player2.playSound("juicewares:ambient.rocket.rise", 1F, 1F);
+							}
 						}
 					}
 				}

@@ -59,7 +59,6 @@ public class PrimalEnchantingHandler implements IUsageHandler, ICraftingHandler 
 
 	@Override
 	public void drawForeground(int recipe) {
-		// TODO Draw text
 		String text = PrimalEnchantingMain.mats[recipe] != null ? PrimalEnchantingMain.mats[recipe].getPrintString() : "Error";
 		fontRender.drawString(text, (width / 2) - ( fontRender.getStringWidth(text) / 2), 30, colour, false);
 		

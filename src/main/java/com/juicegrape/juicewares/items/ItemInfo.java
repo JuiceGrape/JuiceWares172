@@ -60,7 +60,7 @@ public class ItemInfo {
 	public static final String ENCHANTMENT_ICON_1 = "whetstone_item";
 	public static final String ENCHANTMENT_ICON_2 = "iron_ingot";
 	
-	public static final String[] ENCHANTMENT_ICONS = {ENCHANTMENT_ICON_1, ENCHANTMENT_ICON_2};
+	public static final String[] ENCHANTMENT_ICONS = {ENCHANTMENT_ICON_1, ENCHANTMENT_ICON_2, ENCHANTMENT_ICON_2};
 	
 	
 	//Timewound Clock

@@ -29,6 +29,10 @@ public class CommonProxy {
 		GameRegistry.registerTileEntity(TileEntityOverEnchanter.class, BlockInfo.OVERENCHANTER_KEY);
 	}
 	
+	public boolean isClient() {
+		return false;
+	}
+	
 
 	public int addArmor(String armor) {
 		return 0;

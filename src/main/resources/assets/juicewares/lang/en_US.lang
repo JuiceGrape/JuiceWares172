@@ -15,6 +15,7 @@ lensitem0.name=Lens
 lensitem1.name=Night Vision Lens
 enchantmentitem0.name=Whetstone
 enchantmentitem1.name=Fortunate Stone
+enchantmentitem2.name=Holy Stone
 item.itemtimespring.name=Timewound Clock
 item.blazeflowerseeds.name=Smoldering Seeds
 item.itemmatch.name=Match
