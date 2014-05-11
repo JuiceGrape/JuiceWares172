@@ -5,6 +5,7 @@ import java.util.Random;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.entity.EntityClientPlayerMP;
 import net.minecraft.entity.EntityLivingBase;
+import net.minecraft.entity.boss.EntityDragon;
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
@@ -16,9 +17,11 @@ import net.minecraft.potion.PotionEffect;
 import net.minecraft.tileentity.TileEntityMobSpawner;
 import net.minecraft.world.World;
 import net.minecraftforge.event.entity.EntityJoinWorldEvent;
+import net.minecraftforge.event.entity.living.LivingDeathEvent;
 import net.minecraftforge.event.entity.living.LivingEvent.LivingUpdateEvent;
 import net.minecraftforge.event.world.BlockEvent.BreakEvent;
 
+import com.juicegrape.juicewares.juicewares;
 import com.juicegrape.juicewares.config.Enabling;
 import com.juicegrape.juicewares.items.ModItems;
 import com.juicegrape.juicewares.misc.CustomEntityItem;
@@ -47,6 +50,13 @@ public class EventHooks {
 			}
 		}
 		
+	}
+	
+	@SubscribeEvent 
+	public void onMobDeath(LivingDeathEvent event) {
+		if (event.entityLiving instanceof EntityDragon) {
+			event.entityLiving.entityDropItem(new ItemStack(ModItems.rocketBoots), 0);
+		}
 	}
 	
 	
@@ -174,6 +184,8 @@ public class EventHooks {
 		}
 		if (player != null && player2 != null) {
 			if (player.getDisplayName().equals(player2.getDisplayName())) {
+				
+					
 				ItemStack boots = player.getEquipmentInSlot(1);
 				if (boots != null) {
 					if (boots.getItem().equals(ModItems.rocketBoots)) {
@@ -184,7 +196,11 @@ public class EventHooks {
 							if (player.movementInput.jump) {
 								player.addVelocity(0, 0.05, 0);
 								boots.setItemDamage(boots.getItemDamage() + 1);
-								player2.playSound("juicewares:ambient.rocket.rise", 1F, 1F);
+								if (juicewares.proxy.isClient()) {
+									player2.playSound("juicewares:ambient.rocket.rise", 1F, 1F);
+									spawnSmokeFeet(player2);
+									
+								}
 							}
 						}
 					}
@@ -197,6 +213,29 @@ public class EventHooks {
 		double time = velocity / DEFAULT_GRAVITY;
 		double distance = -0.5 * DEFAULT_GRAVITY * time * time;
 		return distance;
+	}
+	
+	private void spawnSmokeFeet(EntityPlayer player) {
+		
+		for (int i = 0; i < 5; i++) {
+			
+			double xThang = player.posX +  (0.25D - (player.getRNG().nextDouble() / 2D));
+			double zThang = player.posZ +  (0.25D - (player.getRNG().nextDouble() / 2D));
+			double yThang = player.posY - player.height;
+			
+			float yMotion = 0 - (player.getRNG().nextFloat() / 1.5F);
+			
+			String particle;
+			
+			if (i == 1) {
+				particle = "flame";
+			} else {
+				particle = "smoke";
+			}
+			
+			
+			player.worldObj.spawnParticle(particle, xThang, yThang, zThang, 0F, yMotion, 0F);
+		}
 	}
 	
 	
