@@ -1,0 +1,31 @@
+Blocks:
+tile.blockdrawer.name=Kabinet
+tile.blockmeatyore.name=VleesErts
+tile.blockjuicealtar.name=Altaar
+tile.blockstringreed.name=Hennep
+tile.blockblazeflower.name=BlazeBloem
+tile.blockoverenchanter.name=OverBetoveraar(WIP)
+
+Items:
+item.stringreeditem.name=Hennep
+item.divinghelmethat.name=Duik Helm
+item.nightvisionhat.name=Nachtzicht bril
+item.itemrocketboots.name=Draken Laarzen
+item.debugitem.name=Debug Item
+lensitem0.name=Lens
+lensitem1.name=Nachtzicht Lens
+enchantmentitem0.name=Slijpsteen
+enchantmentitem1.name=Geluks Steen
+enchantmentitem2.name=Heilige Steen
+item.itemtimespring.name=Tijdgebonden Klok
+item.blazeflowerseeds.name=Smeulend Zaad
+item.itemmatch.name=Lucifer
+
+Entity:
+entity.juicewares.eyeball.name=Oogbal
+
+
+Misc:
+container.drawer.name=Kabinet
+itemGroup.juicewares_juicetab=JuiceWares
+potion.cWaterBreathing=Zuurstof over

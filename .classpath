@@ -137,6 +137,6 @@
 			<attribute name="javadoc_location" value="jar:file:/C:/Users/Bas/.gradle/caches/modules-2/files-2.1/org.scala-lang/scala-reflect/2.10.2/6bcae4ac7f8f165926785b5faf957f69405b73ed/scala-reflect-2.10.2-javadoc.jar!/"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="lib" path="libs/NotEnoughItems-1.7.2-1.0.1-universal.jar" sourcepath="libs/src/NotEnoughItems-1.7.2-1.0.1-src.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Bas/Documents/aww yeah mods n shit/JuiceWares172/libs/NotEnoughItems-1.7.2-1.0.1-dev.jar" sourcepath="libs/src/NotEnoughItems-1.7.2-1.0.1-src.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
