@@ -13,6 +13,7 @@ import net.minecraft.util.MathHelper;
 import net.minecraft.world.World;
 
 import com.juicegrape.juicewares.juicewares;
+import com.juicegrape.juicewares.client.render.TextureStrongholdCompass;
 import com.juicegrape.juicewares.entities.EntityEyeball;
 
 import cpw.mods.fml.relauncher.Side;
@@ -33,7 +34,7 @@ public class ItemDebugItem extends Item {
 	@Override
 	@SideOnly(Side.CLIENT)
 	public void registerIcons(IIconRegister register) {
-		itemIcon = register.registerIcon(ItemInfo.TEXTURE_LOCATION + ":" + ItemInfo.DEBUG_ICON);
+		itemIcon = new TextureStrongholdCompass(ItemInfo.TEXTURE_LOCATION + ":" + ItemInfo.DEBUG_ICON);
 	}
 	
 	public ItemStack onItemRightClick(ItemStack itemStack, World world, EntityPlayer player) {
