@@ -1,0 +1,32 @@
+Blocks:
+tile.blockdrawer.name=ARRR
+tile.blockmeatyore.name=ARRG
+tile.blockjuicealtar.name=YARRR
+tile.blockstringreed.name=YAR
+tile.blockblazeflower.name=GARR
+tile.blockoverenchanter.name=ARRGH(WIP)
+
+Items:
+item.stringreeditem.name=GARRR
+item.divinghelmethat.name=ARGHHH
+item.nightvisionhat.name=AR
+item.itemrocketboots.name=ARG ARRGGG
+item.debugitem.name=YARRGHH
+lensitem0.name=ARGHH
+lensitem1.name=AAAARGH
+enchantmentitem0.name=YARHARHAR
+enchantmentitem1.name=YAAAAARRR
+enchantmentitem2.name=GARRRR
+item.itemtimespring.name=YAAAARGH
+item.blazeflowerseeds.name=ARGHR
+item.itemmatch.name=GARRGH
+item.itemmortarpestle.name=GARR and YARRR
+
+Entity:
+entity.juicewares.eyeball.name=Behind the Patch
+
+
+Misc:
+container.drawer.name=ARRR
+itemGroup.juicewares_juicetab=ARRRGGHHHHH
+potion.cWaterBreathing=YARRGGHHH
