@@ -14,13 +14,11 @@ import codechicken.nei.api.IRecipeOverlayRenderer;
 import codechicken.nei.recipe.GuiRecipe;
 import codechicken.nei.recipe.ICraftingHandler;
 import codechicken.nei.recipe.IUsageHandler;
-
 /* 
  * Note: This NEI integration code was partially copied from RWTema's mod: Extra Utilities. 
  * I tried to understand the NEI API myself, but I failed miserably. 
  * What I did understand I mostly changed to actually fit my purpose. I hope you understand.
  */
-
 import com.juicegrape.juicewares.recipes.primalEnchanting.PrimalEnchantingMain;
 
 public class PrimalEnchantingHandler implements IUsageHandler, ICraftingHandler {
@@ -59,8 +57,9 @@ public class PrimalEnchantingHandler implements IUsageHandler, ICraftingHandler 
 
 	@Override
 	public void drawForeground(int recipe) {
-		String text = PrimalEnchantingMain.mats[recipe] != null ? PrimalEnchantingMain.mats[recipe].getPrintString() : "Error";
+		String text =PrimalEnchantingMain.mats[recipe] != null ? PrimalEnchantingMain.mats[recipe].getPrintString() : "Error";
 		fontRender.drawString(text, (width / 2) - ( fontRender.getStringWidth(text) / 2), 30, colour, false);
+		
 		
 	}
 	
@@ -102,7 +101,7 @@ public class PrimalEnchantingHandler implements IUsageHandler, ICraftingHandler 
 
 	@Override
 	public int recipiesPerPage() {
-		return 1;
+		return 2;
 	}
 
 	@Override

@@ -20,6 +20,7 @@ enchantmentitem2.name=Heilige Steen
 item.itemtimespring.name=Tijdgebonden Klok
 item.blazeflowerseeds.name=Smeulend Zaad
 item.itemmatch.name=Lucifer
+item.itemmortarpestle.name=Vijzel en Stamper
 
 Entity:
 entity.juicewares.eyeball.name=Oogbal

@@ -51,7 +51,10 @@ public class ItemRocketBoots extends ItemArmor implements ISpecialArmor {
 		return;
 	}
 	
-	
+	@Override
+	public boolean getIsRepairable(ItemStack stack1, ItemStack stack2) {
+		return false;
+	}
 	
 	@Override
     @SideOnly(Side.CLIENT)

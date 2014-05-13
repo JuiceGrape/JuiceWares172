@@ -31,7 +31,9 @@ import cpw.mods.fml.common.eventhandler.SubscribeEvent;
 
 public class EventHooks {
 	
-	public static final double DEFAULT_GRAVITY = -0.07;
+	public static final double DEFAULT_GRAVITY = -0.0784000015258789;
+
+
 	@SubscribeEvent
 	public void onEntityUpdate(LivingUpdateEvent event) {
 		
@@ -46,9 +48,10 @@ public class EventHooks {
 		if (event.entityLiving instanceof EntityPlayer) {
 			ItemStack boots = event.entityLiving.getEquipmentInSlot(1);
 			if (boots != null && boots.getItem().equals(ModItems.rocketBoots)) {
-				event.entityLiving.fallDistance = (float) calculateFallFromVelocity(event.entityLiving.motionY);
+				event.entityLiving.fallDistance = (float) calculateFallFromVelocity(event.entityLiving);
 			}
 		}
+		
 		
 	}
 	
@@ -177,7 +180,10 @@ public class EventHooks {
 	}
 	
 	public void rocketPowerHandler(EntityLivingBase entityLivingBase) {
-		EntityClientPlayerMP player = Minecraft.getMinecraft().thePlayer;
+		EntityClientPlayerMP player = null;
+		if (juicewares.proxy.isClient()) {
+			player = Minecraft.getMinecraft().thePlayer;
+		}
 		EntityPlayer player2 = null;
 		if (entityLivingBase instanceof EntityPlayer) {
 			player2 = (EntityPlayer)entityLivingBase;
@@ -194,7 +200,7 @@ public class EventHooks {
 						}
 						if (boots.getItemDamage() < boots.getMaxDamage()) {
 							if (player.movementInput.jump) {
-								player.addVelocity(0, 0.05, 0);
+								player2.addVelocity(0, 0.08, 0);
 								boots.setItemDamage(boots.getItemDamage() + 1);
 								if (juicewares.proxy.isClient()) {
 									player2.playSound("juicewares:ambient.rocket.rise", 1F, 1F);
@@ -209,7 +215,15 @@ public class EventHooks {
 		}
 	}
 	
-	public double calculateFallFromVelocity(double velocity) {
+	public double getGravity(EntityLivingBase player) {
+		double avgV = player.motionY / 2.0D;
+		double time = player.fallDistance / avgV;
+		double acc = -player.motionY / time;
+		return acc;		
+	}
+	
+	public double calculateFallFromVelocity(EntityLivingBase player) {
+		double velocity = player.motionY;
 		double time = velocity / DEFAULT_GRAVITY;
 		double distance = -0.5 * DEFAULT_GRAVITY * time * time;
 		return distance;

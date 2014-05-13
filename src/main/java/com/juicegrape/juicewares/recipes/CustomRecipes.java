@@ -16,7 +16,7 @@ public class CustomRecipes {
 	
 	public static boolean checkRegOre(String name) {
 		for (String entry : OreDictionary.getOreNames()) {
-			if (entry == name) {
+			if (entry.equals(name)) {
 				return true;
 			}
 		}
@@ -104,23 +104,35 @@ public class CustomRecipes {
 		});
 		
 		
+		if (Enabling.enablePrimalEnchanting) {
 		
-		
-		GameRegistry.addRecipe(new ItemStack(ModItems.enchantmentItem, 1, 0), new Object[] {
-			" C ",
-			"CIC",
-			" C ",
-			Character.valueOf('C'), Blocks.clay,
-			Character.valueOf('I'), Items.iron_ingot
-		});
-		
-		GameRegistry.addRecipe(new ItemStack(ModItems.enchantmentItem, 1, 1), new Object[] {
-			" L ",
-			"LGL",
-			" L ",
-			Character.valueOf('L'), new ItemStack(Items.dye, 1, 4),
-			Character.valueOf('G'), Items.gold_ingot
-		});
+			GameRegistry.addRecipe(new ItemStack(ModItems.enchantmentItem, 1, 0), new Object[] {
+				" C ",
+				"CIC",
+				" C ",
+				Character.valueOf('C'), Blocks.clay,
+				Character.valueOf('I'), Items.iron_ingot
+			});
+			
+			GameRegistry.addRecipe(new ItemStack(ModItems.enchantmentItem, 1, 1), new Object[] {
+				" L ",
+				"LGL",
+				" L ",
+				Character.valueOf('L'), new ItemStack(Items.dye, 1, 4),
+				Character.valueOf('G'), Items.gold_ingot
+			});
+			
+			
+			GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.enchantmentItem, 1, 2), new Object[] {
+				" N ",
+				"NIN",
+				" N ",
+				Character.valueOf('N'), "nuggetGold",
+				Character.valueOf('I'), Items.iron_ingot
+			}));
+			
+			
+		}
 		
 		GameRegistry.addRecipe(new ItemStack(ModBlocks.altar), new Object[] {
 			"I I",
@@ -159,6 +171,16 @@ public class CustomRecipes {
 				Character.valueOf('/'), "stickWood"
 			}));
 		}
+		
+		GameRegistry.addRecipe(new ItemStack(ModItems.mortarPestle), new Object[] {
+			"  B",
+			"SBS",
+			" S ",
+			Character.valueOf('B'), Items.bone,
+			Character.valueOf('S'), Blocks.stone
+		});
+		
+		
 		
 		
 		

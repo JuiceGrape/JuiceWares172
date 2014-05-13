@@ -18,6 +18,7 @@ import com.juicegrape.juicewares.potionEffects.Potions;
 import com.juicegrape.juicewares.proxies.CommonProxy;
 import com.juicegrape.juicewares.recipes.CustomRecipes;
 import com.juicegrape.juicewares.recipes.FuelHandler;
+import com.juicegrape.juicewares.recipes.MortarPestleRecipes;
 import com.juicegrape.juicewares.recipes.VanillaItemRecipes;
 import com.juicegrape.juicewares.recipes.primalEnchanting.PrimalEnchantingMain;
 
@@ -95,6 +96,8 @@ public class juicewares {
 		
 		if(Enabling.enablePrimalEnchanting)
 			PrimalEnchantingMain.init();
+		
+		MortarPestleRecipes.init();
 
 		System.out.println("JuiceWares succesfully post initialized (probably)");
 

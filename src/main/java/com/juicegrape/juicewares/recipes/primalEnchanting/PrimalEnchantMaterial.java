@@ -62,6 +62,10 @@ public class PrimalEnchantMaterial {
 		return enchant.getTranslatedName(enchantlvl);
 	}
 	
+	public String getTypeName() {
+		return enchant.type.name();
+	}
+	
 	
 	
 	

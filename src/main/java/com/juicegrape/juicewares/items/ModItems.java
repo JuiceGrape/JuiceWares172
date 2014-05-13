@@ -28,6 +28,7 @@ public class ModItems {
 	public static Item blazeflowerseeds;
 	public static Item match;
 	public static Item rocketBoots;
+	public static Item mortarPestle;
 	
 	public static void init() {
 		stringreed = new ItemHemp();
@@ -59,16 +60,25 @@ public class ModItems {
 		
 		match = new ItemMatch();
 		GameRegistry.registerItem(match, ItemInfo.MATCH_KEY);
+		
+		mortarPestle = new ItemMortarPestle();
+		GameRegistry.registerItem(mortarPestle, ItemInfo.MORTAR_PESTLE_KEY);
+		
 
 	}
 	
 	
 	public static void addOreDictionary() {
 		OreDictionary.registerOre("gemEmerald", new ItemStack(Items.emerald));
+		OreDictionary.registerOre("nuggetGold", new ItemStack(Items.gold_nugget));
 		
 		OreDictionary.registerOre("itemLens", lens);
 		OreDictionary.registerOre("itemNightVisionLens", new ItemStack(lens, 1, 1));
 		OreDictionary.registerOre("itemHemp", stringreed);
+		
+		OreDictionary.registerOre("ingotIron", Items.iron_ingot);
+		OreDictionary.registerOre("ingotGold", Items.gold_ingot);
+		
 	}
 	
 	public static void miscInit() {
@@ -82,9 +92,10 @@ public class ModItems {
 			
 			ChestGenHooks.addItem(ChestGenHooks.BONUS_CHEST, new WeightedRandomChestContent(new ItemStack(ModItems.nightvisiongoggles), 1, 1, 5));
 			ChestGenHooks.addItem(ChestGenHooks.VILLAGE_BLACKSMITH, new WeightedRandomChestContent(new ItemStack(ModItems.nightvisiongoggles), 1, 1, 3));
-			ChestGenHooks.addItem(ChestGenHooks.DUNGEON_CHEST, new WeightedRandomChestContent(divingChest, 1, 1, 2));
+			ChestGenHooks.addItem(ChestGenHooks.DUNGEON_CHEST, new WeightedRandomChestContent(divingChest, 1, 2, 1));
 			ChestGenHooks.addItem(ChestGenHooks.DUNGEON_CHEST, new WeightedRandomChestContent(new ItemStack(ModItems.lens, 1, 1),1, 5, 8));
 			ChestGenHooks.addItem(ChestGenHooks.DUNGEON_CHEST, new WeightedRandomChestContent(new ItemStack(ModItems.lens, 1, 0),1, 5, 8));
+			ChestGenHooks.addItem(ChestGenHooks.DUNGEON_CHEST, new WeightedRandomChestContent(new ItemStack(ModItems.rocketBoots),1, 2, 1 ));
 		}
 	}
 		

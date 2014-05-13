@@ -52,6 +52,8 @@ public class ThaumcraftHandler {
 		
 		ThaumcraftApi.registerObjectTag(new ItemStack(ModItems.match, 1, OreDictionary.WILDCARD_VALUE), (new AspectList().add(Aspect.FIRE, 1).add(Aspect.TREE, 1)));
 		
+		ThaumcraftApi.registerObjectTag(new ItemStack(ModItems.rocketBoots, 1, OreDictionary.WILDCARD_VALUE), (new AspectList().add(Aspect.ELDRITCH, 8).add(Aspect.FLIGHT,  4)));
+		
 		//Entities
 		ThaumcraftApi.registerEntityTag(ModInformation.ID + "." + EntityInfo.EYEBALL_SYSTEM_NAME, (new AspectList().add(Aspect.MOTION, 4).add(Aspect.SENSES, 4)));
 		

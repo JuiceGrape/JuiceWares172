@@ -90,7 +90,14 @@ public class ItemInfo {
 	public static final String ROCKETBOOTS_UNLOCALIZED_NAME = "itemrocketboots";
 	
 	public static final String ROCKETBOOTS_ICON = "rocketboots_item";
-	public static final String ROCKETBOOTS_TEXTURE = "rocketboots_texture.png";
+	public static final String ROCKETBOOTS_TEXTURE = "rocketbootsp_texture.png";
+	
+	//Mortar and Pestle
+	public static final String MORTAR_PESTLE_KEY = "mortar_pestle_item";
+	
+	public static final String MORTAR_PESTLE_UNLOCALIZED_NAME = "itemmortarpestle";
+	
+	public static final String MORTAR_PESTLE_ICON = "mortar_pestle_item";
 	
 	
 	
