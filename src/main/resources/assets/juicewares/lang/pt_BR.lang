@@ -1,0 +1,31 @@
+Blocks:
+tile.blockdrawer.name=Gabinete
+tile.blockmeatyore.name=Minério carnudo
+tile.blockjuicealtar.name=Altar
+tile.blockstringreed.name=Canhamo
+tile.blockblazeflower.name=Flor Flamejante
+tile.blockoverenchanter.name=Super Mesa de Encantamento ( WIP )
+
+Items:
+item.stringreeditem.name=Canhamo
+item.divinghelmethat.name=Capacete de Mergulador
+item.nightvisionhat.name=Oculos
+item.itemrocketboots.name=Botas do dragão
+item.debugitem.name=Item de Teste
+lensitem0.name=Lentes
+lensitem1.name=Lentes de visão noturna
+enchantmentitem0.name=Pedra afiada
+enchantmentitem1.name=Pedra da fortuna
+enchantmentitem2.name=Pedra sagrada
+item.itemtimespring.name=Relógio do Machucado do Tempo
+item.blazeflowerseeds.name=Sementes Flamejantes
+item.itemmatch.name=Fósforo
+item.itemmortarpestle.name=Pilão
+
+Entity:
+entity.juicewares.eyeball.name=Bola de Olho
+
+Misc:
+container.drawer.name=Gabinete
+itemGroup.juicewares_juicetab=JuiceWares
+potion.cWaterBreathing=Oxigenio Restante
