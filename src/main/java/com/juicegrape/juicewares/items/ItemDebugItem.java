@@ -12,7 +12,6 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.IIcon;
 import net.minecraft.util.MathHelper;
-import net.minecraft.util.ResourceLocation;
 import net.minecraft.world.World;
 
 import com.juicegrape.juicewares.juicewares;
@@ -28,7 +27,6 @@ public class ItemDebugItem extends Item {
 	TextureCompass icon;
 	IIcon tempIcon;
 	
-	private static final ResourceLocation texture = new ResourceLocation(ItemInfo.TEXTURE_LOCATION + ":textures/items/" + ItemInfo.DEBUG_ICON + ".png");
 
 	public ItemDebugItem() {
 		super();

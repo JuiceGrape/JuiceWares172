@@ -29,17 +29,9 @@ public class MortarPestleRecipes {
 		for (String entry : OreDictionary.getOreNames()) {
 			if (entry.contains(ingot)) {
 				if (entry.startsWith("ingot")) {
-					if (!hasIngot) {
-						hasIngot = true;
-					} else {
-						System.out.println("WARNING DOUBLE ENTRY INGOT " + ingot);
-					}
+					hasIngot = true;
 				} else if (entry.startsWith("dust")) {
-					if (!hasDust) {
-						hasDust = true;
-					} else {
-						System.out.println("WARNING DOUBLE ENTRY DUST " + ingot);
-					}
+					hasDust = true;
 				}
 			}
 		}
