@@ -3,17 +3,19 @@ package com.juicegrape.juicewares.items;
 import java.util.Random;
 
 import net.minecraft.client.renderer.texture.IIconRegister;
+import net.minecraft.client.renderer.texture.TextureCompass;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.IEntityLivingData;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import net.minecraft.util.IIcon;
 import net.minecraft.util.MathHelper;
+import net.minecraft.util.ResourceLocation;
 import net.minecraft.world.World;
 
 import com.juicegrape.juicewares.juicewares;
-import com.juicegrape.juicewares.client.render.TextureStrongholdCompass;
 import com.juicegrape.juicewares.entities.EntityEyeball;
 
 import cpw.mods.fml.relauncher.Side;
@@ -22,6 +24,11 @@ import cpw.mods.fml.relauncher.SideOnly;
 public class ItemDebugItem extends Item {
 	
 	Random random;
+	
+	TextureCompass icon;
+	IIcon tempIcon;
+	
+	private static final ResourceLocation texture = new ResourceLocation(ItemInfo.TEXTURE_LOCATION + ":textures/items/" + ItemInfo.DEBUG_ICON + ".png");
 
 	public ItemDebugItem() {
 		super();
@@ -34,9 +41,11 @@ public class ItemDebugItem extends Item {
 	@Override
 	@SideOnly(Side.CLIENT)
 	public void registerIcons(IIconRegister register) {
-		itemIcon = new TextureStrongholdCompass(ItemInfo.TEXTURE_LOCATION + ":" + ItemInfo.DEBUG_ICON);
+		itemIcon = register.registerIcon(ItemInfo.TEXTURE_LOCATION + ":" + ItemInfo.DEBUG_ICON);
+		
 	}
 	
+	@Override
 	public ItemStack onItemRightClick(ItemStack itemStack, World world, EntityPlayer player) {
 		if (world != null && !world.isRemote) {
 			System.out.println(world.getWorldTime());
@@ -44,12 +53,16 @@ public class ItemDebugItem extends Item {
 		return itemStack;
 	}
 	
+	
+	
+	
 	@Override
 	public boolean onItemUse(ItemStack stack, EntityPlayer player, World world, int x, int y, int z, int side, float hitX, float hitY, float hitZ) {
 
 		return true;
 
 	}
+
 
 	
 	@SuppressWarnings("unused")
