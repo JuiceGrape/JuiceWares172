@@ -44,6 +44,7 @@ public class ItemEnchantmentItem extends Item {
 			switch(i) {
 			case 1:
 			case 2:
+			case 3:
 				icons [i] = register.registerIcon(ItemInfo.ENCHANTMENT_ICONS[i]);
 				break;
 			default:
@@ -62,6 +63,7 @@ public class ItemEnchantmentItem extends Item {
 	public int getColorFromItemStack(ItemStack itemStack, int par2) {
 		switch(itemStack.getItemDamage()) {
 		case 1:
+		case 3:
 			return (55 << 16) | (82 << 8) | 204;
 		case 2:
 			return 0xB39800;
@@ -73,6 +75,8 @@ public class ItemEnchantmentItem extends Item {
 	@Override
 	public EnumRarity getRarity(ItemStack itemStack) {
 		switch(itemStack.getItemDamage()) {
+		case 3:
+			return EnumRarity.rare;
 		default:
 			return EnumRarity.uncommon;
 		}

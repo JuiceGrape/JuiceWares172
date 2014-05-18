@@ -122,6 +122,15 @@ public class CustomRecipes {
 				Character.valueOf('G'), Items.gold_ingot
 			});
 			
+			GameRegistry.addRecipe(new ItemStack(ModItems.enchantmentItem, 1, 3), new Object[] {
+				" L ",
+				"LGL",
+				" L ",
+				Character.valueOf('L'), Blocks.lapis_block,
+				Character.valueOf('G'), Items.diamond
+			});
+			
+			
 			
 			GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.enchantmentItem, 1, 2), new Object[] {
 				" N ",

@@ -32,14 +32,15 @@ public class PrimalEnchantingMain {
 		//Tools and weapons
 		tempMats.add(new PrimalEnchantMaterial(new ItemStack(ModItems.enchantmentItem, 1, 0), Enchantment.sharpness));
 		tempMats.add(new PrimalEnchantMaterial(new ItemStack(ModItems.enchantmentItem, 1, 1), Enchantment.fortune, 1, true));
+		tempMats.add(new PrimalEnchantMaterial(new ItemStack(ModItems.enchantmentItem, 1, 3), Enchantment.fortune, 2, true));
 		tempMats.add(new PrimalEnchantMaterial(new ItemStack(ModItems.enchantmentItem, 1, 1), Enchantment.looting, 1, true));
+		tempMats.add(new PrimalEnchantMaterial(new ItemStack(ModItems.enchantmentItem, 1, 3), Enchantment.looting, 2, true));
 		tempMats.add(new PrimalEnchantMaterial(new ItemStack(ModItems.enchantmentItem, 1, 1), Enchantment.field_151370_z, 1, true));
+		tempMats.add(new PrimalEnchantMaterial(new ItemStack(ModItems.enchantmentItem, 1, 3), Enchantment.field_151370_z, 2, true));
 		tempMats.add(new PrimalEnchantMaterial(new ItemStack(Blocks.piston), Enchantment.knockback));
 		tempMats.add(new PrimalEnchantMaterial(new ItemStack(Items.blaze_rod), Enchantment.fireAspect));
 		tempMats.add(new PrimalEnchantMaterial(new ItemStack(Items.magma_cream), Enchantment.baneOfArthropods));
 		tempMats.add(new PrimalEnchantMaterial(new ItemStack(ModItems.enchantmentItem, 1, 2), Enchantment.smite));
-		tempMats.add(new PrimalEnchantMaterial(new ItemStack(ModItems.enchantmentItem, 1, OreDictionary.WILDCARD_VALUE), Enchantment.efficiency));
-
 		
 		
 		//Armour

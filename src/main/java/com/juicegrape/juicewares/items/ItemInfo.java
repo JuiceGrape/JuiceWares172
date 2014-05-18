@@ -1,6 +1,7 @@
 package com.juicegrape.juicewares.items;
 
 
+
 public class ItemInfo {
 	
 	public static final String TEXTURE_LOCATION = "juicewares";
@@ -38,7 +39,7 @@ public class ItemInfo {
 	
 	public static final String DEBUG_UNLOCALIZED_NAME = "debugitem";
 	
-	public static final String DEBUG_ICON = "debug_item";
+	public static final String DEBUG_ICON = "debugArrow_item";
 	
 	
 	
@@ -59,8 +60,9 @@ public class ItemInfo {
 	
 	public static final String ENCHANTMENT_ICON_1 = "whetstone_item";
 	public static final String ENCHANTMENT_ICON_2 = "iron_ingot";
+	public static final String ENCHANTMENT_ICON_3 = "diamond";
 	
-	public static final String[] ENCHANTMENT_ICONS = {ENCHANTMENT_ICON_1, ENCHANTMENT_ICON_2, ENCHANTMENT_ICON_2};
+	public static final String[] ENCHANTMENT_ICONS = {ENCHANTMENT_ICON_1, ENCHANTMENT_ICON_2, ENCHANTMENT_ICON_2, ENCHANTMENT_ICON_3};
 	
 	
 	//Timewound Clock

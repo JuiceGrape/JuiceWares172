@@ -51,6 +51,9 @@ public class NewPrimalEnchantRecipe implements IRecipe {
 		for (int i = 0; i < grid.getSizeInventory(); i++) {
 			ItemStack stack = grid.getStackInSlot(i);
 			if (hasItem && stack != null && !stack.getItem().equals(usedMats.get(0).getItem())) {
+				if (!stack.isItemEnchantable()) {
+					return false;
+				}
 				if (hasTool) {
 					return false;
 				} else {
