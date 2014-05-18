@@ -10,6 +10,7 @@ import net.minecraft.enchantment.Enchantment;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
+import net.minecraftforge.oredict.OreDictionary;
 import net.minecraftforge.oredict.RecipeSorter;
 import net.minecraftforge.oredict.RecipeSorter.Category;
 
@@ -28,7 +29,8 @@ public class PrimalEnchantingMain {
 		
 		List<PrimalEnchantMaterial> tempMats = new ArrayList<PrimalEnchantMaterial>();
 		
-		tempMats.add(new PrimalEnchantMaterial(new ItemStack(ModItems.enchantmentItem, 1, 0), Enchantment.sharpness, 1, false));
+		//Tools and weapons
+		tempMats.add(new PrimalEnchantMaterial(new ItemStack(ModItems.enchantmentItem, 1, 0), Enchantment.sharpness));
 		tempMats.add(new PrimalEnchantMaterial(new ItemStack(ModItems.enchantmentItem, 1, 1), Enchantment.fortune, 1, true));
 		tempMats.add(new PrimalEnchantMaterial(new ItemStack(ModItems.enchantmentItem, 1, 1), Enchantment.looting, 1, true));
 		tempMats.add(new PrimalEnchantMaterial(new ItemStack(ModItems.enchantmentItem, 1, 1), Enchantment.field_151370_z, 1, true));
@@ -36,13 +38,16 @@ public class PrimalEnchantingMain {
 		tempMats.add(new PrimalEnchantMaterial(new ItemStack(Items.blaze_rod), Enchantment.fireAspect));
 		tempMats.add(new PrimalEnchantMaterial(new ItemStack(Items.magma_cream), Enchantment.baneOfArthropods));
 		tempMats.add(new PrimalEnchantMaterial(new ItemStack(ModItems.enchantmentItem, 1, 2), Enchantment.smite));
+		tempMats.add(new PrimalEnchantMaterial(new ItemStack(ModItems.enchantmentItem, 1, OreDictionary.WILDCARD_VALUE), Enchantment.efficiency));
 
 		
 		
-		
+		//Armour
 		tempMats.add(new PrimalEnchantMaterial(new ItemStack(Items.blaze_powder), Enchantment.fireProtection));
 		tempMats.add(new PrimalEnchantMaterial(new ItemStack(Blocks.cactus), Enchantment.thorns));
 		tempMats.add(new PrimalEnchantMaterial(new ItemStack(Items.feather), Enchantment.featherFalling));
+		tempMats.add(new PrimalEnchantMaterial(new ItemStack(Items.slime_ball), Enchantment.projectileProtection));
+		tempMats.add(new PrimalEnchantMaterial(new ItemStack(Blocks.wool, 1, OreDictionary.WILDCARD_VALUE), Enchantment.blastProtection));
 		
 		
 		mats = new PrimalEnchantMaterial[tempMats.size()];

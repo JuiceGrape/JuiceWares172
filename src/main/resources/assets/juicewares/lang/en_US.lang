@@ -23,7 +23,7 @@ item.itemmatch.name=Match
 item.itemmortarpestle.name=Mortar and Pestle
 
 Entity:
-entity.juicewares.eyeball.name=Eyeball
+entity.eyeball.name=Eyeball
 
 
 Misc:

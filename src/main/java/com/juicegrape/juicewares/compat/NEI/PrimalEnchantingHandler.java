@@ -2,18 +2,21 @@ package com.juicegrape.juicewares.compat.NEI;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.FontRenderer;
 import net.minecraft.client.gui.inventory.GuiContainer;
 import net.minecraft.inventory.Container;
 import net.minecraft.item.ItemStack;
+import net.minecraftforge.oredict.OreDictionary;
 import codechicken.nei.PositionedStack;
 import codechicken.nei.api.IOverlayHandler;
 import codechicken.nei.api.IRecipeOverlayRenderer;
 import codechicken.nei.recipe.GuiRecipe;
 import codechicken.nei.recipe.ICraftingHandler;
 import codechicken.nei.recipe.IUsageHandler;
+
 /* 
  * Note: This NEI integration code was partially copied from RWTema's mod: Extra Utilities. 
  * I tried to understand the NEI API myself, but I failed miserably. 
@@ -27,6 +30,7 @@ public class PrimalEnchantingHandler implements IUsageHandler, ICraftingHandler 
 	ItemStack displayItem = null;
 	public static int width = 166;
 	int colour = 0x000000;
+	Random random = new Random();
 	
 	FontRenderer fontRender = Minecraft.getMinecraft().fontRenderer;
 	
@@ -38,7 +42,6 @@ public class PrimalEnchantingHandler implements IUsageHandler, ICraftingHandler 
 		if (recipe < PrimalEnchantingMain.mats.length) {
 			thisRecipe = recipe;
 		}
-		displayItem = item;
 	}
 
 	@Override
@@ -75,7 +78,20 @@ public class PrimalEnchantingHandler implements IUsageHandler, ICraftingHandler 
 
 	@Override
 	public PositionedStack getResultStack(int recipe) {
-		PositionedStack stack = new PositionedStack(PrimalEnchantingMain.mats[recipe].getItemStack() != null ? PrimalEnchantingMain.mats[recipe].getItemStack() : this.displayItem, width / 2 - 9, 0, false);
+		PositionedStack stack;
+		if (PrimalEnchantingMain.mats[recipe].getItemStack() != null) {
+			if (PrimalEnchantingMain.mats[recipe].getItemMetadata() == OreDictionary.WILDCARD_VALUE) {
+				
+				stack = new PositionedStack(PrimalEnchantingMain.mats[recipe].getItemStack(), width / 2 - 9, 0, true);
+				stack.setPermutationToRender(PrimalEnchantingMain.mats[recipe].updateTimer(stack.items.length));
+				
+			} else {
+				stack = new PositionedStack(PrimalEnchantingMain.mats[recipe].getItemStack(), width / 2 - 9, 0, false);
+			}
+			
+		} else {
+			stack = new PositionedStack(this.displayItem, width / 2 - 9, 0, false);
+		}
 		return stack;
 	}
 
@@ -101,7 +117,7 @@ public class PrimalEnchantingHandler implements IUsageHandler, ICraftingHandler 
 
 	@Override
 	public int recipiesPerPage() {
-		return 2;
+		return 1;
 	}
 
 	@Override
@@ -134,8 +150,14 @@ public class PrimalEnchantingHandler implements IUsageHandler, ICraftingHandler 
 		for (int i = 0; i < results.length; i++) {
 			if (results[i] instanceof ItemStack) {
 				for (int j = 0; j < PrimalEnchantingMain.mats.length; j++) {
-					if (ItemStack.areItemStacksEqual(PrimalEnchantingMain.mats[j].getItemStack(), (ItemStack)results[i])) {
-						return new PrimalEnchantingHandler(j, (ItemStack)results[i]);
+					if (PrimalEnchantingMain.mats[j].getItemMetadata() == OreDictionary.WILDCARD_VALUE) {
+						if (PrimalEnchantingMain.mats[j].getItem().equals(((ItemStack)results[i]).getItem())) {
+							return new PrimalEnchantingHandler(j, (ItemStack)results[i]);
+						}
+					} else {
+						if (ItemStack.areItemStacksEqual(PrimalEnchantingMain.mats[j].getItemStack(), (ItemStack)results[i])) {
+							return new PrimalEnchantingHandler(j, (ItemStack)results[i]);
+						}
 					}
 				}
 			}			
@@ -151,8 +173,14 @@ public class PrimalEnchantingHandler implements IUsageHandler, ICraftingHandler 
 		for (int i = 0; i < ingredients.length; i++) {
 			if (ingredients[i] instanceof ItemStack) {
 				for (int j = 0; j < PrimalEnchantingMain.mats.length; j++) {
-					if (ItemStack.areItemStacksEqual(PrimalEnchantingMain.mats[j].getItemStack(), (ItemStack)ingredients[i])) {
-						return new PrimalEnchantingHandler(j, (ItemStack)ingredients[i]);
+					if (PrimalEnchantingMain.mats[j].getItemMetadata() == OreDictionary.WILDCARD_VALUE) {
+						if (PrimalEnchantingMain.mats[j].getItem().equals(((ItemStack)ingredients[i]).getItem())) {
+							return new PrimalEnchantingHandler(j, (ItemStack)ingredients[i]);
+						}
+					} else {
+						if (ItemStack.areItemStacksEqual(PrimalEnchantingMain.mats[j].getItemStack(), (ItemStack)ingredients[i])) {
+							return new PrimalEnchantingHandler(j, (ItemStack)ingredients[i]);
+						}
 					}
 				}
 			}			

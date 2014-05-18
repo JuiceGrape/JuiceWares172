@@ -23,7 +23,7 @@ item.itemmatch.name=Fósforo
 item.itemmortarpestle.name=Pilão
 
 Entity:
-entity.juicewares.eyeball.name=Bola de Olho
+entity.eyeball.name=Bola de Olho
 
 Misc:
 container.drawer.name=Gabinete

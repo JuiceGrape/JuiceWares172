@@ -23,7 +23,7 @@ item.itemmatch.name=Lucifer
 item.itemmortarpestle.name=Vijzel en Stamper
 
 Entity:
-entity.juicewares.eyeball.name=Oogbal
+entity.eyeball.name=Oogbal
 
 
 Misc:

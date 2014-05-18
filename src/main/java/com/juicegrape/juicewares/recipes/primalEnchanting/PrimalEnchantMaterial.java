@@ -10,12 +10,16 @@ public class PrimalEnchantMaterial {
 	private Enchantment enchant;
 	private int enchantlvl;
 	private boolean mult;
+	private int timer;
+	private int iteration;
 	
 	public PrimalEnchantMaterial(ItemStack enchanter, Enchantment enchant, int lvl, boolean hasMultiple) {
 		item = enchanter;
 		this.enchant = enchant;
 		enchantlvl = lvl;
 		mult = hasMultiple;
+		timer = 0;
+		iteration = 0;
 	}
 	
 	
@@ -64,6 +68,18 @@ public class PrimalEnchantMaterial {
 	
 	public String getTypeName() {
 		return enchant.type.name();
+	}
+	
+	public int updateTimer(int max) {
+		timer++;
+		if (timer >= 20) {
+			iteration++;
+			timer = 0;
+		}
+		if (iteration >= max) {
+			iteration = 0;
+		}
+		return iteration;
 	}
 	
 	

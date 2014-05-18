@@ -1,7 +1,6 @@
 package com.juicegrape.juicewares.entities;
 
 import net.minecraft.entity.EntityList;
-import net.minecraft.entity.EntityList.EntityEggInfo;
 import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.EnumCreatureType;
 import net.minecraft.world.biome.BiomeGenBase;
@@ -11,8 +10,7 @@ import com.juicegrape.juicewares.juicewares;
 import cpw.mods.fml.common.registry.EntityRegistry;
 
 public class Entity {
-
-	static int startEntityId = 500;
+	
 	static int modEntityId = 0;
 	
 	
@@ -22,7 +20,7 @@ public class Entity {
 	
 	
 	public static void initEggs() {
-		registerEntityEgg(EntityEyeball.class, 0xFFFFFF , 0xFF1C1C );
+		registerEntityEgg(EntityEyeball.class, 0xFFFFFF , 0xFF1C1C,  EntityInfo.EYEBALL_SYSTEM_NAME);
 	}
 	
 	public static void initSpawns() {
@@ -39,20 +37,9 @@ public class Entity {
 		
 		
 	}
-    @SuppressWarnings("unchecked")
-	public static void registerEntityEgg(Class<? extends EntityLiving> entity, int primaryColor, int secondaryColor) {
-            int id = getUniqueEntityId();
-            EntityList.IDtoClassMapping.put(id, entity);
-            EntityList.entityEggs.put(id, new EntityEggInfo(id, primaryColor, secondaryColor));
-    }
-    
-    public static int getUniqueEntityId()
-    {
-           do
-            {
-                    startEntityId++;
-            } while (EntityList.getStringFromID(startEntityId) != null);
-            
-            return startEntityId; 
+	
+	public static void registerEntityEgg(Class<? extends EntityLiving> entity, int primaryColor, int secondaryColor, String name) {
+            int id = EntityRegistry.findGlobalUniqueEntityId();
+            EntityList.addMapping(entity, name, id, primaryColor, secondaryColor);
     }
 }

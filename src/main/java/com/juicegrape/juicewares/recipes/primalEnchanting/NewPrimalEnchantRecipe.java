@@ -9,6 +9,7 @@ import net.minecraft.inventory.InventoryCrafting;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.IRecipe;
 import net.minecraft.world.World;
+import net.minecraftforge.oredict.OreDictionary;
 
 public class NewPrimalEnchantRecipe implements IRecipe {
 	
@@ -29,15 +30,15 @@ public class NewPrimalEnchantRecipe implements IRecipe {
 		for (int i = 0; i < grid.getSizeInventory(); i++) {
 			ItemStack stack = grid.getStackInSlot(i);
 			for (int j = 0; j < materials.length; j++) {
-				if (stack != null && stack.getItem().equals(materials[j].getItem()) && stack.getItemDamage() == materials[j].getItemMetadata()) {
-					if (hasItem && !usedMats.get(0).getItem().equals(materials[j].getItem()) && usedMats.get(0).getItemMetadata() != materials[j].getItemMetadata()) {
+				if (stack != null && stack.getItem().equals(materials[j].getItem()) && (stack.getItemDamage() == materials[j].getItemMetadata() || materials[j].getItemMetadata() == OreDictionary.WILDCARD_VALUE)) {
+					if (hasItem && !usedMats.get(0).getItem().equals(materials[j].getItem()) && (usedMats.get(0).getItemMetadata() != materials[j].getItemMetadata() || materials[j].getItemMetadata() == OreDictionary.WILDCARD_VALUE)) {
 						return false;
 					} else if (!hasItem){
 						hasItem = true;
 						usedMats.add(materials[j]);
 						if (materials[j].hasMultiple()) {
 							for (int k = 0; k < materials.length; k++) {
-								if (k != j && materials[j].getItem().equals(materials[k].getItem()) && materials[j].getItemMetadata() == materials[k].getItemMetadata()) {
+								if (k != j && materials[j].getItem().equals(materials[k].getItem()) && (materials[j].getItemMetadata() == materials[k].getItemMetadata() || materials[j].getItemMetadata() == OreDictionary.WILDCARD_VALUE)) {
 									usedMats.add(materials[k]);
 								}
 							}
