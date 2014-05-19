@@ -3,7 +3,6 @@ package com.juicegrape.juicewares.items;
 import java.util.Random;
 
 import net.minecraft.client.renderer.texture.IIconRegister;
-import net.minecraft.client.renderer.texture.TextureCompass;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.IEntityLivingData;
@@ -24,8 +23,8 @@ public class ItemDebugItem extends Item {
 	
 	Random random;
 	
-	TextureCompass icon;
-	IIcon tempIcon;
+
+	IIcon icons[];
 	
 
 	public ItemDebugItem() {
@@ -39,8 +38,17 @@ public class ItemDebugItem extends Item {
 	@Override
 	@SideOnly(Side.CLIENT)
 	public void registerIcons(IIconRegister register) {
-		itemIcon = register.registerIcon(ItemInfo.TEXTURE_LOCATION + ":" + ItemInfo.DEBUG_ICON);
+		icons = new IIcon[ItemInfo.DEBUG_ICONS.length];
+		for (int i = 0; i < ItemInfo.DEBUG_ICONS.length; i++) {
+			icons[i] = register.registerIcon(ItemInfo.TEXTURE_LOCATION + ":" + ItemInfo.DEBUG_ICONS[i]);
+		}
 		
+	}
+	
+	@Override
+	@SideOnly(Side.CLIENT)
+	public IIcon getIconFromDamage(int dmg) {
+		return dmg < icons.length && icons[dmg] != null ? icons[dmg] : icons[0];
 	}
 	
 	@Override

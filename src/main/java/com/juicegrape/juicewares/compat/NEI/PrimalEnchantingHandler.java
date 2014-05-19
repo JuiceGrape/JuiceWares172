@@ -2,7 +2,6 @@ package com.juicegrape.juicewares.compat.NEI;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Random;
 
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.FontRenderer;
@@ -19,6 +18,7 @@ import codechicken.nei.recipe.ICraftingHandler;
 import codechicken.nei.recipe.IUsageHandler;
 
 import com.juicegrape.juicewares.items.ModItems;
+import com.juicegrape.juicewares.recipes.primalEnchanting.PrimalEnchantMaterial;
 /* 
  * Note: This NEI integration code was partially copied from RWTema's mod: Extra Utilities. 
  * I tried to understand the NEI API myself, but I failed miserably. 
@@ -28,17 +28,38 @@ import com.juicegrape.juicewares.recipes.primalEnchanting.PrimalEnchantingMain;
 
 public class PrimalEnchantingHandler implements IUsageHandler, ICraftingHandler {
 	
-	int thisRecipe;
-	ItemStack displayItem = null;
+	private int thisRecipe;
+	private ItemStack displayItem = null;
 	public static int width = 166;
-	int colour = 0x000000;
-	Random random = new Random();
+	private int colour = 0x000000;
 	public static int id = 13364;
+	
+	private PrimalEnchantMaterial[] enchants;
 	
 	FontRenderer fontRender = Minecraft.getMinecraft().fontRenderer;
 	
 	public PrimalEnchantingHandler() {
-		thisRecipe = -1;
+		thisRecipe = -2;
+	}
+	
+	public PrimalEnchantingHandler(boolean all) {
+		if (all) {
+			thisRecipe = -1;
+		} else {
+			thisRecipe = -2;
+		}
+	}
+	
+	public PrimalEnchantingHandler(ItemStack tool) {
+		List<PrimalEnchantMaterial> mats2 = new ArrayList<PrimalEnchantMaterial>();
+		for (PrimalEnchantMaterial mat : PrimalEnchantingMain.mats) {
+			if (mat.getEnchant().canApply(tool)) {
+				mats2.add(mat);
+			}
+		}
+		if (!mats2.isEmpty()) {
+			enchants = mats2.toArray(new PrimalEnchantMaterial[0]);
+		}
 	}
 	
 	public PrimalEnchantingHandler(int recipe, ItemStack item) {
@@ -55,7 +76,10 @@ public class PrimalEnchantingHandler implements IUsageHandler, ICraftingHandler 
 
 	@Override
 	public int numRecipes() {
-		return thisRecipe >= 0 ? 1 : PrimalEnchantingMain.mats.length;
+		if (enchants != null) {
+			return enchants.length;
+		}
+		return thisRecipe < -1 ? 0 : thisRecipe >= 0 ? 1 : PrimalEnchantingMain.mats.length;
 	}
 
 	@Override
@@ -65,12 +89,20 @@ public class PrimalEnchantingHandler implements IUsageHandler, ICraftingHandler 
 	@Override
 	public void drawForeground(int recipe) {
 		int recipes;
-		if (thisRecipe >= 0) {
+		if (enchants != null) {
+			recipes = recipe;
+		} else if (thisRecipe >= 0) {
 			recipes = thisRecipe;
 		} else {
 			recipes = recipe;
 		}
-		String text = PrimalEnchantingMain.mats[recipes] != null ? PrimalEnchantingMain.mats[recipes].getPrintString() : "Error";
+		String text;
+		if (enchants != null) {
+			text = enchants[recipes] != null ? enchants[recipes].getPrintString() : "Error";
+		} else {
+			text = PrimalEnchantingMain.mats[recipes] != null ? PrimalEnchantingMain.mats[recipes].getPrintString() : "Error";
+		}
+		
 		fontRender.drawString(text, (width / 2) - ( fontRender.getStringWidth(text) / 2), 36, colour, false);
 		
 		
@@ -84,18 +116,27 @@ public class PrimalEnchantingHandler implements IUsageHandler, ICraftingHandler 
 	@Override
 	public List<PositionedStack> getOtherStacks(int recipetype) {
 		List<PositionedStack> stacks = new ArrayList<PositionedStack>();
-		stacks.add(new PositionedStack(((new ItemStack(ModItems.debugitem))), width / 2 - 9, 18, false));
+		stacks.add(new PositionedStack(((new ItemStack(ModItems.debugitem, 1, 1))), width / 2 - 9, 18, false));
 		return stacks;
 	}
 
 	@Override
 	public PositionedStack getResultStack(int recipe) {
 		PositionedStack stack;
-		
-		if (displayItem != null && numRecipes() == 1) {
+		if (enchants != null) {
+			if (enchants[recipe].getItemStack() != null) {
+				if (enchants[recipe].getItemMetadata() == OreDictionary.WILDCARD_VALUE) {
+					stack = new PositionedStack(enchants[recipe].getItemStack(), width / 2 - 9, 0, true);
+					stack.setPermutationToRender(enchants[recipe].updateTimer(stack.items.length));
+				} else {
+					stack = new PositionedStack(enchants[recipe].getItemStack(), width / 2 - 9, 0, false);
+				}
+			} else {
+				stack = new PositionedStack(this.displayItem, width / 2 - 9, 0, false);
+			}
+		} else if (displayItem != null && numRecipes() == 1) {
 			stack = new PositionedStack(this.displayItem, width / 2 - 9, 0, false);
-		} else 
-		if (PrimalEnchantingMain.mats[recipe].getItemStack() != null) {
+		} else if (PrimalEnchantingMain.mats[recipe].getItemStack() != null) {
 			if (PrimalEnchantingMain.mats[recipe].getItemMetadata() == OreDictionary.WILDCARD_VALUE) {
 				
 				stack = new PositionedStack(PrimalEnchantingMain.mats[recipe].getItemStack(), width / 2 - 9, 0, true);
@@ -167,7 +208,6 @@ public class PrimalEnchantingHandler implements IUsageHandler, ICraftingHandler 
 		PositionedStack stack = getOtherStacks(recipe).get(0);
 		
 		if (gui.isMouseOver(stack, recipe)) {
-			System.out.println("YUP");
 			return GuiUsageRecipe.openRecipeGui("primalAll", new Object[0]);
 
 		}
@@ -177,47 +217,64 @@ public class PrimalEnchantingHandler implements IUsageHandler, ICraftingHandler 
 	@Override
 	public ICraftingHandler getRecipeHandler(String outputId, Object... results) {
 		if (outputId.equals("primalAll")) {
-			return this;
+			return new PrimalEnchantingHandler(true);
+		}
+		if (outputId != "item") {
+			return new PrimalEnchantingHandler(false);
 		}
 		for (int i = 0; i < results.length; i++) {
 			if (results[i] instanceof ItemStack) {
 				for (int j = 0; j < PrimalEnchantingMain.mats.length; j++) {
 					if (PrimalEnchantingMain.mats[j].getItemMetadata() == OreDictionary.WILDCARD_VALUE) {
 						if (PrimalEnchantingMain.mats[j].getItem().equals(((ItemStack)results[i]).getItem())) {
-							return new PrimalEnchantingHandler(j, (ItemStack)results[i]);
+							ItemStack tempStack = ((ItemStack)results[i]).copy();
+							tempStack.stackSize = 1;
+							return new PrimalEnchantingHandler(j, tempStack);
 						}
 					} else {
-						if (ItemStack.areItemStacksEqual(PrimalEnchantingMain.mats[j].getItemStack(), (ItemStack)results[i])) {
-							return new PrimalEnchantingHandler(j, (ItemStack)results[i]);
+						if (PrimalEnchantingMain.mats[j].getItem() == ((ItemStack)results[i]).getItem() && PrimalEnchantingMain.mats[j].getItemMetadata() == ((ItemStack)results[i]).getItemDamage() ) {
+							ItemStack tempStack = ((ItemStack)results[i]).copy();
+							tempStack.stackSize = 1;
+							return new PrimalEnchantingHandler(j, tempStack);
 						}
 					}
 				}
 			}			
 		}
-		return this;
+		return new PrimalEnchantingHandler(false);
 	}
 
 	@Override
 	public IUsageHandler getUsageHandler(String inputId, Object... ingredients) {
 		if (inputId.equals("primalAll")) {
-			return this;
+			return new PrimalEnchantingHandler(true);
+		}
+		if (inputId != "item") {
+			return new PrimalEnchantingHandler(false);
 		}
 		for (int i = 0; i < ingredients.length; i++) {
 			if (ingredients[i] instanceof ItemStack) {
 				for (int j = 0; j < PrimalEnchantingMain.mats.length; j++) {
+					if (PrimalEnchantingMain.mats[j].getEnchant().canApply((ItemStack)ingredients[i])) {
+						return new PrimalEnchantingHandler((ItemStack)ingredients[i]);
+					}
 					if (PrimalEnchantingMain.mats[j].getItemMetadata() == OreDictionary.WILDCARD_VALUE) {
 						if (PrimalEnchantingMain.mats[j].getItem().equals(((ItemStack)ingredients[i]).getItem())) {
-							return new PrimalEnchantingHandler(j, (ItemStack)ingredients[i]);
+							ItemStack tempStack = ((ItemStack)ingredients[i]).copy();
+							tempStack.stackSize = 1;
+							return new PrimalEnchantingHandler(j, tempStack);
 						}
 					} else {
-						if (ItemStack.areItemStacksEqual(PrimalEnchantingMain.mats[j].getItemStack(), (ItemStack)ingredients[i])) {
-							return new PrimalEnchantingHandler(j, (ItemStack)ingredients[i]);
+						if (PrimalEnchantingMain.mats[j].getItem() == ((ItemStack)ingredients[i]).getItem() && PrimalEnchantingMain.mats[j].getItemMetadata() == ((ItemStack)ingredients[i]).getItemDamage() ) {
+							ItemStack tempStack = ((ItemStack)ingredients[i]).copy();
+							tempStack.stackSize = 1;
+							return new PrimalEnchantingHandler(j, tempStack);
 						}
 					}
 				}
 			}			
 		}
-		return this;
+		return new PrimalEnchantingHandler(false);
 	}
 
 }

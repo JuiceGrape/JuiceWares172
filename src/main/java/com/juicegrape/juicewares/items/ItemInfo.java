@@ -39,9 +39,15 @@ public class ItemInfo {
 	
 	public static final String DEBUG_UNLOCALIZED_NAME = "debugitem";
 	
-	public static final String DEBUG_ICON = "debugArrow_item";
+	public static final String DEBUG_ARROW_ICON = "debugArrow_item";
+	
+	public static final String DEBUG_ICON = "debug_item";
+	
+	public static final String[] DEBUG_ICONS = {DEBUG_ICON, DEBUG_ARROW_ICON};
 	
 	
+	
+
 	
 	//Lens
 	public static final String LENS_KEY = "lens_item";
