@@ -1,0 +1,34 @@
+Blocks:
+tile.blockdrawer.name=Skåp
+tile.blockmeatyore.name=Mat Malm
+tile.blockjuicealtar.name=Altare
+tile.blockstringreed.name=Cannabis
+tile.blockblazeflower.name=Brännblomma
+
+Items:
+item.stringreeditem.name=Cannabis
+item.divinghelmethat.name=Dykar Hjälm
+item.nightvisionhat.name=Mörker Seende Glasögon
+item.itemrocketboots.name=Drak Stövlar
+item.debugitem.name=Felsöknings Föremål
+lensitem0.name=Lins
+lensitem1.name=Mörker Seende Lins
+enchantmentitem0.name=Whetstone
+enchantmentitem1.name=Tur Sten
+enchantmentitem2.name=Helig Sten
+enchantmentitem3.name=Fortunate Gem
+item.itemtimespring.name=Timewound Clock
+item.blazeflowerseeds.name=Smoldering Seeds
+item.itemmatch.name=Tändsticka
+item.itemmortarpestle.name=Mortar and Pestle
+
+Entity:
+entity.eyeball.name=Ögonglob
+
+
+Misc:
+container.drawer.name=Skåp
+itemGroup.juicewares_juicetab=JuiceWares
+potion.cWaterBreathing=Syre Kvar
+nei.info.juicewares.primalenchant=Primal Enchanting
+nei.info.juicewares.primalinfo=All primal enchanting recipes
