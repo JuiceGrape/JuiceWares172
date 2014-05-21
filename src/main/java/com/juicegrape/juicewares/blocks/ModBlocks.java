@@ -31,9 +31,6 @@ public class ModBlocks {
 		blazeflower = new BlockBlazeFlower();
 		GameRegistry.registerBlock(blazeflower, BlockInfo.BLAZEFLOWER_KEY);
 		
-		overenchanter = new BlockOverEnchanter();
-		GameRegistry.registerBlock(overenchanter, BlockInfo.OVERENCHANTER_KEY);
-		
 		
 
 	}

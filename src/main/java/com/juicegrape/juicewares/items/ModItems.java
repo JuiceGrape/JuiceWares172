@@ -12,7 +12,7 @@ import net.minecraftforge.common.ChestGenHooks;
 import net.minecraftforge.oredict.OreDictionary;
 
 import com.juicegrape.juicewares.juicewares;
-import com.juicegrape.juicewares.config.Enabling;
+import com.juicegrape.juicewares.config.ConfigInfo;
 
 import cpw.mods.fml.common.registry.GameRegistry;
 
@@ -86,7 +86,7 @@ public class ModItems {
 	}
 	
 	public static void dungeonLoot() {
-		if (Enabling.enableDungeonLoot){
+		if (ConfigInfo.enableDungeonLoot){
 			ItemStack divingChest = new ItemStack(ModItems.divinghelmet);
 			divingChest.addEnchantment(Enchantment.aquaAffinity, 1);
 			

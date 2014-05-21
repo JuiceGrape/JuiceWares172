@@ -9,6 +9,7 @@ import net.minecraft.client.gui.inventory.GuiContainer;
 import net.minecraft.inventory.Container;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.oredict.OreDictionary;
+import codechicken.nei.NEIClientUtils;
 import codechicken.nei.PositionedStack;
 import codechicken.nei.api.IOverlayHandler;
 import codechicken.nei.api.IRecipeOverlayRenderer;
@@ -18,6 +19,7 @@ import codechicken.nei.recipe.ICraftingHandler;
 import codechicken.nei.recipe.IUsageHandler;
 
 import com.juicegrape.juicewares.items.ModItems;
+import com.juicegrape.juicewares.misc.MiscInfo;
 import com.juicegrape.juicewares.recipes.primalEnchanting.PrimalEnchantMaterial;
 /* 
  * Note: This NEI integration code was partially copied from RWTema's mod: Extra Utilities. 
@@ -67,11 +69,22 @@ public class PrimalEnchantingHandler implements IUsageHandler, ICraftingHandler 
 			thisRecipe = recipe;
 		}
 		displayItem = item;
+		List<PrimalEnchantMaterial> mats2 = new ArrayList<PrimalEnchantMaterial>();
+		if (PrimalEnchantingMain.mats[recipe].hasMultiple()) {
+			for (PrimalEnchantMaterial mat : PrimalEnchantingMain.mats) {
+				if (mat.getItem().equals(item.getItem()) && (mat.getItemMetadata() == item.getItemDamage() || mat.getItemMetadata() == OreDictionary.WILDCARD_VALUE)) {
+					mats2.add(mat);
+				}
+			}
+		}
+		if (!mats2.isEmpty()) {
+			enchants = mats2.toArray(new PrimalEnchantMaterial[0]);
+		}
 	}
 
 	@Override
 	public String getRecipeName() {
-		return "Primal Enchanting";
+		return NEIClientUtils.translate(MiscInfo.NEI_RECIPENAME_UNLOCALIZED, new Object[0]);
 	}
 
 	@Override
@@ -191,7 +204,7 @@ public class PrimalEnchantingHandler implements IUsageHandler, ICraftingHandler 
 		
 		if (gui.isMouseOver(stack2, recipe)) {
 			List<String> tip = new ArrayList<String>();
-			tip.add("All primal enchanting materials");
+			tip.add(NEIClientUtils.translate(MiscInfo.NEI_INFONAME_UNLOCALIZED, new Object[0]));
 			return tip;
 		}
 		return currenttip;

@@ -4,7 +4,6 @@ tile.blockmeatyore.name=VleesErts
 tile.blockjuicealtar.name=Altaar
 tile.blockstringreed.name=Hennep
 tile.blockblazeflower.name=BlazeBloem
-tile.blockoverenchanter.name=OverBetoveraar(WIP)
 
 Items:
 item.stringreeditem.name=Hennep
@@ -17,6 +16,7 @@ lensitem1.name=Nachtzicht Lens
 enchantmentitem0.name=Slijpsteen
 enchantmentitem1.name=Geluks Steen
 enchantmentitem2.name=Heilige Steen
+enchantmentitem3.name=Geluks Kristal
 item.itemtimespring.name=Tijdgebonden Klok
 item.blazeflowerseeds.name=Smeulend Zaad
 item.itemmatch.name=Lucifer
@@ -30,3 +30,5 @@ Misc:
 container.drawer.name=Kabinet
 itemGroup.juicewares_juicetab=JuiceWares
 potion.cWaterBreathing=Zuurstof over
+nei.info.juicewares.primalenchant=Oer Betoveren
+nei.info.juicewares.primalinfo=Alle oer betover recepten

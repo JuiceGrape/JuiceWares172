@@ -11,7 +11,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
 
 import com.juicegrape.juicewares.juicewares;
-import com.juicegrape.juicewares.config.Enabling;
+import com.juicegrape.juicewares.config.ConfigInfo;
 import com.juicegrape.juicewares.misc.CustomDamageSource;
 
 import cpw.mods.fml.relauncher.Side;
@@ -68,7 +68,7 @@ public class ItemTimeSpring extends Item {
 	@Override
 	@SideOnly(Side.CLIENT)
 	public void addInformation(ItemStack itemStack, EntityPlayer player, List info, boolean useExtraInfo) {
-		if (!Enabling.enableTimeSpring) {
+		if (!ConfigInfo.enableTimeSpring) {
 			info.add("DISABLED BY CONFIG");
 		}
 	}
@@ -76,7 +76,7 @@ public class ItemTimeSpring extends Item {
 	@Override
 	public void onPlayerStoppedUsing(ItemStack itemStack, World world, EntityPlayer player, int itemInUseCount) {
 		if (world != null) {
-			if (Enabling.enableTimeSpring) {
+			if (ConfigInfo.enableTimeSpring) {
 				int usage = getMaxItemUseDuration(itemStack) - itemInUseCount;
 				if (usage > 100)
 					usage = 100;

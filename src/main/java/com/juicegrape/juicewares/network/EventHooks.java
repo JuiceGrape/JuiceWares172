@@ -22,7 +22,7 @@ import net.minecraftforge.event.entity.living.LivingEvent.LivingUpdateEvent;
 import net.minecraftforge.event.world.BlockEvent.BreakEvent;
 
 import com.juicegrape.juicewares.juicewares;
-import com.juicegrape.juicewares.config.Enabling;
+import com.juicegrape.juicewares.config.ConfigInfo;
 import com.juicegrape.juicewares.items.ModItems;
 import com.juicegrape.juicewares.misc.CustomEntityItem;
 import com.juicegrape.juicewares.potionEffects.Potions;
@@ -37,15 +37,21 @@ public class EventHooks {
 	@SubscribeEvent
 	public void onEntityUpdate(LivingUpdateEvent event) {
 		
-		divingHelmetHandler(event.entityLiving);
+		if (ConfigInfo.enableDivingHelmet) {
+			divingHelmetHandler(event.entityLiving);
+		}
 		
-		nightVisionGogglesHandler(event.entityLiving);
+		if (ConfigInfo.enableNightVisionGoggles) {
+			nightVisionGogglesHandler(event.entityLiving);
+		}
 		
 		customPotionEffectHandler(event.entityLiving);
 		
-		rocketPowerHandler(event.entityLiving);
+		if (ConfigInfo.enableRocketBoots) {
+			rocketPowerHandler(event.entityLiving);
+		}
 		
-		if (event.entityLiving instanceof EntityPlayer) {
+		if (ConfigInfo.enableRocketBoots && event.entityLiving instanceof EntityPlayer) {
 			ItemStack boots = event.entityLiving.getEquipmentInSlot(1);
 			if (boots != null && boots.getItem().equals(ModItems.rocketBoots)) {
 				event.entityLiving.fallDistance = (float) calculateFallFromVelocity(event.entityLiving);
@@ -57,7 +63,7 @@ public class EventHooks {
 	
 	@SubscribeEvent 
 	public void onMobDeath(LivingDeathEvent event) {
-		if (event.entityLiving instanceof EntityDragon) {
+		if (ConfigInfo.enableRocketBootsDrop && ConfigInfo.enableRocketBoots && event.entityLiving instanceof EntityDragon) {
 			event.entityLiving.entityDropItem(new ItemStack(ModItems.rocketBoots), 0);
 		}
 	}
@@ -66,7 +72,7 @@ public class EventHooks {
 	
 	@SubscribeEvent
 	public void onBlockBreak(BreakEvent event) {
-		if (event.block == Blocks.mob_spawner) {
+		if (ConfigInfo.enableBlazeFlowers && event.block == Blocks.mob_spawner) {
 			if (event.world.getTileEntity(event.x, event.y, event.z) instanceof TileEntityMobSpawner) {
 				TileEntityMobSpawner te = (TileEntityMobSpawner)event.world.getTileEntity(event.x, event.y, event.z);
 				
@@ -95,7 +101,7 @@ public class EventHooks {
 	
 	
 	public void onItemCreation(EntityItem item) {
-		if (Enabling.enableExplodingGunpowder){
+		if (ConfigInfo.enableExplodingGunpowder){
 			if (item.worldObj != null) {
 				if (item.getEntityItem().getItem().equals(Items.gunpowder)) {
 					NBTTagCompound old = item.getEntityData();

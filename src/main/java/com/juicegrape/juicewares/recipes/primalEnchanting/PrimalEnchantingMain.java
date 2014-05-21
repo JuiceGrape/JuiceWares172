@@ -14,6 +14,7 @@ import net.minecraftforge.oredict.OreDictionary;
 import net.minecraftforge.oredict.RecipeSorter;
 import net.minecraftforge.oredict.RecipeSorter.Category;
 
+import com.juicegrape.juicewares.config.ConfigInfo;
 import com.juicegrape.juicewares.items.ModItems;
 
 import cpw.mods.fml.common.registry.GameRegistry;
@@ -23,6 +24,10 @@ public class PrimalEnchantingMain {
 	public static PrimalEnchantMaterial[] mats;
 	
 	public static void init() {
+		
+		if (!ConfigInfo.enablePrimalEnchanting) {
+			return;
+		}
 		
 		RecipeSorter.register("Primal Enchanting", NewPrimalEnchantRecipe.class, Category.SHAPELESS, "");
 		

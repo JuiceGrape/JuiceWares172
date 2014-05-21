@@ -6,7 +6,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraftforge.oredict.OreDictionary;
 import net.minecraftforge.oredict.ShapedOreRecipe;
 
-import com.juicegrape.juicewares.config.Enabling;
+import com.juicegrape.juicewares.config.ConfigInfo;
 
 import cpw.mods.fml.common.registry.GameRegistry;
 
@@ -16,11 +16,11 @@ public class VanillaItemRecipes {
 	
 	public static void regCustomVanillaRecipes() {
 		
-		if (Enabling.enableWoolToString) {
+		if (ConfigInfo.enableWoolToString) {
 			GameRegistry.addShapelessRecipe(new ItemStack(Items.string, RecipeInfo.WOOL_TO_STRING), new Object[] { new ItemStack(Blocks.wool, 1, OreDictionary.WILDCARD_VALUE) });
 		}
 
-		if (Enabling.enableDiscRecipes) {
+		if (ConfigInfo.enableDiscRecipes) {
 
 			GameRegistry.addRecipe(
 					new ItemStack(Items.record_13),
@@ -113,7 +113,7 @@ public class VanillaItemRecipes {
 
 		}
 
-		if (Enabling.enableSaddleRecipe) {
+		if (ConfigInfo.enableSaddleRecipe) {
 
 			GameRegistry.addRecipe(new ItemStack(Items.saddle),
 					new Object[] {	"S L",
@@ -126,7 +126,7 @@ public class VanillaItemRecipes {
 
 		}
 
-		if (Enabling.enableNameTagRecipe) {
+		if (ConfigInfo.enableNameTagRecipe) {
 
 			GameRegistry.addRecipe(new ItemStack(Items.name_tag),
 					new Object[] {	" S",

@@ -4,7 +4,6 @@ tile.blockmeatyore.name=ARRG
 tile.blockjuicealtar.name=YARRR
 tile.blockstringreed.name=YAR
 tile.blockblazeflower.name=GARR
-tile.blockoverenchanter.name=ARRGH(WIP)
 
 Items:
 item.stringreeditem.name=GARRR
@@ -17,6 +16,7 @@ lensitem1.name=AAAARGH
 enchantmentitem0.name=YARHARHAR
 enchantmentitem1.name=YAAAAARRR
 enchantmentitem2.name=GARRRR
+enchantmentitem3.name=YARHARNAR
 item.itemtimespring.name=YAAAARGH
 item.blazeflowerseeds.name=ARGHR
 item.itemmatch.name=GARRGH
@@ -30,3 +30,5 @@ Misc:
 container.drawer.name=ARRR
 itemGroup.juicewares_juicetab=ARRRGGHHHHH
 potion.cWaterBreathing=YARRGGHHH
+nei.info.juicewares.primalenchant=PRGGH ARGJHG
+nei.info.juicewares.primalinfo=ARR GARR RARRRRR

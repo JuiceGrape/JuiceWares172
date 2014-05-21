@@ -7,7 +7,7 @@ import net.minecraftforge.oredict.OreDictionary;
 import net.minecraftforge.oredict.ShapedOreRecipe;
 
 import com.juicegrape.juicewares.blocks.ModBlocks;
-import com.juicegrape.juicewares.config.Enabling;
+import com.juicegrape.juicewares.config.ConfigInfo;
 import com.juicegrape.juicewares.items.ModItems;
 
 import cpw.mods.fml.common.registry.GameRegistry;
@@ -25,29 +25,36 @@ public class CustomRecipes {
 
 	public static void regCustomModRecipes() {
 		
+		if (ConfigInfo.enableHemp) {
+			GameRegistry.addShapelessRecipe(new ItemStack(Items.string),
+					new Object[] { new ItemStack(ModItems.stringreed) }); 
+		}
 		
-		GameRegistry.addShapelessRecipe(new ItemStack(Items.string),
-				new Object[] { new ItemStack(ModItems.stringreed) }); 
 		
-		GameRegistry.addRecipe(new ShapedOreRecipe(ModBlocks.drawer, new Object[] { 	
-						"WWW",
-						" W ",
-						"WWW",
+		if (ConfigInfo.enableDrawer) {
+			GameRegistry.addRecipe(new ShapedOreRecipe(ModBlocks.drawer, new Object[] { 	
+							"WWW",
+							" W ",
+							"WWW",
+	
+			Character.valueOf('W'), "plankWood"}));
+		}
 
-		Character.valueOf('W'), "plankWood"}));
-
-		GameRegistry.addRecipe( new ItemStack(ModItems.divinghelmet), new Object[] {
-				" H ",
-				"IGI",
-				" B ",
-				Character.valueOf('H'), Items.golden_helmet,
-				Character.valueOf('B'), Blocks.iron_bars,
-				Character.valueOf('I'), Items.iron_ingot,
-				Character.valueOf('G'), ModItems.lens
-		});
+		
+		if (ConfigInfo.enableDivingHelmet) {
+			GameRegistry.addRecipe( new ItemStack(ModItems.divinghelmet), new Object[] {
+					" H ",
+					"IGI",
+					" B ",
+					Character.valueOf('H'), Items.golden_helmet,
+					Character.valueOf('B'), Blocks.iron_bars,
+					Character.valueOf('I'), Items.iron_ingot,
+					Character.valueOf('G'), ModItems.lens
+			});
+		}
 		
 		//Easy night vision lens recipe
-		if (Enabling.enableEasyNightVisionLensRecipe) {
+		if (ConfigInfo.enableEasyNightVisionLensRecipe) {
 			if (checkRegOre("gemEmerald")) {
 				GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.lens, 1, 1),
 						new Object[] {	"E",
@@ -57,7 +64,7 @@ public class CustomRecipes {
 					}));
 			}
 		}
-		if (Enabling.enableModerateNightVisionLensRecipe) {
+		if (ConfigInfo.enableModerateNightVisionLensRecipe) {
 			if (checkRegOre("gemEmerald")) {
 				GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.lens, 1, 1),
 						new Object[] {	" E ",
@@ -68,7 +75,7 @@ public class CustomRecipes {
 					}));
 			}
 		}
-		if (Enabling.enableHardNightVisionLensRecipe) {
+		if (ConfigInfo.enableHardNightVisionLensRecipe) {
 			if (checkRegOre("gemEmerald")) {
 				GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.lens, 1, 1),
 						new Object[] {	"PEP",
@@ -80,7 +87,7 @@ public class CustomRecipes {
 					}));
 			}
 		}
-		if (Enabling.enableSuperHardNightVisionLensRecipe) {
+		if (ConfigInfo.enableSuperHardNightVisionLensRecipe) {
 			if (checkRegOre("gemEmerald")) {
 				GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.lens, 1, 1),
 						new Object[] {	"PEP",
@@ -93,18 +100,20 @@ public class CustomRecipes {
 			}
 		}
 		
-		GameRegistry.addRecipe(new ItemStack(ModItems.nightvisiongoggles), new Object[] {
-			"S S",
-			"OLO",
-			"LIL",
-			Character.valueOf('S'), Items.string,
-			Character.valueOf('L'), new ItemStack(ModItems.lens, 1, 1),
-			Character.valueOf('I'), Items.iron_ingot,
-			Character.valueOf('O'), Blocks.obsidian
-		});
+		if (ConfigInfo.enableNightVisionGoggles) {
+			GameRegistry.addRecipe(new ItemStack(ModItems.nightvisiongoggles), new Object[] {
+				"S S",
+				"OLO",
+				"LIL",
+				Character.valueOf('S'), Items.string,
+				Character.valueOf('L'), new ItemStack(ModItems.lens, 1, 1),
+				Character.valueOf('I'), Items.iron_ingot,
+				Character.valueOf('O'), Blocks.obsidian
+			});
+		}
 		
 		
-		if (Enabling.enablePrimalEnchanting) {
+		if (ConfigInfo.enablePrimalEnchanting) {
 		
 			GameRegistry.addRecipe(new ItemStack(ModItems.enchantmentItem, 1, 0), new Object[] {
 				" C ",
@@ -151,7 +160,7 @@ public class CustomRecipes {
 			Character.valueOf('O'), Blocks.obsidian
 		}); 
 		
-		if (Enabling.enableTimeSpring) {	
+		if (ConfigInfo.enableTimeSpring) {	
 			if (checkRegOre("gemEmerald")) {
 				GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.itemTimeSpring), new Object[] {
 				"E ",
@@ -165,7 +174,7 @@ public class CustomRecipes {
 			}
 		}
 
-		if (Enabling.enableMatchRecipe) {
+		if (ConfigInfo.enableMatch) {
 			GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.match), new Object[] {
 				" R",
 				"/ ",
@@ -181,13 +190,15 @@ public class CustomRecipes {
 			}));
 		}
 		
-		GameRegistry.addRecipe(new ItemStack(ModItems.mortarPestle), new Object[] {
-			"  B",
-			"SBS",
-			" S ",
-			Character.valueOf('B'), Items.bone,
-			Character.valueOf('S'), Blocks.stone
-		});
+		if (ConfigInfo.enableMortarAndPestle) { 
+			GameRegistry.addRecipe(new ItemStack(ModItems.mortarPestle), new Object[] {
+				"  B",
+				"SBS",
+				" S ",
+				Character.valueOf('B'), Items.bone,
+				Character.valueOf('S'), Blocks.stone
+			});
+		}
 		
 		
 		

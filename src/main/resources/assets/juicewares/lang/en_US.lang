@@ -4,7 +4,6 @@ tile.blockmeatyore.name=Meatyore
 tile.blockjuicealtar.name=Altar
 tile.blockstringreed.name=Hemp
 tile.blockblazeflower.name=Blazeflower
-tile.blockoverenchanter.name=Overenchanter(WIP)
 
 Items:
 item.stringreeditem.name=Hemp
@@ -17,6 +16,7 @@ lensitem1.name=Night Vision Lens
 enchantmentitem0.name=Whetstone
 enchantmentitem1.name=Fortunate Stone
 enchantmentitem2.name=Holy Stone
+enchantmentitem3.name=Fortunate Gem
 item.itemtimespring.name=Timewound Clock
 item.blazeflowerseeds.name=Smoldering Seeds
 item.itemmatch.name=Match
@@ -30,3 +30,5 @@ Misc:
 container.drawer.name=Cabinet
 itemGroup.juicewares_juicetab=JuiceWares
 potion.cWaterBreathing=Oxygen Left
+nei.info.juicewares.primalenchant=Primal Enchanting
+nei.info.juicewares.primalinfo=All primal enchanting recipes

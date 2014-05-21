@@ -9,7 +9,7 @@ import net.minecraft.world.gen.feature.WorldGenerator;
 
 import com.juicegrape.juicewares.blocks.BlockInfo;
 import com.juicegrape.juicewares.blocks.ModBlocks;
-import com.juicegrape.juicewares.config.Enabling;
+import com.juicegrape.juicewares.config.ConfigInfo;
 
 import cpw.mods.fml.common.IWorldGenerator;
 import cpw.mods.fml.common.registry.GameRegistry;
@@ -44,10 +44,10 @@ public class GenerationHandler implements IWorldGenerator {
 	}
 	
 	private void generateSurface(World world, Random random, int chunkX, int chunkZ) {
-		if (Enabling.enableReedGen) {
+		if (ConfigInfo.enableReedGen) {
 			this.addReed(world, random, chunkX, chunkZ);
 		}
-		if (Enabling.enableMeatyGen) {
+		if (ConfigInfo.enableMeatyGen) {
 			generateStandardOre(random, chunkX, chunkZ, world, 10, genMeatyOre, 20, 60);
 		}
 	}

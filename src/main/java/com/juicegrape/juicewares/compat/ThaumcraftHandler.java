@@ -8,6 +8,7 @@ import thaumcraft.api.aspects.AspectList;
 
 import com.juicegrape.juicewares.ModInformation;
 import com.juicegrape.juicewares.blocks.ModBlocks;
+import com.juicegrape.juicewares.config.ConfigInfo;
 import com.juicegrape.juicewares.entities.EntityInfo;
 import com.juicegrape.juicewares.items.ModItems;
 
@@ -16,6 +17,10 @@ import cpw.mods.fml.common.event.FMLInterModComms;
 public class ThaumcraftHandler {
 	
 	public static void init() {
+		
+		if (!ConfigInfo.enableThaumCraft) {
+			return;
+		}
 		//Harvestables
 		FMLInterModComms.sendMessage("Thaumcraft", "harvestStackedCrop", new ItemStack(ModBlocks.stringreed, 1, OreDictionary.WILDCARD_VALUE));
 		System.out.println("Sending stringreed");
@@ -24,6 +29,11 @@ public class ThaumcraftHandler {
 	}
 	
 	public static void Postinit() {
+		
+		if (!ConfigInfo.enableThaumCraft) {
+			return;
+		}
+		
 		//complex blocks
 		ThaumcraftApi.registerComplexObjectTag(new ItemStack(ModBlocks.drawer, 0, OreDictionary.WILDCARD_VALUE), (new AspectList().add(Aspect.VOID, 4)) );
 		
@@ -34,10 +44,12 @@ public class ThaumcraftHandler {
 		
 		ThaumcraftApi.registerComplexObjectTag(new ItemStack(ModItems.enchantmentItem, 1, 0), (new AspectList().add(Aspect.WEAPON, 4)));
 		ThaumcraftApi.registerComplexObjectTag(new ItemStack(ModItems.enchantmentItem, 1, 1), (new AspectList().add(Aspect.GREED, 4)));
+		ThaumcraftApi.registerComplexObjectTag(new ItemStack(ModItems.enchantmentItem, 1, 3), (new AspectList().add(Aspect.GREED, 4)));
+		ThaumcraftApi.registerComplexObjectTag(new ItemStack(ModItems.enchantmentItem, 1, 2), (new AspectList().add(Aspect.HEAL, 4).add(Aspect.WEAPON, 4)));
 		
 		ThaumcraftApi.registerComplexObjectTag(new ItemStack(ModItems.itemTimeSpring, 1, OreDictionary.WILDCARD_VALUE), (new AspectList().add(Aspect.ELDRITCH, 4).add(Aspect.MAGIC, 6)));
 		
-		
+		ThaumcraftApi.registerComplexObjectTag(new ItemStack(ModItems.mortarPestle, 1, OreDictionary.WILDCARD_VALUE), (new AspectList().add(Aspect.CRAFT, 4)));
 		
 		//normal blocks
 		ThaumcraftApi.registerObjectTag(new ItemStack(ModBlocks.meatyore, 1, OreDictionary.WILDCARD_VALUE), (new AspectList().add(Aspect.FLESH, 8).add(Aspect.EARTH, 2)));

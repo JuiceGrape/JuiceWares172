@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
+import com.juicegrape.juicewares.config.ConfigInfo;
 import com.juicegrape.juicewares.items.ModItems;
 
 import cpw.mods.fml.common.registry.GameRegistry;
@@ -39,6 +40,9 @@ public class MortarPestleRecipes {
 	}
 	
 	public static void init() {
+		if (!ConfigInfo.enableMortarAndPestle) {
+			return;
+		}
 		List<String> ingots = new ArrayList<String>();
 		
 		for (String entry : OreDictionary.getOreNames()) {

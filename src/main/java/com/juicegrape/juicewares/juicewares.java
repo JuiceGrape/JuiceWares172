@@ -7,7 +7,6 @@ import net.minecraftforge.common.MinecraftForge;
 import com.juicegrape.juicewares.blocks.ModBlocks;
 import com.juicegrape.juicewares.compat.ThaumcraftHandler;
 import com.juicegrape.juicewares.config.ConfigHandler;
-import com.juicegrape.juicewares.config.Enabling;
 import com.juicegrape.juicewares.entities.Entity;
 import com.juicegrape.juicewares.generation.GenerationHandler;
 import com.juicegrape.juicewares.items.ModItems;
@@ -79,7 +78,6 @@ public class juicewares {
 		CustomRecipes.regCustomModRecipes();
 		VanillaItemRecipes.regCustomVanillaRecipes();
 		new GenerationHandler();
-		System.out.println(ModInformation.MESSAGE);
 		new FuelHandler();
 		Entity.initEggs();
 		Entity.initSpawns();
@@ -94,8 +92,7 @@ public class juicewares {
 		}
 		
 		
-		if(Enabling.enablePrimalEnchanting)
-			PrimalEnchantingMain.init();
+		PrimalEnchantingMain.init();
 		
 		MortarPestleRecipes.init();
 

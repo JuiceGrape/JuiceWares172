@@ -18,11 +18,9 @@ public class BlockInfo {
 	public static final String STRINGREED = "stringreed_block";
 	
 	public static final int STRINGREED_SPAWN_DEF = 1;
-	public static final int STRINGREED_GROWTH_DEF = 10;
 	public static final String STRINGREED_SPAWN_KEY = "Spawn rate hemp";
-	public static final String STRINGREED_GROWTH_KEY = "Growth speed hemp, cannot be higher than 15, lower is faster";
 	public static int STRINGREED_SPAWN;
-	public static int STRINGREED_GROWTH;
+	public static final int STRINGREED_GROWTH = 10;
 	
 	
 	//Cabinet
@@ -53,19 +51,6 @@ public class BlockInfo {
 	public static final String BLAZEFLOWER_UNLOCALIZED_NAME = "blockblazeflower";
 	
 	public static final String BLAZEFLOWER = "blazeflower_block";
-	
-	//Over Enchanter
-	public static final String OVERENCHANTER_KEY = "overenchanter_block";
-	
-	public static final String OVERENCHANTER_UNLOCALIZED_NAME = "blockoverenchanter";
-	
-	public static final String OVERENCHANTER = "overenchanter_block";
-	
-	public static final String OVERENCHANTER_FRONT = "overenchanter_block_front";
-	public static final String OVERENCHANTER_SIDE = "overenchanter_block_side";
-	public static final String OVERENCHANTER_REST = "overenchanter_block_rest";
-	
-	public static final String[] OVERENCHANTER_ARRAY = { OVERENCHANTER_FRONT, OVERENCHANTER_SIDE, OVERENCHANTER_REST };
 	
 	
 	
