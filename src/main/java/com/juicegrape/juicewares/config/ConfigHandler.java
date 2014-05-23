@@ -61,7 +61,7 @@ public class ConfigHandler {
 		ConfigInfo.enableSaddleRecipe = config.get(ConfigInfo.CATEGORY_RECIPE, "Enable saddle recipe", true).getBoolean(true);
 		
 		//Primal Enchanting
-		ConfigInfo.enablePrimalEnchanting = config.get(ConfigInfo.CATEGORY_RECIPE, "Enable primal enchanting", true).getBoolean(false);
+		ConfigInfo.enablePrimalEnchanting = config.get(ConfigInfo.CATEGORY_RECIPE, "Enable primal enchanting", true).getBoolean(true);
 		
 		
 		
