@@ -32,3 +32,4 @@ itemGroup.juicewares_juicetab=JuiceWares
 potion.cWaterBreathing=Oxygen Left
 nei.info.juicewares.primalenchant=Primal Enchanting
 nei.info.juicewares.primalinfo=All primal enchanting recipes
+death.attack.juicewares.timewoundDamage=%1$s ran out of time.

@@ -7,6 +7,10 @@
     "authorList" : [
  "JuiceGrape"
 ],
+    "authors" : [
+ "JuiceGrape"
+],
+
     "description" : "A collection of items, blocks, mobs, and changes designed for use in modpacks.",
     "url" : "http://juicewares.wikia.com/wiki/JuiceWares_Wiki",
     "updateUrl" : "",
