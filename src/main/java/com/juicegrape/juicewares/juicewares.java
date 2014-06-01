@@ -29,6 +29,7 @@ import cpw.mods.fml.common.SidedProxy;
 import cpw.mods.fml.common.event.FMLInitializationEvent;
 import cpw.mods.fml.common.event.FMLPostInitializationEvent;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
+import cpw.mods.fml.common.network.NetworkRegistry;
 
 @Mod(modid = ModInformation.ID, name = ModInformation.NAME, version = ModInformation.VERSION, dependencies = "after:MoreEnchants;after:Thaumcraft;after:Forestry;after:MineFactoryReloaded")
 public class juicewares {
@@ -43,7 +44,7 @@ public class juicewares {
 
 		@Override
 		public Item getTabIconItem() {
-			return ModItems.stringreed;
+			return ModItems.mortarPestle;
 		}
 		
 	};
@@ -81,6 +82,7 @@ public class juicewares {
 		new FuelHandler();
 		Entity.initEggs();
 		Entity.initSpawns();
+		NetworkRegistry.INSTANCE.registerGuiHandler(this, proxy);
 		System.out.println("JuiceWares succesfully initialized (probably)"); 
 	}
 

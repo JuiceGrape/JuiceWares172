@@ -1,9 +1,12 @@
 package com.juicegrape.juicewares.proxies;
 
+import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
+import net.minecraft.world.World;
 import net.minecraftforge.client.MinecraftForgeClient;
 
 import com.juicegrape.juicewares.blocks.ModBlocks;
+import com.juicegrape.juicewares.client.gui.GuiBook;
 import com.juicegrape.juicewares.client.models.ModelEyeball;
 import com.juicegrape.juicewares.client.render.AltarRender;
 import com.juicegrape.juicewares.client.render.CabinetRender;
@@ -51,6 +54,16 @@ public class ClientProxy extends CommonProxy {
 	@Override
 	public int addArmor(String armor) {
 		return RenderingRegistry.addNewArmourRendererPrefix(armor);
+	}
+	
+	@Override
+	public Object getClientGuiElement(int ID, EntityPlayer player, World world, int x, int y, int z) {
+		switch (ID) {
+		case 0:
+			return new GuiBook();
+		default:
+			return null;
+		}
 	}
 
 

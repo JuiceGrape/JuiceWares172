@@ -107,6 +107,13 @@ public class ItemInfo {
 	
 	public static final String MORTAR_PESTLE_ICON = "mortar_pestle_item";
 	
+	//Info book
+	public static final String INFO_BOOK_KEY = "info_book_item";
+		
+	public static final String INFO_BOOK_UNLOCALIZED_NAME = "iteminfobook";
+		
+	public static final String INFO_BOOK_ICON = "info_book_item";
+	
 	
 	
 	

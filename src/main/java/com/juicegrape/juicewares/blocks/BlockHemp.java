@@ -28,6 +28,7 @@ public class BlockHemp extends BlockReed {
 		blockIcon = register.registerIcon(BlockInfo.TEXTURE_LOCATION + ":" + BlockInfo.STRINGREED);
 	}
 	
+	
 	@Override
 	public void updateTick(World world, int x, int y, int z, Random random) {
 		if (canBlockStay(world, x, y, z)) {

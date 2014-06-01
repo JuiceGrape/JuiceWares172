@@ -29,6 +29,7 @@ public class ModItems {
 	public static Item match;
 	public static Item rocketBoots;
 	public static Item mortarPestle;
+	public static Item infobook;
 	
 	public static void init() {
 		stringreed = new ItemHemp();
@@ -63,6 +64,9 @@ public class ModItems {
 		
 		mortarPestle = new ItemMortarPestle();
 		GameRegistry.registerItem(mortarPestle, ItemInfo.MORTAR_PESTLE_KEY);
+		
+		infobook = new ItemInfoBook();
+		GameRegistry.registerItem(infobook, ItemInfo.INFO_BOOK_KEY);
 		
 
 	}

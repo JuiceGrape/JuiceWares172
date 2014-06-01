@@ -21,6 +21,7 @@ item.itemtimespring.name=Timewound Clock
 item.blazeflowerseeds.name=Smoldering Seeds
 item.itemmatch.name=Match
 item.itemmortarpestle.name=Mortar and Pestle
+item.iteminfobook.name=Juiciest Wares
 
 Entity:
 entity.eyeball.name=Eyeball
