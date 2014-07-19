@@ -1,0 +1,36 @@
+Blocks:
+tile.blockdrawer.name=Schrank
+tile.blockmeatyore.name=Eherfleisch
+tile.blockjuicealtar.name=Altar
+tile.blockstringreed.name=Hanf
+tile.blockblazeflower.name=Lohenblume
+
+Items:
+item.stringreeditem.name=Hanf
+item.divinghelmethat.name=Taucherhelm
+item.nightvisionhat.name=Nachtsichtbrille
+item.itemrocketboots.name=Drachenstiefel
+item.debugitem.name=Debug-Item
+lensitem0.name=Linse
+lensitem1.name=Nachtsichtglas
+enchantmentitem0.name=Wetzstein
+enchantmentitem1.name=Glücksstein
+enchantmentitem2.name=Heiliger Stein
+enchantmentitem3.name=Glücksjuwel
+item.itemtimespring.name=Zeitholzuhr
+item.blazeflowerseeds.name=Schwelende Samen
+item.itemmatch.name=Streichholz
+item.itemmortarpestle.name=Stößel und Mörser
+item.iteminfobook.name=Juiciest Wares
+
+Entity:
+entity.eyeball.name=Augapfel
+
+
+Misc:
+container.drawer.name=Schrank
+itemGroup.juicewares_juicetab=JuiceWares
+potion.cWaterBreathing=Sauerstoff übrig
+nei.info.juicewares.primalenchant=Primärverzauberung
+nei.info.juicewares.primalinfo=Alle Primärverzauberungsrezepte
+death.attack.juicewares.timewoundDamage=Die Zeit von %1$s lief ab.
