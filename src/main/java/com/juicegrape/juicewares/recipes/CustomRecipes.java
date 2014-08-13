@@ -200,6 +200,19 @@ public class CustomRecipes {
 			});
 		}
 		
+		if (ConfigInfo.enableDragonBootsRecipe) {
+			GameRegistry.addRecipe(new ItemStack(ModItems.rocketBoots), new Object[] {
+					"eee",
+					"LBL",
+					"#I#",
+					Character.valueOf('e'), Items.emerald,
+					Character.valueOf('L'), Blocks.lapis_block,
+					Character.valueOf('B'), new ItemStack(Items.iron_boots, 1, OreDictionary.WILDCARD_VALUE),
+					Character.valueOf('#'), Blocks.iron_bars,
+					Character.valueOf('I'), new ItemStack(Items.fireworks, 1, OreDictionary.WILDCARD_VALUE)
+			});
+		}
+		
 		
 		
 		

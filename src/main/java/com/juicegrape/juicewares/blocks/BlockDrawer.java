@@ -5,16 +5,16 @@ import java.util.Random;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockContainer;
 import net.minecraft.block.material.Material;
-import net.minecraft.client.renderer.texture.IIconRegister;
+import net.minecraft.client.particle.EffectRenderer;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.init.Blocks;
 import net.minecraft.inventory.IInventory;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.MathHelper;
+import net.minecraft.util.MovingObjectPosition;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import net.minecraftforge.common.util.ForgeDirection;
@@ -34,18 +34,23 @@ public class BlockDrawer extends BlockContainer {
 		setStepSound(Block.soundTypeWood);
 		setBlockName(BlockInfo.DRAWER_UNLOCALIZED_NAME);
 		this.setBlockBounds(0.0625F, 0.0F, 0.0625F, 0.9375F, 0.875F, 0.9375F);
+		
 
 	}
 	
 	public static Random random = new Random();
 	private static final ForgeDirection[] validRotationAxes = new ForgeDirection[] { ForgeDirection.UP, ForgeDirection.DOWN };
 
+	
 	@Override
 	@SideOnly(Side.CLIENT)
-	public void registerBlockIcons(IIconRegister register) {
-		blockIcon = Blocks.planks.getIcon(0, 0);
-	} 
+	public boolean addHitEffects(World world, MovingObjectPosition target, EffectRenderer effectRenderer) {
+	//	effectRenderer.
+		return true;
+	}
 	
+	
+
 	@Override
     public boolean isOpaqueCube()
     {

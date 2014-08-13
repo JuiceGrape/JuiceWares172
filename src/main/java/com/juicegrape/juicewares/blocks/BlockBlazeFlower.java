@@ -25,6 +25,7 @@ public class BlockBlazeFlower extends BlockNetherWart {
 		setBlockBounds(0.5F - f1, 0F, 0.5F - f1, 0.5F + f1, 1.5F * f1, 0.5F + f1);
 		setBlockName(BlockInfo.BLAZEFLOWER_UNLOCALIZED_NAME);
 		random = new Random();
+		setStepSound(soundTypeGrass);
 	}
 	
 	@Override

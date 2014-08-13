@@ -21,6 +21,7 @@ public class BlockHemp extends BlockReed {
 	public BlockHemp() {
 		super();
 		setBlockName(BlockInfo.STRINGREED_UNLOCALIZED);	
+		setStepSound(soundTypeGrass);
 	}
 	
 	@Override

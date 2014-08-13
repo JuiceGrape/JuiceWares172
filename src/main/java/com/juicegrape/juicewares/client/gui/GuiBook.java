@@ -13,6 +13,7 @@ import net.minecraft.util.ResourceLocation;
 public class GuiBook extends GuiContainer {
 	
 	private static final ResourceLocation book = new ResourceLocation("juicewares:textures/gui/book.png");
+	private static final ResourceLocation grid = new ResourceLocation("juicewares:textures/gui/Grid.png");
 	
 	private GuiButton
 		buttonNext,
@@ -58,15 +59,14 @@ public class GuiBook extends GuiContainer {
 
 		Gui.func_146110_a(guiLeft, guiTop, 0,0, xSize, ySize, xSize, ySize);
 		
-		if ((currentPage == pages.length || currentPage == pages.length - 1)) {
-			
-		} else {
-			buttonNext.renderButton(mc, mouseX, mouseY);
-		}
-
+		if (!(currentPage == pages.length - 2 || currentPage == pages.length - 1))
+		buttonNext.renderButton(mc, mouseX, mouseY);
 		
 		if (!(currentPage == 0 || currentPage == 1))
-		buttonBack.renderButton(mc, mouseX, mouseY);	
+		buttonBack.renderButton(mc, mouseX, mouseY);
+		
+		mc.renderEngine.bindTexture(grid);
+		Gui.func_146110_a(50, 50, 0, 0, 56, 96, 56, 96);
 	}
 	
 	@Override
@@ -78,27 +78,11 @@ public class GuiBook extends GuiContainer {
 		}
 		
 		if (buttonNext.isOnButton(mouseX, mouseY)) {
-			
-			if (currentPage < pages.length) {
-				currentPage++;
-			}
-			if (currentPage < pages.length) {
-				currentPage++;
-			} else {
-				currentPage--;
-			}
-			
-		} else if (buttonBack.isOnButton(mouseX, mouseY)){
-			
-			if (currentPage >= 0) {
-				currentPage--;
-			}
-			if (currentPage >= 0) {
-				currentPage--;
-			} else {
-				currentPage++;
-			}
-			
+			if(!(currentPage == pages.length - 2 || currentPage == pages.length - 1))
+			currentPage+=2;
+		} else if (buttonBack.isOnButton(mouseX,  mouseY)) {
+			if (!(currentPage == 0 || currentPage == 1))
+			currentPage-=2;
 		}
 	}
 	
@@ -142,6 +126,7 @@ public class GuiBook extends GuiContainer {
 	
 	public void drawItemStack(ItemStack stack, int x, int y) {
 		GuiScreen.itemRender.renderItemIntoGUI(fontRender, mc.getTextureManager(), stack, x, y);
+		
 	}
 
 }

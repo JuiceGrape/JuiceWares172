@@ -21,17 +21,27 @@ import net.minecraftforge.event.entity.living.LivingDeathEvent;
 import net.minecraftforge.event.entity.living.LivingEvent.LivingUpdateEvent;
 import net.minecraftforge.event.world.BlockEvent.BreakEvent;
 
+import com.juicegrape.juicewares.ModInformation;
 import com.juicegrape.juicewares.juicewares;
+import com.juicegrape.juicewares.config.ConfigHandler;
 import com.juicegrape.juicewares.config.ConfigInfo;
 import com.juicegrape.juicewares.items.ModItems;
 import com.juicegrape.juicewares.misc.CustomEntityItem;
 import com.juicegrape.juicewares.potionEffects.Potions;
 
+import cpw.mods.fml.client.event.ConfigChangedEvent;
 import cpw.mods.fml.common.eventhandler.SubscribeEvent;
 
 public class EventHooks {
 	
 	public static final double DEFAULT_GRAVITY = -0.0784000015258789;
+	
+	@SubscribeEvent
+	public void onConfigChanged(ConfigChangedEvent.OnConfigChangedEvent event) {
+		if (event.modID.equals(ModInformation.ID)) {
+			ConfigHandler.syncConfig(ConfigHandler.config);
+		}
+	}
 
 
 	@SubscribeEvent

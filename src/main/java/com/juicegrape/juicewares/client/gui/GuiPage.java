@@ -35,7 +35,7 @@ public class GuiPage {
 		
 		List<GuiPage> pages = new ArrayList<GuiPage>();
 		
-		pages.add(new GuiPage("TestCategory", "This is a test of the length of this string. If I can change it this way that would be amaze-aballs."));
+		pages.add(new GuiPage("TestCategory", "swek"));
 		pages.add(new GuiPage("TestCategory", 
 				new ItemStack(ModItems.blazeflowerseeds), new Object[] {
 						new ItemStack(ModBlocks.altar)
@@ -44,6 +44,7 @@ public class GuiPage {
 		pages.add(new GuiPage("TestCategory", "Test3"));
 		pages.add(new GuiPage("TestCategory", "Test4"));
 		pages.add(new GuiPage("TestCategory", "Test5"));
+		pages.add(new GuiPage("TestCategory", "Test6"));
 		
 		return pages.toArray(new GuiPage[]{ null });
 		

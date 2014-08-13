@@ -42,7 +42,8 @@ public class ConfigInfo {
 	enableModerateNightVisionLensRecipe,
 	enableHardNightVisionLensRecipe,
 	enableSuperHardNightVisionLensRecipe,
-	enablePrimalEnchanting
+	enablePrimalEnchanting,
+	enableDragonBootsRecipe
 	;
 	
 	//Mod integration
@@ -58,15 +59,26 @@ public class ConfigInfo {
 	
 	//Categories
 	public static final String
-	CATEGORY_RECIPE = "Recipes",
-	CATEGORY_WORLDGEN = "Worldgen",
-	CATEGORY_ENTITIES = "Entities",
-	CATEGORY_LOOT = "Loot",
-	CATEGORY_INTEGRATION = "Mod integration",
-	CATEGORY_BLOCKS = "Blocks",
-	CATEGORY_ITEMS = "Items",
-	CATEGORY_MISC = "Misc"
+	CATEGORY_RECIPE = "recipes",
+	CATEGORY_WORLDGEN = "worldgen",
+	CATEGORY_ENTITIES = "entities",
+	CATEGORY_LOOT = "loot",
+	CATEGORY_INTEGRATION = "mod integration",
+	CATEGORY_BLOCKS = "blocks",
+	CATEGORY_ITEMS = "items",
+	CATEGORY_MISC = "misc"
 	;
+	
+	public static final String[] categories =  new String[] {
+		CATEGORY_BLOCKS,
+		CATEGORY_ENTITIES,
+		CATEGORY_INTEGRATION,
+		CATEGORY_ITEMS,
+		CATEGORY_LOOT,
+		CATEGORY_MISC,
+		CATEGORY_RECIPE,
+		CATEGORY_WORLDGEN
+	};
 	
 
 }

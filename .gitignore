@@ -4,6 +4,7 @@ screenshots/
 saves/
 resourcepacks/
 mods/
+mods_old/
 gradle/
 eclipse/
 crash-reports/
@@ -18,6 +19,7 @@ output-server.log
 gradlew
 asm/
 assets/
+asm/ccl_modular/
 
 build.gradle
 

@@ -26,20 +26,7 @@ public class MortarPestleRecipes {
 		
 	}
 	
-/*	private static ItemStack getOredictItemWithPref(String oreName, String modid) {
-		List<ItemStack> results = OreDictionary.getOres(oreName);
-		if (!results.isEmpty()) {
-			Iterator<ItemStack> itr = results.iterator();
-			while (itr.hasNext()) {
-				ItemStack stack = itr.next();
-				String name = stack.getUnlocalizedName();
-				if (name.contains(modid)) {
-					
-				}
-			}
-		} 
-		return null;
-	} */
+
 	
 	private static boolean hasBoth(String ingot) {
 		boolean hasIngot = false;
@@ -111,5 +98,19 @@ public class MortarPestleRecipes {
 		
 	}
 	
+	/*	private static ItemStack getOredictItemWithPref(String oreName, String modid) {
+		List<ItemStack> results = OreDictionary.getOres(oreName);
+		if (!results.isEmpty()) {
+			Iterator<ItemStack> itr = results.iterator();
+			while (itr.hasNext()) {
+				ItemStack stack = itr.next();
+				String name = stack.getUnlocalizedName();
+				if (name.contains(modid)) {
+					
+				}
+			}
+		} 
+		return null;
+	} */
 
 }

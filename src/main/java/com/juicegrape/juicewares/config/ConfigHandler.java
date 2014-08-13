@@ -1,24 +1,26 @@
 package com.juicegrape.juicewares.config;
 
-import java.io.File;
+import net.minecraftforge.common.config.Configuration;
 
 import com.juicegrape.juicewares.blocks.BlockInfo;
 import com.juicegrape.juicewares.entities.EntityInfo;
 import com.juicegrape.juicewares.potionEffects.Potions;
 import com.juicegrape.juicewares.recipes.RecipeInfo;
 
-import net.minecraftforge.common.config.Configuration;
-
 public class ConfigHandler {
 	
+	public static Configuration config;
 	
-	public static void init(File file) {
-		Configuration config = new Configuration(file);
+	public static void init() {
 		
 		config.load();
 		
+		syncConfig(config);
+	}
+	
+	public static void syncConfig(Configuration config) {
 		//Blocks
-		
+
 		//Drawer
 		ConfigInfo.enableDrawer = config.get(ConfigInfo.CATEGORY_BLOCKS, "Enable drawer", true).getBoolean(true);
 		
@@ -63,6 +65,8 @@ public class ConfigHandler {
 		//Primal Enchanting
 		ConfigInfo.enablePrimalEnchanting = config.get(ConfigInfo.CATEGORY_RECIPE, "Enable primal enchanting", true).getBoolean(true);
 		
+		//Dragon Boots
+		ConfigInfo.enableDragonBootsRecipe = config.get(ConfigInfo.CATEGORY_RECIPE, "Enable dragon boots recipe", false).getBoolean(false);
 		
 		
 		//Worldgen
@@ -107,8 +111,10 @@ public class ConfigHandler {
 		
 		//Exploding gunpowder
 		ConfigInfo.enableExplodingGunpowder = config.get("Misc", "Enable gunpowder exploding when on fire", true).getBoolean(true);
-	
-		config.save();
+		
+		if (config.hasChanged())
+			config.save();
+
 	}
 
 }

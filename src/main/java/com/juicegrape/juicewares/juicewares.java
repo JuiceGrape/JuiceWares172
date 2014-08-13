@@ -3,6 +3,7 @@ package com.juicegrape.juicewares;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.Item;
 import net.minecraftforge.common.MinecraftForge;
+import net.minecraftforge.common.config.Configuration;
 
 import com.juicegrape.juicewares.blocks.ModBlocks;
 import com.juicegrape.juicewares.compat.ThaumcraftHandler;
@@ -31,7 +32,7 @@ import cpw.mods.fml.common.event.FMLPostInitializationEvent;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 import cpw.mods.fml.common.network.NetworkRegistry;
 
-@Mod(modid = ModInformation.ID, name = ModInformation.NAME, version = ModInformation.VERSION, dependencies = "after:MoreEnchants;after:Thaumcraft;after:Forestry;after:MineFactoryReloaded")
+@Mod(modid = ModInformation.ID, name = ModInformation.NAME, version = ModInformation.VERSION, guiFactory = "com.juicegrape.juicewares.client.gui.JuiceWaresGuiFactory", dependencies = "after:MoreEnchants;after:Thaumcraft;after:Forestry;after:MineFactoryReloaded")
 public class juicewares {
 
 	@Instance(ModInformation.ID)
@@ -39,6 +40,8 @@ public class juicewares {
 
 	@SidedProxy(clientSide = "com.juicegrape.juicewares.proxies.ClientProxy", serverSide = "com.juicegrape.juicewares.proxies.CommonProxy")
 	public static CommonProxy proxy;
+	
+	
 	
 	public static CreativeTabs juiceTab = new CreativeTabs("juicewares_juicetab") {
 
@@ -51,7 +54,8 @@ public class juicewares {
 
 	@EventHandler
 	public void preInit(FMLPreInitializationEvent event) {
-		ConfigHandler.init(event.getSuggestedConfigurationFile());
+		ConfigHandler.config = new Configuration(event.getSuggestedConfigurationFile());
+		ConfigHandler.init();
 		ModBlocks.init();
 		ModItems.init();
 		Entity.init();
