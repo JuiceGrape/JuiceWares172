@@ -19,7 +19,6 @@ output-server.log
 gradlew
 asm/
 assets/
-asm/ccl_modular/
 
 build.gradle
 

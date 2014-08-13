@@ -4,9 +4,13 @@ public class net/minecraft/block/Block {
 
   // compiled from: Block.java
   // access flags 0x1008
-  static synthetic INNERCLASS net/minecraft/block/Block$4 net/minecraft/block/Block null
+  static synthetic INNERCLASS net/minecraft/block/Block$6 net/minecraft/block/Block null
   // access flags 0x9
   public static INNERCLASS net/minecraft/block/Block$SoundType net/minecraft/block/Block SoundType
+  // access flags 0x0
+  INNERCLASS net/minecraft/block/Block$5 null null
+  // access flags 0x0
+  INNERCLASS net/minecraft/block/Block$4 null null
   // access flags 0x8
   static INNERCLASS net/minecraft/block/Block$3 null null
   // access flags 0x8
@@ -134,10 +138,10 @@ public class net/minecraft/block/Block {
   // access flags 0x1A
   private final static Ljava/lang/String; __OBFID = "CL_00000199"
 
-  // access flags 0x2
+  // access flags 0x4
   // signature Ljava/lang/ThreadLocal<Lnet/minecraft/entity/player/EntityPlayer;>;
   // declaration: java.lang.ThreadLocal<net.minecraft.entity.player.EntityPlayer>
-  private Ljava/lang/ThreadLocal; harvesters
+  protected Ljava/lang/ThreadLocal; harvesters
 
   // access flags 0x2
   // signature Ljava/lang/ThreadLocal<Ljava/lang/Integer;>;
@@ -152,6 +156,16 @@ public class net/minecraft/block/Block {
 
   // access flags 0x2
   private [I harvestLevel
+
+  // access flags 0x4
+  // signature Ljava/lang/ThreadLocal<Ljava/lang/Boolean;>;
+  // declaration: java.lang.ThreadLocal<java.lang.Boolean>
+  protected Ljava/lang/ThreadLocal; captureDrops
+
+  // access flags 0x4
+  // signature Ljava/lang/ThreadLocal<Ljava/util/List<Lnet/minecraft/item/ItemStack;>;>;
+  // declaration: java.lang.ThreadLocal<java.util.List<net.minecraft.item.ItemStack>>
+  protected Ljava/lang/ThreadLocal; capturedDrops
 
   // access flags 0x9
   public static getIdFromBlock(Lnet/minecraft/block/Block;)I
@@ -3486,33 +3500,33 @@ public class net/minecraft/block/Block {
     ICONST_1
     PUTFIELD net/minecraft/block/Block.enableStats : Z
    L3
-    LINENUMBER 1483 L3
+    LINENUMBER 1489 L3
     ALOAD 0
     NEW java/lang/ThreadLocal
     DUP
     INVOKESPECIAL java/lang/ThreadLocal.<init> ()V
     PUTFIELD net/minecraft/block/Block.harvesters : Ljava/lang/ThreadLocal;
    L4
-    LINENUMBER 1484 L4
+    LINENUMBER 1490 L4
     ALOAD 0
     NEW java/lang/ThreadLocal
     DUP
     INVOKESPECIAL java/lang/ThreadLocal.<init> ()V
     PUTFIELD net/minecraft/block/Block.silk_check_meta : Ljava/lang/ThreadLocal;
    L5
-    LINENUMBER 1736 L5
+    LINENUMBER 1750 L5
     ALOAD 0
     ALOAD 0
     INSTANCEOF net/minecraft/block/ITileEntityProvider
     PUTFIELD net/minecraft/block/Block.isTileProvider : Z
    L6
-    LINENUMBER 2473 L6
+    LINENUMBER 2487 L6
     ALOAD 0
     BIPUSH 16
     ANEWARRAY java/lang/String
     PUTFIELD net/minecraft/block/Block.harvestTool : [Ljava/lang/String;
    L7
-    LINENUMBER 2474 L7
+    LINENUMBER 2488 L7
     ALOAD 0
     BIPUSH 16
     NEWARRAY T_INT
@@ -3582,27 +3596,43 @@ public class net/minecraft/block/Block {
     IASTORE
     PUTFIELD net/minecraft/block/Block.harvestLevel : [I
    L8
-    LINENUMBER 455 L8
+    LINENUMBER 2568 L8
+    ALOAD 0
+    NEW net/minecraft/block/Block$4
+    DUP
+    ALOAD 0
+    INVOKESPECIAL net/minecraft/block/Block$4.<init> (Lnet/minecraft/block/Block;)V
+    PUTFIELD net/minecraft/block/Block.captureDrops : Ljava/lang/ThreadLocal;
+   L9
+    LINENUMBER 2572 L9
+    ALOAD 0
+    NEW net/minecraft/block/Block$5
+    DUP
+    ALOAD 0
+    INVOKESPECIAL net/minecraft/block/Block$5.<init> (Lnet/minecraft/block/Block;)V
+    PUTFIELD net/minecraft/block/Block.capturedDrops : Ljava/lang/ThreadLocal;
+   L10
+    LINENUMBER 455 L10
     ALOAD 0
     GETSTATIC net/minecraft/block/Block.soundTypeStone : Lnet/minecraft/block/Block$SoundType;
     PUTFIELD net/minecraft/block/Block.stepSound : Lnet/minecraft/block/Block$SoundType;
-   L9
-    LINENUMBER 456 L9
+   L11
+    LINENUMBER 456 L11
     ALOAD 0
     FCONST_1
     PUTFIELD net/minecraft/block/Block.blockParticleGravity : F
-   L10
-    LINENUMBER 457 L10
+   L12
+    LINENUMBER 457 L12
     ALOAD 0
     LDC 0.6
     PUTFIELD net/minecraft/block/Block.slipperiness : F
-   L11
-    LINENUMBER 458 L11
+   L13
+    LINENUMBER 458 L13
     ALOAD 0
     ALOAD 1
     PUTFIELD net/minecraft/block/Block.blockMaterial : Lnet/minecraft/block/material/Material;
-   L12
-    LINENUMBER 459 L12
+   L14
+    LINENUMBER 459 L14
     ALOAD 0
     FCONST_0
     FCONST_0
@@ -3611,46 +3641,46 @@ public class net/minecraft/block/Block {
     FCONST_1
     FCONST_1
     INVOKEVIRTUAL net/minecraft/block/Block.setBlockBounds (FFFFFF)V
-   L13
-    LINENUMBER 460 L13
+   L15
+    LINENUMBER 460 L15
     ALOAD 0
     ALOAD 0
     INVOKEVIRTUAL net/minecraft/block/Block.isOpaqueCube ()Z
     PUTFIELD net/minecraft/block/Block.opaque : Z
-   L14
-    LINENUMBER 461 L14
+   L16
+    LINENUMBER 461 L16
     ALOAD 0
     ALOAD 0
     INVOKEVIRTUAL net/minecraft/block/Block.isOpaqueCube ()Z
-    IFEQ L15
+    IFEQ L17
     SIPUSH 255
-    GOTO L16
-   L15
+    GOTO L18
+   L17
    FRAME FULL [net/minecraft/block/Block net/minecraft/block/material/Material] [net/minecraft/block/Block]
     ICONST_0
-   L16
+   L18
    FRAME FULL [net/minecraft/block/Block net/minecraft/block/material/Material] [net/minecraft/block/Block I]
     PUTFIELD net/minecraft/block/Block.lightOpacity : I
-   L17
-    LINENUMBER 462 L17
+   L19
+    LINENUMBER 462 L19
     ALOAD 0
     ALOAD 1
     INVOKEVIRTUAL net/minecraft/block/material/Material.getCanBlockGrass ()Z
-    IFNE L18
+    IFNE L20
     ICONST_1
-    GOTO L19
-   L18
+    GOTO L21
+   L20
    FRAME FULL [net/minecraft/block/Block net/minecraft/block/material/Material] [net/minecraft/block/Block]
     ICONST_0
-   L19
+   L21
    FRAME FULL [net/minecraft/block/Block net/minecraft/block/material/Material] [net/minecraft/block/Block I]
     PUTFIELD net/minecraft/block/Block.canBlockGrass : Z
-   L20
-    LINENUMBER 463 L20
+   L22
+    LINENUMBER 463 L22
     RETURN
-   L21
-    LOCALVARIABLE this Lnet/minecraft/block/Block; L0 L21 0
-    LOCALVARIABLE p_i45394_1_ Lnet/minecraft/block/material/Material; L0 L21 1
+   L23
+    LOCALVARIABLE this Lnet/minecraft/block/Block; L0 L23 0
+    LOCALVARIABLE p_i45394_1_ Lnet/minecraft/block/material/Material; L0 L23 1
     MAXSTACK = 7
     MAXLOCALS = 2
 
@@ -4270,7 +4300,6 @@ public class net/minecraft/block/Block {
   public getCollisionBoundingBoxFromPool(Lnet/minecraft/world/World;III)Lnet/minecraft/util/AxisAlignedBB;
    L0
     LINENUMBER 681 L0
-    INVOKESTATIC net/minecraft/util/AxisAlignedBB.getAABBPool ()Lnet/minecraft/util/AABBPool;
     ILOAD 2
     I2D
     ALOAD 0
@@ -4301,7 +4330,7 @@ public class net/minecraft/block/Block {
     ALOAD 0
     GETFIELD net/minecraft/block/Block.maxZ : D
     DADD
-    INVOKEVIRTUAL net/minecraft/util/AABBPool.getAABB (DDDDDD)Lnet/minecraft/util/AxisAlignedBB;
+    INVOKESTATIC net/minecraft/util/AxisAlignedBB.getBoundingBox (DDDDDD)Lnet/minecraft/util/AxisAlignedBB;
     ARETURN
    L1
     LOCALVARIABLE this Lnet/minecraft/block/Block; L0 L1 0
@@ -4309,7 +4338,7 @@ public class net/minecraft/block/Block {
     LOCALVARIABLE p_149668_2_ I L0 L1 2
     LOCALVARIABLE p_149668_3_ I L0 L1 3
     LOCALVARIABLE p_149668_4_ I L0 L1 4
-    MAXSTACK = 15
+    MAXSTACK = 14
     MAXLOCALS = 5
 
   // access flags 0x11
@@ -4333,7 +4362,6 @@ public class net/minecraft/block/Block {
   @Lcpw/mods/fml/relauncher/SideOnly;(value=Lcpw/mods/fml/relauncher/Side;.CLIENT)
    L0
     LINENUMBER 699 L0
-    INVOKESTATIC net/minecraft/util/AxisAlignedBB.getAABBPool ()Lnet/minecraft/util/AABBPool;
     ILOAD 2
     I2D
     ALOAD 0
@@ -4364,7 +4392,7 @@ public class net/minecraft/block/Block {
     ALOAD 0
     GETFIELD net/minecraft/block/Block.maxZ : D
     DADD
-    INVOKEVIRTUAL net/minecraft/util/AABBPool.getAABB (DDDDDD)Lnet/minecraft/util/AxisAlignedBB;
+    INVOKESTATIC net/minecraft/util/AxisAlignedBB.getBoundingBox (DDDDDD)Lnet/minecraft/util/AxisAlignedBB;
     ARETURN
    L1
     LOCALVARIABLE this Lnet/minecraft/block/Block; L0 L1 0
@@ -4372,7 +4400,7 @@ public class net/minecraft/block/Block {
     LOCALVARIABLE p_149633_2_ I L0 L1 2
     LOCALVARIABLE p_149633_3_ I L0 L1 3
     LOCALVARIABLE p_149633_4_ I L0 L1 4
-    MAXSTACK = 15
+    MAXSTACK = 14
     MAXLOCALS = 5
 
   // access flags 0x1
@@ -4713,10 +4741,31 @@ public class net/minecraft/block/Block {
     IFEQ L1
    L2
     LINENUMBER 828 L2
+    ALOAD 0
+    GETFIELD net/minecraft/block/Block.captureDrops : Ljava/lang/ThreadLocal;
+    INVOKEVIRTUAL java/lang/ThreadLocal.get ()Ljava/lang/Object;
+    CHECKCAST java/lang/Boolean
+    INVOKEVIRTUAL java/lang/Boolean.booleanValue ()Z
+    IFEQ L3
+   L4
+    LINENUMBER 830 L4
+    ALOAD 0
+    GETFIELD net/minecraft/block/Block.capturedDrops : Ljava/lang/ThreadLocal;
+    INVOKEVIRTUAL java/lang/ThreadLocal.get ()Ljava/lang/Object;
+    CHECKCAST java/util/List
+    ALOAD 5
+    INVOKEINTERFACE java/util/List.add (Ljava/lang/Object;)Z
+    POP
+   L5
+    LINENUMBER 831 L5
+    RETURN
+   L3
+    LINENUMBER 833 L3
+   FRAME FULL [net/minecraft/block/Block net/minecraft/world/World I I I net/minecraft/item/ItemStack] []
     LDC 0.7
     FSTORE 6
-   L3
-    LINENUMBER 829 L3
+   L6
+    LINENUMBER 834 L6
     ALOAD 1
     GETFIELD net/minecraft/world/World.rand : Ljava/util/Random;
     INVOKEVIRTUAL java/util/Random.nextFloat ()F
@@ -4731,8 +4780,8 @@ public class net/minecraft/block/Block {
     DMUL
     DADD
     DSTORE 7
-   L4
-    LINENUMBER 830 L4
+   L7
+    LINENUMBER 835 L7
     ALOAD 1
     GETFIELD net/minecraft/world/World.rand : Ljava/util/Random;
     INVOKEVIRTUAL java/util/Random.nextFloat ()F
@@ -4747,8 +4796,8 @@ public class net/minecraft/block/Block {
     DMUL
     DADD
     DSTORE 9
-   L5
-    LINENUMBER 831 L5
+   L8
+    LINENUMBER 836 L8
     ALOAD 1
     GETFIELD net/minecraft/world/World.rand : Ljava/util/Random;
     INVOKEVIRTUAL java/util/Random.nextFloat ()F
@@ -4763,8 +4812,8 @@ public class net/minecraft/block/Block {
     DMUL
     DADD
     DSTORE 11
-   L6
-    LINENUMBER 832 L6
+   L9
+    LINENUMBER 837 L9
     NEW net/minecraft/entity/item/EntityItem
     DUP
     ALOAD 1
@@ -4783,61 +4832,61 @@ public class net/minecraft/block/Block {
     ALOAD 5
     INVOKESPECIAL net/minecraft/entity/item/EntityItem.<init> (Lnet/minecraft/world/World;DDDLnet/minecraft/item/ItemStack;)V
     ASTORE 13
-   L7
-    LINENUMBER 833 L7
+   L10
+    LINENUMBER 838 L10
     ALOAD 13
     BIPUSH 10
     PUTFIELD net/minecraft/entity/item/EntityItem.delayBeforeCanPickup : I
-   L8
-    LINENUMBER 834 L8
+   L11
+    LINENUMBER 839 L11
     ALOAD 1
     ALOAD 13
     INVOKEVIRTUAL net/minecraft/world/World.spawnEntityInWorld (Lnet/minecraft/entity/Entity;)Z
     POP
    L1
-    LINENUMBER 836 L1
+    LINENUMBER 841 L1
    FRAME FULL [net/minecraft/block/Block net/minecraft/world/World I I I net/minecraft/item/ItemStack] []
     RETURN
-   L9
-    LOCALVARIABLE f F L3 L1 6
-    LOCALVARIABLE d0 D L4 L1 7
-    LOCALVARIABLE d1 D L5 L1 9
-    LOCALVARIABLE d2 D L6 L1 11
-    LOCALVARIABLE entityitem Lnet/minecraft/entity/item/EntityItem; L7 L1 13
-    LOCALVARIABLE this Lnet/minecraft/block/Block; L0 L9 0
-    LOCALVARIABLE p_149642_1_ Lnet/minecraft/world/World; L0 L9 1
-    LOCALVARIABLE p_149642_2_ I L0 L9 2
-    LOCALVARIABLE p_149642_3_ I L0 L9 3
-    LOCALVARIABLE p_149642_4_ I L0 L9 4
-    LOCALVARIABLE p_149642_5_ Lnet/minecraft/item/ItemStack; L0 L9 5
+   L12
+    LOCALVARIABLE f F L6 L1 6
+    LOCALVARIABLE d0 D L7 L1 7
+    LOCALVARIABLE d1 D L8 L1 9
+    LOCALVARIABLE d2 D L9 L1 11
+    LOCALVARIABLE entityitem Lnet/minecraft/entity/item/EntityItem; L10 L1 13
+    LOCALVARIABLE this Lnet/minecraft/block/Block; L0 L12 0
+    LOCALVARIABLE p_149642_1_ Lnet/minecraft/world/World; L0 L12 1
+    LOCALVARIABLE p_149642_2_ I L0 L12 2
+    LOCALVARIABLE p_149642_3_ I L0 L12 3
+    LOCALVARIABLE p_149642_4_ I L0 L12 4
+    LOCALVARIABLE p_149642_5_ Lnet/minecraft/item/ItemStack; L0 L12 5
     MAXSTACK = 11
     MAXLOCALS = 14
 
   // access flags 0x1
   public dropXpOnBlockBreak(Lnet/minecraft/world/World;IIII)V
    L0
-    LINENUMBER 843 L0
+    LINENUMBER 848 L0
     ALOAD 1
     GETFIELD net/minecraft/world/World.isRemote : Z
     IFNE L1
    L2
-    LINENUMBER 845 L2
+    LINENUMBER 850 L2
    FRAME FULL [net/minecraft/block/Block net/minecraft/world/World I I I I] []
     ILOAD 5
     IFLE L1
    L3
-    LINENUMBER 847 L3
+    LINENUMBER 852 L3
     ILOAD 5
     INVOKESTATIC net/minecraft/entity/item/EntityXPOrb.getXPSplit (I)I
     ISTORE 6
    L4
-    LINENUMBER 848 L4
+    LINENUMBER 853 L4
     ILOAD 5
     ILOAD 6
     ISUB
     ISTORE 5
    L5
-    LINENUMBER 849 L5
+    LINENUMBER 854 L5
     ALOAD 1
     NEW net/minecraft/entity/item/EntityXPOrb
     DUP
@@ -4859,10 +4908,10 @@ public class net/minecraft/block/Block {
     INVOKEVIRTUAL net/minecraft/world/World.spawnEntityInWorld (Lnet/minecraft/entity/Entity;)Z
     POP
    L6
-    LINENUMBER 850 L6
+    LINENUMBER 855 L6
     GOTO L2
    L1
-    LINENUMBER 852 L1
+    LINENUMBER 857 L1
    FRAME FULL [net/minecraft/block/Block net/minecraft/world/World I I I I] []
     RETURN
    L7
@@ -4879,7 +4928,7 @@ public class net/minecraft/block/Block {
   // access flags 0x1
   public damageDropped(I)I
    L0
-    LINENUMBER 859 L0
+    LINENUMBER 864 L0
     ICONST_0
     IRETURN
    L1
@@ -4891,7 +4940,7 @@ public class net/minecraft/block/Block {
   // access flags 0x1
   public getExplosionResistance(Lnet/minecraft/entity/Entity;)F
    L0
-    LINENUMBER 867 L0
+    LINENUMBER 872 L0
     ALOAD 0
     GETFIELD net/minecraft/block/Block.blockResistance : F
     LDC 5.0
@@ -4906,7 +4955,7 @@ public class net/minecraft/block/Block {
   // access flags 0x1
   public collisionRayTrace(Lnet/minecraft/world/World;IIILnet/minecraft/util/Vec3;Lnet/minecraft/util/Vec3;)Lnet/minecraft/util/MovingObjectPosition;
    L0
-    LINENUMBER 876 L0
+    LINENUMBER 881 L0
     ALOAD 0
     ALOAD 1
     ILOAD 2
@@ -4914,7 +4963,7 @@ public class net/minecraft/block/Block {
     ILOAD 4
     INVOKEVIRTUAL net/minecraft/block/Block.setBlockBoundsBasedOnState (Lnet/minecraft/world/IBlockAccess;III)V
    L1
-    LINENUMBER 877 L1
+    LINENUMBER 882 L1
     ALOAD 5
     ILOAD 2
     INEG
@@ -4928,7 +4977,7 @@ public class net/minecraft/block/Block {
     INVOKEVIRTUAL net/minecraft/util/Vec3.addVector (DDD)Lnet/minecraft/util/Vec3;
     ASTORE 5
    L2
-    LINENUMBER 878 L2
+    LINENUMBER 883 L2
     ALOAD 6
     ILOAD 2
     INEG
@@ -4942,7 +4991,7 @@ public class net/minecraft/block/Block {
     INVOKEVIRTUAL net/minecraft/util/Vec3.addVector (DDD)Lnet/minecraft/util/Vec3;
     ASTORE 6
    L3
-    LINENUMBER 879 L3
+    LINENUMBER 884 L3
     ALOAD 5
     ALOAD 6
     ALOAD 0
@@ -4950,7 +4999,7 @@ public class net/minecraft/block/Block {
     INVOKEVIRTUAL net/minecraft/util/Vec3.getIntermediateWithXValue (Lnet/minecraft/util/Vec3;D)Lnet/minecraft/util/Vec3;
     ASTORE 7
    L4
-    LINENUMBER 880 L4
+    LINENUMBER 885 L4
     ALOAD 5
     ALOAD 6
     ALOAD 0
@@ -4958,7 +5007,7 @@ public class net/minecraft/block/Block {
     INVOKEVIRTUAL net/minecraft/util/Vec3.getIntermediateWithXValue (Lnet/minecraft/util/Vec3;D)Lnet/minecraft/util/Vec3;
     ASTORE 8
    L5
-    LINENUMBER 881 L5
+    LINENUMBER 886 L5
     ALOAD 5
     ALOAD 6
     ALOAD 0
@@ -4966,7 +5015,7 @@ public class net/minecraft/block/Block {
     INVOKEVIRTUAL net/minecraft/util/Vec3.getIntermediateWithYValue (Lnet/minecraft/util/Vec3;D)Lnet/minecraft/util/Vec3;
     ASTORE 9
    L6
-    LINENUMBER 882 L6
+    LINENUMBER 887 L6
     ALOAD 5
     ALOAD 6
     ALOAD 0
@@ -4974,7 +5023,7 @@ public class net/minecraft/block/Block {
     INVOKEVIRTUAL net/minecraft/util/Vec3.getIntermediateWithYValue (Lnet/minecraft/util/Vec3;D)Lnet/minecraft/util/Vec3;
     ASTORE 10
    L7
-    LINENUMBER 883 L7
+    LINENUMBER 888 L7
     ALOAD 5
     ALOAD 6
     ALOAD 0
@@ -4982,7 +5031,7 @@ public class net/minecraft/block/Block {
     INVOKEVIRTUAL net/minecraft/util/Vec3.getIntermediateWithZValue (Lnet/minecraft/util/Vec3;D)Lnet/minecraft/util/Vec3;
     ASTORE 11
    L8
-    LINENUMBER 884 L8
+    LINENUMBER 889 L8
     ALOAD 5
     ALOAD 6
     ALOAD 0
@@ -4990,77 +5039,77 @@ public class net/minecraft/block/Block {
     INVOKEVIRTUAL net/minecraft/util/Vec3.getIntermediateWithZValue (Lnet/minecraft/util/Vec3;D)Lnet/minecraft/util/Vec3;
     ASTORE 12
    L9
-    LINENUMBER 886 L9
+    LINENUMBER 891 L9
     ALOAD 0
     ALOAD 7
     INVOKESPECIAL net/minecraft/block/Block.isVecInsideYZBounds (Lnet/minecraft/util/Vec3;)Z
     IFNE L10
    L11
-    LINENUMBER 888 L11
+    LINENUMBER 893 L11
     ACONST_NULL
     ASTORE 7
    L10
-    LINENUMBER 891 L10
+    LINENUMBER 896 L10
    FRAME FULL [net/minecraft/block/Block net/minecraft/world/World I I I net/minecraft/util/Vec3 net/minecraft/util/Vec3 net/minecraft/util/Vec3 net/minecraft/util/Vec3 net/minecraft/util/Vec3 net/minecraft/util/Vec3 net/minecraft/util/Vec3 net/minecraft/util/Vec3] []
     ALOAD 0
     ALOAD 8
     INVOKESPECIAL net/minecraft/block/Block.isVecInsideYZBounds (Lnet/minecraft/util/Vec3;)Z
     IFNE L12
    L13
-    LINENUMBER 893 L13
+    LINENUMBER 898 L13
     ACONST_NULL
     ASTORE 8
    L12
-    LINENUMBER 896 L12
+    LINENUMBER 901 L12
    FRAME FULL [net/minecraft/block/Block net/minecraft/world/World I I I net/minecraft/util/Vec3 net/minecraft/util/Vec3 net/minecraft/util/Vec3 net/minecraft/util/Vec3 net/minecraft/util/Vec3 net/minecraft/util/Vec3 net/minecraft/util/Vec3 net/minecraft/util/Vec3] []
     ALOAD 0
     ALOAD 9
     INVOKESPECIAL net/minecraft/block/Block.isVecInsideXZBounds (Lnet/minecraft/util/Vec3;)Z
     IFNE L14
    L15
-    LINENUMBER 898 L15
+    LINENUMBER 903 L15
     ACONST_NULL
     ASTORE 9
    L14
-    LINENUMBER 901 L14
+    LINENUMBER 906 L14
    FRAME FULL [net/minecraft/block/Block net/minecraft/world/World I I I net/minecraft/util/Vec3 net/minecraft/util/Vec3 net/minecraft/util/Vec3 net/minecraft/util/Vec3 net/minecraft/util/Vec3 net/minecraft/util/Vec3 net/minecraft/util/Vec3 net/minecraft/util/Vec3] []
     ALOAD 0
     ALOAD 10
     INVOKESPECIAL net/minecraft/block/Block.isVecInsideXZBounds (Lnet/minecraft/util/Vec3;)Z
     IFNE L16
    L17
-    LINENUMBER 903 L17
+    LINENUMBER 908 L17
     ACONST_NULL
     ASTORE 10
    L16
-    LINENUMBER 906 L16
+    LINENUMBER 911 L16
    FRAME FULL [net/minecraft/block/Block net/minecraft/world/World I I I net/minecraft/util/Vec3 net/minecraft/util/Vec3 net/minecraft/util/Vec3 net/minecraft/util/Vec3 net/minecraft/util/Vec3 net/minecraft/util/Vec3 net/minecraft/util/Vec3 net/minecraft/util/Vec3] []
     ALOAD 0
     ALOAD 11
     INVOKESPECIAL net/minecraft/block/Block.isVecInsideXYBounds (Lnet/minecraft/util/Vec3;)Z
     IFNE L18
    L19
-    LINENUMBER 908 L19
+    LINENUMBER 913 L19
     ACONST_NULL
     ASTORE 11
    L18
-    LINENUMBER 911 L18
+    LINENUMBER 916 L18
    FRAME FULL [net/minecraft/block/Block net/minecraft/world/World I I I net/minecraft/util/Vec3 net/minecraft/util/Vec3 net/minecraft/util/Vec3 net/minecraft/util/Vec3 net/minecraft/util/Vec3 net/minecraft/util/Vec3 net/minecraft/util/Vec3 net/minecraft/util/Vec3] []
     ALOAD 0
     ALOAD 12
     INVOKESPECIAL net/minecraft/block/Block.isVecInsideXYBounds (Lnet/minecraft/util/Vec3;)Z
     IFNE L20
    L21
-    LINENUMBER 913 L21
+    LINENUMBER 918 L21
     ACONST_NULL
     ASTORE 12
    L20
-    LINENUMBER 916 L20
+    LINENUMBER 921 L20
    FRAME FULL [net/minecraft/block/Block net/minecraft/world/World I I I net/minecraft/util/Vec3 net/minecraft/util/Vec3 net/minecraft/util/Vec3 net/minecraft/util/Vec3 net/minecraft/util/Vec3 net/minecraft/util/Vec3 net/minecraft/util/Vec3 net/minecraft/util/Vec3] []
     ACONST_NULL
     ASTORE 13
    L22
-    LINENUMBER 918 L22
+    LINENUMBER 923 L22
     ALOAD 7
     IFNULL L23
     ALOAD 13
@@ -5074,12 +5123,12 @@ public class net/minecraft/block/Block {
     DCMPG
     IFGE L23
    L24
-    LINENUMBER 920 L24
+    LINENUMBER 925 L24
    FRAME FULL [net/minecraft/block/Block net/minecraft/world/World I I I net/minecraft/util/Vec3 net/minecraft/util/Vec3 net/minecraft/util/Vec3 net/minecraft/util/Vec3 net/minecraft/util/Vec3 net/minecraft/util/Vec3 net/minecraft/util/Vec3 net/minecraft/util/Vec3 N] []
     ALOAD 7
     ASTORE 13
    L23
-    LINENUMBER 923 L23
+    LINENUMBER 928 L23
    FRAME FULL [net/minecraft/block/Block net/minecraft/world/World I I I net/minecraft/util/Vec3 net/minecraft/util/Vec3 net/minecraft/util/Vec3 net/minecraft/util/Vec3 net/minecraft/util/Vec3 net/minecraft/util/Vec3 net/minecraft/util/Vec3 net/minecraft/util/Vec3 net/minecraft/util/Vec3] []
     ALOAD 8
     IFNULL L25
@@ -5094,12 +5143,12 @@ public class net/minecraft/block/Block {
     DCMPG
     IFGE L25
    L26
-    LINENUMBER 925 L26
+    LINENUMBER 930 L26
    FRAME FULL [net/minecraft/block/Block net/minecraft/world/World I I I net/minecraft/util/Vec3 net/minecraft/util/Vec3 net/minecraft/util/Vec3 net/minecraft/util/Vec3 net/minecraft/util/Vec3 net/minecraft/util/Vec3 net/minecraft/util/Vec3 net/minecraft/util/Vec3 net/minecraft/util/Vec3] []
     ALOAD 8
     ASTORE 13
    L25
-    LINENUMBER 928 L25
+    LINENUMBER 933 L25
    FRAME FULL [net/minecraft/block/Block net/minecraft/world/World I I I net/minecraft/util/Vec3 net/minecraft/util/Vec3 net/minecraft/util/Vec3 net/minecraft/util/Vec3 net/minecraft/util/Vec3 net/minecraft/util/Vec3 net/minecraft/util/Vec3 net/minecraft/util/Vec3 net/minecraft/util/Vec3] []
     ALOAD 9
     IFNULL L27
@@ -5114,12 +5163,12 @@ public class net/minecraft/block/Block {
     DCMPG
     IFGE L27
    L28
-    LINENUMBER 930 L28
+    LINENUMBER 935 L28
    FRAME FULL [net/minecraft/block/Block net/minecraft/world/World I I I net/minecraft/util/Vec3 net/minecraft/util/Vec3 net/minecraft/util/Vec3 net/minecraft/util/Vec3 net/minecraft/util/Vec3 net/minecraft/util/Vec3 net/minecraft/util/Vec3 net/minecraft/util/Vec3 net/minecraft/util/Vec3] []
     ALOAD 9
     ASTORE 13
    L27
-    LINENUMBER 933 L27
+    LINENUMBER 938 L27
    FRAME FULL [net/minecraft/block/Block net/minecraft/world/World I I I net/minecraft/util/Vec3 net/minecraft/util/Vec3 net/minecraft/util/Vec3 net/minecraft/util/Vec3 net/minecraft/util/Vec3 net/minecraft/util/Vec3 net/minecraft/util/Vec3 net/minecraft/util/Vec3 net/minecraft/util/Vec3] []
     ALOAD 10
     IFNULL L29
@@ -5134,12 +5183,12 @@ public class net/minecraft/block/Block {
     DCMPG
     IFGE L29
    L30
-    LINENUMBER 935 L30
+    LINENUMBER 940 L30
    FRAME FULL [net/minecraft/block/Block net/minecraft/world/World I I I net/minecraft/util/Vec3 net/minecraft/util/Vec3 net/minecraft/util/Vec3 net/minecraft/util/Vec3 net/minecraft/util/Vec3 net/minecraft/util/Vec3 net/minecraft/util/Vec3 net/minecraft/util/Vec3 net/minecraft/util/Vec3] []
     ALOAD 10
     ASTORE 13
    L29
-    LINENUMBER 938 L29
+    LINENUMBER 943 L29
    FRAME FULL [net/minecraft/block/Block net/minecraft/world/World I I I net/minecraft/util/Vec3 net/minecraft/util/Vec3 net/minecraft/util/Vec3 net/minecraft/util/Vec3 net/minecraft/util/Vec3 net/minecraft/util/Vec3 net/minecraft/util/Vec3 net/minecraft/util/Vec3 net/minecraft/util/Vec3] []
     ALOAD 11
     IFNULL L31
@@ -5154,12 +5203,12 @@ public class net/minecraft/block/Block {
     DCMPG
     IFGE L31
    L32
-    LINENUMBER 940 L32
+    LINENUMBER 945 L32
    FRAME FULL [net/minecraft/block/Block net/minecraft/world/World I I I net/minecraft/util/Vec3 net/minecraft/util/Vec3 net/minecraft/util/Vec3 net/minecraft/util/Vec3 net/minecraft/util/Vec3 net/minecraft/util/Vec3 net/minecraft/util/Vec3 net/minecraft/util/Vec3 net/minecraft/util/Vec3] []
     ALOAD 11
     ASTORE 13
    L31
-    LINENUMBER 943 L31
+    LINENUMBER 948 L31
    FRAME FULL [net/minecraft/block/Block net/minecraft/world/World I I I net/minecraft/util/Vec3 net/minecraft/util/Vec3 net/minecraft/util/Vec3 net/minecraft/util/Vec3 net/minecraft/util/Vec3 net/minecraft/util/Vec3 net/minecraft/util/Vec3 net/minecraft/util/Vec3 net/minecraft/util/Vec3] []
     ALOAD 12
     IFNULL L33
@@ -5174,85 +5223,85 @@ public class net/minecraft/block/Block {
     DCMPG
     IFGE L33
    L34
-    LINENUMBER 945 L34
+    LINENUMBER 950 L34
    FRAME FULL [net/minecraft/block/Block net/minecraft/world/World I I I net/minecraft/util/Vec3 net/minecraft/util/Vec3 net/minecraft/util/Vec3 net/minecraft/util/Vec3 net/minecraft/util/Vec3 net/minecraft/util/Vec3 net/minecraft/util/Vec3 net/minecraft/util/Vec3 net/minecraft/util/Vec3] []
     ALOAD 12
     ASTORE 13
    L33
-    LINENUMBER 948 L33
+    LINENUMBER 953 L33
    FRAME FULL [net/minecraft/block/Block net/minecraft/world/World I I I net/minecraft/util/Vec3 net/minecraft/util/Vec3 net/minecraft/util/Vec3 net/minecraft/util/Vec3 net/minecraft/util/Vec3 net/minecraft/util/Vec3 net/minecraft/util/Vec3 net/minecraft/util/Vec3 net/minecraft/util/Vec3] []
     ALOAD 13
     IFNONNULL L35
    L36
-    LINENUMBER 950 L36
+    LINENUMBER 955 L36
     ACONST_NULL
     ARETURN
    L35
-    LINENUMBER 954 L35
+    LINENUMBER 959 L35
    FRAME FULL [net/minecraft/block/Block net/minecraft/world/World I I I net/minecraft/util/Vec3 net/minecraft/util/Vec3 net/minecraft/util/Vec3 net/minecraft/util/Vec3 net/minecraft/util/Vec3 net/minecraft/util/Vec3 net/minecraft/util/Vec3 net/minecraft/util/Vec3 net/minecraft/util/Vec3] []
     ICONST_M1
     ISTORE 14
    L37
-    LINENUMBER 956 L37
+    LINENUMBER 961 L37
     ALOAD 13
     ALOAD 7
     IF_ACMPNE L38
    L39
-    LINENUMBER 958 L39
+    LINENUMBER 963 L39
     ICONST_4
     ISTORE 14
    L38
-    LINENUMBER 961 L38
+    LINENUMBER 966 L38
    FRAME FULL [net/minecraft/block/Block net/minecraft/world/World I I I net/minecraft/util/Vec3 net/minecraft/util/Vec3 net/minecraft/util/Vec3 net/minecraft/util/Vec3 net/minecraft/util/Vec3 net/minecraft/util/Vec3 net/minecraft/util/Vec3 net/minecraft/util/Vec3 net/minecraft/util/Vec3 I] []
     ALOAD 13
     ALOAD 8
     IF_ACMPNE L40
    L41
-    LINENUMBER 963 L41
+    LINENUMBER 968 L41
     ICONST_5
     ISTORE 14
    L40
-    LINENUMBER 966 L40
+    LINENUMBER 971 L40
    FRAME FULL [net/minecraft/block/Block net/minecraft/world/World I I I net/minecraft/util/Vec3 net/minecraft/util/Vec3 net/minecraft/util/Vec3 net/minecraft/util/Vec3 net/minecraft/util/Vec3 net/minecraft/util/Vec3 net/minecraft/util/Vec3 net/minecraft/util/Vec3 net/minecraft/util/Vec3 I] []
     ALOAD 13
     ALOAD 9
     IF_ACMPNE L42
    L43
-    LINENUMBER 968 L43
+    LINENUMBER 973 L43
     ICONST_0
     ISTORE 14
    L42
-    LINENUMBER 971 L42
+    LINENUMBER 976 L42
    FRAME FULL [net/minecraft/block/Block net/minecraft/world/World I I I net/minecraft/util/Vec3 net/minecraft/util/Vec3 net/minecraft/util/Vec3 net/minecraft/util/Vec3 net/minecraft/util/Vec3 net/minecraft/util/Vec3 net/minecraft/util/Vec3 net/minecraft/util/Vec3 net/minecraft/util/Vec3 I] []
     ALOAD 13
     ALOAD 10
     IF_ACMPNE L44
    L45
-    LINENUMBER 973 L45
+    LINENUMBER 978 L45
     ICONST_1
     ISTORE 14
    L44
-    LINENUMBER 976 L44
+    LINENUMBER 981 L44
    FRAME FULL [net/minecraft/block/Block net/minecraft/world/World I I I net/minecraft/util/Vec3 net/minecraft/util/Vec3 net/minecraft/util/Vec3 net/minecraft/util/Vec3 net/minecraft/util/Vec3 net/minecraft/util/Vec3 net/minecraft/util/Vec3 net/minecraft/util/Vec3 net/minecraft/util/Vec3 I] []
     ALOAD 13
     ALOAD 11
     IF_ACMPNE L46
    L47
-    LINENUMBER 978 L47
+    LINENUMBER 983 L47
     ICONST_2
     ISTORE 14
    L46
-    LINENUMBER 981 L46
+    LINENUMBER 986 L46
    FRAME FULL [net/minecraft/block/Block net/minecraft/world/World I I I net/minecraft/util/Vec3 net/minecraft/util/Vec3 net/minecraft/util/Vec3 net/minecraft/util/Vec3 net/minecraft/util/Vec3 net/minecraft/util/Vec3 net/minecraft/util/Vec3 net/minecraft/util/Vec3 net/minecraft/util/Vec3 I] []
     ALOAD 13
     ALOAD 12
     IF_ACMPNE L48
    L49
-    LINENUMBER 983 L49
+    LINENUMBER 988 L49
     ICONST_3
     ISTORE 14
    L48
-    LINENUMBER 986 L48
+    LINENUMBER 991 L48
    FRAME FULL [net/minecraft/block/Block net/minecraft/world/World I I I net/minecraft/util/Vec3 net/minecraft/util/Vec3 net/minecraft/util/Vec3 net/minecraft/util/Vec3 net/minecraft/util/Vec3 net/minecraft/util/Vec3 net/minecraft/util/Vec3 net/minecraft/util/Vec3 net/minecraft/util/Vec3 I] []
     NEW net/minecraft/util/MovingObjectPosition
     DUP
@@ -5292,7 +5341,7 @@ public class net/minecraft/block/Block {
   // access flags 0x2
   private isVecInsideYZBounds(Lnet/minecraft/util/Vec3;)Z
    L0
-    LINENUMBER 995 L0
+    LINENUMBER 1000 L0
     ALOAD 1
     IFNONNULL L1
     ICONST_0
@@ -5340,7 +5389,7 @@ public class net/minecraft/block/Block {
   // access flags 0x2
   private isVecInsideXZBounds(Lnet/minecraft/util/Vec3;)Z
    L0
-    LINENUMBER 1003 L0
+    LINENUMBER 1008 L0
     ALOAD 1
     IFNONNULL L1
     ICONST_0
@@ -5388,7 +5437,7 @@ public class net/minecraft/block/Block {
   // access flags 0x2
   private isVecInsideXYBounds(Lnet/minecraft/util/Vec3;)Z
    L0
-    LINENUMBER 1011 L0
+    LINENUMBER 1016 L0
     ALOAD 1
     IFNONNULL L1
     ICONST_0
@@ -5436,7 +5485,7 @@ public class net/minecraft/block/Block {
   // access flags 0x1
   public onBlockDestroyedByExplosion(Lnet/minecraft/world/World;IIILnet/minecraft/world/Explosion;)V
    L0
-    LINENUMBER 1017 L0
+    LINENUMBER 1022 L0
     RETURN
    L1
     LOCALVARIABLE this Lnet/minecraft/block/Block; L0 L1 0
@@ -5451,7 +5500,7 @@ public class net/minecraft/block/Block {
   // access flags 0x1
   public canReplace(Lnet/minecraft/world/World;IIIILnet/minecraft/item/ItemStack;)Z
    L0
-    LINENUMBER 1021 L0
+    LINENUMBER 1026 L0
     ALOAD 0
     ALOAD 1
     ILOAD 2
@@ -5475,7 +5524,7 @@ public class net/minecraft/block/Block {
   public getRenderBlockPass()I
   @Lcpw/mods/fml/relauncher/SideOnly;(value=Lcpw/mods/fml/relauncher/Side;.CLIENT)
    L0
-    LINENUMBER 1030 L0
+    LINENUMBER 1035 L0
     ICONST_0
     IRETURN
    L1
@@ -5486,7 +5535,7 @@ public class net/minecraft/block/Block {
   // access flags 0x1
   public canPlaceBlockOnSide(Lnet/minecraft/world/World;IIII)Z
    L0
-    LINENUMBER 1038 L0
+    LINENUMBER 1043 L0
     ALOAD 0
     ALOAD 1
     ILOAD 2
@@ -5507,7 +5556,7 @@ public class net/minecraft/block/Block {
   // access flags 0x1
   public canPlaceBlockAt(Lnet/minecraft/world/World;III)Z
    L0
-    LINENUMBER 1046 L0
+    LINENUMBER 1051 L0
     ALOAD 1
     ILOAD 2
     ILOAD 3
@@ -5531,7 +5580,7 @@ public class net/minecraft/block/Block {
   // access flags 0x1
   public onBlockActivated(Lnet/minecraft/world/World;IIILnet/minecraft/entity/player/EntityPlayer;IFFF)Z
    L0
-    LINENUMBER 1054 L0
+    LINENUMBER 1059 L0
     ICONST_0
     IRETURN
    L1
@@ -5551,7 +5600,7 @@ public class net/minecraft/block/Block {
   // access flags 0x1
   public onEntityWalking(Lnet/minecraft/world/World;IIILnet/minecraft/entity/Entity;)V
    L0
-    LINENUMBER 1060 L0
+    LINENUMBER 1065 L0
     RETURN
    L1
     LOCALVARIABLE this Lnet/minecraft/block/Block; L0 L1 0
@@ -5566,7 +5615,7 @@ public class net/minecraft/block/Block {
   // access flags 0x1
   public onBlockPlaced(Lnet/minecraft/world/World;IIIIFFFI)I
    L0
-    LINENUMBER 1067 L0
+    LINENUMBER 1072 L0
     ILOAD 9
     IRETURN
    L1
@@ -5586,7 +5635,7 @@ public class net/minecraft/block/Block {
   // access flags 0x1
   public onBlockClicked(Lnet/minecraft/world/World;IIILnet/minecraft/entity/player/EntityPlayer;)V
    L0
-    LINENUMBER 1073 L0
+    LINENUMBER 1078 L0
     RETURN
    L1
     LOCALVARIABLE this Lnet/minecraft/block/Block; L0 L1 0
@@ -5601,7 +5650,7 @@ public class net/minecraft/block/Block {
   // access flags 0x1
   public velocityToAddToEntity(Lnet/minecraft/world/World;IIILnet/minecraft/entity/Entity;Lnet/minecraft/util/Vec3;)V
    L0
-    LINENUMBER 1078 L0
+    LINENUMBER 1083 L0
     RETURN
    L1
     LOCALVARIABLE this Lnet/minecraft/block/Block; L0 L1 0
@@ -5617,7 +5666,7 @@ public class net/minecraft/block/Block {
   // access flags 0x1
   public setBlockBoundsBasedOnState(Lnet/minecraft/world/IBlockAccess;III)V
    L0
-    LINENUMBER 1083 L0
+    LINENUMBER 1088 L0
     RETURN
    L1
     LOCALVARIABLE this Lnet/minecraft/block/Block; L0 L1 0
@@ -5631,7 +5680,7 @@ public class net/minecraft/block/Block {
   // access flags 0x11
   public final getBlockBoundsMinX()D
    L0
-    LINENUMBER 1090 L0
+    LINENUMBER 1095 L0
     ALOAD 0
     GETFIELD net/minecraft/block/Block.minX : D
     DRETURN
@@ -5643,7 +5692,7 @@ public class net/minecraft/block/Block {
   // access flags 0x11
   public final getBlockBoundsMaxX()D
    L0
-    LINENUMBER 1098 L0
+    LINENUMBER 1103 L0
     ALOAD 0
     GETFIELD net/minecraft/block/Block.maxX : D
     DRETURN
@@ -5655,7 +5704,7 @@ public class net/minecraft/block/Block {
   // access flags 0x11
   public final getBlockBoundsMinY()D
    L0
-    LINENUMBER 1106 L0
+    LINENUMBER 1111 L0
     ALOAD 0
     GETFIELD net/minecraft/block/Block.minY : D
     DRETURN
@@ -5667,7 +5716,7 @@ public class net/minecraft/block/Block {
   // access flags 0x11
   public final getBlockBoundsMaxY()D
    L0
-    LINENUMBER 1114 L0
+    LINENUMBER 1119 L0
     ALOAD 0
     GETFIELD net/minecraft/block/Block.maxY : D
     DRETURN
@@ -5679,7 +5728,7 @@ public class net/minecraft/block/Block {
   // access flags 0x11
   public final getBlockBoundsMinZ()D
    L0
-    LINENUMBER 1122 L0
+    LINENUMBER 1127 L0
     ALOAD 0
     GETFIELD net/minecraft/block/Block.minZ : D
     DRETURN
@@ -5691,7 +5740,7 @@ public class net/minecraft/block/Block {
   // access flags 0x11
   public final getBlockBoundsMaxZ()D
    L0
-    LINENUMBER 1130 L0
+    LINENUMBER 1135 L0
     ALOAD 0
     GETFIELD net/minecraft/block/Block.maxZ : D
     DRETURN
@@ -5704,7 +5753,7 @@ public class net/minecraft/block/Block {
   public getBlockColor()I
   @Lcpw/mods/fml/relauncher/SideOnly;(value=Lcpw/mods/fml/relauncher/Side;.CLIENT)
    L0
-    LINENUMBER 1136 L0
+    LINENUMBER 1141 L0
     LDC 16777215
     IRETURN
    L1
@@ -5716,7 +5765,7 @@ public class net/minecraft/block/Block {
   public getRenderColor(I)I
   @Lcpw/mods/fml/relauncher/SideOnly;(value=Lcpw/mods/fml/relauncher/Side;.CLIENT)
    L0
-    LINENUMBER 1145 L0
+    LINENUMBER 1150 L0
     LDC 16777215
     IRETURN
    L1
@@ -5729,7 +5778,7 @@ public class net/minecraft/block/Block {
   public colorMultiplier(Lnet/minecraft/world/IBlockAccess;III)I
   @Lcpw/mods/fml/relauncher/SideOnly;(value=Lcpw/mods/fml/relauncher/Side;.CLIENT)
    L0
-    LINENUMBER 1155 L0
+    LINENUMBER 1160 L0
     LDC 16777215
     IRETURN
    L1
@@ -5744,7 +5793,7 @@ public class net/minecraft/block/Block {
   // access flags 0x1
   public isProvidingWeakPower(Lnet/minecraft/world/IBlockAccess;IIII)I
    L0
-    LINENUMBER 1160 L0
+    LINENUMBER 1165 L0
     ICONST_0
     IRETURN
    L1
@@ -5760,7 +5809,7 @@ public class net/minecraft/block/Block {
   // access flags 0x1
   public canProvidePower()Z
    L0
-    LINENUMBER 1168 L0
+    LINENUMBER 1173 L0
     ICONST_0
     IRETURN
    L1
@@ -5771,7 +5820,7 @@ public class net/minecraft/block/Block {
   // access flags 0x1
   public onEntityCollidedWithBlock(Lnet/minecraft/world/World;IIILnet/minecraft/entity/Entity;)V
    L0
-    LINENUMBER 1174 L0
+    LINENUMBER 1179 L0
     RETURN
    L1
     LOCALVARIABLE this Lnet/minecraft/block/Block; L0 L1 0
@@ -5786,7 +5835,7 @@ public class net/minecraft/block/Block {
   // access flags 0x1
   public isProvidingStrongPower(Lnet/minecraft/world/IBlockAccess;IIII)I
    L0
-    LINENUMBER 1178 L0
+    LINENUMBER 1183 L0
     ICONST_0
     IRETURN
    L1
@@ -5802,7 +5851,7 @@ public class net/minecraft/block/Block {
   // access flags 0x1
   public setBlockBoundsForItemRender()V
    L0
-    LINENUMBER 1184 L0
+    LINENUMBER 1189 L0
     RETURN
    L1
     LOCALVARIABLE this Lnet/minecraft/block/Block; L0 L1 0
@@ -5812,7 +5861,7 @@ public class net/minecraft/block/Block {
   // access flags 0x1
   public harvestBlock(Lnet/minecraft/world/World;Lnet/minecraft/entity/player/EntityPlayer;IIII)V
    L0
-    LINENUMBER 1192 L0
+    LINENUMBER 1197 L0
     ALOAD 2
     GETSTATIC net/minecraft/stats/StatList.mineBlockStatArray : [Lnet/minecraft/stats/StatBase;
     ALOAD 0
@@ -5821,12 +5870,12 @@ public class net/minecraft/block/Block {
     ICONST_1
     INVOKEVIRTUAL net/minecraft/entity/player/EntityPlayer.addStat (Lnet/minecraft/stats/StatBase;I)V
    L1
-    LINENUMBER 1193 L1
+    LINENUMBER 1198 L1
     ALOAD 2
     LDC 0.025
     INVOKEVIRTUAL net/minecraft/entity/player/EntityPlayer.addExhaustion (F)V
    L2
-    LINENUMBER 1195 L2
+    LINENUMBER 1200 L2
     ALOAD 0
     ALOAD 1
     ALOAD 2
@@ -5840,29 +5889,29 @@ public class net/minecraft/block/Block {
     INVOKESTATIC net/minecraft/enchantment/EnchantmentHelper.getSilkTouchModifier (Lnet/minecraft/entity/EntityLivingBase;)Z
     IFEQ L3
    L4
-    LINENUMBER 1197 L4
+    LINENUMBER 1202 L4
     NEW java/util/ArrayList
     DUP
     INVOKESPECIAL java/util/ArrayList.<init> ()V
     ASTORE 7
    L5
-    LINENUMBER 1198 L5
+    LINENUMBER 1203 L5
     ALOAD 0
     ILOAD 6
     INVOKEVIRTUAL net/minecraft/block/Block.createStackedBlock (I)Lnet/minecraft/item/ItemStack;
     ASTORE 8
    L6
-    LINENUMBER 1200 L6
+    LINENUMBER 1205 L6
     ALOAD 8
     IFNULL L7
    L8
-    LINENUMBER 1202 L8
+    LINENUMBER 1207 L8
     ALOAD 7
     ALOAD 8
     INVOKEVIRTUAL java/util/ArrayList.add (Ljava/lang/Object;)Z
     POP
    L7
-    LINENUMBER 1205 L7
+    LINENUMBER 1210 L7
    FRAME FULL [net/minecraft/block/Block net/minecraft/world/World net/minecraft/entity/player/EntityPlayer I I I I java/util/ArrayList net/minecraft/item/ItemStack] []
     ALOAD 7
     ALOAD 1
@@ -5878,7 +5927,7 @@ public class net/minecraft/block/Block {
     INVOKESTATIC net/minecraftforge/event/ForgeEventFactory.fireBlockHarvesting (Ljava/util/ArrayList;Lnet/minecraft/world/World;Lnet/minecraft/block/Block;IIIIIFZLnet/minecraft/entity/player/EntityPlayer;)F
     POP
    L9
-    LINENUMBER 1206 L9
+    LINENUMBER 1211 L9
     ALOAD 7
     INVOKEVIRTUAL java/util/ArrayList.iterator ()Ljava/util/Iterator;
     ASTORE 9
@@ -5892,7 +5941,7 @@ public class net/minecraft/block/Block {
     CHECKCAST net/minecraft/item/ItemStack
     ASTORE 10
    L12
-    LINENUMBER 1208 L12
+    LINENUMBER 1213 L12
     ALOAD 0
     ALOAD 1
     ILOAD 3
@@ -5901,26 +5950,26 @@ public class net/minecraft/block/Block {
     ALOAD 10
     INVOKEVIRTUAL net/minecraft/block/Block.dropBlockAsItem (Lnet/minecraft/world/World;IIILnet/minecraft/item/ItemStack;)V
    L13
-    LINENUMBER 1209 L13
+    LINENUMBER 1214 L13
     GOTO L10
    L11
-    LINENUMBER 1210 L11
+    LINENUMBER 1215 L11
    FRAME FULL [net/minecraft/block/Block net/minecraft/world/World net/minecraft/entity/player/EntityPlayer I I I I java/util/ArrayList net/minecraft/item/ItemStack java/util/Iterator] []
     GOTO L14
    L3
-    LINENUMBER 1213 L3
+    LINENUMBER 1218 L3
    FRAME FULL [net/minecraft/block/Block net/minecraft/world/World net/minecraft/entity/player/EntityPlayer I I I I] []
     ALOAD 0
     GETFIELD net/minecraft/block/Block.harvesters : Ljava/lang/ThreadLocal;
     ALOAD 2
     INVOKEVIRTUAL java/lang/ThreadLocal.set (Ljava/lang/Object;)V
    L15
-    LINENUMBER 1214 L15
+    LINENUMBER 1219 L15
     ALOAD 2
     INVOKESTATIC net/minecraft/enchantment/EnchantmentHelper.getFortuneModifier (Lnet/minecraft/entity/EntityLivingBase;)I
     ISTORE 7
    L16
-    LINENUMBER 1215 L16
+    LINENUMBER 1220 L16
     ALOAD 0
     ALOAD 1
     ILOAD 3
@@ -5930,13 +5979,13 @@ public class net/minecraft/block/Block {
     ILOAD 7
     INVOKEVIRTUAL net/minecraft/block/Block.dropBlockAsItem (Lnet/minecraft/world/World;IIIII)V
    L17
-    LINENUMBER 1216 L17
+    LINENUMBER 1221 L17
     ALOAD 0
     GETFIELD net/minecraft/block/Block.harvesters : Ljava/lang/ThreadLocal;
     ACONST_NULL
     INVOKEVIRTUAL java/lang/ThreadLocal.set (Ljava/lang/Object;)V
    L14
-    LINENUMBER 1218 L14
+    LINENUMBER 1223 L14
    FRAME FULL [net/minecraft/block/Block net/minecraft/world/World net/minecraft/entity/player/EntityPlayer I I I I] []
     RETURN
    L18
@@ -5960,14 +6009,14 @@ public class net/minecraft/block/Block {
   // access flags 0x4
   protected canSilkHarvest()Z
    L0
-    LINENUMBER 1225 L0
+    LINENUMBER 1230 L0
     ALOAD 0
     GETFIELD net/minecraft/block/Block.silk_check_meta : Ljava/lang/ThreadLocal;
     INVOKEVIRTUAL java/lang/ThreadLocal.get ()Ljava/lang/Object;
     CHECKCAST java/lang/Integer
     ASTORE 1
    L1
-    LINENUMBER 1226 L1
+    LINENUMBER 1231 L1
     ALOAD 0
     INVOKEVIRTUAL net/minecraft/block/Block.renderAsNormalBlock ()Z
     IFEQ L2
@@ -6001,27 +6050,27 @@ public class net/minecraft/block/Block {
   // access flags 0x4
   protected createStackedBlock(I)Lnet/minecraft/item/ItemStack;
    L0
-    LINENUMBER 1235 L0
+    LINENUMBER 1240 L0
     ICONST_0
     ISTORE 2
    L1
-    LINENUMBER 1236 L1
+    LINENUMBER 1241 L1
     ALOAD 0
     INVOKESTATIC net/minecraft/item/Item.getItemFromBlock (Lnet/minecraft/block/Block;)Lnet/minecraft/item/Item;
     ASTORE 3
    L2
-    LINENUMBER 1238 L2
+    LINENUMBER 1243 L2
     ALOAD 3
     IFNULL L3
     ALOAD 3
     INVOKEVIRTUAL net/minecraft/item/Item.getHasSubtypes ()Z
     IFEQ L3
    L4
-    LINENUMBER 1240 L4
+    LINENUMBER 1245 L4
     ILOAD 1
     ISTORE 2
    L3
-    LINENUMBER 1243 L3
+    LINENUMBER 1248 L3
    FRAME FULL [net/minecraft/block/Block I I net/minecraft/item/Item] []
     NEW net/minecraft/item/ItemStack
     DUP
@@ -6041,7 +6090,7 @@ public class net/minecraft/block/Block {
   // access flags 0x1
   public quantityDroppedWithBonus(ILjava/util/Random;)I
    L0
-    LINENUMBER 1251 L0
+    LINENUMBER 1256 L0
     ALOAD 0
     ALOAD 2
     INVOKEVIRTUAL net/minecraft/block/Block.quantityDropped (Ljava/util/Random;)I
@@ -6056,7 +6105,7 @@ public class net/minecraft/block/Block {
   // access flags 0x1
   public canBlockStay(Lnet/minecraft/world/World;III)Z
    L0
-    LINENUMBER 1259 L0
+    LINENUMBER 1264 L0
     ICONST_1
     IRETURN
    L1
@@ -6071,7 +6120,7 @@ public class net/minecraft/block/Block {
   // access flags 0x1
   public onBlockPlacedBy(Lnet/minecraft/world/World;IIILnet/minecraft/entity/EntityLivingBase;Lnet/minecraft/item/ItemStack;)V
    L0
-    LINENUMBER 1265 L0
+    LINENUMBER 1270 L0
     RETURN
    L1
     LOCALVARIABLE this Lnet/minecraft/block/Block; L0 L1 0
@@ -6087,7 +6136,7 @@ public class net/minecraft/block/Block {
   // access flags 0x1
   public onPostBlockPlaced(Lnet/minecraft/world/World;IIII)V
    L0
-    LINENUMBER 1270 L0
+    LINENUMBER 1275 L0
     RETURN
    L1
     LOCALVARIABLE this Lnet/minecraft/block/Block; L0 L1 0
@@ -6102,12 +6151,12 @@ public class net/minecraft/block/Block {
   // access flags 0x1
   public setBlockName(Ljava/lang/String;)Lnet/minecraft/block/Block;
    L0
-    LINENUMBER 1277 L0
+    LINENUMBER 1282 L0
     ALOAD 0
     ALOAD 1
     PUTFIELD net/minecraft/block/Block.unlocalizedName : Ljava/lang/String;
    L1
-    LINENUMBER 1278 L1
+    LINENUMBER 1283 L1
     ALOAD 0
     ARETURN
    L2
@@ -6119,7 +6168,7 @@ public class net/minecraft/block/Block {
   // access flags 0x1
   public getLocalizedName()Ljava/lang/String;
    L0
-    LINENUMBER 1286 L0
+    LINENUMBER 1291 L0
     NEW java/lang/StringBuilder
     DUP
     INVOKESPECIAL java/lang/StringBuilder.<init> ()V
@@ -6139,7 +6188,7 @@ public class net/minecraft/block/Block {
   // access flags 0x1
   public getUnlocalizedName()Ljava/lang/String;
    L0
-    LINENUMBER 1294 L0
+    LINENUMBER 1299 L0
     NEW java/lang/StringBuilder
     DUP
     INVOKESPECIAL java/lang/StringBuilder.<init> ()V
@@ -6158,7 +6207,7 @@ public class net/minecraft/block/Block {
   // access flags 0x1
   public onBlockEventReceived(Lnet/minecraft/world/World;IIIII)Z
    L0
-    LINENUMBER 1299 L0
+    LINENUMBER 1304 L0
     ICONST_0
     IRETURN
    L1
@@ -6175,7 +6224,7 @@ public class net/minecraft/block/Block {
   // access flags 0x1
   public getEnableStats()Z
    L0
-    LINENUMBER 1307 L0
+    LINENUMBER 1312 L0
     ALOAD 0
     GETFIELD net/minecraft/block/Block.enableStats : Z
     IRETURN
@@ -6187,12 +6236,12 @@ public class net/minecraft/block/Block {
   // access flags 0x4
   protected disableStats()Lnet/minecraft/block/Block;
    L0
-    LINENUMBER 1315 L0
+    LINENUMBER 1320 L0
     ALOAD 0
     ICONST_0
     PUTFIELD net/minecraft/block/Block.enableStats : Z
    L1
-    LINENUMBER 1316 L1
+    LINENUMBER 1321 L1
     ALOAD 0
     ARETURN
    L2
@@ -6203,7 +6252,7 @@ public class net/minecraft/block/Block {
   // access flags 0x1
   public getMobilityFlag()I
    L0
-    LINENUMBER 1325 L0
+    LINENUMBER 1330 L0
     ALOAD 0
     GETFIELD net/minecraft/block/Block.blockMaterial : Lnet/minecraft/block/material/Material;
     INVOKEVIRTUAL net/minecraft/block/material/Material.getMaterialMobility ()I
@@ -6217,7 +6266,7 @@ public class net/minecraft/block/Block {
   public getAmbientOcclusionLightValue()F
   @Lcpw/mods/fml/relauncher/SideOnly;(value=Lcpw/mods/fml/relauncher/Side;.CLIENT)
    L0
-    LINENUMBER 1334 L0
+    LINENUMBER 1339 L0
     ALOAD 0
     INVOKEVIRTUAL net/minecraft/block/Block.isBlockNormalCube ()Z
     IFEQ L1
@@ -6237,7 +6286,7 @@ public class net/minecraft/block/Block {
   // access flags 0x1
   public onFallenUpon(Lnet/minecraft/world/World;IIILnet/minecraft/entity/Entity;F)V
    L0
-    LINENUMBER 1340 L0
+    LINENUMBER 1345 L0
     RETURN
    L1
     LOCALVARIABLE this Lnet/minecraft/block/Block; L0 L1 0
@@ -6254,7 +6303,7 @@ public class net/minecraft/block/Block {
   public getItem(Lnet/minecraft/world/World;III)Lnet/minecraft/item/Item;
   @Lcpw/mods/fml/relauncher/SideOnly;(value=Lcpw/mods/fml/relauncher/Side;.CLIENT)
    L0
-    LINENUMBER 1348 L0
+    LINENUMBER 1353 L0
     ALOAD 0
     INVOKESTATIC net/minecraft/item/Item.getItemFromBlock (Lnet/minecraft/block/Block;)Lnet/minecraft/item/Item;
     ARETURN
@@ -6270,7 +6319,7 @@ public class net/minecraft/block/Block {
   // access flags 0x1
   public getDamageValue(Lnet/minecraft/world/World;III)I
    L0
-    LINENUMBER 1356 L0
+    LINENUMBER 1361 L0
     ALOAD 0
     ALOAD 1
     ILOAD 2
@@ -6292,7 +6341,7 @@ public class net/minecraft/block/Block {
   public getSubBlocks(Lnet/minecraft/item/Item;Lnet/minecraft/creativetab/CreativeTabs;Ljava/util/List;)V
   @Lcpw/mods/fml/relauncher/SideOnly;(value=Lcpw/mods/fml/relauncher/Side;.CLIENT)
    L0
-    LINENUMBER 1365 L0
+    LINENUMBER 1370 L0
     ALOAD 3
     NEW net/minecraft/item/ItemStack
     DUP
@@ -6303,7 +6352,7 @@ public class net/minecraft/block/Block {
     INVOKEINTERFACE java/util/List.add (Ljava/lang/Object;)Z
     POP
    L1
-    LINENUMBER 1366 L1
+    LINENUMBER 1371 L1
     RETURN
    L2
     LOCALVARIABLE this Lnet/minecraft/block/Block; L0 L2 0
@@ -6316,12 +6365,12 @@ public class net/minecraft/block/Block {
   // access flags 0x1
   public setCreativeTab(Lnet/minecraft/creativetab/CreativeTabs;)Lnet/minecraft/block/Block;
    L0
-    LINENUMBER 1370 L0
+    LINENUMBER 1375 L0
     ALOAD 0
     ALOAD 1
     PUTFIELD net/minecraft/block/Block.displayOnCreativeTab : Lnet/minecraft/creativetab/CreativeTabs;
    L1
-    LINENUMBER 1371 L1
+    LINENUMBER 1376 L1
     ALOAD 0
     ARETURN
    L2
@@ -6333,7 +6382,7 @@ public class net/minecraft/block/Block {
   // access flags 0x1
   public onBlockHarvested(Lnet/minecraft/world/World;IIIILnet/minecraft/entity/player/EntityPlayer;)V
    L0
-    LINENUMBER 1377 L0
+    LINENUMBER 1382 L0
     RETURN
    L1
     LOCALVARIABLE this Lnet/minecraft/block/Block; L0 L1 0
@@ -6350,7 +6399,7 @@ public class net/minecraft/block/Block {
   public getCreativeTabToDisplayOn()Lnet/minecraft/creativetab/CreativeTabs;
   @Lcpw/mods/fml/relauncher/SideOnly;(value=Lcpw/mods/fml/relauncher/Side;.CLIENT)
    L0
-    LINENUMBER 1385 L0
+    LINENUMBER 1390 L0
     ALOAD 0
     GETFIELD net/minecraft/block/Block.displayOnCreativeTab : Lnet/minecraft/creativetab/CreativeTabs;
     ARETURN
@@ -6362,7 +6411,7 @@ public class net/minecraft/block/Block {
   // access flags 0x1
   public onBlockPreDestroy(Lnet/minecraft/world/World;IIII)V
    L0
-    LINENUMBER 1392 L0
+    LINENUMBER 1397 L0
     RETURN
    L1
     LOCALVARIABLE this Lnet/minecraft/block/Block; L0 L1 0
@@ -6377,7 +6426,7 @@ public class net/minecraft/block/Block {
   // access flags 0x1
   public fillWithRain(Lnet/minecraft/world/World;III)V
    L0
-    LINENUMBER 1397 L0
+    LINENUMBER 1402 L0
     RETURN
    L1
     LOCALVARIABLE this Lnet/minecraft/block/Block; L0 L1 0
@@ -6392,7 +6441,7 @@ public class net/minecraft/block/Block {
   public isFlowerPot()Z
   @Lcpw/mods/fml/relauncher/SideOnly;(value=Lcpw/mods/fml/relauncher/Side;.CLIENT)
    L0
-    LINENUMBER 1405 L0
+    LINENUMBER 1410 L0
     ICONST_0
     IRETURN
    L1
@@ -6403,7 +6452,7 @@ public class net/minecraft/block/Block {
   // access flags 0x1
   public func_149698_L()Z
    L0
-    LINENUMBER 1410 L0
+    LINENUMBER 1415 L0
     ICONST_1
     IRETURN
    L1
@@ -6414,7 +6463,7 @@ public class net/minecraft/block/Block {
   // access flags 0x1
   public canDropFromExplosion(Lnet/minecraft/world/Explosion;)Z
    L0
-    LINENUMBER 1418 L0
+    LINENUMBER 1423 L0
     ICONST_1
     IRETURN
    L1
@@ -6426,7 +6475,7 @@ public class net/minecraft/block/Block {
   // access flags 0x1
   public isAssociatedBlock(Lnet/minecraft/block/Block;)Z
    L0
-    LINENUMBER 1423 L0
+    LINENUMBER 1428 L0
     ALOAD 0
     ALOAD 1
     IF_ACMPNE L1
@@ -6447,7 +6496,7 @@ public class net/minecraft/block/Block {
   // access flags 0x9
   public static isEqualTo(Lnet/minecraft/block/Block;Lnet/minecraft/block/Block;)Z
    L0
-    LINENUMBER 1428 L0
+    LINENUMBER 1433 L0
     ALOAD 0
     IFNULL L1
     ALOAD 1
@@ -6478,7 +6527,7 @@ public class net/minecraft/block/Block {
   // access flags 0x1
   public hasComparatorInputOverride()Z
    L0
-    LINENUMBER 1437 L0
+    LINENUMBER 1442 L0
     ICONST_0
     IRETURN
    L1
@@ -6489,7 +6538,7 @@ public class net/minecraft/block/Block {
   // access flags 0x1
   public getComparatorInputOverride(Lnet/minecraft/world/World;IIII)I
    L0
-    LINENUMBER 1446 L0
+    LINENUMBER 1451 L0
     ICONST_0
     IRETURN
    L1
@@ -6505,12 +6554,12 @@ public class net/minecraft/block/Block {
   // access flags 0x1
   public setBlockTextureName(Ljava/lang/String;)Lnet/minecraft/block/Block;
    L0
-    LINENUMBER 1451 L0
+    LINENUMBER 1456 L0
     ALOAD 0
     ALOAD 1
     PUTFIELD net/minecraft/block/Block.textureName : Ljava/lang/String;
    L1
-    LINENUMBER 1452 L1
+    LINENUMBER 1457 L1
     ALOAD 0
     ARETURN
    L2
@@ -6523,7 +6572,7 @@ public class net/minecraft/block/Block {
   protected getTextureName()Ljava/lang/String;
   @Lcpw/mods/fml/relauncher/SideOnly;(value=Lcpw/mods/fml/relauncher/Side;.CLIENT)
    L0
-    LINENUMBER 1458 L0
+    LINENUMBER 1463 L0
     ALOAD 0
     GETFIELD net/minecraft/block/Block.textureName : Ljava/lang/String;
     IFNONNULL L1
@@ -6558,7 +6607,7 @@ public class net/minecraft/block/Block {
   public func_149735_b(II)Lnet/minecraft/util/IIcon;
   @Lcpw/mods/fml/relauncher/SideOnly;(value=Lcpw/mods/fml/relauncher/Side;.CLIENT)
    L0
-    LINENUMBER 1464 L0
+    LINENUMBER 1469 L0
     ALOAD 0
     ILOAD 1
     ILOAD 2
@@ -6575,7 +6624,7 @@ public class net/minecraft/block/Block {
   public registerBlockIcons(Lnet/minecraft/client/renderer/texture/IIconRegister;)V
   @Lcpw/mods/fml/relauncher/SideOnly;(value=Lcpw/mods/fml/relauncher/Side;.CLIENT)
    L0
-    LINENUMBER 1470 L0
+    LINENUMBER 1475 L0
     ALOAD 0
     ALOAD 1
     ALOAD 0
@@ -6583,7 +6632,7 @@ public class net/minecraft/block/Block {
     INVOKEINTERFACE net/minecraft/client/renderer/texture/IIconRegister.registerIcon (Ljava/lang/String;)Lnet/minecraft/util/IIcon;
     PUTFIELD net/minecraft/block/Block.blockIcon : Lnet/minecraft/util/IIcon;
    L1
-    LINENUMBER 1471 L1
+    LINENUMBER 1476 L1
     RETURN
    L2
     LOCALVARIABLE this Lnet/minecraft/block/Block; L0 L2 0
@@ -6595,7 +6644,7 @@ public class net/minecraft/block/Block {
   public getItemIconName()Ljava/lang/String;
   @Lcpw/mods/fml/relauncher/SideOnly;(value=Lcpw/mods/fml/relauncher/Side;.CLIENT)
    L0
-    LINENUMBER 1479 L0
+    LINENUMBER 1484 L0
     ACONST_NULL
     ARETURN
    L1
@@ -6606,7 +6655,7 @@ public class net/minecraft/block/Block {
   // access flags 0x1
   public getLightValue(Lnet/minecraft/world/IBlockAccess;III)I
    L0
-    LINENUMBER 1496 L0
+    LINENUMBER 1502 L0
     ALOAD 1
     ILOAD 2
     ILOAD 3
@@ -6614,12 +6663,12 @@ public class net/minecraft/block/Block {
     INVOKEINTERFACE net/minecraft/world/IBlockAccess.getBlock (III)Lnet/minecraft/block/Block;
     ASTORE 5
    L1
-    LINENUMBER 1497 L1
+    LINENUMBER 1503 L1
     ALOAD 5
     ALOAD 0
     IF_ACMPEQ L2
    L3
-    LINENUMBER 1499 L3
+    LINENUMBER 1505 L3
     ALOAD 5
     ALOAD 1
     ILOAD 2
@@ -6628,7 +6677,7 @@ public class net/minecraft/block/Block {
     INVOKEVIRTUAL net/minecraft/block/Block.getLightValue (Lnet/minecraft/world/IBlockAccess;III)I
     IRETURN
    L2
-    LINENUMBER 1504 L2
+    LINENUMBER 1510 L2
    FRAME FULL [net/minecraft/block/Block net/minecraft/world/IBlockAccess I I I net/minecraft/block/Block] []
     ALOAD 0
     INVOKEVIRTUAL net/minecraft/block/Block.getLightValue ()I
@@ -6646,7 +6695,7 @@ public class net/minecraft/block/Block {
   // access flags 0x1
   public isLadder(Lnet/minecraft/world/IBlockAccess;IIILnet/minecraft/entity/EntityLivingBase;)Z
    L0
-    LINENUMBER 1519 L0
+    LINENUMBER 1525 L0
     ICONST_0
     IRETURN
    L1
@@ -6662,7 +6711,7 @@ public class net/minecraft/block/Block {
   // access flags 0x1
   public isNormalCube(Lnet/minecraft/world/IBlockAccess;III)Z
    L0
-    LINENUMBER 1535 L0
+    LINENUMBER 1541 L0
     ALOAD 0
     INVOKEVIRTUAL net/minecraft/block/Block.getMaterial ()Lnet/minecraft/block/material/Material;
     INVOKEVIRTUAL net/minecraft/block/material/Material.isOpaque ()Z
@@ -6693,7 +6742,7 @@ public class net/minecraft/block/Block {
   // access flags 0x1
   public isSideSolid(Lnet/minecraft/world/IBlockAccess;IIILnet/minecraftforge/common/util/ForgeDirection;)Z
    L0
-    LINENUMBER 1550 L0
+    LINENUMBER 1556 L0
     ALOAD 1
     ILOAD 2
     ILOAD 3
@@ -6701,12 +6750,12 @@ public class net/minecraft/block/Block {
     INVOKEINTERFACE net/minecraft/world/IBlockAccess.getBlockMetadata (III)I
     ISTORE 6
    L1
-    LINENUMBER 1552 L1
+    LINENUMBER 1558 L1
     ALOAD 0
     INSTANCEOF net/minecraft/block/BlockSlab
     IFEQ L2
    L3
-    LINENUMBER 1554 L3
+    LINENUMBER 1560 L3
     ILOAD 6
     BIPUSH 8
     IAND
@@ -6731,13 +6780,13 @@ public class net/minecraft/block/Block {
    FRAME FULL [net/minecraft/block/Block net/minecraft/world/IBlockAccess I I I net/minecraftforge/common/util/ForgeDirection I] [I]
     IRETURN
    L2
-    LINENUMBER 1556 L2
+    LINENUMBER 1562 L2
    FRAME FULL [net/minecraft/block/Block net/minecraft/world/IBlockAccess I I I net/minecraftforge/common/util/ForgeDirection I] []
     ALOAD 0
     INSTANCEOF net/minecraft/block/BlockFarmland
     IFEQ L8
    L9
-    LINENUMBER 1558 L9
+    LINENUMBER 1564 L9
     ALOAD 5
     GETSTATIC net/minecraftforge/common/util/ForgeDirection.DOWN : Lnet/minecraftforge/common/util/ForgeDirection;
     IF_ACMPEQ L10
@@ -6753,13 +6802,13 @@ public class net/minecraft/block/Block {
    FRAME FULL [net/minecraft/block/Block net/minecraft/world/IBlockAccess I I I net/minecraftforge/common/util/ForgeDirection I] [I]
     IRETURN
    L8
-    LINENUMBER 1560 L8
+    LINENUMBER 1566 L8
    FRAME FULL [net/minecraft/block/Block net/minecraft/world/IBlockAccess I I I net/minecraftforge/common/util/ForgeDirection I] []
     ALOAD 0
     INSTANCEOF net/minecraft/block/BlockStairs
     IFEQ L12
    L13
-    LINENUMBER 1562 L13
+    LINENUMBER 1568 L13
     ILOAD 6
     ICONST_4
     IAND
@@ -6773,7 +6822,7 @@ public class net/minecraft/block/Block {
    FRAME FULL [net/minecraft/block/Block net/minecraft/world/IBlockAccess I I I net/minecraftforge/common/util/ForgeDirection I] [I]
     ISTORE 7
    L16
-    LINENUMBER 1563 L16
+    LINENUMBER 1569 L16
     ILOAD 6
     ICONST_3
     IAND
@@ -6798,13 +6847,13 @@ public class net/minecraft/block/Block {
    FRAME FULL [net/minecraft/block/Block net/minecraft/world/IBlockAccess I I I net/minecraftforge/common/util/ForgeDirection I I] [I]
     IRETURN
    L12
-    LINENUMBER 1565 L12
+    LINENUMBER 1571 L12
    FRAME FULL [net/minecraft/block/Block net/minecraft/world/IBlockAccess I I I net/minecraftforge/common/util/ForgeDirection I] []
     ALOAD 0
     INSTANCEOF net/minecraft/block/BlockSnow
     IFEQ L20
    L21
-    LINENUMBER 1567 L21
+    LINENUMBER 1573 L21
     ILOAD 6
     BIPUSH 7
     IAND
@@ -6819,7 +6868,7 @@ public class net/minecraft/block/Block {
    FRAME FULL [net/minecraft/block/Block net/minecraft/world/IBlockAccess I I I net/minecraftforge/common/util/ForgeDirection I] [I]
     IRETURN
    L20
-    LINENUMBER 1569 L20
+    LINENUMBER 1575 L20
    FRAME FULL [net/minecraft/block/Block net/minecraft/world/IBlockAccess I I I net/minecraftforge/common/util/ForgeDirection I] []
     ALOAD 0
     INSTANCEOF net/minecraft/block/BlockHopper
@@ -6828,21 +6877,21 @@ public class net/minecraft/block/Block {
     GETSTATIC net/minecraftforge/common/util/ForgeDirection.UP : Lnet/minecraftforge/common/util/ForgeDirection;
     IF_ACMPNE L24
    L25
-    LINENUMBER 1571 L25
+    LINENUMBER 1577 L25
     ICONST_1
     IRETURN
    L24
-    LINENUMBER 1573 L24
+    LINENUMBER 1579 L24
    FRAME FULL [net/minecraft/block/Block net/minecraft/world/IBlockAccess I I I net/minecraftforge/common/util/ForgeDirection I] []
     ALOAD 0
     INSTANCEOF net/minecraft/block/BlockCompressedPowered
     IFEQ L26
    L27
-    LINENUMBER 1575 L27
+    LINENUMBER 1581 L27
     ICONST_1
     IRETURN
    L26
-    LINENUMBER 1577 L26
+    LINENUMBER 1583 L26
    FRAME FULL [net/minecraft/block/Block net/minecraft/world/IBlockAccess I I I net/minecraftforge/common/util/ForgeDirection I] []
     ALOAD 0
     ALOAD 1
@@ -6866,7 +6915,7 @@ public class net/minecraft/block/Block {
   // access flags 0x1
   public isReplaceable(Lnet/minecraft/world/IBlockAccess;III)Z
    L0
-    LINENUMBER 1592 L0
+    LINENUMBER 1598 L0
     ALOAD 0
     GETFIELD net/minecraft/block/Block.blockMaterial : Lnet/minecraft/block/material/Material;
     INVOKEVIRTUAL net/minecraft/block/material/Material.isReplaceable ()Z
@@ -6883,7 +6932,7 @@ public class net/minecraft/block/Block {
   // access flags 0x1
   public isBurning(Lnet/minecraft/world/IBlockAccess;III)Z
    L0
-    LINENUMBER 1607 L0
+    LINENUMBER 1613 L0
     ICONST_0
     IRETURN
    L1
@@ -6898,7 +6947,7 @@ public class net/minecraft/block/Block {
   // access flags 0x1
   public isAir(Lnet/minecraft/world/IBlockAccess;III)Z
    L0
-    LINENUMBER 1624 L0
+    LINENUMBER 1630 L0
     ALOAD 0
     INVOKEVIRTUAL net/minecraft/block/Block.getMaterial ()Lnet/minecraft/block/material/Material;
     GETSTATIC net/minecraft/block/material/Material.air : Lnet/minecraft/block/material/Material;
@@ -6923,7 +6972,7 @@ public class net/minecraft/block/Block {
   // access flags 0x1
   public canHarvestBlock(Lnet/minecraft/entity/player/EntityPlayer;I)Z
    L0
-    LINENUMBER 1636 L0
+    LINENUMBER 1642 L0
     ALOAD 0
     ALOAD 1
     ILOAD 2
@@ -6937,9 +6986,34 @@ public class net/minecraft/block/Block {
     MAXLOCALS = 3
 
   // access flags 0x1
-  public removedByPlayer(Lnet/minecraft/world/World;Lnet/minecraft/entity/player/EntityPlayer;III)Z
+  public removedByPlayer(Lnet/minecraft/world/World;Lnet/minecraft/entity/player/EntityPlayer;IIIZ)Z
    L0
-    LINENUMBER 1659 L0
+    LINENUMBER 1667 L0
+    ALOAD 0
+    ALOAD 1
+    ALOAD 2
+    ILOAD 3
+    ILOAD 4
+    ILOAD 5
+    INVOKEVIRTUAL net/minecraft/block/Block.removedByPlayer (Lnet/minecraft/world/World;Lnet/minecraft/entity/player/EntityPlayer;III)Z
+    IRETURN
+   L1
+    LOCALVARIABLE this Lnet/minecraft/block/Block; L0 L1 0
+    LOCALVARIABLE world Lnet/minecraft/world/World; L0 L1 1
+    LOCALVARIABLE player Lnet/minecraft/entity/player/EntityPlayer; L0 L1 2
+    LOCALVARIABLE x I L0 L1 3
+    LOCALVARIABLE y I L0 L1 4
+    LOCALVARIABLE z I L0 L1 5
+    LOCALVARIABLE willHarvest Z L0 L1 6
+    MAXSTACK = 6
+    MAXLOCALS = 7
+
+  // DEPRECATED
+  // access flags 0x20001
+  public removedByPlayer(Lnet/minecraft/world/World;Lnet/minecraft/entity/player/EntityPlayer;III)Z
+  @Ljava/lang/Deprecated;()
+   L0
+    LINENUMBER 1673 L0
     ALOAD 1
     ILOAD 3
     ILOAD 4
@@ -6959,7 +7033,7 @@ public class net/minecraft/block/Block {
   // access flags 0x1
   public getFlammability(Lnet/minecraft/world/IBlockAccess;IIILnet/minecraftforge/common/util/ForgeDirection;)I
    L0
-    LINENUMBER 1675 L0
+    LINENUMBER 1689 L0
     GETSTATIC net/minecraft/init/Blocks.fire : Lnet/minecraft/block/BlockFire;
     ALOAD 0
     INVOKEVIRTUAL net/minecraft/block/BlockFire.getFlammability (Lnet/minecraft/block/Block;)I
@@ -6977,7 +7051,7 @@ public class net/minecraft/block/Block {
   // access flags 0x1
   public isFlammable(Lnet/minecraft/world/IBlockAccess;IIILnet/minecraftforge/common/util/ForgeDirection;)Z
    L0
-    LINENUMBER 1691 L0
+    LINENUMBER 1705 L0
     ALOAD 0
     ALOAD 1
     ILOAD 2
@@ -7007,7 +7081,7 @@ public class net/minecraft/block/Block {
   // access flags 0x1
   public getFireSpreadSpeed(Lnet/minecraft/world/IBlockAccess;IIILnet/minecraftforge/common/util/ForgeDirection;)I
    L0
-    LINENUMBER 1707 L0
+    LINENUMBER 1721 L0
     GETSTATIC net/minecraft/init/Blocks.fire : Lnet/minecraft/block/BlockFire;
     ALOAD 0
     INVOKEVIRTUAL net/minecraft/block/BlockFire.getEncouragement (Lnet/minecraft/block/Block;)I
@@ -7025,7 +7099,7 @@ public class net/minecraft/block/Block {
   // access flags 0x1
   public isFireSource(Lnet/minecraft/world/World;IIILnet/minecraftforge/common/util/ForgeDirection;)Z
    L0
-    LINENUMBER 1725 L0
+    LINENUMBER 1739 L0
     ALOAD 0
     GETSTATIC net/minecraft/init/Blocks.netherrack : Lnet/minecraft/block/Block;
     IF_ACMPNE L1
@@ -7033,11 +7107,11 @@ public class net/minecraft/block/Block {
     GETSTATIC net/minecraftforge/common/util/ForgeDirection.UP : Lnet/minecraftforge/common/util/ForgeDirection;
     IF_ACMPNE L1
    L2
-    LINENUMBER 1727 L2
+    LINENUMBER 1741 L2
     ICONST_1
     IRETURN
    L1
-    LINENUMBER 1729 L1
+    LINENUMBER 1743 L1
    FRAME FULL [net/minecraft/block/Block net/minecraft/world/World I I I net/minecraftforge/common/util/ForgeDirection] []
     ALOAD 1
     GETFIELD net/minecraft/world/World.provider : Lnet/minecraft/world/WorldProvider;
@@ -7050,11 +7124,11 @@ public class net/minecraft/block/Block {
     GETSTATIC net/minecraftforge/common/util/ForgeDirection.UP : Lnet/minecraftforge/common/util/ForgeDirection;
     IF_ACMPNE L3
    L4
-    LINENUMBER 1731 L4
+    LINENUMBER 1745 L4
     ICONST_1
     IRETURN
    L3
-    LINENUMBER 1733 L3
+    LINENUMBER 1747 L3
    FRAME FULL [net/minecraft/block/Block net/minecraft/world/World I I I net/minecraftforge/common/util/ForgeDirection] []
     ICONST_0
     IRETURN
@@ -7071,7 +7145,7 @@ public class net/minecraft/block/Block {
   // access flags 0x1
   public hasTileEntity(I)Z
    L0
-    LINENUMBER 1749 L0
+    LINENUMBER 1763 L0
     ALOAD 0
     GETFIELD net/minecraft/block/Block.isTileProvider : Z
     IRETURN
@@ -7084,12 +7158,12 @@ public class net/minecraft/block/Block {
   // access flags 0x1
   public createTileEntity(Lnet/minecraft/world/World;I)Lnet/minecraft/tileentity/TileEntity;
    L0
-    LINENUMBER 1762 L0
+    LINENUMBER 1776 L0
     ALOAD 0
     GETFIELD net/minecraft/block/Block.isTileProvider : Z
     IFEQ L1
    L2
-    LINENUMBER 1764 L2
+    LINENUMBER 1778 L2
     ALOAD 0
     CHECKCAST net/minecraft/block/ITileEntityProvider
     ALOAD 1
@@ -7097,7 +7171,7 @@ public class net/minecraft/block/Block {
     INVOKEINTERFACE net/minecraft/block/ITileEntityProvider.createNewTileEntity (Lnet/minecraft/world/World;I)Lnet/minecraft/tileentity/TileEntity;
     ARETURN
    L1
-    LINENUMBER 1766 L1
+    LINENUMBER 1780 L1
    FRAME FULL [net/minecraft/block/Block net/minecraft/world/World I] []
     ACONST_NULL
     ARETURN
@@ -7111,7 +7185,7 @@ public class net/minecraft/block/Block {
   // access flags 0x1
   public quantityDropped(IILjava/util/Random;)I
    L0
-    LINENUMBER 1783 L0
+    LINENUMBER 1797 L0
     ALOAD 0
     ILOAD 2
     ALOAD 3
@@ -7130,13 +7204,13 @@ public class net/minecraft/block/Block {
   // declaration: java.util.ArrayList<net.minecraft.item.ItemStack> getDrops(net.minecraft.world.World, int, int, int, int, int)
   public getDrops(Lnet/minecraft/world/World;IIIII)Ljava/util/ArrayList;
    L0
-    LINENUMBER 1799 L0
+    LINENUMBER 1813 L0
     NEW java/util/ArrayList
     DUP
     INVOKESPECIAL java/util/ArrayList.<init> ()V
     ASTORE 7
    L1
-    LINENUMBER 1801 L1
+    LINENUMBER 1815 L1
     ALOAD 0
     ILOAD 5
     ILOAD 6
@@ -7145,7 +7219,7 @@ public class net/minecraft/block/Block {
     INVOKEVIRTUAL net/minecraft/block/Block.quantityDropped (IILjava/util/Random;)I
     ISTORE 8
    L2
-    LINENUMBER 1802 L2
+    LINENUMBER 1816 L2
     ICONST_0
     ISTORE 9
    L3
@@ -7154,7 +7228,7 @@ public class net/minecraft/block/Block {
     ILOAD 8
     IF_ICMPGE L4
    L5
-    LINENUMBER 1804 L5
+    LINENUMBER 1818 L5
     ALOAD 0
     ILOAD 5
     ALOAD 1
@@ -7163,11 +7237,11 @@ public class net/minecraft/block/Block {
     INVOKEVIRTUAL net/minecraft/block/Block.getItemDropped (ILjava/util/Random;I)Lnet/minecraft/item/Item;
     ASTORE 10
    L6
-    LINENUMBER 1805 L6
+    LINENUMBER 1819 L6
     ALOAD 10
     IFNULL L7
    L8
-    LINENUMBER 1807 L8
+    LINENUMBER 1821 L8
     ALOAD 7
     NEW net/minecraft/item/ItemStack
     DUP
@@ -7180,12 +7254,12 @@ public class net/minecraft/block/Block {
     INVOKEVIRTUAL java/util/ArrayList.add (Ljava/lang/Object;)Z
     POP
    L7
-    LINENUMBER 1802 L7
+    LINENUMBER 1816 L7
    FRAME FULL [net/minecraft/block/Block net/minecraft/world/World I I I I I java/util/ArrayList I I net/minecraft/item/Item] []
     IINC 9 1
     GOTO L3
    L4
-    LINENUMBER 1810 L4
+    LINENUMBER 1824 L4
    FRAME FULL [net/minecraft/block/Block net/minecraft/world/World I I I I I java/util/ArrayList I I] []
     ALOAD 7
     ARETURN
@@ -7209,25 +7283,25 @@ public class net/minecraft/block/Block {
   // access flags 0x1
   public canSilkHarvest(Lnet/minecraft/world/World;Lnet/minecraft/entity/player/EntityPlayer;IIII)Z
    L0
-    LINENUMBER 1826 L0
+    LINENUMBER 1840 L0
     ALOAD 0
     GETFIELD net/minecraft/block/Block.silk_check_meta : Ljava/lang/ThreadLocal;
     ILOAD 6
     INVOKESTATIC java/lang/Integer.valueOf (I)Ljava/lang/Integer;
     INVOKEVIRTUAL java/lang/ThreadLocal.set (Ljava/lang/Object;)V
    L1
-    LINENUMBER 1827 L1
+    LINENUMBER 1841 L1
     ALOAD 0
     INVOKEVIRTUAL net/minecraft/block/Block.canSilkHarvest ()Z
     ISTORE 7
    L2
-    LINENUMBER 1828 L2
+    LINENUMBER 1842 L2
     ALOAD 0
     GETFIELD net/minecraft/block/Block.silk_check_meta : Ljava/lang/ThreadLocal;
     ACONST_NULL
     INVOKEVIRTUAL java/lang/ThreadLocal.set (Ljava/lang/Object;)V
    L3
-    LINENUMBER 1829 L3
+    LINENUMBER 1843 L3
     ILOAD 7
     IRETURN
    L4
@@ -7245,7 +7319,7 @@ public class net/minecraft/block/Block {
   // access flags 0x1
   public canCreatureSpawn(Lnet/minecraft/entity/EnumCreatureType;Lnet/minecraft/world/IBlockAccess;III)Z
    L0
-    LINENUMBER 1845 L0
+    LINENUMBER 1859 L0
     ALOAD 2
     ILOAD 3
     ILOAD 4
@@ -7253,12 +7327,12 @@ public class net/minecraft/block/Block {
     INVOKEINTERFACE net/minecraft/world/IBlockAccess.getBlockMetadata (III)I
     ISTORE 6
    L1
-    LINENUMBER 1846 L1
+    LINENUMBER 1860 L1
     ALOAD 0
     INSTANCEOF net/minecraft/block/BlockSlab
     IFEQ L2
    L3
-    LINENUMBER 1848 L3
+    LINENUMBER 1862 L3
     ILOAD 6
     BIPUSH 8
     IAND
@@ -7278,13 +7352,13 @@ public class net/minecraft/block/Block {
    FRAME FULL [net/minecraft/block/Block net/minecraft/entity/EnumCreatureType net/minecraft/world/IBlockAccess I I I I] [I]
     IRETURN
    L2
-    LINENUMBER 1850 L2
+    LINENUMBER 1864 L2
    FRAME FULL [net/minecraft/block/Block net/minecraft/entity/EnumCreatureType net/minecraft/world/IBlockAccess I I I I] []
     ALOAD 0
     INSTANCEOF net/minecraft/block/BlockStairs
     IFEQ L7
    L8
-    LINENUMBER 1852 L8
+    LINENUMBER 1866 L8
     ILOAD 6
     ICONST_4
     IAND
@@ -7298,7 +7372,7 @@ public class net/minecraft/block/Block {
    FRAME FULL [net/minecraft/block/Block net/minecraft/entity/EnumCreatureType net/minecraft/world/IBlockAccess I I I I] [I]
     IRETURN
    L7
-    LINENUMBER 1854 L7
+    LINENUMBER 1868 L7
    FRAME FULL [net/minecraft/block/Block net/minecraft/entity/EnumCreatureType net/minecraft/world/IBlockAccess I I I I] []
     ALOAD 0
     ALOAD 2
@@ -7322,7 +7396,7 @@ public class net/minecraft/block/Block {
   // access flags 0x1
   public isBed(Lnet/minecraft/world/IBlockAccess;IIILnet/minecraft/entity/EntityLivingBase;)Z
    L0
-    LINENUMBER 1871 L0
+    LINENUMBER 1885 L0
     ALOAD 0
     GETSTATIC net/minecraft/init/Blocks.bed : Lnet/minecraft/block/Block;
     IF_ACMPNE L1
@@ -7347,12 +7421,12 @@ public class net/minecraft/block/Block {
   // access flags 0x1
   public getBedSpawnPosition(Lnet/minecraft/world/IBlockAccess;IIILnet/minecraft/entity/player/EntityPlayer;)Lnet/minecraft/util/ChunkCoordinates;
    L0
-    LINENUMBER 1887 L0
+    LINENUMBER 1901 L0
     ALOAD 1
     INSTANCEOF net/minecraft/world/World
     IFEQ L1
    L2
-    LINENUMBER 1888 L2
+    LINENUMBER 1902 L2
     ALOAD 1
     CHECKCAST net/minecraft/world/World
     ILOAD 2
@@ -7362,7 +7436,7 @@ public class net/minecraft/block/Block {
     INVOKESTATIC net/minecraft/block/BlockBed.func_149977_a (Lnet/minecraft/world/World;IIII)Lnet/minecraft/util/ChunkCoordinates;
     ARETURN
    L1
-    LINENUMBER 1889 L1
+    LINENUMBER 1903 L1
    FRAME FULL [net/minecraft/block/Block net/minecraft/world/IBlockAccess I I I net/minecraft/entity/player/EntityPlayer] []
     ACONST_NULL
     ARETURN
@@ -7379,12 +7453,12 @@ public class net/minecraft/block/Block {
   // access flags 0x1
   public setBedOccupied(Lnet/minecraft/world/IBlockAccess;IIILnet/minecraft/entity/player/EntityPlayer;Z)V
    L0
-    LINENUMBER 1904 L0
+    LINENUMBER 1918 L0
     ALOAD 1
     INSTANCEOF net/minecraft/world/World
     IFEQ L1
    L2
-    LINENUMBER 1905 L2
+    LINENUMBER 1919 L2
     ALOAD 1
     CHECKCAST net/minecraft/world/World
     ILOAD 2
@@ -7393,7 +7467,7 @@ public class net/minecraft/block/Block {
     ILOAD 6
     INVOKESTATIC net/minecraft/block/BlockBed.func_149979_a (Lnet/minecraft/world/World;IIIZ)V
    L1
-    LINENUMBER 1906 L1
+    LINENUMBER 1920 L1
    FRAME FULL [net/minecraft/block/Block net/minecraft/world/IBlockAccess I I I net/minecraft/entity/player/EntityPlayer I] []
     RETURN
    L3
@@ -7410,7 +7484,7 @@ public class net/minecraft/block/Block {
   // access flags 0x1
   public getBedDirection(Lnet/minecraft/world/IBlockAccess;III)I
    L0
-    LINENUMBER 1920 L0
+    LINENUMBER 1934 L0
     ALOAD 1
     ILOAD 2
     ILOAD 3
@@ -7430,7 +7504,7 @@ public class net/minecraft/block/Block {
   // access flags 0x1
   public isBedFoot(Lnet/minecraft/world/IBlockAccess;III)Z
    L0
-    LINENUMBER 1934 L0
+    LINENUMBER 1948 L0
     ALOAD 1
     ILOAD 2
     ILOAD 3
@@ -7450,7 +7524,7 @@ public class net/minecraft/block/Block {
   // access flags 0x1
   public beginLeavesDecay(Lnet/minecraft/world/World;III)V
    L0
-    LINENUMBER 1945 L0
+    LINENUMBER 1959 L0
     RETURN
    L1
     LOCALVARIABLE this Lnet/minecraft/block/Block; L0 L1 0
@@ -7464,7 +7538,7 @@ public class net/minecraft/block/Block {
   // access flags 0x1
   public canSustainLeaves(Lnet/minecraft/world/IBlockAccess;III)Z
    L0
-    LINENUMBER 1958 L0
+    LINENUMBER 1972 L0
     ICONST_0
     IRETURN
    L1
@@ -7479,7 +7553,7 @@ public class net/minecraft/block/Block {
   // access flags 0x1
   public isLeaves(Lnet/minecraft/world/IBlockAccess;III)Z
    L0
-    LINENUMBER 1972 L0
+    LINENUMBER 1986 L0
     ALOAD 0
     INVOKEVIRTUAL net/minecraft/block/Block.getMaterial ()Lnet/minecraft/block/material/Material;
     GETSTATIC net/minecraft/block/material/Material.leaves : Lnet/minecraft/block/material/Material;
@@ -7516,7 +7590,7 @@ public class net/minecraft/block/Block {
   // access flags 0x1
   public isWood(Lnet/minecraft/world/IBlockAccess;III)Z
    L0
-    LINENUMBER 1999 L0
+    LINENUMBER 2013 L0
     ICONST_0
     IRETURN
    L1
@@ -7531,7 +7605,7 @@ public class net/minecraft/block/Block {
   // access flags 0x1
   public isReplaceableOreGen(Lnet/minecraft/world/World;IIILnet/minecraft/block/Block;)Z
    L0
-    LINENUMBER 2015 L0
+    LINENUMBER 2029 L0
     ALOAD 0
     ALOAD 5
     IF_ACMPNE L1
@@ -7556,7 +7630,7 @@ public class net/minecraft/block/Block {
   // access flags 0x1
   public getExplosionResistance(Lnet/minecraft/entity/Entity;Lnet/minecraft/world/World;IIIDDD)F
    L0
-    LINENUMBER 2036 L0
+    LINENUMBER 2050 L0
     ALOAD 0
     ALOAD 1
     INVOKEVIRTUAL net/minecraft/block/Block.getExplosionResistance (Lnet/minecraft/entity/Entity;)F
@@ -7577,7 +7651,7 @@ public class net/minecraft/block/Block {
   // access flags 0x1
   public onBlockExploded(Lnet/minecraft/world/World;IIILnet/minecraft/world/Explosion;)V
    L0
-    LINENUMBER 2052 L0
+    LINENUMBER 2066 L0
     ALOAD 1
     ILOAD 2
     ILOAD 3
@@ -7585,7 +7659,7 @@ public class net/minecraft/block/Block {
     INVOKEVIRTUAL net/minecraft/world/World.setBlockToAir (III)Z
     POP
    L1
-    LINENUMBER 2053 L1
+    LINENUMBER 2067 L1
     ALOAD 0
     ALOAD 1
     ILOAD 2
@@ -7594,7 +7668,7 @@ public class net/minecraft/block/Block {
     ALOAD 5
     INVOKEVIRTUAL net/minecraft/block/Block.onBlockDestroyedByExplosion (Lnet/minecraft/world/World;IIILnet/minecraft/world/Explosion;)V
    L2
-    LINENUMBER 2054 L2
+    LINENUMBER 2068 L2
     RETURN
    L3
     LOCALVARIABLE this Lnet/minecraft/block/Block; L0 L3 0
@@ -7609,7 +7683,7 @@ public class net/minecraft/block/Block {
   // access flags 0x1
   public canConnectRedstone(Lnet/minecraft/world/IBlockAccess;IIII)Z
    L0
-    LINENUMBER 2079 L0
+    LINENUMBER 2093 L0
     ALOAD 0
     INVOKEVIRTUAL net/minecraft/block/Block.canProvidePower ()Z
     IFEQ L1
@@ -7637,7 +7711,7 @@ public class net/minecraft/block/Block {
   // access flags 0x1
   public canPlaceTorchOnTop(Lnet/minecraft/world/World;III)Z
    L0
-    LINENUMBER 2094 L0
+    LINENUMBER 2108 L0
     ALOAD 0
     ALOAD 1
     ILOAD 2
@@ -7647,11 +7721,11 @@ public class net/minecraft/block/Block {
     INVOKEVIRTUAL net/minecraft/block/Block.isSideSolid (Lnet/minecraft/world/IBlockAccess;IIILnet/minecraftforge/common/util/ForgeDirection;)Z
     IFEQ L1
    L2
-    LINENUMBER 2096 L2
+    LINENUMBER 2110 L2
     ICONST_1
     IRETURN
    L1
-    LINENUMBER 2100 L1
+    LINENUMBER 2114 L1
    FRAME FULL [net/minecraft/block/Block net/minecraft/world/World I I I] []
     ALOAD 0
     GETSTATIC net/minecraft/init/Blocks.fence : Lnet/minecraft/block/Block;
@@ -7687,7 +7761,7 @@ public class net/minecraft/block/Block {
   // access flags 0x1
   public canRenderInPass(I)Z
    L0
-    LINENUMBER 2112 L0
+    LINENUMBER 2126 L0
     ILOAD 1
     ALOAD 0
     INVOKEVIRTUAL net/minecraft/block/Block.getRenderBlockPass ()I
@@ -7709,7 +7783,7 @@ public class net/minecraft/block/Block {
   // access flags 0x1
   public getPickBlock(Lnet/minecraft/util/MovingObjectPosition;Lnet/minecraft/world/World;III)Lnet/minecraft/item/ItemStack;
    L0
-    LINENUMBER 2123 L0
+    LINENUMBER 2137 L0
     ALOAD 0
     ALOAD 2
     ILOAD 3
@@ -7718,15 +7792,15 @@ public class net/minecraft/block/Block {
     INVOKEVIRTUAL net/minecraft/block/Block.getItem (Lnet/minecraft/world/World;III)Lnet/minecraft/item/Item;
     ASTORE 6
    L1
-    LINENUMBER 2125 L1
+    LINENUMBER 2139 L1
     ALOAD 6
     IFNONNULL L2
    L3
-    LINENUMBER 2127 L3
+    LINENUMBER 2141 L3
     ACONST_NULL
     ARETURN
    L2
-    LINENUMBER 2130 L2
+    LINENUMBER 2144 L2
    FRAME FULL [net/minecraft/block/Block net/minecraft/util/MovingObjectPosition net/minecraft/world/World I I I net/minecraft/item/Item] []
     ALOAD 6
     INSTANCEOF net/minecraft/item/ItemBlock
@@ -7744,7 +7818,7 @@ public class net/minecraft/block/Block {
    FRAME FULL [net/minecraft/block/Block net/minecraft/util/MovingObjectPosition net/minecraft/world/World I I I net/minecraft/item/Item] [net/minecraft/block/Block]
     ASTORE 7
    L6
-    LINENUMBER 2131 L6
+    LINENUMBER 2145 L6
     NEW net/minecraft/item/ItemStack
     DUP
     ALOAD 6
@@ -7772,7 +7846,7 @@ public class net/minecraft/block/Block {
   // access flags 0x1
   public isFoliage(Lnet/minecraft/world/IBlockAccess;III)Z
    L0
-    LINENUMBER 2142 L0
+    LINENUMBER 2156 L0
     ICONST_0
     IRETURN
    L1
@@ -7788,7 +7862,7 @@ public class net/minecraft/block/Block {
   public addHitEffects(Lnet/minecraft/world/World;Lnet/minecraft/util/MovingObjectPosition;Lnet/minecraft/client/particle/EffectRenderer;)Z
   @Lcpw/mods/fml/relauncher/SideOnly;(value=Lcpw/mods/fml/relauncher/Side;.CLIENT)
    L0
-    LINENUMBER 2159 L0
+    LINENUMBER 2173 L0
     ICONST_0
     IRETURN
    L1
@@ -7803,7 +7877,7 @@ public class net/minecraft/block/Block {
   public addDestroyEffects(Lnet/minecraft/world/World;IIIILnet/minecraft/client/particle/EffectRenderer;)Z
   @Lcpw/mods/fml/relauncher/SideOnly;(value=Lcpw/mods/fml/relauncher/Side;.CLIENT)
    L0
-    LINENUMBER 2179 L0
+    LINENUMBER 2193 L0
     ICONST_0
     IRETURN
    L1
@@ -7820,7 +7894,7 @@ public class net/minecraft/block/Block {
   // access flags 0x1
   public canSustainPlant(Lnet/minecraft/world/IBlockAccess;IIILnet/minecraftforge/common/util/ForgeDirection;Lnet/minecraftforge/common/IPlantable;)Z
    L0
-    LINENUMBER 2203 L0
+    LINENUMBER 2217 L0
     ALOAD 6
     ALOAD 1
     ILOAD 2
@@ -7831,7 +7905,7 @@ public class net/minecraft/block/Block {
     INVOKEINTERFACE net/minecraftforge/common/IPlantable.getPlant (Lnet/minecraft/world/IBlockAccess;III)Lnet/minecraft/block/Block;
     ASTORE 7
    L1
-    LINENUMBER 2204 L1
+    LINENUMBER 2218 L1
     ALOAD 6
     ALOAD 1
     ILOAD 2
@@ -7842,7 +7916,7 @@ public class net/minecraft/block/Block {
     INVOKEINTERFACE net/minecraftforge/common/IPlantable.getPlantType (Lnet/minecraft/world/IBlockAccess;III)Lnet/minecraftforge/common/EnumPlantType;
     ASTORE 8
    L2
-    LINENUMBER 2206 L2
+    LINENUMBER 2220 L2
     ALOAD 7
     GETSTATIC net/minecraft/init/Blocks.cactus : Lnet/minecraft/block/Block;
     IF_ACMPNE L3
@@ -7850,11 +7924,11 @@ public class net/minecraft/block/Block {
     GETSTATIC net/minecraft/init/Blocks.cactus : Lnet/minecraft/block/Block;
     IF_ACMPNE L3
    L4
-    LINENUMBER 2208 L4
+    LINENUMBER 2222 L4
     ICONST_1
     IRETURN
    L3
-    LINENUMBER 2211 L3
+    LINENUMBER 2225 L3
    FRAME FULL [net/minecraft/block/Block net/minecraft/world/IBlockAccess I I I net/minecraftforge/common/util/ForgeDirection net/minecraftforge/common/IPlantable net/minecraft/block/Block net/minecraftforge/common/EnumPlantType] []
     ALOAD 7
     GETSTATIC net/minecraft/init/Blocks.reeds : Lnet/minecraft/block/Block;
@@ -7863,11 +7937,11 @@ public class net/minecraft/block/Block {
     GETSTATIC net/minecraft/init/Blocks.reeds : Lnet/minecraft/block/Block;
     IF_ACMPNE L5
    L6
-    LINENUMBER 2213 L6
+    LINENUMBER 2227 L6
     ICONST_1
     IRETURN
    L5
-    LINENUMBER 2216 L5
+    LINENUMBER 2230 L5
    FRAME FULL [net/minecraft/block/Block net/minecraft/world/IBlockAccess I I I net/minecraftforge/common/util/ForgeDirection net/minecraftforge/common/IPlantable net/minecraft/block/Block net/minecraftforge/common/EnumPlantType] []
     ALOAD 6
     INSTANCEOF net/minecraft/block/BlockBush
@@ -7878,13 +7952,13 @@ public class net/minecraft/block/Block {
     INVOKEVIRTUAL net/minecraft/block/BlockBush.canPlaceBlockOn (Lnet/minecraft/block/Block;)Z
     IFEQ L7
    L8
-    LINENUMBER 2218 L8
+    LINENUMBER 2232 L8
     ICONST_1
     IRETURN
    L7
-    LINENUMBER 2221 L7
+    LINENUMBER 2235 L7
    FRAME FULL [net/minecraft/block/Block net/minecraft/world/IBlockAccess I I I net/minecraftforge/common/util/ForgeDirection net/minecraftforge/common/IPlantable net/minecraft/block/Block net/minecraftforge/common/EnumPlantType] []
-    GETSTATIC net/minecraft/block/Block$4.$SwitchMap$net$minecraftforge$common$EnumPlantType : [I
+    GETSTATIC net/minecraft/block/Block$6.$SwitchMap$net$minecraftforge$common$EnumPlantType : [I
     ALOAD 8
     INVOKEVIRTUAL net/minecraftforge/common/EnumPlantType.ordinal ()I
     IALOAD
@@ -7898,10 +7972,10 @@ public class net/minecraft/block/Block {
       7: L15
       default: L16
    L9
-    LINENUMBER 2223 L9
+    LINENUMBER 2237 L9
    FRAME FULL [net/minecraft/block/Block net/minecraft/world/IBlockAccess I I I net/minecraftforge/common/util/ForgeDirection net/minecraftforge/common/IPlantable net/minecraft/block/Block net/minecraftforge/common/EnumPlantType] []
     ALOAD 0
-    GETSTATIC net/minecraft/init/Blocks.sand : Lnet/minecraft/block/Block;
+    GETSTATIC net/minecraft/init/Blocks.sand : Lnet/minecraft/block/BlockSand;
     IF_ACMPNE L17
     ICONST_1
     GOTO L18
@@ -7912,7 +7986,7 @@ public class net/minecraft/block/Block {
    FRAME FULL [net/minecraft/block/Block net/minecraft/world/IBlockAccess I I I net/minecraftforge/common/util/ForgeDirection net/minecraftforge/common/IPlantable net/minecraft/block/Block net/minecraftforge/common/EnumPlantType] [I]
     IRETURN
    L10
-    LINENUMBER 2224 L10
+    LINENUMBER 2238 L10
    FRAME FULL [net/minecraft/block/Block net/minecraft/world/IBlockAccess I I I net/minecraftforge/common/util/ForgeDirection net/minecraftforge/common/IPlantable net/minecraft/block/Block net/minecraftforge/common/EnumPlantType] []
     ALOAD 0
     GETSTATIC net/minecraft/init/Blocks.soul_sand : Lnet/minecraft/block/Block;
@@ -7926,7 +8000,7 @@ public class net/minecraft/block/Block {
    FRAME FULL [net/minecraft/block/Block net/minecraft/world/IBlockAccess I I I net/minecraftforge/common/util/ForgeDirection net/minecraftforge/common/IPlantable net/minecraft/block/Block net/minecraftforge/common/EnumPlantType] [I]
     IRETURN
    L11
-    LINENUMBER 2225 L11
+    LINENUMBER 2239 L11
    FRAME FULL [net/minecraft/block/Block net/minecraft/world/IBlockAccess I I I net/minecraftforge/common/util/ForgeDirection net/minecraftforge/common/IPlantable net/minecraft/block/Block net/minecraftforge/common/EnumPlantType] []
     ALOAD 0
     GETSTATIC net/minecraft/init/Blocks.farmland : Lnet/minecraft/block/Block;
@@ -7940,7 +8014,7 @@ public class net/minecraft/block/Block {
    FRAME FULL [net/minecraft/block/Block net/minecraft/world/IBlockAccess I I I net/minecraftforge/common/util/ForgeDirection net/minecraftforge/common/IPlantable net/minecraft/block/Block net/minecraftforge/common/EnumPlantType] [I]
     IRETURN
    L12
-    LINENUMBER 2226 L12
+    LINENUMBER 2240 L12
    FRAME FULL [net/minecraft/block/Block net/minecraft/world/IBlockAccess I I I net/minecraftforge/common/util/ForgeDirection net/minecraftforge/common/IPlantable net/minecraft/block/Block net/minecraftforge/common/EnumPlantType] []
     ALOAD 0
     ALOAD 1
@@ -7951,13 +8025,16 @@ public class net/minecraft/block/Block {
     INVOKEVIRTUAL net/minecraft/block/Block.isSideSolid (Lnet/minecraft/world/IBlockAccess;IIILnet/minecraftforge/common/util/ForgeDirection;)Z
     IRETURN
    L13
-    LINENUMBER 2227 L13
+    LINENUMBER 2241 L13
    FRAME FULL [net/minecraft/block/Block net/minecraft/world/IBlockAccess I I I net/minecraftforge/common/util/ForgeDirection net/minecraftforge/common/IPlantable net/minecraft/block/Block net/minecraftforge/common/EnumPlantType] []
     ALOAD 0
     GETSTATIC net/minecraft/init/Blocks.grass : Lnet/minecraft/block/BlockGrass;
     IF_ACMPEQ L23
     ALOAD 0
     GETSTATIC net/minecraft/init/Blocks.dirt : Lnet/minecraft/block/Block;
+    IF_ACMPEQ L23
+    ALOAD 0
+    GETSTATIC net/minecraft/init/Blocks.farmland : Lnet/minecraft/block/Block;
     IF_ACMPNE L24
    L23
    FRAME FULL [net/minecraft/block/Block net/minecraft/world/IBlockAccess I I I net/minecraftforge/common/util/ForgeDirection net/minecraftforge/common/IPlantable net/minecraft/block/Block net/minecraftforge/common/EnumPlantType] []
@@ -7970,7 +8047,7 @@ public class net/minecraft/block/Block {
    FRAME FULL [net/minecraft/block/Block net/minecraft/world/IBlockAccess I I I net/minecraftforge/common/util/ForgeDirection net/minecraftforge/common/IPlantable net/minecraft/block/Block net/minecraftforge/common/EnumPlantType] [I]
     IRETURN
    L14
-    LINENUMBER 2228 L14
+    LINENUMBER 2242 L14
    FRAME FULL [net/minecraft/block/Block net/minecraft/world/IBlockAccess I I I net/minecraftforge/common/util/ForgeDirection net/minecraftforge/common/IPlantable net/minecraft/block/Block net/minecraftforge/common/EnumPlantType] []
     ALOAD 1
     ILOAD 2
@@ -7995,7 +8072,7 @@ public class net/minecraft/block/Block {
    FRAME FULL [net/minecraft/block/Block net/minecraft/world/IBlockAccess I I I net/minecraftforge/common/util/ForgeDirection net/minecraftforge/common/IPlantable net/minecraft/block/Block net/minecraftforge/common/EnumPlantType] [I]
     IRETURN
    L15
-    LINENUMBER 2230 L15
+    LINENUMBER 2244 L15
    FRAME FULL [net/minecraft/block/Block net/minecraft/world/IBlockAccess I I I net/minecraftforge/common/util/ForgeDirection net/minecraftforge/common/IPlantable net/minecraft/block/Block net/minecraftforge/common/EnumPlantType] []
     ALOAD 0
     GETSTATIC net/minecraft/init/Blocks.grass : Lnet/minecraft/block/BlockGrass;
@@ -8004,7 +8081,7 @@ public class net/minecraft/block/Block {
     GETSTATIC net/minecraft/init/Blocks.dirt : Lnet/minecraft/block/Block;
     IF_ACMPEQ L28
     ALOAD 0
-    GETSTATIC net/minecraft/init/Blocks.sand : Lnet/minecraft/block/Block;
+    GETSTATIC net/minecraft/init/Blocks.sand : Lnet/minecraft/block/BlockSand;
     IF_ACMPNE L29
    L28
    FRAME FULL [net/minecraft/block/Block net/minecraft/world/IBlockAccess I I I net/minecraftforge/common/util/ForgeDirection net/minecraftforge/common/IPlantable net/minecraft/block/Block net/minecraftforge/common/EnumPlantType] []
@@ -8017,7 +8094,7 @@ public class net/minecraft/block/Block {
    FRAME FULL [net/minecraft/block/Block net/minecraft/world/IBlockAccess I I I net/minecraftforge/common/util/ForgeDirection net/minecraftforge/common/IPlantable net/minecraft/block/Block net/minecraftforge/common/EnumPlantType] [I]
     ISTORE 9
    L31
-    LINENUMBER 2231 L31
+    LINENUMBER 2245 L31
     ALOAD 1
     ILOAD 2
     ICONST_1
@@ -8069,7 +8146,7 @@ public class net/minecraft/block/Block {
    FRAME FULL [net/minecraft/block/Block net/minecraft/world/IBlockAccess I I I net/minecraftforge/common/util/ForgeDirection net/minecraftforge/common/IPlantable net/minecraft/block/Block net/minecraftforge/common/EnumPlantType I] [I]
     ISTORE 10
    L35
-    LINENUMBER 2235 L35
+    LINENUMBER 2249 L35
     ILOAD 9
     IFEQ L36
     ILOAD 10
@@ -8083,7 +8160,7 @@ public class net/minecraft/block/Block {
    FRAME FULL [net/minecraft/block/Block net/minecraft/world/IBlockAccess I I I net/minecraftforge/common/util/ForgeDirection net/minecraftforge/common/IPlantable net/minecraft/block/Block net/minecraftforge/common/EnumPlantType I I] [I]
     IRETURN
    L16
-    LINENUMBER 2238 L16
+    LINENUMBER 2252 L16
    FRAME FULL [net/minecraft/block/Block net/minecraft/world/IBlockAccess I I I net/minecraftforge/common/util/ForgeDirection net/minecraftforge/common/IPlantable net/minecraft/block/Block net/minecraftforge/common/EnumPlantType] []
     ICONST_0
     IRETURN
@@ -8105,7 +8182,7 @@ public class net/minecraft/block/Block {
   // access flags 0x1
   public onPlantGrow(Lnet/minecraft/world/World;IIIIII)V
    L0
-    LINENUMBER 2260 L0
+    LINENUMBER 2274 L0
     ALOAD 0
     GETSTATIC net/minecraft/init/Blocks.grass : Lnet/minecraft/block/BlockGrass;
     IF_ACMPEQ L1
@@ -8113,7 +8190,7 @@ public class net/minecraft/block/Block {
     GETSTATIC net/minecraft/init/Blocks.farmland : Lnet/minecraft/block/Block;
     IF_ACMPNE L2
    L1
-    LINENUMBER 2262 L1
+    LINENUMBER 2276 L1
    FRAME FULL [net/minecraft/block/Block net/minecraft/world/World I I I I I I] []
     ALOAD 1
     ILOAD 2
@@ -8125,7 +8202,7 @@ public class net/minecraft/block/Block {
     INVOKEVIRTUAL net/minecraft/world/World.setBlock (IIILnet/minecraft/block/Block;II)Z
     POP
    L2
-    LINENUMBER 2264 L2
+    LINENUMBER 2278 L2
    FRAME FULL [net/minecraft/block/Block net/minecraft/world/World I I I I I I] []
     RETURN
    L3
@@ -8143,12 +8220,12 @@ public class net/minecraft/block/Block {
   // access flags 0x1
   public isFertile(Lnet/minecraft/world/World;III)Z
    L0
-    LINENUMBER 2279 L0
+    LINENUMBER 2293 L0
     ALOAD 0
     GETSTATIC net/minecraft/init/Blocks.farmland : Lnet/minecraft/block/Block;
     IF_ACMPNE L1
    L2
-    LINENUMBER 2281 L2
+    LINENUMBER 2295 L2
     ALOAD 1
     ILOAD 2
     ILOAD 3
@@ -8164,7 +8241,7 @@ public class net/minecraft/block/Block {
    FRAME FULL [net/minecraft/block/Block net/minecraft/world/World I I I] [I]
     IRETURN
    L1
-    LINENUMBER 2284 L1
+    LINENUMBER 2298 L1
    FRAME FULL [net/minecraft/block/Block net/minecraft/world/World I I I] []
     ICONST_0
     IRETURN
@@ -8180,7 +8257,7 @@ public class net/minecraft/block/Block {
   // access flags 0x1
   public getLightOpacity(Lnet/minecraft/world/IBlockAccess;III)I
    L0
-    LINENUMBER 2303 L0
+    LINENUMBER 2317 L0
     ALOAD 0
     INVOKEVIRTUAL net/minecraft/block/Block.getLightOpacity ()I
     IRETURN
@@ -8196,12 +8273,12 @@ public class net/minecraft/block/Block {
   // access flags 0x1
   public canEntityDestroy(Lnet/minecraft/world/IBlockAccess;IIILnet/minecraft/entity/Entity;)Z
    L0
-    LINENUMBER 2317 L0
+    LINENUMBER 2331 L0
     ALOAD 5
     INSTANCEOF net/minecraft/entity/boss/EntityWither
     IFEQ L1
    L2
-    LINENUMBER 2319 L2
+    LINENUMBER 2333 L2
     ALOAD 0
     GETSTATIC net/minecraft/init/Blocks.bedrock : Lnet/minecraft/block/Block;
     IF_ACMPEQ L3
@@ -8223,13 +8300,13 @@ public class net/minecraft/block/Block {
    FRAME FULL [net/minecraft/block/Block net/minecraft/world/IBlockAccess I I I net/minecraft/entity/Entity] [I]
     IRETURN
    L1
-    LINENUMBER 2321 L1
+    LINENUMBER 2335 L1
    FRAME FULL [net/minecraft/block/Block net/minecraft/world/IBlockAccess I I I net/minecraft/entity/Entity] []
     ALOAD 5
     INSTANCEOF net/minecraft/entity/boss/EntityDragon
     IFEQ L5
    L6
-    LINENUMBER 2323 L6
+    LINENUMBER 2337 L6
     ALOAD 0
     GETSTATIC net/minecraft/init/Blocks.obsidian : Lnet/minecraft/block/Block;
     IF_ACMPEQ L7
@@ -8248,7 +8325,7 @@ public class net/minecraft/block/Block {
    FRAME FULL [net/minecraft/block/Block net/minecraft/world/IBlockAccess I I I net/minecraft/entity/Entity] [I]
     IRETURN
    L5
-    LINENUMBER 2326 L5
+    LINENUMBER 2340 L5
    FRAME FULL [net/minecraft/block/Block net/minecraft/world/IBlockAccess I I I net/minecraft/entity/Entity] []
     ICONST_1
     IRETURN
@@ -8265,7 +8342,7 @@ public class net/minecraft/block/Block {
   // access flags 0x1
   public isBeaconBase(Lnet/minecraft/world/IBlockAccess;IIIIII)Z
    L0
-    LINENUMBER 2343 L0
+    LINENUMBER 2357 L0
     ALOAD 0
     GETSTATIC net/minecraft/init/Blocks.emerald_block : Lnet/minecraft/block/Block;
     IF_ACMPEQ L1
@@ -8303,7 +8380,7 @@ public class net/minecraft/block/Block {
   // access flags 0x1
   public rotateBlock(Lnet/minecraft/world/World;IIILnet/minecraftforge/common/util/ForgeDirection;)Z
    L0
-    LINENUMBER 2361 L0
+    LINENUMBER 2375 L0
     ALOAD 0
     ALOAD 1
     ILOAD 2
@@ -8325,7 +8402,7 @@ public class net/minecraft/block/Block {
   // access flags 0x1
   public getValidRotations(Lnet/minecraft/world/World;III)[Lnet/minecraftforge/common/util/ForgeDirection;
    L0
-    LINENUMBER 2375 L0
+    LINENUMBER 2389 L0
     ALOAD 0
     INVOKESTATIC net/minecraftforge/common/util/RotationHelper.getValidVanillaBlockRotations (Lnet/minecraft/block/Block;)[Lnet/minecraftforge/common/util/ForgeDirection;
     ARETURN
@@ -8341,7 +8418,7 @@ public class net/minecraft/block/Block {
   // access flags 0x1
   public getEnchantPowerBonus(Lnet/minecraft/world/World;III)F
    L0
-    LINENUMBER 2388 L0
+    LINENUMBER 2402 L0
     ALOAD 0
     GETSTATIC net/minecraft/init/Blocks.bookshelf : Lnet/minecraft/block/Block;
     IF_ACMPNE L1
@@ -8365,12 +8442,12 @@ public class net/minecraft/block/Block {
   // access flags 0x1
   public recolourBlock(Lnet/minecraft/world/World;IIILnet/minecraftforge/common/util/ForgeDirection;I)Z
    L0
-    LINENUMBER 2403 L0
+    LINENUMBER 2417 L0
     ALOAD 0
     GETSTATIC net/minecraft/init/Blocks.wool : Lnet/minecraft/block/Block;
     IF_ACMPNE L1
    L2
-    LINENUMBER 2405 L2
+    LINENUMBER 2419 L2
     ALOAD 1
     ILOAD 2
     ILOAD 3
@@ -8378,12 +8455,12 @@ public class net/minecraft/block/Block {
     INVOKEVIRTUAL net/minecraft/world/World.getBlockMetadata (III)I
     ISTORE 7
    L3
-    LINENUMBER 2406 L3
+    LINENUMBER 2420 L3
     ILOAD 7
     ILOAD 6
     IF_ICMPEQ L1
    L4
-    LINENUMBER 2408 L4
+    LINENUMBER 2422 L4
     ALOAD 1
     ILOAD 2
     ILOAD 3
@@ -8393,11 +8470,11 @@ public class net/minecraft/block/Block {
     INVOKEVIRTUAL net/minecraft/world/World.setBlockMetadataWithNotify (IIIII)Z
     POP
    L5
-    LINENUMBER 2409 L5
+    LINENUMBER 2423 L5
     ICONST_1
     IRETURN
    L1
-    LINENUMBER 2412 L1
+    LINENUMBER 2426 L1
    FRAME FULL [net/minecraft/block/Block net/minecraft/world/World I I I net/minecraftforge/common/util/ForgeDirection I] []
     ICONST_0
     IRETURN
@@ -8416,7 +8493,7 @@ public class net/minecraft/block/Block {
   // access flags 0x1
   public getExpDrop(Lnet/minecraft/world/IBlockAccess;II)I
    L0
-    LINENUMBER 2425 L0
+    LINENUMBER 2439 L0
     ICONST_0
     IRETURN
    L1
@@ -8430,7 +8507,7 @@ public class net/minecraft/block/Block {
   // access flags 0x1
   public onNeighborChange(Lnet/minecraft/world/IBlockAccess;IIIIII)V
    L0
-    LINENUMBER 2440 L0
+    LINENUMBER 2454 L0
     RETURN
    L1
     LOCALVARIABLE this Lnet/minecraft/block/Block; L0 L1 0
@@ -8447,7 +8524,7 @@ public class net/minecraft/block/Block {
   // access flags 0x1
   public shouldCheckWeakPower(Lnet/minecraft/world/IBlockAccess;IIII)Z
    L0
-    LINENUMBER 2453 L0
+    LINENUMBER 2467 L0
     ALOAD 0
     INVOKEVIRTUAL net/minecraft/block/Block.isNormalCube ()Z
     IRETURN
@@ -8464,7 +8541,7 @@ public class net/minecraft/block/Block {
   // access flags 0x1
   public getWeakChanges(Lnet/minecraft/world/IBlockAccess;III)Z
    L0
-    LINENUMBER 2470 L0
+    LINENUMBER 2484 L0
     ICONST_0
     IRETURN
    L1
@@ -8479,7 +8556,7 @@ public class net/minecraft/block/Block {
   // access flags 0x1
   public setHarvestLevel(Ljava/lang/String;I)V
    L0
-    LINENUMBER 2488 L0
+    LINENUMBER 2502 L0
     ICONST_0
     ISTORE 3
    L1
@@ -8488,18 +8565,18 @@ public class net/minecraft/block/Block {
     BIPUSH 16
     IF_ICMPGE L2
    L3
-    LINENUMBER 2490 L3
+    LINENUMBER 2504 L3
     ALOAD 0
     ALOAD 1
     ILOAD 2
     ILOAD 3
     INVOKEVIRTUAL net/minecraft/block/Block.setHarvestLevel (Ljava/lang/String;II)V
    L4
-    LINENUMBER 2488 L4
+    LINENUMBER 2502 L4
     IINC 3 1
     GOTO L1
    L2
-    LINENUMBER 2492 L2
+    LINENUMBER 2506 L2
    FRAME FULL [net/minecraft/block/Block java/lang/String I I] []
     RETURN
    L5
@@ -8513,21 +8590,21 @@ public class net/minecraft/block/Block {
   // access flags 0x1
   public setHarvestLevel(Ljava/lang/String;II)V
    L0
-    LINENUMBER 2508 L0
+    LINENUMBER 2522 L0
     ALOAD 0
     GETFIELD net/minecraft/block/Block.harvestTool : [Ljava/lang/String;
     ILOAD 3
     ALOAD 1
     AASTORE
    L1
-    LINENUMBER 2509 L1
+    LINENUMBER 2523 L1
     ALOAD 0
     GETFIELD net/minecraft/block/Block.harvestLevel : [I
     ILOAD 3
     ILOAD 2
     IASTORE
    L2
-    LINENUMBER 2510 L2
+    LINENUMBER 2524 L2
     RETURN
    L3
     LOCALVARIABLE this Lnet/minecraft/block/Block; L0 L3 0
@@ -8540,7 +8617,7 @@ public class net/minecraft/block/Block {
   // access flags 0x1
   public getHarvestTool(I)Ljava/lang/String;
    L0
-    LINENUMBER 2521 L0
+    LINENUMBER 2535 L0
     ALOAD 0
     GETFIELD net/minecraft/block/Block.harvestTool : [Ljava/lang/String;
     ILOAD 1
@@ -8555,7 +8632,7 @@ public class net/minecraft/block/Block {
   // access flags 0x1
   public getHarvestLevel(I)I
    L0
-    LINENUMBER 2533 L0
+    LINENUMBER 2547 L0
     ALOAD 0
     GETFIELD net/minecraft/block/Block.harvestLevel : [I
     ILOAD 1
@@ -8570,7 +8647,7 @@ public class net/minecraft/block/Block {
   // access flags 0x1
   public isToolEffective(Ljava/lang/String;I)Z
    L0
-    LINENUMBER 2546 L0
+    LINENUMBER 2560 L0
     LDC "pickaxe"
     ALOAD 1
     INVOKEVIRTUAL java/lang/String.equals (Ljava/lang/Object;)Z
@@ -8585,12 +8662,12 @@ public class net/minecraft/block/Block {
     GETSTATIC net/minecraft/init/Blocks.obsidian : Lnet/minecraft/block/Block;
     IF_ACMPNE L1
    L2
-    LINENUMBER 2547 L2
+    LINENUMBER 2561 L2
    FRAME FULL [net/minecraft/block/Block java/lang/String I] []
     ICONST_0
     IRETURN
    L1
-    LINENUMBER 2548 L1
+    LINENUMBER 2562 L1
    FRAME FULL [net/minecraft/block/Block java/lang/String I] []
     ALOAD 0
     GETFIELD net/minecraft/block/Block.harvestTool : [Ljava/lang/String;
@@ -8600,7 +8677,7 @@ public class net/minecraft/block/Block {
     ICONST_0
     IRETURN
    L3
-    LINENUMBER 2549 L3
+    LINENUMBER 2563 L3
    FRAME FULL [net/minecraft/block/Block java/lang/String I] []
     ALOAD 0
     GETFIELD net/minecraft/block/Block.harvestTool : [Ljava/lang/String;
@@ -8615,6 +8692,53 @@ public class net/minecraft/block/Block {
     LOCALVARIABLE metadata I L0 L4 2
     MAXSTACK = 2
     MAXLOCALS = 3
+
+  // access flags 0x4
+  // signature (Z)Ljava/util/List<Lnet/minecraft/item/ItemStack;>;
+  // declaration: java.util.List<net.minecraft.item.ItemStack> captureDrops(boolean)
+  protected captureDrops(Z)Ljava/util/List;
+   L0
+    LINENUMBER 2578 L0
+    ILOAD 1
+    IFEQ L1
+   L2
+    LINENUMBER 2580 L2
+    ALOAD 0
+    GETFIELD net/minecraft/block/Block.captureDrops : Ljava/lang/ThreadLocal;
+    ICONST_1
+    INVOKESTATIC java/lang/Boolean.valueOf (Z)Ljava/lang/Boolean;
+    INVOKEVIRTUAL java/lang/ThreadLocal.set (Ljava/lang/Object;)V
+   L3
+    LINENUMBER 2581 L3
+    ALOAD 0
+    GETFIELD net/minecraft/block/Block.capturedDrops : Ljava/lang/ThreadLocal;
+    INVOKEVIRTUAL java/lang/ThreadLocal.get ()Ljava/lang/Object;
+    CHECKCAST java/util/List
+    INVOKEINTERFACE java/util/List.clear ()V
+   L4
+    LINENUMBER 2582 L4
+    ACONST_NULL
+    ARETURN
+   L1
+    LINENUMBER 2586 L1
+   FRAME FULL [net/minecraft/block/Block I] []
+    ALOAD 0
+    GETFIELD net/minecraft/block/Block.captureDrops : Ljava/lang/ThreadLocal;
+    ICONST_0
+    INVOKESTATIC java/lang/Boolean.valueOf (Z)Ljava/lang/Boolean;
+    INVOKEVIRTUAL java/lang/ThreadLocal.set (Ljava/lang/Object;)V
+   L5
+    LINENUMBER 2587 L5
+    ALOAD 0
+    GETFIELD net/minecraft/block/Block.capturedDrops : Ljava/lang/ThreadLocal;
+    INVOKEVIRTUAL java/lang/ThreadLocal.get ()Ljava/lang/Object;
+    CHECKCAST java/util/List
+    ARETURN
+   L6
+    LOCALVARIABLE this Lnet/minecraft/block/Block; L0 L6 0
+    LOCALVARIABLE start Z L0 L6 1
+    MAXSTACK = 2
+    MAXLOCALS = 2
 
   // access flags 0x8
   static <clinit>()V

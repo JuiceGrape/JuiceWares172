@@ -89,84 +89,97 @@ public class net/minecraft/nbt/NBTTagCompound extends net/minecraft/nbt/NBTBase 
     LOCALVARIABLE s Ljava/lang/String; L4 L6 3
     LOCALVARIABLE nbtbase Lnet/minecraft/nbt/NBTBase; L5 L6 4
     LOCALVARIABLE this Lnet/minecraft/nbt/NBTTagCompound; L0 L8 0
-    LOCALVARIABLE par1DataOutput Ljava/io/DataOutput; L0 L8 1
+    LOCALVARIABLE p_74734_1_ Ljava/io/DataOutput; L0 L8 1
     LOCALVARIABLE iterator Ljava/util/Iterator; L1 L8 2
     MAXSTACK = 3
     MAXLOCALS = 5
 
   // access flags 0x0
-  load(Ljava/io/DataInput;I)V throws java/io/IOException 
+  func_152446_a(Ljava/io/DataInput;ILnet/minecraft/nbt/NBTSizeTracker;)V throws java/io/IOException 
    L0
-    LINENUMBER 48 L0
+    LINENUMBER 45 L0
     ILOAD 2
     SIPUSH 512
     IF_ICMPLE L1
    L2
-    LINENUMBER 50 L2
+    LINENUMBER 47 L2
     NEW java/lang/RuntimeException
     DUP
     LDC "Tried to read NBT tag with too high complexity, depth > 512"
     INVOKESPECIAL java/lang/RuntimeException.<init> (Ljava/lang/String;)V
     ATHROW
    L1
-    LINENUMBER 54 L1
-   FRAME FULL [net/minecraft/nbt/NBTTagCompound java/io/DataInput I] []
+    LINENUMBER 51 L1
+   FRAME FULL [net/minecraft/nbt/NBTTagCompound java/io/DataInput I net/minecraft/nbt/NBTSizeTracker] []
     ALOAD 0
     GETFIELD net/minecraft/nbt/NBTTagCompound.tagMap : Ljava/util/Map;
     INVOKEINTERFACE java/util/Map.clear ()V
    L3
-    LINENUMBER 57 L3
-   FRAME FULL [net/minecraft/nbt/NBTTagCompound java/io/DataInput I] []
+    LINENUMBER 54 L3
+   FRAME FULL [net/minecraft/nbt/NBTTagCompound java/io/DataInput I net/minecraft/nbt/NBTSizeTracker] []
     ALOAD 1
-    INVOKESTATIC net/minecraft/nbt/NBTTagCompound.func_150300_a (Ljava/io/DataInput;)B
+    ALOAD 3
+    INVOKESTATIC net/minecraft/nbt/NBTTagCompound.func_152447_a (Ljava/io/DataInput;Lnet/minecraft/nbt/NBTSizeTracker;)B
     DUP
-    ISTORE 3
+    ISTORE 4
    L4
     IFEQ L5
    L6
-    LINENUMBER 59 L6
+    LINENUMBER 56 L6
     ALOAD 1
-    INVOKESTATIC net/minecraft/nbt/NBTTagCompound.func_150294_b (Ljava/io/DataInput;)Ljava/lang/String;
-    ASTORE 4
+    ALOAD 3
+    INVOKESTATIC net/minecraft/nbt/NBTTagCompound.func_152448_b (Ljava/io/DataInput;Lnet/minecraft/nbt/NBTSizeTracker;)Ljava/lang/String;
+    ASTORE 5
    L7
-    LINENUMBER 60 L7
-    ILOAD 3
-    ALOAD 4
+    LINENUMBER 57 L7
+    ALOAD 3
+    BIPUSH 16
+    ALOAD 5
+    INVOKEVIRTUAL java/lang/String.length ()I
+    IMUL
+    I2L
+    INVOKEVIRTUAL net/minecraft/nbt/NBTSizeTracker.func_152450_a (J)V
+   L8
+    LINENUMBER 58 L8
+    ILOAD 4
+    ALOAD 5
     ALOAD 1
     ILOAD 2
     ICONST_1
     IADD
-    INVOKESTATIC net/minecraft/nbt/NBTTagCompound.func_150293_a (BLjava/lang/String;Ljava/io/DataInput;I)Lnet/minecraft/nbt/NBTBase;
-    ASTORE 5
-   L8
-    LINENUMBER 61 L8
+    ALOAD 3
+    INVOKESTATIC net/minecraft/nbt/NBTTagCompound.func_152449_a (BLjava/lang/String;Ljava/io/DataInput;ILnet/minecraft/nbt/NBTSizeTracker;)Lnet/minecraft/nbt/NBTBase;
+    ASTORE 6
+   L9
+    LINENUMBER 59 L9
     ALOAD 0
     GETFIELD net/minecraft/nbt/NBTTagCompound.tagMap : Ljava/util/Map;
-    ALOAD 4
     ALOAD 5
+    ALOAD 6
     INVOKEINTERFACE java/util/Map.put (Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
     POP
-   L9
-    LINENUMBER 62 L9
+   L10
+    LINENUMBER 60 L10
     GOTO L3
    L5
-    LINENUMBER 64 L5
-   FRAME FULL [net/minecraft/nbt/NBTTagCompound java/io/DataInput I I] []
+    LINENUMBER 62 L5
+   FRAME FULL [net/minecraft/nbt/NBTTagCompound java/io/DataInput I net/minecraft/nbt/NBTSizeTracker I] []
     RETURN
-   L10
-    LOCALVARIABLE s Ljava/lang/String; L7 L9 4
-    LOCALVARIABLE nbtbase Lnet/minecraft/nbt/NBTBase; L8 L9 5
-    LOCALVARIABLE b0 B L4 L5 3
-    LOCALVARIABLE this Lnet/minecraft/nbt/NBTTagCompound; L0 L10 0
-    LOCALVARIABLE par1DataInput Ljava/io/DataInput; L0 L10 1
-    LOCALVARIABLE par2 I L0 L10 2
+   L11
+    LOCALVARIABLE s Ljava/lang/String; L7 L10 5
+    LOCALVARIABLE nbtbase Lnet/minecraft/nbt/NBTBase; L9 L10 6
+    LOCALVARIABLE b0 B L4 L5 4
+    LOCALVARIABLE this Lnet/minecraft/nbt/NBTTagCompound; L0 L11 0
+    LOCALVARIABLE p_152446_1_ Ljava/io/DataInput; L0 L11 1
+    LOCALVARIABLE p_152446_2_ I L0 L11 2
+    LOCALVARIABLE p_152446_3_ Lnet/minecraft/nbt/NBTSizeTracker; L0 L11 3
     MAXSTACK = 5
-    MAXLOCALS = 6
+    MAXLOCALS = 7
 
   // access flags 0x1
   public func_150296_c()Ljava/util/Set;
    L0
-    LINENUMBER 68 L0
+    LINENUMBER 66 L0
     ALOAD 0
     GETFIELD net/minecraft/nbt/NBTTagCompound.tagMap : Ljava/util/Map;
     INVOKEINTERFACE java/util/Map.keySet ()Ljava/util/Set;
@@ -179,7 +192,7 @@ public class net/minecraft/nbt/NBTTagCompound extends net/minecraft/nbt/NBTBase 
   // access flags 0x1
   public getId()B
    L0
-    LINENUMBER 76 L0
+    LINENUMBER 74 L0
     BIPUSH 10
     IRETURN
    L1
@@ -190,7 +203,7 @@ public class net/minecraft/nbt/NBTTagCompound extends net/minecraft/nbt/NBTBase 
   // access flags 0x1
   public setTag(Ljava/lang/String;Lnet/minecraft/nbt/NBTBase;)V
    L0
-    LINENUMBER 84 L0
+    LINENUMBER 82 L0
     ALOAD 0
     GETFIELD net/minecraft/nbt/NBTTagCompound.tagMap : Ljava/util/Map;
     ALOAD 1
@@ -198,19 +211,19 @@ public class net/minecraft/nbt/NBTTagCompound extends net/minecraft/nbt/NBTBase 
     INVOKEINTERFACE java/util/Map.put (Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
     POP
    L1
-    LINENUMBER 85 L1
+    LINENUMBER 83 L1
     RETURN
    L2
     LOCALVARIABLE this Lnet/minecraft/nbt/NBTTagCompound; L0 L2 0
-    LOCALVARIABLE par1Str Ljava/lang/String; L0 L2 1
-    LOCALVARIABLE par2NBTBase Lnet/minecraft/nbt/NBTBase; L0 L2 2
+    LOCALVARIABLE p_74782_1_ Ljava/lang/String; L0 L2 1
+    LOCALVARIABLE p_74782_2_ Lnet/minecraft/nbt/NBTBase; L0 L2 2
     MAXSTACK = 3
     MAXLOCALS = 3
 
   // access flags 0x1
   public setByte(Ljava/lang/String;B)V
    L0
-    LINENUMBER 92 L0
+    LINENUMBER 90 L0
     ALOAD 0
     GETFIELD net/minecraft/nbt/NBTTagCompound.tagMap : Ljava/util/Map;
     ALOAD 1
@@ -221,19 +234,19 @@ public class net/minecraft/nbt/NBTTagCompound extends net/minecraft/nbt/NBTBase 
     INVOKEINTERFACE java/util/Map.put (Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
     POP
    L1
-    LINENUMBER 93 L1
+    LINENUMBER 91 L1
     RETURN
    L2
     LOCALVARIABLE this Lnet/minecraft/nbt/NBTTagCompound; L0 L2 0
-    LOCALVARIABLE par1Str Ljava/lang/String; L0 L2 1
-    LOCALVARIABLE par2 B L0 L2 2
+    LOCALVARIABLE p_74774_1_ Ljava/lang/String; L0 L2 1
+    LOCALVARIABLE p_74774_2_ B L0 L2 2
     MAXSTACK = 5
     MAXLOCALS = 3
 
   // access flags 0x1
   public setShort(Ljava/lang/String;S)V
    L0
-    LINENUMBER 100 L0
+    LINENUMBER 98 L0
     ALOAD 0
     GETFIELD net/minecraft/nbt/NBTTagCompound.tagMap : Ljava/util/Map;
     ALOAD 1
@@ -244,19 +257,19 @@ public class net/minecraft/nbt/NBTTagCompound extends net/minecraft/nbt/NBTBase 
     INVOKEINTERFACE java/util/Map.put (Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
     POP
    L1
-    LINENUMBER 101 L1
+    LINENUMBER 99 L1
     RETURN
    L2
     LOCALVARIABLE this Lnet/minecraft/nbt/NBTTagCompound; L0 L2 0
-    LOCALVARIABLE par1Str Ljava/lang/String; L0 L2 1
-    LOCALVARIABLE par2 S L0 L2 2
+    LOCALVARIABLE p_74777_1_ Ljava/lang/String; L0 L2 1
+    LOCALVARIABLE p_74777_2_ S L0 L2 2
     MAXSTACK = 5
     MAXLOCALS = 3
 
   // access flags 0x1
   public setInteger(Ljava/lang/String;I)V
    L0
-    LINENUMBER 108 L0
+    LINENUMBER 106 L0
     ALOAD 0
     GETFIELD net/minecraft/nbt/NBTTagCompound.tagMap : Ljava/util/Map;
     ALOAD 1
@@ -267,19 +280,19 @@ public class net/minecraft/nbt/NBTTagCompound extends net/minecraft/nbt/NBTBase 
     INVOKEINTERFACE java/util/Map.put (Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
     POP
    L1
-    LINENUMBER 109 L1
+    LINENUMBER 107 L1
     RETURN
    L2
     LOCALVARIABLE this Lnet/minecraft/nbt/NBTTagCompound; L0 L2 0
-    LOCALVARIABLE par1Str Ljava/lang/String; L0 L2 1
-    LOCALVARIABLE par2 I L0 L2 2
+    LOCALVARIABLE p_74768_1_ Ljava/lang/String; L0 L2 1
+    LOCALVARIABLE p_74768_2_ I L0 L2 2
     MAXSTACK = 5
     MAXLOCALS = 3
 
   // access flags 0x1
   public setLong(Ljava/lang/String;J)V
    L0
-    LINENUMBER 116 L0
+    LINENUMBER 114 L0
     ALOAD 0
     GETFIELD net/minecraft/nbt/NBTTagCompound.tagMap : Ljava/util/Map;
     ALOAD 1
@@ -290,19 +303,19 @@ public class net/minecraft/nbt/NBTTagCompound extends net/minecraft/nbt/NBTBase 
     INVOKEINTERFACE java/util/Map.put (Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
     POP
    L1
-    LINENUMBER 117 L1
+    LINENUMBER 115 L1
     RETURN
    L2
     LOCALVARIABLE this Lnet/minecraft/nbt/NBTTagCompound; L0 L2 0
-    LOCALVARIABLE par1Str Ljava/lang/String; L0 L2 1
-    LOCALVARIABLE par2 J L0 L2 2
+    LOCALVARIABLE p_74772_1_ Ljava/lang/String; L0 L2 1
+    LOCALVARIABLE p_74772_2_ J L0 L2 2
     MAXSTACK = 6
     MAXLOCALS = 4
 
   // access flags 0x1
   public setFloat(Ljava/lang/String;F)V
    L0
-    LINENUMBER 124 L0
+    LINENUMBER 122 L0
     ALOAD 0
     GETFIELD net/minecraft/nbt/NBTTagCompound.tagMap : Ljava/util/Map;
     ALOAD 1
@@ -313,19 +326,19 @@ public class net/minecraft/nbt/NBTTagCompound extends net/minecraft/nbt/NBTBase 
     INVOKEINTERFACE java/util/Map.put (Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
     POP
    L1
-    LINENUMBER 125 L1
+    LINENUMBER 123 L1
     RETURN
    L2
     LOCALVARIABLE this Lnet/minecraft/nbt/NBTTagCompound; L0 L2 0
-    LOCALVARIABLE par1Str Ljava/lang/String; L0 L2 1
-    LOCALVARIABLE par2 F L0 L2 2
+    LOCALVARIABLE p_74776_1_ Ljava/lang/String; L0 L2 1
+    LOCALVARIABLE p_74776_2_ F L0 L2 2
     MAXSTACK = 5
     MAXLOCALS = 3
 
   // access flags 0x1
   public setDouble(Ljava/lang/String;D)V
    L0
-    LINENUMBER 132 L0
+    LINENUMBER 130 L0
     ALOAD 0
     GETFIELD net/minecraft/nbt/NBTTagCompound.tagMap : Ljava/util/Map;
     ALOAD 1
@@ -336,19 +349,19 @@ public class net/minecraft/nbt/NBTTagCompound extends net/minecraft/nbt/NBTBase 
     INVOKEINTERFACE java/util/Map.put (Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
     POP
    L1
-    LINENUMBER 133 L1
+    LINENUMBER 131 L1
     RETURN
    L2
     LOCALVARIABLE this Lnet/minecraft/nbt/NBTTagCompound; L0 L2 0
-    LOCALVARIABLE par1Str Ljava/lang/String; L0 L2 1
-    LOCALVARIABLE par2 D L0 L2 2
+    LOCALVARIABLE p_74780_1_ Ljava/lang/String; L0 L2 1
+    LOCALVARIABLE p_74780_2_ D L0 L2 2
     MAXSTACK = 6
     MAXLOCALS = 4
 
   // access flags 0x1
   public setString(Ljava/lang/String;Ljava/lang/String;)V
    L0
-    LINENUMBER 140 L0
+    LINENUMBER 138 L0
     ALOAD 0
     GETFIELD net/minecraft/nbt/NBTTagCompound.tagMap : Ljava/util/Map;
     ALOAD 1
@@ -359,19 +372,19 @@ public class net/minecraft/nbt/NBTTagCompound extends net/minecraft/nbt/NBTBase 
     INVOKEINTERFACE java/util/Map.put (Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
     POP
    L1
-    LINENUMBER 141 L1
+    LINENUMBER 139 L1
     RETURN
    L2
     LOCALVARIABLE this Lnet/minecraft/nbt/NBTTagCompound; L0 L2 0
-    LOCALVARIABLE par1Str Ljava/lang/String; L0 L2 1
-    LOCALVARIABLE par2Str Ljava/lang/String; L0 L2 2
+    LOCALVARIABLE p_74778_1_ Ljava/lang/String; L0 L2 1
+    LOCALVARIABLE p_74778_2_ Ljava/lang/String; L0 L2 2
     MAXSTACK = 5
     MAXLOCALS = 3
 
   // access flags 0x1
   public setByteArray(Ljava/lang/String;[B)V
    L0
-    LINENUMBER 148 L0
+    LINENUMBER 146 L0
     ALOAD 0
     GETFIELD net/minecraft/nbt/NBTTagCompound.tagMap : Ljava/util/Map;
     ALOAD 1
@@ -382,19 +395,19 @@ public class net/minecraft/nbt/NBTTagCompound extends net/minecraft/nbt/NBTBase 
     INVOKEINTERFACE java/util/Map.put (Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
     POP
    L1
-    LINENUMBER 149 L1
+    LINENUMBER 147 L1
     RETURN
    L2
     LOCALVARIABLE this Lnet/minecraft/nbt/NBTTagCompound; L0 L2 0
-    LOCALVARIABLE par1Str Ljava/lang/String; L0 L2 1
-    LOCALVARIABLE par2ArrayOfByte [B L0 L2 2
+    LOCALVARIABLE p_74773_1_ Ljava/lang/String; L0 L2 1
+    LOCALVARIABLE p_74773_2_ [B L0 L2 2
     MAXSTACK = 5
     MAXLOCALS = 3
 
   // access flags 0x1
   public setIntArray(Ljava/lang/String;[I)V
    L0
-    LINENUMBER 156 L0
+    LINENUMBER 154 L0
     ALOAD 0
     GETFIELD net/minecraft/nbt/NBTTagCompound.tagMap : Ljava/util/Map;
     ALOAD 1
@@ -405,19 +418,19 @@ public class net/minecraft/nbt/NBTTagCompound extends net/minecraft/nbt/NBTBase 
     INVOKEINTERFACE java/util/Map.put (Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
     POP
    L1
-    LINENUMBER 157 L1
+    LINENUMBER 155 L1
     RETURN
    L2
     LOCALVARIABLE this Lnet/minecraft/nbt/NBTTagCompound; L0 L2 0
-    LOCALVARIABLE par1Str Ljava/lang/String; L0 L2 1
-    LOCALVARIABLE par2ArrayOfInteger [I L0 L2 2
+    LOCALVARIABLE p_74783_1_ Ljava/lang/String; L0 L2 1
+    LOCALVARIABLE p_74783_2_ [I L0 L2 2
     MAXSTACK = 5
     MAXLOCALS = 3
 
   // access flags 0x1
   public setBoolean(Ljava/lang/String;Z)V
    L0
-    LINENUMBER 164 L0
+    LINENUMBER 162 L0
     ALOAD 0
     ALOAD 1
     ILOAD 2
@@ -432,19 +445,19 @@ public class net/minecraft/nbt/NBTTagCompound extends net/minecraft/nbt/NBTBase 
     I2B
     INVOKEVIRTUAL net/minecraft/nbt/NBTTagCompound.setByte (Ljava/lang/String;B)V
    L3
-    LINENUMBER 165 L3
+    LINENUMBER 163 L3
     RETURN
    L4
     LOCALVARIABLE this Lnet/minecraft/nbt/NBTTagCompound; L0 L4 0
-    LOCALVARIABLE par1Str Ljava/lang/String; L0 L4 1
-    LOCALVARIABLE par2 Z L0 L4 2
+    LOCALVARIABLE p_74757_1_ Ljava/lang/String; L0 L4 1
+    LOCALVARIABLE p_74757_2_ Z L0 L4 2
     MAXSTACK = 3
     MAXLOCALS = 3
 
   // access flags 0x1
   public getTag(Ljava/lang/String;)Lnet/minecraft/nbt/NBTBase;
    L0
-    LINENUMBER 172 L0
+    LINENUMBER 170 L0
     ALOAD 0
     GETFIELD net/minecraft/nbt/NBTTagCompound.tagMap : Ljava/util/Map;
     ALOAD 1
@@ -453,14 +466,14 @@ public class net/minecraft/nbt/NBTTagCompound extends net/minecraft/nbt/NBTBase 
     ARETURN
    L1
     LOCALVARIABLE this Lnet/minecraft/nbt/NBTTagCompound; L0 L1 0
-    LOCALVARIABLE par1Str Ljava/lang/String; L0 L1 1
+    LOCALVARIABLE p_74781_1_ Ljava/lang/String; L0 L1 1
     MAXSTACK = 2
     MAXLOCALS = 2
 
   // access flags 0x1
   public func_150299_b(Ljava/lang/String;)B
    L0
-    LINENUMBER 177 L0
+    LINENUMBER 175 L0
     ALOAD 0
     GETFIELD net/minecraft/nbt/NBTTagCompound.tagMap : Ljava/util/Map;
     ALOAD 1
@@ -468,7 +481,7 @@ public class net/minecraft/nbt/NBTTagCompound extends net/minecraft/nbt/NBTBase 
     CHECKCAST net/minecraft/nbt/NBTBase
     ASTORE 2
    L1
-    LINENUMBER 178 L1
+    LINENUMBER 176 L1
     ALOAD 2
     IFNULL L2
     ALOAD 2
@@ -490,7 +503,7 @@ public class net/minecraft/nbt/NBTTagCompound extends net/minecraft/nbt/NBTBase 
   // access flags 0x1
   public hasKey(Ljava/lang/String;)Z
    L0
-    LINENUMBER 186 L0
+    LINENUMBER 184 L0
     ALOAD 0
     GETFIELD net/minecraft/nbt/NBTTagCompound.tagMap : Ljava/util/Map;
     ALOAD 1
@@ -498,107 +511,75 @@ public class net/minecraft/nbt/NBTTagCompound extends net/minecraft/nbt/NBTBase 
     IRETURN
    L1
     LOCALVARIABLE this Lnet/minecraft/nbt/NBTTagCompound; L0 L1 0
-    LOCALVARIABLE par1Str Ljava/lang/String; L0 L1 1
+    LOCALVARIABLE p_74764_1_ Ljava/lang/String; L0 L1 1
     MAXSTACK = 2
     MAXLOCALS = 2
 
   // access flags 0x1
   public hasKey(Ljava/lang/String;I)Z
    L0
-    LINENUMBER 191 L0
+    LINENUMBER 189 L0
     ALOAD 0
     ALOAD 1
     INVOKEVIRTUAL net/minecraft/nbt/NBTTagCompound.func_150299_b (Ljava/lang/String;)B
     ISTORE 3
    L1
-    LINENUMBER 193 L1
+    LINENUMBER 190 L1
     ILOAD 3
     ILOAD 2
     IF_ICMPNE L2
-   L3
-    LINENUMBER 195 L3
     ICONST_1
-    IRETURN
+    GOTO L3
    L2
-    LINENUMBER 197 L2
    FRAME FULL [net/minecraft/nbt/NBTTagCompound java/lang/String I I] []
     ILOAD 2
     BIPUSH 99
     IF_ICMPEQ L4
-   L5
-    LINENUMBER 199 L5
-    ILOAD 3
-    IFLE L6
-   L7
-    LINENUMBER 201 L7
-    GETSTATIC net/minecraft/nbt/NBTTagCompound.logger : Lorg/apache/logging/log4j/Logger;
-    LDC "NBT tag {} was of wrong type; expected {}, found {}"
-    ICONST_3
-    ANEWARRAY java/lang/Object
-    DUP
     ICONST_0
-    ALOAD 1
-    AASTORE
-    DUP
-    ICONST_1
-    ILOAD 2
-    INVOKESTATIC net/minecraft/nbt/NBTTagCompound.func_150283_g (I)Ljava/lang/String;
-    AASTORE
-    DUP
-    ICONST_2
-    ILOAD 3
-    INVOKESTATIC net/minecraft/nbt/NBTTagCompound.func_150283_g (I)Ljava/lang/String;
-    AASTORE
-    INVOKEINTERFACE org/apache/logging/log4j/Logger.warn (Ljava/lang/String;[Ljava/lang/Object;)V
-   L6
-    LINENUMBER 204 L6
-   FRAME FULL [net/minecraft/nbt/NBTTagCompound java/lang/String I I] []
-    ICONST_0
-    IRETURN
+    GOTO L3
    L4
-    LINENUMBER 208 L4
    FRAME FULL [net/minecraft/nbt/NBTTagCompound java/lang/String I I] []
     ILOAD 3
     ICONST_1
-    IF_ICMPEQ L8
+    IF_ICMPEQ L5
     ILOAD 3
     ICONST_2
-    IF_ICMPEQ L8
+    IF_ICMPEQ L5
     ILOAD 3
     ICONST_3
-    IF_ICMPEQ L8
+    IF_ICMPEQ L5
     ILOAD 3
     ICONST_4
-    IF_ICMPEQ L8
+    IF_ICMPEQ L5
     ILOAD 3
     ICONST_5
-    IF_ICMPEQ L8
+    IF_ICMPEQ L5
     ILOAD 3
     BIPUSH 6
-    IF_ICMPNE L9
-   L8
+    IF_ICMPNE L6
+   L5
    FRAME FULL [net/minecraft/nbt/NBTTagCompound java/lang/String I I] []
     ICONST_1
-    GOTO L10
-   L9
+    GOTO L3
+   L6
    FRAME FULL [net/minecraft/nbt/NBTTagCompound java/lang/String I I] []
     ICONST_0
-   L10
+   L3
    FRAME FULL [net/minecraft/nbt/NBTTagCompound java/lang/String I I] [I]
     IRETURN
-   L11
-    LOCALVARIABLE this Lnet/minecraft/nbt/NBTTagCompound; L0 L11 0
-    LOCALVARIABLE p_150297_1_ Ljava/lang/String; L0 L11 1
-    LOCALVARIABLE p_150297_2_ I L0 L11 2
-    LOCALVARIABLE b0 B L1 L11 3
-    MAXSTACK = 6
+   L7
+    LOCALVARIABLE this Lnet/minecraft/nbt/NBTTagCompound; L0 L7 0
+    LOCALVARIABLE p_150297_1_ Ljava/lang/String; L0 L7 1
+    LOCALVARIABLE p_150297_2_ I L0 L7 2
+    LOCALVARIABLE b0 B L1 L7 3
+    MAXSTACK = 2
     MAXLOCALS = 4
 
   // access flags 0x1
   public getByte(Ljava/lang/String;)B
     TRYCATCHBLOCK L0 L1 L2 java/lang/ClassCastException
    L0
-    LINENUMBER 219 L0
+    LINENUMBER 200 L0
     ALOAD 0
     GETFIELD net/minecraft/nbt/NBTTagCompound.tagMap : Ljava/util/Map;
     ALOAD 1
@@ -618,17 +599,17 @@ public class net/minecraft/nbt/NBTTagCompound extends net/minecraft/nbt/NBTBase 
    FRAME FULL [net/minecraft/nbt/NBTTagCompound java/lang/String] [I]
     IRETURN
    L2
-    LINENUMBER 221 L2
+    LINENUMBER 202 L2
    FRAME FULL [net/minecraft/nbt/NBTTagCompound java/lang/String] [java/lang/ClassCastException]
     ASTORE 2
    L4
-    LINENUMBER 223 L4
+    LINENUMBER 204 L4
     ICONST_0
     IRETURN
    L5
     LOCALVARIABLE classcastexception Ljava/lang/ClassCastException; L4 L5 2
     LOCALVARIABLE this Lnet/minecraft/nbt/NBTTagCompound; L0 L5 0
-    LOCALVARIABLE par1Str Ljava/lang/String; L0 L5 1
+    LOCALVARIABLE p_74771_1_ Ljava/lang/String; L0 L5 1
     MAXSTACK = 2
     MAXLOCALS = 3
 
@@ -636,7 +617,7 @@ public class net/minecraft/nbt/NBTTagCompound extends net/minecraft/nbt/NBTBase 
   public getShort(Ljava/lang/String;)S
     TRYCATCHBLOCK L0 L1 L2 java/lang/ClassCastException
    L0
-    LINENUMBER 234 L0
+    LINENUMBER 215 L0
     ALOAD 0
     GETFIELD net/minecraft/nbt/NBTTagCompound.tagMap : Ljava/util/Map;
     ALOAD 1
@@ -656,17 +637,17 @@ public class net/minecraft/nbt/NBTTagCompound extends net/minecraft/nbt/NBTBase 
    FRAME FULL [net/minecraft/nbt/NBTTagCompound java/lang/String] [I]
     IRETURN
    L2
-    LINENUMBER 236 L2
+    LINENUMBER 217 L2
    FRAME FULL [net/minecraft/nbt/NBTTagCompound java/lang/String] [java/lang/ClassCastException]
     ASTORE 2
    L4
-    LINENUMBER 238 L4
+    LINENUMBER 219 L4
     ICONST_0
     IRETURN
    L5
     LOCALVARIABLE classcastexception Ljava/lang/ClassCastException; L4 L5 2
     LOCALVARIABLE this Lnet/minecraft/nbt/NBTTagCompound; L0 L5 0
-    LOCALVARIABLE par1Str Ljava/lang/String; L0 L5 1
+    LOCALVARIABLE p_74765_1_ Ljava/lang/String; L0 L5 1
     MAXSTACK = 2
     MAXLOCALS = 3
 
@@ -674,7 +655,7 @@ public class net/minecraft/nbt/NBTTagCompound extends net/minecraft/nbt/NBTBase 
   public getInteger(Ljava/lang/String;)I
     TRYCATCHBLOCK L0 L1 L2 java/lang/ClassCastException
    L0
-    LINENUMBER 249 L0
+    LINENUMBER 230 L0
     ALOAD 0
     GETFIELD net/minecraft/nbt/NBTTagCompound.tagMap : Ljava/util/Map;
     ALOAD 1
@@ -694,17 +675,17 @@ public class net/minecraft/nbt/NBTTagCompound extends net/minecraft/nbt/NBTBase 
    FRAME FULL [net/minecraft/nbt/NBTTagCompound java/lang/String] [I]
     IRETURN
    L2
-    LINENUMBER 251 L2
+    LINENUMBER 232 L2
    FRAME FULL [net/minecraft/nbt/NBTTagCompound java/lang/String] [java/lang/ClassCastException]
     ASTORE 2
    L4
-    LINENUMBER 253 L4
+    LINENUMBER 234 L4
     ICONST_0
     IRETURN
    L5
     LOCALVARIABLE classcastexception Ljava/lang/ClassCastException; L4 L5 2
     LOCALVARIABLE this Lnet/minecraft/nbt/NBTTagCompound; L0 L5 0
-    LOCALVARIABLE par1Str Ljava/lang/String; L0 L5 1
+    LOCALVARIABLE p_74762_1_ Ljava/lang/String; L0 L5 1
     MAXSTACK = 2
     MAXLOCALS = 3
 
@@ -712,7 +693,7 @@ public class net/minecraft/nbt/NBTTagCompound extends net/minecraft/nbt/NBTBase 
   public getLong(Ljava/lang/String;)J
     TRYCATCHBLOCK L0 L1 L2 java/lang/ClassCastException
    L0
-    LINENUMBER 264 L0
+    LINENUMBER 245 L0
     ALOAD 0
     GETFIELD net/minecraft/nbt/NBTTagCompound.tagMap : Ljava/util/Map;
     ALOAD 1
@@ -732,17 +713,17 @@ public class net/minecraft/nbt/NBTTagCompound extends net/minecraft/nbt/NBTBase 
    FRAME FULL [net/minecraft/nbt/NBTTagCompound java/lang/String] [J]
     LRETURN
    L2
-    LINENUMBER 266 L2
+    LINENUMBER 247 L2
    FRAME FULL [net/minecraft/nbt/NBTTagCompound java/lang/String] [java/lang/ClassCastException]
     ASTORE 2
    L4
-    LINENUMBER 268 L4
+    LINENUMBER 249 L4
     LCONST_0
     LRETURN
    L5
     LOCALVARIABLE classcastexception Ljava/lang/ClassCastException; L4 L5 2
     LOCALVARIABLE this Lnet/minecraft/nbt/NBTTagCompound; L0 L5 0
-    LOCALVARIABLE par1Str Ljava/lang/String; L0 L5 1
+    LOCALVARIABLE p_74763_1_ Ljava/lang/String; L0 L5 1
     MAXSTACK = 2
     MAXLOCALS = 3
 
@@ -750,7 +731,7 @@ public class net/minecraft/nbt/NBTTagCompound extends net/minecraft/nbt/NBTBase 
   public getFloat(Ljava/lang/String;)F
     TRYCATCHBLOCK L0 L1 L2 java/lang/ClassCastException
    L0
-    LINENUMBER 279 L0
+    LINENUMBER 260 L0
     ALOAD 0
     GETFIELD net/minecraft/nbt/NBTTagCompound.tagMap : Ljava/util/Map;
     ALOAD 1
@@ -770,17 +751,17 @@ public class net/minecraft/nbt/NBTTagCompound extends net/minecraft/nbt/NBTBase 
    FRAME FULL [net/minecraft/nbt/NBTTagCompound java/lang/String] [F]
     FRETURN
    L2
-    LINENUMBER 281 L2
+    LINENUMBER 262 L2
    FRAME FULL [net/minecraft/nbt/NBTTagCompound java/lang/String] [java/lang/ClassCastException]
     ASTORE 2
    L4
-    LINENUMBER 283 L4
+    LINENUMBER 264 L4
     FCONST_0
     FRETURN
    L5
     LOCALVARIABLE classcastexception Ljava/lang/ClassCastException; L4 L5 2
     LOCALVARIABLE this Lnet/minecraft/nbt/NBTTagCompound; L0 L5 0
-    LOCALVARIABLE par1Str Ljava/lang/String; L0 L5 1
+    LOCALVARIABLE p_74760_1_ Ljava/lang/String; L0 L5 1
     MAXSTACK = 2
     MAXLOCALS = 3
 
@@ -788,7 +769,7 @@ public class net/minecraft/nbt/NBTTagCompound extends net/minecraft/nbt/NBTBase 
   public getDouble(Ljava/lang/String;)D
     TRYCATCHBLOCK L0 L1 L2 java/lang/ClassCastException
    L0
-    LINENUMBER 294 L0
+    LINENUMBER 275 L0
     ALOAD 0
     GETFIELD net/minecraft/nbt/NBTTagCompound.tagMap : Ljava/util/Map;
     ALOAD 1
@@ -808,17 +789,17 @@ public class net/minecraft/nbt/NBTTagCompound extends net/minecraft/nbt/NBTBase 
    FRAME FULL [net/minecraft/nbt/NBTTagCompound java/lang/String] [D]
     DRETURN
    L2
-    LINENUMBER 296 L2
+    LINENUMBER 277 L2
    FRAME FULL [net/minecraft/nbt/NBTTagCompound java/lang/String] [java/lang/ClassCastException]
     ASTORE 2
    L4
-    LINENUMBER 298 L4
+    LINENUMBER 279 L4
     DCONST_0
     DRETURN
    L5
     LOCALVARIABLE classcastexception Ljava/lang/ClassCastException; L4 L5 2
     LOCALVARIABLE this Lnet/minecraft/nbt/NBTTagCompound; L0 L5 0
-    LOCALVARIABLE par1Str Ljava/lang/String; L0 L5 1
+    LOCALVARIABLE p_74769_1_ Ljava/lang/String; L0 L5 1
     MAXSTACK = 2
     MAXLOCALS = 3
 
@@ -826,7 +807,7 @@ public class net/minecraft/nbt/NBTTagCompound extends net/minecraft/nbt/NBTBase 
   public getString(Ljava/lang/String;)Ljava/lang/String;
     TRYCATCHBLOCK L0 L1 L2 java/lang/ClassCastException
    L0
-    LINENUMBER 309 L0
+    LINENUMBER 290 L0
     ALOAD 0
     GETFIELD net/minecraft/nbt/NBTTagCompound.tagMap : Ljava/util/Map;
     ALOAD 1
@@ -846,17 +827,17 @@ public class net/minecraft/nbt/NBTTagCompound extends net/minecraft/nbt/NBTBase 
    FRAME FULL [net/minecraft/nbt/NBTTagCompound java/lang/String] [java/lang/String]
     ARETURN
    L2
-    LINENUMBER 311 L2
+    LINENUMBER 292 L2
    FRAME FULL [net/minecraft/nbt/NBTTagCompound java/lang/String] [java/lang/ClassCastException]
     ASTORE 2
    L4
-    LINENUMBER 313 L4
+    LINENUMBER 294 L4
     LDC ""
     ARETURN
    L5
     LOCALVARIABLE classcastexception Ljava/lang/ClassCastException; L4 L5 2
     LOCALVARIABLE this Lnet/minecraft/nbt/NBTTagCompound; L0 L5 0
-    LOCALVARIABLE par1Str Ljava/lang/String; L0 L5 1
+    LOCALVARIABLE p_74779_1_ Ljava/lang/String; L0 L5 1
     MAXSTACK = 2
     MAXLOCALS = 3
 
@@ -864,7 +845,7 @@ public class net/minecraft/nbt/NBTTagCompound extends net/minecraft/nbt/NBTBase 
   public getByteArray(Ljava/lang/String;)[B
     TRYCATCHBLOCK L0 L1 L2 java/lang/ClassCastException
    L0
-    LINENUMBER 324 L0
+    LINENUMBER 305 L0
     ALOAD 0
     GETFIELD net/minecraft/nbt/NBTTagCompound.tagMap : Ljava/util/Map;
     ALOAD 1
@@ -885,11 +866,11 @@ public class net/minecraft/nbt/NBTTagCompound extends net/minecraft/nbt/NBTBase 
    FRAME FULL [net/minecraft/nbt/NBTTagCompound java/lang/String] [[B]
     ARETURN
    L2
-    LINENUMBER 326 L2
+    LINENUMBER 307 L2
    FRAME FULL [net/minecraft/nbt/NBTTagCompound java/lang/String] [java/lang/ClassCastException]
     ASTORE 2
    L4
-    LINENUMBER 328 L4
+    LINENUMBER 309 L4
     NEW net/minecraft/util/ReportedException
     DUP
     ALOAD 0
@@ -902,7 +883,7 @@ public class net/minecraft/nbt/NBTTagCompound extends net/minecraft/nbt/NBTBase 
    L5
     LOCALVARIABLE classcastexception Ljava/lang/ClassCastException; L4 L5 2
     LOCALVARIABLE this Lnet/minecraft/nbt/NBTTagCompound; L0 L5 0
-    LOCALVARIABLE par1Str Ljava/lang/String; L0 L5 1
+    LOCALVARIABLE p_74770_1_ Ljava/lang/String; L0 L5 1
     MAXSTACK = 6
     MAXLOCALS = 3
 
@@ -910,7 +891,7 @@ public class net/minecraft/nbt/NBTTagCompound extends net/minecraft/nbt/NBTBase 
   public getIntArray(Ljava/lang/String;)[I
     TRYCATCHBLOCK L0 L1 L2 java/lang/ClassCastException
    L0
-    LINENUMBER 339 L0
+    LINENUMBER 320 L0
     ALOAD 0
     GETFIELD net/minecraft/nbt/NBTTagCompound.tagMap : Ljava/util/Map;
     ALOAD 1
@@ -931,11 +912,11 @@ public class net/minecraft/nbt/NBTTagCompound extends net/minecraft/nbt/NBTBase 
    FRAME FULL [net/minecraft/nbt/NBTTagCompound java/lang/String] [[I]
     ARETURN
    L2
-    LINENUMBER 341 L2
+    LINENUMBER 322 L2
    FRAME FULL [net/minecraft/nbt/NBTTagCompound java/lang/String] [java/lang/ClassCastException]
     ASTORE 2
    L4
-    LINENUMBER 343 L4
+    LINENUMBER 324 L4
     NEW net/minecraft/util/ReportedException
     DUP
     ALOAD 0
@@ -948,7 +929,7 @@ public class net/minecraft/nbt/NBTTagCompound extends net/minecraft/nbt/NBTBase 
    L5
     LOCALVARIABLE classcastexception Ljava/lang/ClassCastException; L4 L5 2
     LOCALVARIABLE this Lnet/minecraft/nbt/NBTTagCompound; L0 L5 0
-    LOCALVARIABLE par1Str Ljava/lang/String; L0 L5 1
+    LOCALVARIABLE p_74759_1_ Ljava/lang/String; L0 L5 1
     MAXSTACK = 6
     MAXLOCALS = 3
 
@@ -956,7 +937,7 @@ public class net/minecraft/nbt/NBTTagCompound extends net/minecraft/nbt/NBTBase 
   public getCompoundTag(Ljava/lang/String;)Lnet/minecraft/nbt/NBTTagCompound;
     TRYCATCHBLOCK L0 L1 L2 java/lang/ClassCastException
    L0
-    LINENUMBER 355 L0
+    LINENUMBER 336 L0
     ALOAD 0
     GETFIELD net/minecraft/nbt/NBTTagCompound.tagMap : Ljava/util/Map;
     ALOAD 1
@@ -977,11 +958,11 @@ public class net/minecraft/nbt/NBTTagCompound extends net/minecraft/nbt/NBTBase 
    FRAME FULL [net/minecraft/nbt/NBTTagCompound java/lang/String] [net/minecraft/nbt/NBTTagCompound]
     ARETURN
    L2
-    LINENUMBER 357 L2
+    LINENUMBER 338 L2
    FRAME FULL [net/minecraft/nbt/NBTTagCompound java/lang/String] [java/lang/ClassCastException]
     ASTORE 2
    L4
-    LINENUMBER 359 L4
+    LINENUMBER 340 L4
     NEW net/minecraft/util/ReportedException
     DUP
     ALOAD 0
@@ -994,7 +975,7 @@ public class net/minecraft/nbt/NBTTagCompound extends net/minecraft/nbt/NBTBase 
    L5
     LOCALVARIABLE classcastexception Ljava/lang/ClassCastException; L4 L5 2
     LOCALVARIABLE this Lnet/minecraft/nbt/NBTTagCompound; L0 L5 0
-    LOCALVARIABLE par1Str Ljava/lang/String; L0 L5 1
+    LOCALVARIABLE p_74775_1_ Ljava/lang/String; L0 L5 1
     MAXSTACK = 6
     MAXLOCALS = 3
 
@@ -1003,21 +984,21 @@ public class net/minecraft/nbt/NBTTagCompound extends net/minecraft/nbt/NBTBase 
     TRYCATCHBLOCK L0 L1 L2 java/lang/ClassCastException
     TRYCATCHBLOCK L3 L4 L2 java/lang/ClassCastException
    L0
-    LINENUMBER 370 L0
+    LINENUMBER 351 L0
     ALOAD 0
     ALOAD 1
     INVOKEVIRTUAL net/minecraft/nbt/NBTTagCompound.func_150299_b (Ljava/lang/String;)B
     BIPUSH 9
     IF_ICMPEQ L3
    L5
-    LINENUMBER 372 L5
+    LINENUMBER 353 L5
     NEW net/minecraft/nbt/NBTTagList
     DUP
     INVOKESPECIAL net/minecraft/nbt/NBTTagList.<init> ()V
    L1
     ARETURN
    L3
-    LINENUMBER 376 L3
+    LINENUMBER 357 L3
    FRAME FULL [net/minecraft/nbt/NBTTagCompound java/lang/String I] []
     ALOAD 0
     GETFIELD net/minecraft/nbt/NBTTagCompound.tagMap : Ljava/util/Map;
@@ -1026,7 +1007,7 @@ public class net/minecraft/nbt/NBTTagCompound extends net/minecraft/nbt/NBTBase 
     CHECKCAST net/minecraft/nbt/NBTTagList
     ASTORE 3
    L6
-    LINENUMBER 377 L6
+    LINENUMBER 358 L6
     ALOAD 3
     INVOKEVIRTUAL net/minecraft/nbt/NBTTagList.tagCount ()I
     IFLE L7
@@ -1045,11 +1026,11 @@ public class net/minecraft/nbt/NBTTagCompound extends net/minecraft/nbt/NBTBase 
    FRAME FULL [net/minecraft/nbt/NBTTagCompound java/lang/String I net/minecraft/nbt/NBTTagList] [net/minecraft/nbt/NBTTagList]
     ARETURN
    L2
-    LINENUMBER 380 L2
+    LINENUMBER 361 L2
    FRAME FULL [net/minecraft/nbt/NBTTagCompound java/lang/String I] [java/lang/ClassCastException]
     ASTORE 3
    L8
-    LINENUMBER 382 L8
+    LINENUMBER 363 L8
     NEW net/minecraft/util/ReportedException
     DUP
     ALOAD 0
@@ -1071,7 +1052,7 @@ public class net/minecraft/nbt/NBTTagCompound extends net/minecraft/nbt/NBTBase 
   // access flags 0x1
   public getBoolean(Ljava/lang/String;)Z
    L0
-    LINENUMBER 392 L0
+    LINENUMBER 373 L0
     ALOAD 0
     ALOAD 1
     INVOKEVIRTUAL net/minecraft/nbt/NBTTagCompound.getByte (Ljava/lang/String;)B
@@ -1086,36 +1067,36 @@ public class net/minecraft/nbt/NBTTagCompound extends net/minecraft/nbt/NBTBase 
     IRETURN
    L3
     LOCALVARIABLE this Lnet/minecraft/nbt/NBTTagCompound; L0 L3 0
-    LOCALVARIABLE par1Str Ljava/lang/String; L0 L3 1
+    LOCALVARIABLE p_74767_1_ Ljava/lang/String; L0 L3 1
     MAXSTACK = 2
     MAXLOCALS = 2
 
   // access flags 0x1
   public removeTag(Ljava/lang/String;)V
    L0
-    LINENUMBER 400 L0
+    LINENUMBER 381 L0
     ALOAD 0
     GETFIELD net/minecraft/nbt/NBTTagCompound.tagMap : Ljava/util/Map;
     ALOAD 1
     INVOKEINTERFACE java/util/Map.remove (Ljava/lang/Object;)Ljava/lang/Object;
     POP
    L1
-    LINENUMBER 401 L1
+    LINENUMBER 382 L1
     RETURN
    L2
     LOCALVARIABLE this Lnet/minecraft/nbt/NBTTagCompound; L0 L2 0
-    LOCALVARIABLE par1Str Ljava/lang/String; L0 L2 1
+    LOCALVARIABLE p_82580_1_ Ljava/lang/String; L0 L2 1
     MAXSTACK = 2
     MAXLOCALS = 2
 
   // access flags 0x1
   public toString()Ljava/lang/String;
    L0
-    LINENUMBER 405 L0
+    LINENUMBER 386 L0
     LDC "{"
     ASTORE 1
    L1
-    LINENUMBER 408 L1
+    LINENUMBER 389 L1
     ALOAD 0
     GETFIELD net/minecraft/nbt/NBTTagCompound.tagMap : Ljava/util/Map;
     INVOKEINTERFACE java/util/Map.keySet ()Ljava/util/Set;
@@ -1127,13 +1108,13 @@ public class net/minecraft/nbt/NBTTagCompound extends net/minecraft/nbt/NBTBase 
     INVOKEINTERFACE java/util/Iterator.hasNext ()Z
     IFEQ L3
    L4
-    LINENUMBER 410 L4
+    LINENUMBER 391 L4
     ALOAD 2
     INVOKEINTERFACE java/util/Iterator.next ()Ljava/lang/Object;
     CHECKCAST java/lang/String
     ASTORE 3
    L5
-    LINENUMBER 408 L5
+    LINENUMBER 389 L5
     NEW java/lang/StringBuilder
     DUP
     INVOKESPECIAL java/lang/StringBuilder.<init> ()V
@@ -1154,7 +1135,7 @@ public class net/minecraft/nbt/NBTTagCompound extends net/minecraft/nbt/NBTBase 
     ASTORE 1
     GOTO L2
    L3
-    LINENUMBER 413 L3
+    LINENUMBER 394 L3
    FRAME FULL [net/minecraft/nbt/NBTTagCompound java/lang/String java/util/Iterator] []
     NEW java/lang/StringBuilder
     DUP
@@ -1177,7 +1158,7 @@ public class net/minecraft/nbt/NBTTagCompound extends net/minecraft/nbt/NBTBase 
   // access flags 0x1
   public hasNoTags()Z
    L0
-    LINENUMBER 421 L0
+    LINENUMBER 402 L0
     ALOAD 0
     GETFIELD net/minecraft/nbt/NBTTagCompound.tagMap : Ljava/util/Map;
     INVOKEINTERFACE java/util/Map.isEmpty ()Z
@@ -1190,20 +1171,20 @@ public class net/minecraft/nbt/NBTTagCompound extends net/minecraft/nbt/NBTBase 
   // access flags 0x2
   private createCrashReport(Ljava/lang/String;ILjava/lang/ClassCastException;)Lnet/minecraft/crash/CrashReport;
    L0
-    LINENUMBER 429 L0
+    LINENUMBER 410 L0
     ALOAD 3
     LDC "Reading NBT data"
     INVOKESTATIC net/minecraft/crash/CrashReport.makeCrashReport (Ljava/lang/Throwable;Ljava/lang/String;)Lnet/minecraft/crash/CrashReport;
     ASTORE 4
    L1
-    LINENUMBER 430 L1
+    LINENUMBER 411 L1
     ALOAD 4
     LDC "Corrupt NBT tag"
     ICONST_1
     INVOKEVIRTUAL net/minecraft/crash/CrashReport.makeCategoryDepth (Ljava/lang/String;I)Lnet/minecraft/crash/CrashReportCategory;
     ASTORE 5
    L2
-    LINENUMBER 431 L2
+    LINENUMBER 412 L2
     ALOAD 5
     LDC "Tag type found"
     NEW net/minecraft/nbt/NBTTagCompound$1
@@ -1213,7 +1194,7 @@ public class net/minecraft/nbt/NBTTagCompound extends net/minecraft/nbt/NBTBase 
     INVOKESPECIAL net/minecraft/nbt/NBTTagCompound$1.<init> (Lnet/minecraft/nbt/NBTTagCompound;Ljava/lang/String;)V
     INVOKEVIRTUAL net/minecraft/crash/CrashReportCategory.addCrashSectionCallable (Ljava/lang/String;Ljava/util/concurrent/Callable;)V
    L3
-    LINENUMBER 439 L3
+    LINENUMBER 420 L3
     ALOAD 5
     LDC "Tag type expected"
     NEW net/minecraft/nbt/NBTTagCompound$2
@@ -1223,20 +1204,20 @@ public class net/minecraft/nbt/NBTTagCompound extends net/minecraft/nbt/NBTBase 
     INVOKESPECIAL net/minecraft/nbt/NBTTagCompound$2.<init> (Lnet/minecraft/nbt/NBTTagCompound;I)V
     INVOKEVIRTUAL net/minecraft/crash/CrashReportCategory.addCrashSectionCallable (Ljava/lang/String;Ljava/util/concurrent/Callable;)V
    L4
-    LINENUMBER 447 L4
+    LINENUMBER 428 L4
     ALOAD 5
     LDC "Tag name"
     ALOAD 1
     INVOKEVIRTUAL net/minecraft/crash/CrashReportCategory.addCrashSection (Ljava/lang/String;Ljava/lang/Object;)V
    L5
-    LINENUMBER 448 L5
+    LINENUMBER 429 L5
     ALOAD 4
     ARETURN
    L6
     LOCALVARIABLE this Lnet/minecraft/nbt/NBTTagCompound; L0 L6 0
-    LOCALVARIABLE par1Str Ljava/lang/String; L0 L6 1
-    LOCALVARIABLE par2 I L0 L6 2
-    LOCALVARIABLE par3ClassCastException Ljava/lang/ClassCastException; L0 L6 3
+    LOCALVARIABLE p_82581_1_ Ljava/lang/String; L0 L6 1
+    LOCALVARIABLE p_82581_2_ I L0 L6 2
+    LOCALVARIABLE p_82581_3_ Ljava/lang/ClassCastException; L0 L6 3
     LOCALVARIABLE crashreport Lnet/minecraft/crash/CrashReport; L1 L6 4
     LOCALVARIABLE crashreportcategory Lnet/minecraft/crash/CrashReportCategory; L2 L6 5
     MAXSTACK = 6
@@ -1245,32 +1226,32 @@ public class net/minecraft/nbt/NBTTagCompound extends net/minecraft/nbt/NBTBase 
   // access flags 0x1
   public copy()Lnet/minecraft/nbt/NBTBase;
    L0
-    LINENUMBER 456 L0
+    LINENUMBER 437 L0
     NEW net/minecraft/nbt/NBTTagCompound
     DUP
     INVOKESPECIAL net/minecraft/nbt/NBTTagCompound.<init> ()V
     ASTORE 1
    L1
-    LINENUMBER 457 L1
+    LINENUMBER 438 L1
     ALOAD 0
     GETFIELD net/minecraft/nbt/NBTTagCompound.tagMap : Ljava/util/Map;
     INVOKEINTERFACE java/util/Map.keySet ()Ljava/util/Set;
     INVOKEINTERFACE java/util/Set.iterator ()Ljava/util/Iterator;
     ASTORE 2
    L2
-    LINENUMBER 459 L2
+    LINENUMBER 440 L2
    FRAME FULL [net/minecraft/nbt/NBTTagCompound net/minecraft/nbt/NBTTagCompound java/util/Iterator] []
     ALOAD 2
     INVOKEINTERFACE java/util/Iterator.hasNext ()Z
     IFEQ L3
    L4
-    LINENUMBER 461 L4
+    LINENUMBER 442 L4
     ALOAD 2
     INVOKEINTERFACE java/util/Iterator.next ()Ljava/lang/Object;
     CHECKCAST java/lang/String
     ASTORE 3
    L5
-    LINENUMBER 462 L5
+    LINENUMBER 443 L5
     ALOAD 1
     ALOAD 3
     ALOAD 0
@@ -1281,10 +1262,10 @@ public class net/minecraft/nbt/NBTTagCompound extends net/minecraft/nbt/NBTBase 
     INVOKEVIRTUAL net/minecraft/nbt/NBTBase.copy ()Lnet/minecraft/nbt/NBTBase;
     INVOKEVIRTUAL net/minecraft/nbt/NBTTagCompound.setTag (Ljava/lang/String;Lnet/minecraft/nbt/NBTBase;)V
    L6
-    LINENUMBER 463 L6
+    LINENUMBER 444 L6
     GOTO L2
    L3
-    LINENUMBER 465 L3
+    LINENUMBER 446 L3
    FRAME FULL [net/minecraft/nbt/NBTTagCompound net/minecraft/nbt/NBTTagCompound java/util/Iterator] []
     ALOAD 1
     ARETURN
@@ -1299,18 +1280,18 @@ public class net/minecraft/nbt/NBTTagCompound extends net/minecraft/nbt/NBTBase 
   // access flags 0x1
   public equals(Ljava/lang/Object;)Z
    L0
-    LINENUMBER 470 L0
+    LINENUMBER 451 L0
     ALOAD 0
     ALOAD 1
     INVOKESPECIAL net/minecraft/nbt/NBTBase.equals (Ljava/lang/Object;)Z
     IFEQ L1
    L2
-    LINENUMBER 472 L2
+    LINENUMBER 453 L2
     ALOAD 1
     CHECKCAST net/minecraft/nbt/NBTTagCompound
     ASTORE 2
    L3
-    LINENUMBER 473 L3
+    LINENUMBER 454 L3
     ALOAD 0
     GETFIELD net/minecraft/nbt/NBTTagCompound.tagMap : Ljava/util/Map;
     INVOKEINTERFACE java/util/Map.entrySet ()Ljava/util/Set;
@@ -1320,21 +1301,21 @@ public class net/minecraft/nbt/NBTTagCompound extends net/minecraft/nbt/NBTBase 
     INVOKEINTERFACE java/util/Set.equals (Ljava/lang/Object;)Z
     IRETURN
    L1
-    LINENUMBER 477 L1
+    LINENUMBER 458 L1
    FRAME FULL [net/minecraft/nbt/NBTTagCompound java/lang/Object] []
     ICONST_0
     IRETURN
    L4
     LOCALVARIABLE nbttagcompound Lnet/minecraft/nbt/NBTTagCompound; L3 L1 2
     LOCALVARIABLE this Lnet/minecraft/nbt/NBTTagCompound; L0 L4 0
-    LOCALVARIABLE par1Obj Ljava/lang/Object; L0 L4 1
+    LOCALVARIABLE p_equals_1_ Ljava/lang/Object; L0 L4 1
     MAXSTACK = 2
     MAXLOCALS = 3
 
   // access flags 0x1
   public hashCode()I
    L0
-    LINENUMBER 483 L0
+    LINENUMBER 464 L0
     ALOAD 0
     INVOKESPECIAL net/minecraft/nbt/NBTBase.hashCode ()I
     ALOAD 0
@@ -1350,28 +1331,28 @@ public class net/minecraft/nbt/NBTTagCompound extends net/minecraft/nbt/NBTBase 
   // access flags 0xA
   private static func_150298_a(Ljava/lang/String;Lnet/minecraft/nbt/NBTBase;Ljava/io/DataOutput;)V throws java/io/IOException 
    L0
-    LINENUMBER 488 L0
+    LINENUMBER 469 L0
     ALOAD 2
     ALOAD 1
     INVOKEVIRTUAL net/minecraft/nbt/NBTBase.getId ()B
     INVOKEINTERFACE java/io/DataOutput.writeByte (I)V
    L1
-    LINENUMBER 490 L1
+    LINENUMBER 471 L1
     ALOAD 1
     INVOKEVIRTUAL net/minecraft/nbt/NBTBase.getId ()B
     IFEQ L2
    L3
-    LINENUMBER 492 L3
+    LINENUMBER 473 L3
     ALOAD 2
     ALOAD 0
     INVOKEINTERFACE java/io/DataOutput.writeUTF (Ljava/lang/String;)V
    L4
-    LINENUMBER 493 L4
+    LINENUMBER 474 L4
     ALOAD 1
     ALOAD 2
     INVOKEVIRTUAL net/minecraft/nbt/NBTBase.write (Ljava/io/DataOutput;)V
    L2
-    LINENUMBER 495 L2
+    LINENUMBER 476 L2
    FRAME FULL [java/lang/String net/minecraft/nbt/NBTBase java/io/DataOutput] []
     RETURN
    L5
@@ -1382,95 +1363,99 @@ public class net/minecraft/nbt/NBTTagCompound extends net/minecraft/nbt/NBTBase 
     MAXLOCALS = 3
 
   // access flags 0xA
-  private static func_150300_a(Ljava/io/DataInput;)B throws java/io/IOException 
+  private static func_152447_a(Ljava/io/DataInput;Lnet/minecraft/nbt/NBTSizeTracker;)B throws java/io/IOException 
    L0
-    LINENUMBER 499 L0
+    LINENUMBER 480 L0
     ALOAD 0
     INVOKEINTERFACE java/io/DataInput.readByte ()B
     IRETURN
    L1
-    LOCALVARIABLE p_150300_0_ Ljava/io/DataInput; L0 L1 0
+    LOCALVARIABLE p_152447_0_ Ljava/io/DataInput; L0 L1 0
+    LOCALVARIABLE p_152447_1_ Lnet/minecraft/nbt/NBTSizeTracker; L0 L1 1
     MAXSTACK = 1
-    MAXLOCALS = 1
+    MAXLOCALS = 2
 
   // access flags 0xA
-  private static func_150294_b(Ljava/io/DataInput;)Ljava/lang/String; throws java/io/IOException 
+  private static func_152448_b(Ljava/io/DataInput;Lnet/minecraft/nbt/NBTSizeTracker;)Ljava/lang/String; throws java/io/IOException 
    L0
-    LINENUMBER 504 L0
+    LINENUMBER 485 L0
     ALOAD 0
     INVOKEINTERFACE java/io/DataInput.readUTF ()Ljava/lang/String;
     ARETURN
    L1
-    LOCALVARIABLE p_150294_0_ Ljava/io/DataInput; L0 L1 0
+    LOCALVARIABLE p_152448_0_ Ljava/io/DataInput; L0 L1 0
+    LOCALVARIABLE p_152448_1_ Lnet/minecraft/nbt/NBTSizeTracker; L0 L1 1
     MAXSTACK = 1
-    MAXLOCALS = 1
+    MAXLOCALS = 2
 
   // access flags 0x8
-  static func_150293_a(BLjava/lang/String;Ljava/io/DataInput;I)Lnet/minecraft/nbt/NBTBase;
+  static func_152449_a(BLjava/lang/String;Ljava/io/DataInput;ILnet/minecraft/nbt/NBTSizeTracker;)Lnet/minecraft/nbt/NBTBase;
     TRYCATCHBLOCK L0 L1 L2 java/io/IOException
    L3
-    LINENUMBER 509 L3
+    LINENUMBER 490 L3
     ILOAD 0
     INVOKESTATIC net/minecraft/nbt/NBTBase.func_150284_a (B)Lnet/minecraft/nbt/NBTBase;
-    ASTORE 4
+    ASTORE 5
    L0
-    LINENUMBER 513 L0
-    ALOAD 4
+    LINENUMBER 494 L0
+    ALOAD 5
     ALOAD 2
     ILOAD 3
-    INVOKEVIRTUAL net/minecraft/nbt/NBTBase.load (Ljava/io/DataInput;I)V
-   L4
-    LINENUMBER 514 L4
     ALOAD 4
+    INVOKEVIRTUAL net/minecraft/nbt/NBTBase.func_152446_a (Ljava/io/DataInput;ILnet/minecraft/nbt/NBTSizeTracker;)V
+   L4
+    LINENUMBER 495 L4
+    ALOAD 5
    L1
     ARETURN
    L2
-    LINENUMBER 516 L2
-   FRAME FULL [I java/lang/String java/io/DataInput I net/minecraft/nbt/NBTBase] [java/io/IOException]
-    ASTORE 5
+    LINENUMBER 497 L2
+   FRAME FULL [I java/lang/String java/io/DataInput I net/minecraft/nbt/NBTSizeTracker net/minecraft/nbt/NBTBase] [java/io/IOException]
+    ASTORE 6
    L5
-    LINENUMBER 518 L5
-    ALOAD 5
+    LINENUMBER 499 L5
+    ALOAD 6
     LDC "Loading NBT data"
     INVOKESTATIC net/minecraft/crash/CrashReport.makeCrashReport (Ljava/lang/Throwable;Ljava/lang/String;)Lnet/minecraft/crash/CrashReport;
-    ASTORE 6
+    ASTORE 7
    L6
-    LINENUMBER 519 L6
-    ALOAD 6
+    LINENUMBER 500 L6
+    ALOAD 7
     LDC "NBT Tag"
     INVOKEVIRTUAL net/minecraft/crash/CrashReport.makeCategory (Ljava/lang/String;)Lnet/minecraft/crash/CrashReportCategory;
-    ASTORE 7
+    ASTORE 8
    L7
-    LINENUMBER 520 L7
-    ALOAD 7
+    LINENUMBER 501 L7
+    ALOAD 8
     LDC "Tag name"
     ALOAD 1
     INVOKEVIRTUAL net/minecraft/crash/CrashReportCategory.addCrashSection (Ljava/lang/String;Ljava/lang/Object;)V
    L8
-    LINENUMBER 521 L8
-    ALOAD 7
+    LINENUMBER 502 L8
+    ALOAD 8
     LDC "Tag type"
     ILOAD 0
     INVOKESTATIC java/lang/Byte.valueOf (B)Ljava/lang/Byte;
     INVOKEVIRTUAL net/minecraft/crash/CrashReportCategory.addCrashSection (Ljava/lang/String;Ljava/lang/Object;)V
    L9
-    LINENUMBER 522 L9
+    LINENUMBER 503 L9
     NEW net/minecraft/util/ReportedException
     DUP
-    ALOAD 6
+    ALOAD 7
     INVOKESPECIAL net/minecraft/util/ReportedException.<init> (Lnet/minecraft/crash/CrashReport;)V
     ATHROW
    L10
-    LOCALVARIABLE crashreport Lnet/minecraft/crash/CrashReport; L6 L10 6
-    LOCALVARIABLE crashreportcategory Lnet/minecraft/crash/CrashReportCategory; L7 L10 7
-    LOCALVARIABLE ioexception Ljava/io/IOException; L5 L10 5
-    LOCALVARIABLE p_150293_0_ B L3 L10 0
-    LOCALVARIABLE p_150293_1_ Ljava/lang/String; L3 L10 1
-    LOCALVARIABLE p_150293_2_ Ljava/io/DataInput; L3 L10 2
-    LOCALVARIABLE p_150293_3_ I L3 L10 3
-    LOCALVARIABLE nbtbase Lnet/minecraft/nbt/NBTBase; L0 L10 4
-    MAXSTACK = 3
-    MAXLOCALS = 8
+    LOCALVARIABLE crashreport Lnet/minecraft/crash/CrashReport; L6 L10 7
+    LOCALVARIABLE crashreportcategory Lnet/minecraft/crash/CrashReportCategory; L7 L10 8
+    LOCALVARIABLE ioexception Ljava/io/IOException; L5 L10 6
+    LOCALVARIABLE p_152449_0_ B L3 L10 0
+    LOCALVARIABLE p_152449_1_ Ljava/lang/String; L3 L10 1
+    LOCALVARIABLE p_152449_2_ Ljava/io/DataInput; L3 L10 2
+    LOCALVARIABLE p_152449_3_ I L3 L10 3
+    LOCALVARIABLE p_152449_4_ Lnet/minecraft/nbt/NBTSizeTracker; L3 L10 4
+    LOCALVARIABLE nbtbase Lnet/minecraft/nbt/NBTBase; L0 L10 5
+    MAXSTACK = 4
+    MAXLOCALS = 9
 
   // access flags 0x1008
   static synthetic access$000(Lnet/minecraft/nbt/NBTTagCompound;)Ljava/util/Map;

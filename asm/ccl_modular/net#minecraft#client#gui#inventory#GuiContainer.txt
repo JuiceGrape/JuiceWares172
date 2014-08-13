@@ -134,7 +134,7 @@ public abstract class net/minecraft/client/gui/inventory/GuiContainer extends ne
     RETURN
    L7
     LOCALVARIABLE this Lnet/minecraft/client/gui/inventory/GuiContainer; L0 L7 0
-    LOCALVARIABLE par1Container Lnet/minecraft/inventory/Container; L0 L7 1
+    LOCALVARIABLE p_i1072_1_ Lnet/minecraft/inventory/Container; L0 L7 1
     MAXSTACK = 3
     MAXLOCALS = 2
 
@@ -662,9 +662,9 @@ public abstract class net/minecraft/client/gui/inventory/GuiContainer extends ne
     LOCALVARIABLE k1 I L65 L59 11
     LOCALVARIABLE itemstack1 Lnet/minecraft/item/ItemStack; L0 L0 10
     LOCALVARIABLE this Lnet/minecraft/client/gui/inventory/GuiContainer; L1 L72 0
-    LOCALVARIABLE par1 I L1 L72 1
-    LOCALVARIABLE par2 I L1 L72 2
-    LOCALVARIABLE par3 F L1 L72 3
+    LOCALVARIABLE p_73863_1_ I L1 L72 1
+    LOCALVARIABLE p_73863_2_ I L1 L72 2
+    LOCALVARIABLE p_73863_3_ F L1 L72 3
     LOCALVARIABLE k I L3 L72 4
     LOCALVARIABLE l I L4 L72 5
     LOCALVARIABLE short1 S L17 L72 6
@@ -1301,24 +1301,24 @@ public abstract class net/minecraft/client/gui/inventory/GuiContainer extends ne
 
   // access flags 0x4
   protected mouseClicked(III)V
-   L0
-    LINENUMBER 352 L0
-    ALOAD 0
-    ILOAD 1
-    ILOAD 2
-    ILOAD 3
-    INVOKESPECIAL net/minecraft/client/gui/GuiScreen.mouseClicked (III)V
     ALOAD 0
     GETFIELD net/minecraft/client/gui/inventory/GuiContainer.manager : Lcodechicken/nei/guihook/GuiContainerManager;
     ILOAD 1
     ILOAD 2
     ILOAD 3
     INVOKEVIRTUAL codechicken/nei/guihook/GuiContainerManager.mouseClicked (III)Z
-    IFEQ L1
+    IFEQ L0
     RETURN
+   L0
+    LINENUMBER 352 L0
+   FRAME FULL [net/minecraft/client/gui/inventory/GuiContainer I I I] []
+    ALOAD 0
+    ILOAD 1
+    ILOAD 2
+    ILOAD 3
+    INVOKESPECIAL net/minecraft/client/gui/GuiScreen.mouseClicked (III)V
    L1
     LINENUMBER 353 L1
-   FRAME FULL [net/minecraft/client/gui/inventory/GuiContainer I I I] []
     ILOAD 3
     ALOAD 0
     GETFIELD net/minecraft/client/gui/inventory/GuiContainer.mc : Lnet/minecraft/client/Minecraft;
@@ -1704,9 +1704,9 @@ public abstract class net/minecraft/client/gui/inventory/GuiContainer extends ne
     LOCALVARIABLE flag1 Z L18 L12 10
     LOCALVARIABLE k1 I L19 L12 11
     LOCALVARIABLE this Lnet/minecraft/client/gui/inventory/GuiContainer; L0 L63 0
-    LOCALVARIABLE par1 I L0 L63 1
-    LOCALVARIABLE par2 I L0 L63 2
-    LOCALVARIABLE par3 I L0 L63 3
+    LOCALVARIABLE p_73864_1_ I L0 L63 1
+    LOCALVARIABLE p_73864_2_ I L0 L63 2
+    LOCALVARIABLE p_73864_3_ I L0 L63 3
     LOCALVARIABLE flag Z L4 L63 4
     LOCALVARIABLE slot Lnet/minecraft/inventory/Slot; L5 L63 5
     LOCALVARIABLE l J L6 L63 6
@@ -1946,146 +1946,153 @@ public abstract class net/minecraft/client/gui/inventory/GuiContainer extends ne
     ALOAD 0
     ILOAD 1
     ILOAD 2
-    INVOKESPECIAL net/minecraft/client/gui/inventory/GuiContainer.getSlotAtPosition (II)Lnet/minecraft/inventory/Slot;
-    ASTORE 4
+    ILOAD 3
+    INVOKESPECIAL net/minecraft/client/gui/GuiScreen.mouseMovedOrUp (III)V
    L1
     LINENUMBER 506 L1
     ALOAD 0
-    GETFIELD net/minecraft/client/gui/inventory/GuiContainer.guiLeft : I
-    ISTORE 5
+    ILOAD 1
+    ILOAD 2
+    INVOKESPECIAL net/minecraft/client/gui/inventory/GuiContainer.getSlotAtPosition (II)Lnet/minecraft/inventory/Slot;
+    ASTORE 4
    L2
     LINENUMBER 507 L2
     ALOAD 0
-    GETFIELD net/minecraft/client/gui/inventory/GuiContainer.guiTop : I
-    ISTORE 6
+    GETFIELD net/minecraft/client/gui/inventory/GuiContainer.guiLeft : I
+    ISTORE 5
    L3
     LINENUMBER 508 L3
+    ALOAD 0
+    GETFIELD net/minecraft/client/gui/inventory/GuiContainer.guiTop : I
+    ISTORE 6
+   L4
+    LINENUMBER 509 L4
     ILOAD 1
     ILOAD 5
-    IF_ICMPLT L4
+    IF_ICMPLT L5
     ILOAD 2
     ILOAD 6
-    IF_ICMPLT L4
+    IF_ICMPLT L5
     ILOAD 1
     ILOAD 5
     ALOAD 0
     GETFIELD net/minecraft/client/gui/inventory/GuiContainer.xSize : I
     IADD
-    IF_ICMPGE L4
+    IF_ICMPGE L5
     ILOAD 2
     ILOAD 6
     ALOAD 0
     GETFIELD net/minecraft/client/gui/inventory/GuiContainer.ySize : I
     IADD
-    IF_ICMPLT L5
-   L4
-   FRAME FULL [net/minecraft/client/gui/inventory/GuiContainer I I I net/minecraft/inventory/Slot I I] []
-    ICONST_1
-    GOTO L6
+    IF_ICMPLT L6
    L5
    FRAME FULL [net/minecraft/client/gui/inventory/GuiContainer I I I net/minecraft/inventory/Slot I I] []
-    ICONST_0
+    ICONST_1
+    GOTO L7
    L6
+   FRAME FULL [net/minecraft/client/gui/inventory/GuiContainer I I I net/minecraft/inventory/Slot I I] []
+    ICONST_0
+   L7
    FRAME FULL [net/minecraft/client/gui/inventory/GuiContainer I I I net/minecraft/inventory/Slot I I] [I]
     ISTORE 7
-   L7
-    LINENUMBER 509 L7
+   L8
+    LINENUMBER 510 L8
     ICONST_M1
     ISTORE 8
-   L8
-    LINENUMBER 511 L8
+   L9
+    LINENUMBER 512 L9
     ALOAD 4
-    IFNULL L9
-   L10
-    LINENUMBER 513 L10
+    IFNULL L10
+   L11
+    LINENUMBER 514 L11
     ALOAD 4
     GETFIELD net/minecraft/inventory/Slot.slotNumber : I
     ISTORE 8
-   L9
-    LINENUMBER 516 L9
+   L10
+    LINENUMBER 517 L10
    FRAME FULL [net/minecraft/client/gui/inventory/GuiContainer I I I net/minecraft/inventory/Slot I I I I] []
     ILOAD 7
-    IFEQ L11
-   L12
-    LINENUMBER 518 L12
+    IFEQ L12
+   L13
+    LINENUMBER 519 L13
     SIPUSH -999
     ISTORE 8
-   L11
-    LINENUMBER 524 L11
+   L12
+    LINENUMBER 525 L12
    FRAME FULL [net/minecraft/client/gui/inventory/GuiContainer I I I net/minecraft/inventory/Slot I I I I] []
     ALOAD 0
     GETFIELD net/minecraft/client/gui/inventory/GuiContainer.field_146993_M : Z
-    IFEQ L13
+    IFEQ L14
     ALOAD 4
-    IFNULL L13
+    IFNULL L14
     ILOAD 3
-    IFNE L13
+    IFNE L14
     ALOAD 0
     GETFIELD net/minecraft/client/gui/inventory/GuiContainer.inventorySlots : Lnet/minecraft/inventory/Container;
     ACONST_NULL
     CHECKCAST net/minecraft/item/ItemStack
     ALOAD 4
     INVOKEVIRTUAL net/minecraft/inventory/Container.func_94530_a (Lnet/minecraft/item/ItemStack;Lnet/minecraft/inventory/Slot;)Z
-    IFEQ L13
-   L14
-    LINENUMBER 526 L14
+    IFEQ L14
+   L15
+    LINENUMBER 527 L15
     INVOKESTATIC net/minecraft/client/gui/inventory/GuiContainer.isShiftKeyDown ()Z
-    IFEQ L15
-   L16
-    LINENUMBER 528 L16
+    IFEQ L16
+   L17
+    LINENUMBER 529 L17
     ALOAD 4
-    IFNULL L17
+    IFNULL L18
     ALOAD 4
     GETFIELD net/minecraft/inventory/Slot.inventory : Lnet/minecraft/inventory/IInventory;
-    IFNULL L17
+    IFNULL L18
     ALOAD 0
     GETFIELD net/minecraft/client/gui/inventory/GuiContainer.field_146994_N : Lnet/minecraft/item/ItemStack;
-    IFNULL L17
-   L18
-    LINENUMBER 530 L18
+    IFNULL L18
+   L19
+    LINENUMBER 531 L19
     ALOAD 0
     GETFIELD net/minecraft/client/gui/inventory/GuiContainer.inventorySlots : Lnet/minecraft/inventory/Container;
     GETFIELD net/minecraft/inventory/Container.inventorySlots : Ljava/util/List;
     INVOKEINTERFACE java/util/List.iterator ()Ljava/util/Iterator;
     ASTORE 9
-   L19
-    LINENUMBER 532 L19
+   L20
+    LINENUMBER 533 L20
    FRAME FULL [net/minecraft/client/gui/inventory/GuiContainer I I I net/minecraft/inventory/Slot I I I I java/util/Iterator] []
     ALOAD 9
     INVOKEINTERFACE java/util/Iterator.hasNext ()Z
-    IFEQ L17
-   L20
-    LINENUMBER 534 L20
+    IFEQ L18
+   L21
+    LINENUMBER 535 L21
     ALOAD 9
     INVOKEINTERFACE java/util/Iterator.next ()Ljava/lang/Object;
     CHECKCAST net/minecraft/inventory/Slot
     ASTORE 10
-   L21
-    LINENUMBER 536 L21
+   L22
+    LINENUMBER 537 L22
     ALOAD 10
-    IFNULL L19
+    IFNULL L20
     ALOAD 10
     ALOAD 0
     GETFIELD net/minecraft/client/gui/inventory/GuiContainer.mc : Lnet/minecraft/client/Minecraft;
     GETFIELD net/minecraft/client/Minecraft.thePlayer : Lnet/minecraft/client/entity/EntityClientPlayerMP;
     INVOKEVIRTUAL net/minecraft/inventory/Slot.canTakeStack (Lnet/minecraft/entity/player/EntityPlayer;)Z
-    IFEQ L19
+    IFEQ L20
     ALOAD 10
     INVOKEVIRTUAL net/minecraft/inventory/Slot.getHasStack ()Z
-    IFEQ L19
+    IFEQ L20
     ALOAD 10
     GETFIELD net/minecraft/inventory/Slot.inventory : Lnet/minecraft/inventory/IInventory;
     ALOAD 4
     GETFIELD net/minecraft/inventory/Slot.inventory : Lnet/minecraft/inventory/IInventory;
-    IF_ACMPNE L19
+    IF_ACMPNE L20
     ALOAD 10
     ALOAD 0
     GETFIELD net/minecraft/client/gui/inventory/GuiContainer.field_146994_N : Lnet/minecraft/item/ItemStack;
     ICONST_1
     INVOKESTATIC net/minecraft/inventory/Container.func_94527_a (Lnet/minecraft/inventory/Slot;Lnet/minecraft/item/ItemStack;Z)Z
-    IFEQ L19
-   L22
-    LINENUMBER 538 L22
+    IFEQ L20
+   L23
+    LINENUMBER 539 L23
     ALOAD 0
     ALOAD 10
     ALOAD 10
@@ -2093,9 +2100,9 @@ public abstract class net/minecraft/client/gui/inventory/GuiContainer extends ne
     ILOAD 3
     ICONST_1
     INVOKEVIRTUAL net/minecraft/client/gui/inventory/GuiContainer.managerHandleMouseClick (Lnet/minecraft/inventory/Slot;III)V
-    GOTO L19
-   L15
-    LINENUMBER 545 L15
+    GOTO L20
+   L16
+    LINENUMBER 546 L16
    FRAME FULL [net/minecraft/client/gui/inventory/GuiContainer I I I net/minecraft/inventory/Slot I I I I] []
     ALOAD 0
     ALOAD 4
@@ -2103,97 +2110,97 @@ public abstract class net/minecraft/client/gui/inventory/GuiContainer extends ne
     ILOAD 3
     BIPUSH 6
     INVOKEVIRTUAL net/minecraft/client/gui/inventory/GuiContainer.managerHandleMouseClick (Lnet/minecraft/inventory/Slot;III)V
-   L17
-    LINENUMBER 548 L17
+   L18
+    LINENUMBER 549 L18
    FRAME FULL [net/minecraft/client/gui/inventory/GuiContainer I I I net/minecraft/inventory/Slot I I I I] []
     ALOAD 0
     ICONST_0
     PUTFIELD net/minecraft/client/gui/inventory/GuiContainer.field_146993_M : Z
-   L23
-    LINENUMBER 549 L23
+   L24
+    LINENUMBER 550 L24
     ALOAD 0
     LCONST_0
     PUTFIELD net/minecraft/client/gui/inventory/GuiContainer.field_146997_J : J
-    GOTO L24
-   L13
-    LINENUMBER 553 L13
+    GOTO L25
+   L14
+    LINENUMBER 554 L14
    FRAME FULL [net/minecraft/client/gui/inventory/GuiContainer I I I net/minecraft/inventory/Slot I I I I] []
     ALOAD 0
     GETFIELD net/minecraft/client/gui/inventory/GuiContainer.field_147007_t : Z
-    IFEQ L25
+    IFEQ L26
     ALOAD 0
     GETFIELD net/minecraft/client/gui/inventory/GuiContainer.field_146988_G : I
     ILOAD 3
-    IF_ICMPEQ L25
-   L26
-    LINENUMBER 555 L26
-    ALOAD 0
-    ICONST_0
-    PUTFIELD net/minecraft/client/gui/inventory/GuiContainer.field_147007_t : Z
+    IF_ICMPEQ L26
    L27
     LINENUMBER 556 L27
     ALOAD 0
-    GETFIELD net/minecraft/client/gui/inventory/GuiContainer.field_147008_s : Ljava/util/Set;
-    INVOKEINTERFACE java/util/Set.clear ()V
+    ICONST_0
+    PUTFIELD net/minecraft/client/gui/inventory/GuiContainer.field_147007_t : Z
    L28
     LINENUMBER 557 L28
     ALOAD 0
-    ICONST_1
-    PUTFIELD net/minecraft/client/gui/inventory/GuiContainer.field_146995_H : Z
+    GETFIELD net/minecraft/client/gui/inventory/GuiContainer.field_147008_s : Ljava/util/Set;
+    INVOKEINTERFACE java/util/Set.clear ()V
    L29
     LINENUMBER 558 L29
+    ALOAD 0
+    ICONST_1
+    PUTFIELD net/minecraft/client/gui/inventory/GuiContainer.field_146995_H : Z
+   L30
+    LINENUMBER 559 L30
     RETURN
-   L25
-    LINENUMBER 561 L25
+   L26
+    LINENUMBER 562 L26
    FRAME FULL [net/minecraft/client/gui/inventory/GuiContainer I I I net/minecraft/inventory/Slot I I I I] []
     ALOAD 0
     GETFIELD net/minecraft/client/gui/inventory/GuiContainer.field_146995_H : Z
-    IFEQ L30
-   L31
-    LINENUMBER 563 L31
+    IFEQ L31
+   L32
+    LINENUMBER 564 L32
     ALOAD 0
     ICONST_0
     PUTFIELD net/minecraft/client/gui/inventory/GuiContainer.field_146995_H : Z
-   L32
-    LINENUMBER 564 L32
+   L33
+    LINENUMBER 565 L33
     RETURN
-   L30
-    LINENUMBER 569 L30
+   L31
+    LINENUMBER 570 L31
    FRAME FULL [net/minecraft/client/gui/inventory/GuiContainer I I I net/minecraft/inventory/Slot I I I I] []
     ALOAD 0
     GETFIELD net/minecraft/client/gui/inventory/GuiContainer.clickedSlot : Lnet/minecraft/inventory/Slot;
-    IFNULL L33
+    IFNULL L34
     ALOAD 0
     GETFIELD net/minecraft/client/gui/inventory/GuiContainer.mc : Lnet/minecraft/client/Minecraft;
     GETFIELD net/minecraft/client/Minecraft.gameSettings : Lnet/minecraft/client/settings/GameSettings;
     GETFIELD net/minecraft/client/settings/GameSettings.touchscreen : Z
-    IFEQ L33
-   L34
-    LINENUMBER 571 L34
+    IFEQ L34
+   L35
+    LINENUMBER 572 L35
     ILOAD 3
-    IFEQ L35
+    IFEQ L36
     ILOAD 3
     ICONST_1
-    IF_ICMPNE L24
-   L35
-    LINENUMBER 573 L35
+    IF_ICMPNE L25
+   L36
+    LINENUMBER 574 L36
    FRAME FULL [net/minecraft/client/gui/inventory/GuiContainer I I I net/minecraft/inventory/Slot I I I I] []
     ALOAD 0
     GETFIELD net/minecraft/client/gui/inventory/GuiContainer.draggedStack : Lnet/minecraft/item/ItemStack;
-    IFNONNULL L36
+    IFNONNULL L37
     ALOAD 4
     ALOAD 0
     GETFIELD net/minecraft/client/gui/inventory/GuiContainer.clickedSlot : Lnet/minecraft/inventory/Slot;
-    IF_ACMPEQ L36
-   L37
-    LINENUMBER 575 L37
+    IF_ACMPEQ L37
+   L38
+    LINENUMBER 576 L38
     ALOAD 0
     ALOAD 0
     GETFIELD net/minecraft/client/gui/inventory/GuiContainer.clickedSlot : Lnet/minecraft/inventory/Slot;
     INVOKEVIRTUAL net/minecraft/inventory/Slot.getStack ()Lnet/minecraft/item/ItemStack;
     PUTFIELD net/minecraft/client/gui/inventory/GuiContainer.draggedStack : Lnet/minecraft/item/ItemStack;
-   L36
-    LINENUMBER 578 L36
+   L37
+    LINENUMBER 579 L37
    FRAME FULL [net/minecraft/client/gui/inventory/GuiContainer I I I net/minecraft/inventory/Slot I I I I] []
     ALOAD 4
     ALOAD 0
@@ -2201,18 +2208,18 @@ public abstract class net/minecraft/client/gui/inventory/GuiContainer extends ne
     ICONST_0
     INVOKESTATIC net/minecraft/inventory/Container.func_94527_a (Lnet/minecraft/inventory/Slot;Lnet/minecraft/item/ItemStack;Z)Z
     ISTORE 11
-   L38
-    LINENUMBER 580 L38
+   L39
+    LINENUMBER 581 L39
     ILOAD 8
     ICONST_M1
-    IF_ICMPEQ L39
+    IF_ICMPEQ L40
     ALOAD 0
     GETFIELD net/minecraft/client/gui/inventory/GuiContainer.draggedStack : Lnet/minecraft/item/ItemStack;
-    IFNULL L39
+    IFNULL L40
     ILOAD 11
-    IFEQ L39
-   L40
-    LINENUMBER 582 L40
+    IFEQ L40
+   L41
+    LINENUMBER 583 L41
     ALOAD 0
     ALOAD 0
     GETFIELD net/minecraft/client/gui/inventory/GuiContainer.clickedSlot : Lnet/minecraft/inventory/Slot;
@@ -2222,24 +2229,24 @@ public abstract class net/minecraft/client/gui/inventory/GuiContainer extends ne
     ILOAD 3
     ICONST_0
     INVOKEVIRTUAL net/minecraft/client/gui/inventory/GuiContainer.managerHandleMouseClick (Lnet/minecraft/inventory/Slot;III)V
-   L41
-    LINENUMBER 583 L41
+   L42
+    LINENUMBER 584 L42
     ALOAD 0
     ALOAD 4
     ILOAD 8
     ICONST_0
     ICONST_0
     INVOKEVIRTUAL net/minecraft/client/gui/inventory/GuiContainer.managerHandleMouseClick (Lnet/minecraft/inventory/Slot;III)V
-   L42
-    LINENUMBER 585 L42
+   L43
+    LINENUMBER 586 L43
     ALOAD 0
     GETFIELD net/minecraft/client/gui/inventory/GuiContainer.mc : Lnet/minecraft/client/Minecraft;
     GETFIELD net/minecraft/client/Minecraft.thePlayer : Lnet/minecraft/client/entity/EntityClientPlayerMP;
     GETFIELD net/minecraft/client/entity/EntityClientPlayerMP.inventory : Lnet/minecraft/entity/player/InventoryPlayer;
     INVOKEVIRTUAL net/minecraft/entity/player/InventoryPlayer.getItemStack ()Lnet/minecraft/item/ItemStack;
-    IFNULL L43
-   L44
-    LINENUMBER 587 L44
+    IFNULL L44
+   L45
+    LINENUMBER 588 L45
     ALOAD 0
     ALOAD 0
     GETFIELD net/minecraft/client/gui/inventory/GuiContainer.clickedSlot : Lnet/minecraft/inventory/Slot;
@@ -2249,106 +2256,106 @@ public abstract class net/minecraft/client/gui/inventory/GuiContainer extends ne
     ILOAD 3
     ICONST_0
     INVOKEVIRTUAL net/minecraft/client/gui/inventory/GuiContainer.managerHandleMouseClick (Lnet/minecraft/inventory/Slot;III)V
-   L45
-    LINENUMBER 588 L45
+   L46
+    LINENUMBER 589 L46
     ALOAD 0
     ILOAD 1
     ILOAD 5
     ISUB
     PUTFIELD net/minecraft/client/gui/inventory/GuiContainer.field_147011_y : I
-   L46
-    LINENUMBER 589 L46
+   L47
+    LINENUMBER 590 L47
     ALOAD 0
     ILOAD 2
     ILOAD 6
     ISUB
     PUTFIELD net/minecraft/client/gui/inventory/GuiContainer.field_147010_z : I
-   L47
-    LINENUMBER 590 L47
-    ALOAD 0
-    ALOAD 0
-    GETFIELD net/minecraft/client/gui/inventory/GuiContainer.clickedSlot : Lnet/minecraft/inventory/Slot;
-    PUTFIELD net/minecraft/client/gui/inventory/GuiContainer.returningStackDestSlot : Lnet/minecraft/inventory/Slot;
    L48
     LINENUMBER 591 L48
     ALOAD 0
     ALOAD 0
-    GETFIELD net/minecraft/client/gui/inventory/GuiContainer.draggedStack : Lnet/minecraft/item/ItemStack;
-    PUTFIELD net/minecraft/client/gui/inventory/GuiContainer.returningStack : Lnet/minecraft/item/ItemStack;
+    GETFIELD net/minecraft/client/gui/inventory/GuiContainer.clickedSlot : Lnet/minecraft/inventory/Slot;
+    PUTFIELD net/minecraft/client/gui/inventory/GuiContainer.returningStackDestSlot : Lnet/minecraft/inventory/Slot;
    L49
     LINENUMBER 592 L49
     ALOAD 0
+    ALOAD 0
+    GETFIELD net/minecraft/client/gui/inventory/GuiContainer.draggedStack : Lnet/minecraft/item/ItemStack;
+    PUTFIELD net/minecraft/client/gui/inventory/GuiContainer.returningStack : Lnet/minecraft/item/ItemStack;
+   L50
+    LINENUMBER 593 L50
+    ALOAD 0
     INVOKESTATIC net/minecraft/client/Minecraft.getSystemTime ()J
     PUTFIELD net/minecraft/client/gui/inventory/GuiContainer.returningStackTime : J
-    GOTO L50
-   L43
-    LINENUMBER 596 L43
+    GOTO L51
+   L44
+    LINENUMBER 597 L44
    FRAME FULL [net/minecraft/client/gui/inventory/GuiContainer I I I net/minecraft/inventory/Slot I I I I T T I] []
     ALOAD 0
     ACONST_NULL
     PUTFIELD net/minecraft/client/gui/inventory/GuiContainer.returningStack : Lnet/minecraft/item/ItemStack;
-    GOTO L50
-   L39
-    LINENUMBER 599 L39
+    GOTO L51
+   L40
+    LINENUMBER 600 L40
    FRAME FULL [net/minecraft/client/gui/inventory/GuiContainer I I I net/minecraft/inventory/Slot I I I I T T I] []
     ALOAD 0
     GETFIELD net/minecraft/client/gui/inventory/GuiContainer.draggedStack : Lnet/minecraft/item/ItemStack;
-    IFNULL L50
-   L51
-    LINENUMBER 601 L51
+    IFNULL L51
+   L52
+    LINENUMBER 602 L52
     ALOAD 0
     ILOAD 1
     ILOAD 5
     ISUB
     PUTFIELD net/minecraft/client/gui/inventory/GuiContainer.field_147011_y : I
-   L52
-    LINENUMBER 602 L52
+   L53
+    LINENUMBER 603 L53
     ALOAD 0
     ILOAD 2
     ILOAD 6
     ISUB
     PUTFIELD net/minecraft/client/gui/inventory/GuiContainer.field_147010_z : I
-   L53
-    LINENUMBER 603 L53
-    ALOAD 0
-    ALOAD 0
-    GETFIELD net/minecraft/client/gui/inventory/GuiContainer.clickedSlot : Lnet/minecraft/inventory/Slot;
-    PUTFIELD net/minecraft/client/gui/inventory/GuiContainer.returningStackDestSlot : Lnet/minecraft/inventory/Slot;
    L54
     LINENUMBER 604 L54
     ALOAD 0
     ALOAD 0
-    GETFIELD net/minecraft/client/gui/inventory/GuiContainer.draggedStack : Lnet/minecraft/item/ItemStack;
-    PUTFIELD net/minecraft/client/gui/inventory/GuiContainer.returningStack : Lnet/minecraft/item/ItemStack;
+    GETFIELD net/minecraft/client/gui/inventory/GuiContainer.clickedSlot : Lnet/minecraft/inventory/Slot;
+    PUTFIELD net/minecraft/client/gui/inventory/GuiContainer.returningStackDestSlot : Lnet/minecraft/inventory/Slot;
    L55
     LINENUMBER 605 L55
     ALOAD 0
+    ALOAD 0
+    GETFIELD net/minecraft/client/gui/inventory/GuiContainer.draggedStack : Lnet/minecraft/item/ItemStack;
+    PUTFIELD net/minecraft/client/gui/inventory/GuiContainer.returningStack : Lnet/minecraft/item/ItemStack;
+   L56
+    LINENUMBER 606 L56
+    ALOAD 0
     INVOKESTATIC net/minecraft/client/Minecraft.getSystemTime ()J
     PUTFIELD net/minecraft/client/gui/inventory/GuiContainer.returningStackTime : J
-   L50
-    LINENUMBER 608 L50
+   L51
+    LINENUMBER 609 L51
    FRAME FULL [net/minecraft/client/gui/inventory/GuiContainer I I I net/minecraft/inventory/Slot I I I I T T I] []
     ALOAD 0
     ACONST_NULL
     PUTFIELD net/minecraft/client/gui/inventory/GuiContainer.draggedStack : Lnet/minecraft/item/ItemStack;
-   L56
-    LINENUMBER 609 L56
+   L57
+    LINENUMBER 610 L57
     ALOAD 0
     ACONST_NULL
     PUTFIELD net/minecraft/client/gui/inventory/GuiContainer.clickedSlot : Lnet/minecraft/inventory/Slot;
-    GOTO L24
-   L33
-    LINENUMBER 612 L33
+    GOTO L25
+   L34
+    LINENUMBER 613 L34
    FRAME FULL [net/minecraft/client/gui/inventory/GuiContainer I I I net/minecraft/inventory/Slot I I I I] []
     ALOAD 0
     GETFIELD net/minecraft/client/gui/inventory/GuiContainer.field_147007_t : Z
-    IFEQ L57
+    IFEQ L58
     ALOAD 0
     GETFIELD net/minecraft/client/gui/inventory/GuiContainer.field_147008_s : Ljava/util/Set;
     INVOKEINTERFACE java/util/Set.isEmpty ()Z
-    IFNE L57
-   L58
-    LINENUMBER 614 L58
+    IFNE L58
+   L59
+    LINENUMBER 615 L59
     ALOAD 0
     ACONST_NULL
     CHECKCAST net/minecraft/inventory/Slot
@@ -2359,26 +2366,26 @@ public abstract class net/minecraft/client/gui/inventory/GuiContainer extends ne
     INVOKESTATIC net/minecraft/inventory/Container.func_94534_d (II)I
     ICONST_5
     INVOKEVIRTUAL net/minecraft/client/gui/inventory/GuiContainer.managerHandleMouseClick (Lnet/minecraft/inventory/Slot;III)V
-   L59
-    LINENUMBER 615 L59
+   L60
+    LINENUMBER 616 L60
     ALOAD 0
     GETFIELD net/minecraft/client/gui/inventory/GuiContainer.field_147008_s : Ljava/util/Set;
     INVOKEINTERFACE java/util/Set.iterator ()Ljava/util/Iterator;
     ASTORE 9
-   L60
-    LINENUMBER 617 L60
+   L61
+    LINENUMBER 618 L61
    FRAME FULL [net/minecraft/client/gui/inventory/GuiContainer I I I net/minecraft/inventory/Slot I I I I java/util/Iterator] []
     ALOAD 9
     INVOKEINTERFACE java/util/Iterator.hasNext ()Z
-    IFEQ L61
-   L62
-    LINENUMBER 619 L62
+    IFEQ L62
+   L63
+    LINENUMBER 620 L63
     ALOAD 9
     INVOKEINTERFACE java/util/Iterator.next ()Ljava/lang/Object;
     CHECKCAST net/minecraft/inventory/Slot
     ASTORE 10
-   L63
-    LINENUMBER 620 L63
+   L64
+    LINENUMBER 621 L64
     ALOAD 0
     ALOAD 10
     ALOAD 10
@@ -2389,9 +2396,9 @@ public abstract class net/minecraft/client/gui/inventory/GuiContainer extends ne
     INVOKESTATIC net/minecraft/inventory/Container.func_94534_d (II)I
     ICONST_5
     INVOKEVIRTUAL net/minecraft/client/gui/inventory/GuiContainer.managerHandleMouseClick (Lnet/minecraft/inventory/Slot;III)V
-    GOTO L60
-   L61
-    LINENUMBER 623 L61
+    GOTO L61
+   L62
+    LINENUMBER 624 L62
    FRAME FULL [net/minecraft/client/gui/inventory/GuiContainer I I I net/minecraft/inventory/Slot I I I I java/util/Iterator] []
     ALOAD 0
     ACONST_NULL
@@ -2403,16 +2410,16 @@ public abstract class net/minecraft/client/gui/inventory/GuiContainer extends ne
     INVOKESTATIC net/minecraft/inventory/Container.func_94534_d (II)I
     ICONST_5
     INVOKEVIRTUAL net/minecraft/client/gui/inventory/GuiContainer.managerHandleMouseClick (Lnet/minecraft/inventory/Slot;III)V
-    GOTO L24
-   L57
-    LINENUMBER 625 L57
+    GOTO L25
+   L58
+    LINENUMBER 626 L58
    FRAME FULL [net/minecraft/client/gui/inventory/GuiContainer I I I net/minecraft/inventory/Slot I I I I] []
     ALOAD 0
     GETFIELD net/minecraft/client/gui/inventory/GuiContainer.mc : Lnet/minecraft/client/Minecraft;
     GETFIELD net/minecraft/client/Minecraft.thePlayer : Lnet/minecraft/client/entity/EntityClientPlayerMP;
     GETFIELD net/minecraft/client/entity/EntityClientPlayerMP.inventory : Lnet/minecraft/entity/player/InventoryPlayer;
     INVOKEVIRTUAL net/minecraft/entity/player/InventoryPlayer.getItemStack ()Lnet/minecraft/item/ItemStack;
-    IFNULL L64
+    IFNULL L65
     ILOAD 3
     ALOAD 0
     GETFIELD net/minecraft/client/gui/inventory/GuiContainer.mc : Lnet/minecraft/client/Minecraft;
@@ -2421,133 +2428,133 @@ public abstract class net/minecraft/client/gui/inventory/GuiContainer extends ne
     INVOKEVIRTUAL net/minecraft/client/settings/KeyBinding.getKeyCode ()I
     BIPUSH 100
     IADD
-    IF_ICMPNE L65
-   L66
-    LINENUMBER 629 L66
+    IF_ICMPNE L66
+   L67
+    LINENUMBER 630 L67
     ALOAD 0
     ALOAD 4
     ILOAD 8
     ILOAD 3
     ICONST_3
     INVOKEVIRTUAL net/minecraft/client/gui/inventory/GuiContainer.managerHandleMouseClick (Lnet/minecraft/inventory/Slot;III)V
-    GOTO L24
-   L65
-    LINENUMBER 633 L65
+    GOTO L25
+   L66
+    LINENUMBER 634 L66
    FRAME FULL [net/minecraft/client/gui/inventory/GuiContainer I I I net/minecraft/inventory/Slot I I I I] []
     ILOAD 8
     SIPUSH -999
-    IF_ICMPEQ L67
+    IF_ICMPEQ L68
     BIPUSH 42
     INVOKESTATIC org/lwjgl/input/Keyboard.isKeyDown (I)Z
-    IFNE L68
+    IFNE L69
     BIPUSH 54
     INVOKESTATIC org/lwjgl/input/Keyboard.isKeyDown (I)Z
-    IFEQ L67
-   L68
+    IFEQ L68
+   L69
    FRAME FULL [net/minecraft/client/gui/inventory/GuiContainer I I I net/minecraft/inventory/Slot I I I I] []
     ICONST_1
-    GOTO L69
-   L67
+    GOTO L70
+   L68
    FRAME FULL [net/minecraft/client/gui/inventory/GuiContainer I I I net/minecraft/inventory/Slot I I I I] []
     ICONST_0
-   L69
+   L70
    FRAME FULL [net/minecraft/client/gui/inventory/GuiContainer I I I net/minecraft/inventory/Slot I I I I] [I]
     ISTORE 11
-   L70
-    LINENUMBER 635 L70
+   L71
+    LINENUMBER 636 L71
     ILOAD 11
-    IFEQ L71
-   L72
-    LINENUMBER 637 L72
+    IFEQ L72
+   L73
+    LINENUMBER 638 L73
     ALOAD 0
     ALOAD 4
-    IFNULL L73
+    IFNULL L74
     ALOAD 4
     INVOKEVIRTUAL net/minecraft/inventory/Slot.getHasStack ()Z
-    IFEQ L73
+    IFEQ L74
     ALOAD 4
     INVOKEVIRTUAL net/minecraft/inventory/Slot.getStack ()Lnet/minecraft/item/ItemStack;
-    GOTO L74
-   L73
+    GOTO L75
+   L74
    FRAME FULL [net/minecraft/client/gui/inventory/GuiContainer I I I net/minecraft/inventory/Slot I I I I T T I] [net/minecraft/client/gui/inventory/GuiContainer]
     ACONST_NULL
-   L74
+   L75
    FRAME FULL [net/minecraft/client/gui/inventory/GuiContainer I I I net/minecraft/inventory/Slot I I I I T T I] [net/minecraft/client/gui/inventory/GuiContainer net/minecraft/item/ItemStack]
     PUTFIELD net/minecraft/client/gui/inventory/GuiContainer.field_146994_N : Lnet/minecraft/item/ItemStack;
-   L71
-    LINENUMBER 640 L71
+   L72
+    LINENUMBER 641 L72
    FRAME FULL [net/minecraft/client/gui/inventory/GuiContainer I I I net/minecraft/inventory/Slot I I I I T T I] []
     ALOAD 0
     ALOAD 4
     ILOAD 8
     ILOAD 3
     ILOAD 11
-    IFEQ L75
+    IFEQ L76
     ICONST_1
-    GOTO L76
-   L75
+    GOTO L77
+   L76
    FRAME FULL [net/minecraft/client/gui/inventory/GuiContainer I I I net/minecraft/inventory/Slot I I I I T T I] [net/minecraft/client/gui/inventory/GuiContainer net/minecraft/inventory/Slot I I]
     ICONST_0
-   L76
+   L77
    FRAME FULL [net/minecraft/client/gui/inventory/GuiContainer I I I net/minecraft/inventory/Slot I I I I T T I] [net/minecraft/client/gui/inventory/GuiContainer net/minecraft/inventory/Slot I I I]
     INVOKEVIRTUAL net/minecraft/client/gui/inventory/GuiContainer.managerHandleMouseClick (Lnet/minecraft/inventory/Slot;III)V
-    GOTO L24
-   L64
+    GOTO L25
+   L65
    FRAME FULL [net/minecraft/client/gui/inventory/GuiContainer I I I net/minecraft/inventory/Slot I I I I] []
     ILOAD 3
-    IFLT L24
+    IFLT L25
     ALOAD 0
     GETFIELD net/minecraft/client/gui/inventory/GuiContainer.manager : Lcodechicken/nei/guihook/GuiContainerManager;
     ILOAD 1
     ILOAD 2
     ILOAD 3
     INVOKEVIRTUAL codechicken/nei/guihook/GuiContainerManager.mouseUp (III)V
-   L24
-    LINENUMBER 645 L24
+   L25
+    LINENUMBER 646 L25
    FRAME FULL [net/minecraft/client/gui/inventory/GuiContainer I I I net/minecraft/inventory/Slot I I I I] []
     ALOAD 0
     GETFIELD net/minecraft/client/gui/inventory/GuiContainer.mc : Lnet/minecraft/client/Minecraft;
     GETFIELD net/minecraft/client/Minecraft.thePlayer : Lnet/minecraft/client/entity/EntityClientPlayerMP;
     GETFIELD net/minecraft/client/entity/EntityClientPlayerMP.inventory : Lnet/minecraft/entity/player/InventoryPlayer;
     INVOKEVIRTUAL net/minecraft/entity/player/InventoryPlayer.getItemStack ()Lnet/minecraft/item/ItemStack;
-    IFNONNULL L77
-   L78
-    LINENUMBER 647 L78
+    IFNONNULL L78
+   L79
+    LINENUMBER 648 L79
     ALOAD 0
     LCONST_0
     PUTFIELD net/minecraft/client/gui/inventory/GuiContainer.field_146997_J : J
-   L77
-    LINENUMBER 650 L77
+   L78
+    LINENUMBER 651 L78
    FRAME FULL [net/minecraft/client/gui/inventory/GuiContainer I I I net/minecraft/inventory/Slot I I I I] []
     ALOAD 0
     ICONST_0
     PUTFIELD net/minecraft/client/gui/inventory/GuiContainer.field_147007_t : Z
-   L79
-    LINENUMBER 651 L79
-    RETURN
    L80
-    LOCALVARIABLE slot1 Lnet/minecraft/inventory/Slot; L21 L15 10
-    LOCALVARIABLE iterator Ljava/util/Iterator; L19 L15 9
-    LOCALVARIABLE flag1 Z L38 L33 11
-    LOCALVARIABLE slot1 Lnet/minecraft/inventory/Slot; L63 L61 10
-    LOCALVARIABLE iterator Ljava/util/Iterator; L60 L57 9
-    LOCALVARIABLE flag1 Z L70 L24 11
-    LOCALVARIABLE this Lnet/minecraft/client/gui/inventory/GuiContainer; L0 L80 0
-    LOCALVARIABLE p_146286_1_ I L0 L80 1
-    LOCALVARIABLE p_146286_2_ I L0 L80 2
-    LOCALVARIABLE p_146286_3_ I L0 L80 3
-    LOCALVARIABLE slot Lnet/minecraft/inventory/Slot; L1 L80 4
-    LOCALVARIABLE l I L2 L80 5
-    LOCALVARIABLE i1 I L3 L80 6
-    LOCALVARIABLE flag Z L7 L80 7
-    LOCALVARIABLE j1 I L8 L80 8
+    LINENUMBER 652 L80
+    RETURN
+   L81
+    LOCALVARIABLE slot1 Lnet/minecraft/inventory/Slot; L22 L16 10
+    LOCALVARIABLE iterator Ljava/util/Iterator; L20 L16 9
+    LOCALVARIABLE flag1 Z L39 L34 11
+    LOCALVARIABLE slot1 Lnet/minecraft/inventory/Slot; L64 L62 10
+    LOCALVARIABLE iterator Ljava/util/Iterator; L61 L58 9
+    LOCALVARIABLE flag1 Z L71 L25 11
+    LOCALVARIABLE this Lnet/minecraft/client/gui/inventory/GuiContainer; L0 L81 0
+    LOCALVARIABLE p_146286_1_ I L0 L81 1
+    LOCALVARIABLE p_146286_2_ I L0 L81 2
+    LOCALVARIABLE p_146286_3_ I L0 L81 3
+    LOCALVARIABLE slot Lnet/minecraft/inventory/Slot; L2 L81 4
+    LOCALVARIABLE l I L3 L81 5
+    LOCALVARIABLE i1 I L4 L81 6
+    LOCALVARIABLE flag Z L8 L81 7
+    LOCALVARIABLE j1 I L9 L81 8
     MAXSTACK = 5
     MAXLOCALS = 12
 
   // access flags 0x2
   private isMouseOverSlot(Lnet/minecraft/inventory/Slot;II)Z
    L0
-    LINENUMBER 658 L0
+    LINENUMBER 659 L0
     ALOAD 0
     ALOAD 1
     GETFIELD net/minecraft/inventory/Slot.xDisplayPosition : I
@@ -2570,29 +2577,29 @@ public abstract class net/minecraft/client/gui/inventory/GuiContainer extends ne
   // access flags 0x4
   protected func_146978_c(IIIIII)Z
    L0
-    LINENUMBER 663 L0
+    LINENUMBER 664 L0
     ALOAD 0
     GETFIELD net/minecraft/client/gui/inventory/GuiContainer.guiLeft : I
     ISTORE 7
    L1
-    LINENUMBER 664 L1
+    LINENUMBER 665 L1
     ALOAD 0
     GETFIELD net/minecraft/client/gui/inventory/GuiContainer.guiTop : I
     ISTORE 8
    L2
-    LINENUMBER 665 L2
+    LINENUMBER 666 L2
     ILOAD 5
     ILOAD 7
     ISUB
     ISTORE 5
    L3
-    LINENUMBER 666 L3
+    LINENUMBER 667 L3
     ILOAD 6
     ILOAD 8
     ISUB
     ISTORE 6
    L4
-    LINENUMBER 667 L4
+    LINENUMBER 668 L4
     ILOAD 5
     ILOAD 1
     ICONST_1
@@ -2641,11 +2648,11 @@ public abstract class net/minecraft/client/gui/inventory/GuiContainer extends ne
   // access flags 0x4
   protected handleMouseClick(Lnet/minecraft/inventory/Slot;III)V
    L0
-    LINENUMBER 672 L0
+    LINENUMBER 673 L0
     ALOAD 1
     IFNULL L1
    L2
-    LINENUMBER 674 L2
+    LINENUMBER 675 L2
     ALOAD 1
     GETFIELD net/minecraft/inventory/Slot.slotNumber : I
     ISTORE 2
@@ -2658,7 +2665,7 @@ public abstract class net/minecraft/client/gui/inventory/GuiContainer extends ne
     ILOAD 4
     INVOKEVIRTUAL codechicken/nei/guihook/GuiContainerManager.handleSlotClick (III)V
    L3
-    LINENUMBER 678 L3
+    LINENUMBER 679 L3
     RETURN
    L4
     LOCALVARIABLE this Lnet/minecraft/client/gui/inventory/GuiContainer; L0 L4 0
@@ -2679,7 +2686,7 @@ public abstract class net/minecraft/client/gui/inventory/GuiContainer extends ne
     IFEQ L0
     RETURN
    L0
-    LINENUMBER 685 L0
+    LINENUMBER 686 L0
    FRAME FULL [net/minecraft/client/gui/inventory/GuiContainer I I] []
     ILOAD 2
     ICONST_1
@@ -2692,21 +2699,21 @@ public abstract class net/minecraft/client/gui/inventory/GuiContainer extends ne
     INVOKEVIRTUAL net/minecraft/client/settings/KeyBinding.getKeyCode ()I
     IF_ICMPNE L2
    L1
-    LINENUMBER 687 L1
+    LINENUMBER 688 L1
    FRAME FULL [net/minecraft/client/gui/inventory/GuiContainer I I] []
     ALOAD 0
     GETFIELD net/minecraft/client/gui/inventory/GuiContainer.mc : Lnet/minecraft/client/Minecraft;
     GETFIELD net/minecraft/client/Minecraft.thePlayer : Lnet/minecraft/client/entity/EntityClientPlayerMP;
     INVOKEVIRTUAL net/minecraft/client/entity/EntityClientPlayerMP.closeScreen ()V
    L2
-    LINENUMBER 690 L2
+    LINENUMBER 691 L2
    FRAME FULL [net/minecraft/client/gui/inventory/GuiContainer I I] []
     ALOAD 0
     ILOAD 2
     INVOKEVIRTUAL net/minecraft/client/gui/inventory/GuiContainer.checkHotbarKeys (I)Z
     POP
    L3
-    LINENUMBER 692 L3
+    LINENUMBER 693 L3
     ALOAD 0
     GETFIELD net/minecraft/client/gui/inventory/GuiContainer.theSlot : Lnet/minecraft/inventory/Slot;
     IFNULL L4
@@ -2715,7 +2722,7 @@ public abstract class net/minecraft/client/gui/inventory/GuiContainer extends ne
     INVOKEVIRTUAL net/minecraft/inventory/Slot.getHasStack ()Z
     IFEQ L4
    L5
-    LINENUMBER 694 L5
+    LINENUMBER 695 L5
     ILOAD 2
     ALOAD 0
     GETFIELD net/minecraft/client/gui/inventory/GuiContainer.mc : Lnet/minecraft/client/Minecraft;
@@ -2724,7 +2731,7 @@ public abstract class net/minecraft/client/gui/inventory/GuiContainer extends ne
     INVOKEVIRTUAL net/minecraft/client/settings/KeyBinding.getKeyCode ()I
     IF_ICMPNE L6
    L7
-    LINENUMBER 696 L7
+    LINENUMBER 697 L7
     ALOAD 0
     ALOAD 0
     GETFIELD net/minecraft/client/gui/inventory/GuiContainer.theSlot : Lnet/minecraft/inventory/Slot;
@@ -2736,7 +2743,7 @@ public abstract class net/minecraft/client/gui/inventory/GuiContainer extends ne
     INVOKEVIRTUAL net/minecraft/client/gui/inventory/GuiContainer.managerHandleMouseClick (Lnet/minecraft/inventory/Slot;III)V
     GOTO L4
    L6
-    LINENUMBER 698 L6
+    LINENUMBER 699 L6
    FRAME FULL [net/minecraft/client/gui/inventory/GuiContainer I I] []
     ILOAD 2
     ALOAD 0
@@ -2746,7 +2753,7 @@ public abstract class net/minecraft/client/gui/inventory/GuiContainer extends ne
     INVOKEVIRTUAL net/minecraft/client/settings/KeyBinding.getKeyCode ()I
     IF_ICMPNE L4
    L8
-    LINENUMBER 700 L8
+    LINENUMBER 701 L8
     ALOAD 0
     ALOAD 0
     GETFIELD net/minecraft/client/gui/inventory/GuiContainer.theSlot : Lnet/minecraft/inventory/Slot;
@@ -2765,20 +2772,20 @@ public abstract class net/minecraft/client/gui/inventory/GuiContainer extends ne
     ICONST_4
     INVOKEVIRTUAL net/minecraft/client/gui/inventory/GuiContainer.managerHandleMouseClick (Lnet/minecraft/inventory/Slot;III)V
    L4
-    LINENUMBER 703 L4
+    LINENUMBER 704 L4
    FRAME FULL [net/minecraft/client/gui/inventory/GuiContainer I I] []
     RETURN
    L11
     LOCALVARIABLE this Lnet/minecraft/client/gui/inventory/GuiContainer; L0 L11 0
-    LOCALVARIABLE par1 C L0 L11 1
-    LOCALVARIABLE par2 I L0 L11 2
+    LOCALVARIABLE p_73869_1_ C L0 L11 1
+    LOCALVARIABLE p_73869_2_ I L0 L11 2
     MAXSTACK = 5
     MAXLOCALS = 3
 
   // access flags 0x4
   protected checkHotbarKeys(I)Z
    L0
-    LINENUMBER 710 L0
+    LINENUMBER 711 L0
     ALOAD 0
     GETFIELD net/minecraft/client/gui/inventory/GuiContainer.mc : Lnet/minecraft/client/Minecraft;
     GETFIELD net/minecraft/client/Minecraft.thePlayer : Lnet/minecraft/client/entity/EntityClientPlayerMP;
@@ -2789,7 +2796,7 @@ public abstract class net/minecraft/client/gui/inventory/GuiContainer extends ne
     GETFIELD net/minecraft/client/gui/inventory/GuiContainer.theSlot : Lnet/minecraft/inventory/Slot;
     IFNULL L1
    L2
-    LINENUMBER 712 L2
+    LINENUMBER 713 L2
     ICONST_0
     ISTORE 2
    L3
@@ -2798,7 +2805,7 @@ public abstract class net/minecraft/client/gui/inventory/GuiContainer extends ne
     BIPUSH 9
     IF_ICMPGE L1
    L4
-    LINENUMBER 714 L4
+    LINENUMBER 715 L4
     ILOAD 1
     ALOAD 0
     GETFIELD net/minecraft/client/gui/inventory/GuiContainer.mc : Lnet/minecraft/client/Minecraft;
@@ -2809,7 +2816,7 @@ public abstract class net/minecraft/client/gui/inventory/GuiContainer extends ne
     INVOKEVIRTUAL net/minecraft/client/settings/KeyBinding.getKeyCode ()I
     IF_ICMPNE L5
    L6
-    LINENUMBER 716 L6
+    LINENUMBER 717 L6
     ALOAD 0
     ALOAD 0
     GETFIELD net/minecraft/client/gui/inventory/GuiContainer.theSlot : Lnet/minecraft/inventory/Slot;
@@ -2820,16 +2827,16 @@ public abstract class net/minecraft/client/gui/inventory/GuiContainer extends ne
     ICONST_2
     INVOKEVIRTUAL net/minecraft/client/gui/inventory/GuiContainer.managerHandleMouseClick (Lnet/minecraft/inventory/Slot;III)V
    L7
-    LINENUMBER 717 L7
+    LINENUMBER 718 L7
     ICONST_1
     IRETURN
    L5
-    LINENUMBER 712 L5
+    LINENUMBER 713 L5
    FRAME FULL [net/minecraft/client/gui/inventory/GuiContainer I I] []
     IINC 2 1
     GOTO L3
    L1
-    LINENUMBER 722 L1
+    LINENUMBER 723 L1
    FRAME FULL [net/minecraft/client/gui/inventory/GuiContainer I] []
     ICONST_0
     IRETURN
@@ -2843,13 +2850,13 @@ public abstract class net/minecraft/client/gui/inventory/GuiContainer extends ne
   // access flags 0x1
   public onGuiClosed()V
    L0
-    LINENUMBER 730 L0
+    LINENUMBER 731 L0
     ALOAD 0
     GETFIELD net/minecraft/client/gui/inventory/GuiContainer.mc : Lnet/minecraft/client/Minecraft;
     GETFIELD net/minecraft/client/Minecraft.thePlayer : Lnet/minecraft/client/entity/EntityClientPlayerMP;
     IFNULL L1
    L2
-    LINENUMBER 732 L2
+    LINENUMBER 733 L2
     ALOAD 0
     GETFIELD net/minecraft/client/gui/inventory/GuiContainer.inventorySlots : Lnet/minecraft/inventory/Container;
     ALOAD 0
@@ -2857,7 +2864,7 @@ public abstract class net/minecraft/client/gui/inventory/GuiContainer extends ne
     GETFIELD net/minecraft/client/Minecraft.thePlayer : Lnet/minecraft/client/entity/EntityClientPlayerMP;
     INVOKEVIRTUAL net/minecraft/inventory/Container.onContainerClosed (Lnet/minecraft/entity/player/EntityPlayer;)V
    L1
-    LINENUMBER 734 L1
+    LINENUMBER 735 L1
    FRAME FULL [net/minecraft/client/gui/inventory/GuiContainer] []
     RETURN
    L3
@@ -2868,7 +2875,7 @@ public abstract class net/minecraft/client/gui/inventory/GuiContainer extends ne
   // access flags 0x1
   public doesGuiPauseGame()Z
    L0
-    LINENUMBER 741 L0
+    LINENUMBER 742 L0
     ICONST_0
     IRETURN
    L1
@@ -2879,14 +2886,14 @@ public abstract class net/minecraft/client/gui/inventory/GuiContainer extends ne
   // access flags 0x1
   public updateScreen()V
    L0
-    LINENUMBER 749 L0
+    LINENUMBER 750 L0
     ALOAD 0
     INVOKESPECIAL net/minecraft/client/gui/GuiScreen.updateScreen ()V
     ALOAD 0
     GETFIELD net/minecraft/client/gui/inventory/GuiContainer.manager : Lcodechicken/nei/guihook/GuiContainerManager;
     INVOKEVIRTUAL codechicken/nei/guihook/GuiContainerManager.updateScreen ()V
    L1
-    LINENUMBER 751 L1
+    LINENUMBER 752 L1
     ALOAD 0
     GETFIELD net/minecraft/client/gui/inventory/GuiContainer.mc : Lnet/minecraft/client/Minecraft;
     GETFIELD net/minecraft/client/Minecraft.thePlayer : Lnet/minecraft/client/entity/EntityClientPlayerMP;
@@ -2898,14 +2905,14 @@ public abstract class net/minecraft/client/gui/inventory/GuiContainer extends ne
     GETFIELD net/minecraft/client/entity/EntityClientPlayerMP.isDead : Z
     IFEQ L3
    L2
-    LINENUMBER 753 L2
+    LINENUMBER 754 L2
    FRAME FULL [net/minecraft/client/gui/inventory/GuiContainer] []
     ALOAD 0
     GETFIELD net/minecraft/client/gui/inventory/GuiContainer.mc : Lnet/minecraft/client/Minecraft;
     GETFIELD net/minecraft/client/Minecraft.thePlayer : Lnet/minecraft/client/entity/EntityClientPlayerMP;
     INVOKEVIRTUAL net/minecraft/client/entity/EntityClientPlayerMP.closeScreen ()V
    L3
-    LINENUMBER 755 L3
+    LINENUMBER 756 L3
    FRAME FULL [net/minecraft/client/gui/inventory/GuiContainer] []
     RETURN
    L4
