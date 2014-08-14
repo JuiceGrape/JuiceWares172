@@ -4,6 +4,8 @@ import net.minecraft.entity.EntityList;
 import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.EnumCreatureType;
 import net.minecraft.world.biome.BiomeGenBase;
+import net.minecraftforge.common.BiomeDictionary;
+import net.minecraftforge.common.BiomeDictionary.Type;
 
 import com.juicegrape.juicewares.juicewares;
 
@@ -27,12 +29,18 @@ public class Entity {
 		if (EntityInfo.EYEBALL_SPAWN) {
 			for (int i = 0; i < BiomeGenBase.getBiomeGenArray().length; i++) {
 	                if (BiomeGenBase.getBiomeGenArray()[i] != null) {
-	                	EntityRegistry.addSpawn(EntityEyeball.class, EntityInfo.EYEBALL_SPAWNRATE, 1, 2, EnumCreatureType.monster, BiomeGenBase.getBiomeGenArray()[i]);
+	                	boolean endneth = false;
+	                	for (Type type : BiomeDictionary.getTypesForBiome(BiomeGenBase.getBiomeGenArray()[i])) {
+	                		if (type.equals(Type.END) || type.equals(Type.NETHER)) {
+	                			endneth = true;
+	                		}
+	                	}
+	                	if (!endneth)
+	                		EntityRegistry.addSpawn(EntityEyeball.class, EntityInfo.EYEBALL_SPAWNRATE, 1, 2, EnumCreatureType.monster, BiomeGenBase.getBiomeGenArray()[i]);
+	                	
 	                }
 	                
 			}
-			EntityRegistry.removeSpawn(EntityEyeball.class, EnumCreatureType.monster, BiomeGenBase.hell);
-			EntityRegistry.removeSpawn(EntityEyeball.class, EnumCreatureType.monster, BiomeGenBase.sky);
 		}
 		
 		
