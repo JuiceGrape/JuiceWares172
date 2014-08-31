@@ -48,6 +48,6 @@ public class Entity {
 	
 	public static void registerEntityEgg(Class<? extends EntityLiving> entity, int primaryColor, int secondaryColor, String name) {
             int id = EntityRegistry.findGlobalUniqueEntityId();
-            EntityList.addMapping(entity, name, id, primaryColor, secondaryColor);
+            EntityRegistry.registerGlobalEntityID(entity, name, id, primaryColor, secondaryColor);
     }
 }

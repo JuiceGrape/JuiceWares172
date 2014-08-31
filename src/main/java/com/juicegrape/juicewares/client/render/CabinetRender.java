@@ -133,7 +133,7 @@ public class CabinetRender extends TileEntitySpecialRenderer{
 
 
     	//Upper slot
-    	if (ted.getStackInSlot(TileEntityDrawer.showSlot) != null) {
+    	if (ted.getShowSlotOne() != null) {
 
             GL11.glPushMatrix();
             GL11.glDisable(2896);
@@ -143,7 +143,7 @@ public class CabinetRender extends TileEntitySpecialRenderer{
 
 			EntityItem ghostEntityItem = new EntityItem(ted.getWorldObj());
 			ghostEntityItem.hoverStart = 0f;
-			ItemStack customCopy = ted.getStackInSlot(TileEntityDrawer.showSlot);
+			ItemStack customCopy = ted.getShowSlotOne();
 			customCopy.stackSize = 1;
 			ghostEntityItem.setEntityItemStack(customCopy);
 
@@ -173,7 +173,7 @@ public class CabinetRender extends TileEntitySpecialRenderer{
     	
     	
     	//Lower slot
-    	if (ted.getStackInSlot(TileEntityDrawer.showSlot2) != null) {
+    	if (ted.getShowSlotTwo() != null) {
     		
             GL11.glPushMatrix();
             GL11.glDisable(2896);
@@ -182,7 +182,7 @@ public class CabinetRender extends TileEntitySpecialRenderer{
 
 			EntityItem ghostEntityItem = new EntityItem(ted.getWorldObj());
 			ghostEntityItem.hoverStart = 0f;
-			ItemStack customCopy = ted.getStackInSlot(TileEntityDrawer.showSlot2);
+			ItemStack customCopy = ted.getShowSlotTwo();
 			customCopy.stackSize = 1;
 			ghostEntityItem.setEntityItemStack(customCopy);
 

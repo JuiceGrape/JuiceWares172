@@ -199,6 +199,11 @@ public class BlockDrawer extends BlockContainer {
 		   }
 		   return false;
 	   } 
+	   
+	   @Override
+	   public int getRenderType() {
+		   return -1;
+	   }
 
 
 

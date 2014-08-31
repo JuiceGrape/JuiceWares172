@@ -149,6 +149,11 @@ public class BlockAltar extends BlockContainer {
         entityItem.motionZ = zMov * 0.05F;
 		return entityItem;
     }
+    
+    @Override
+	public int getRenderType() {
+    	return -1;
+	}
 
 
 }

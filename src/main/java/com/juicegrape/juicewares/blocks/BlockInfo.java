@@ -5,6 +5,8 @@ import net.minecraft.item.ItemStack;
 
 import com.juicegrape.juicewares.items.ItemInfo;
 
+import cpw.mods.fml.client.registry.RenderingRegistry;
+
 public class BlockInfo {
 	
 	public static final String TEXTURE_LOCATION = ItemInfo.TEXTURE_LOCATION;
@@ -44,6 +46,8 @@ public class BlockInfo {
 	public static final String ALTAR_KEY = "altar_block";
 	
 	public static final String ALTAR_UNLOCALIZED_NAME = "blockjuicealtar";
+	
+	public static final int ALTAR_RENDER_ID = RenderingRegistry.getNextAvailableRenderId();
 	
 	//Blaze Flower
 	public static final String BLAZEFLOWER_KEY = "blazeflower_block";

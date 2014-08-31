@@ -19,8 +19,8 @@ public class TileEntityDrawer extends TileEntity implements IInventory
 {
     private ItemStack[] drawerContents;
     public int invSize = 18;
-    public static final int showSlot = 0;
-    public static final int showSlot2 = 9;
+    public static final int rowOne = 0;
+    public static final int rowTwo = 9;
 
     public TileEntityDrawer()
     {
@@ -251,6 +251,24 @@ public class TileEntityDrawer extends TileEntity implements IInventory
 	@Override
 	public void closeInventory() {
 		
+	}
+	
+	public ItemStack getShowSlotOne() {
+		for (int i = rowOne; i < rowTwo; i++) {
+			if (getStackInSlot(i) != null) {
+				return getStackInSlot(i);
+			}
+		}
+		return null;
+	}
+	
+	public ItemStack getShowSlotTwo() {
+		for (int i = rowTwo; i < getSizeInventory(); i++) {
+			if (getStackInSlot(i) != null) {
+				return getStackInSlot(i);
+			}
+		}
+		return null;
 	}
 
 
